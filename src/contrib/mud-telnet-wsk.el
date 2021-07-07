@@ -2,7 +2,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;
 ; File:         mud-telnet-wsk.el
-; RCS:          $Header: /data/home/wsk/emacs/lisp/RCS/mud-telnet-wsk.el,v 1.18 1998/03/02 06:11:52 wsk Exp wsk $
+; RCS:          $Header: /repo/public.cvs/app/lambda/src/contrib/mud-telnet-wsk.el,v 1.2 2021/07/07 18:18:08 bruce Exp $
 ; Description:  Combo of all mud.el's that I found
 ; Author:       William S. Kaster
 ; Created:      Fri Aug 26 11:35:01 1994

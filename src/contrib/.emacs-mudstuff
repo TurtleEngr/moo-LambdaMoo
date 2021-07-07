@@ -1,0 +1,156 @@
+;;; -*-Emacs-Lisp-*-
+
+;;; main window colors
+
+(set-background-color "darkslateblue")
+(set-foreground-color "gold")
+(set-cursor-color "salmon")
+
+
+;;;
+;;; MUD stuff
+;;;
+;;; MOO
+;;; (autoload 'mud "mud-telnet-wsk"
+;;;   "Starts mud mode."
+;;; t)
+(load "mud-telnet-wsk" nil t)
+
+;;; don't use telnet
+(setq mud-use-telnet nil)
+;;; keep prompt at bottom
+(setq mud-use-entire-window t)
+;;; pop buffer when a page comes
+;;; Set by hand to nil (M-x set-variable mud-sho... ) if you don't regexp's for incoming page to pop the window to top
+(setq mud-show-page t)
+(setq mud-input-history-size 50)
+;;;(setq mud-accept-reconnects t)  ; hmm let's try this out
+
+
+(defun mud-check-page ()
+  "Look for page message, and pop-up buffer if specified."
+  (goto-char (point-min))
+  (while (not (eobp))
+    (if (and mud-show-page (looking-at (mud-page-regexp)))
+	(progn
+          ;(make-frame-visible)   ; <- deiconify, but don't raise
+	  (raise-frame (selected-frame)) ; <- deiconify and/or raise
+	  (display-buffer (current-buffer))
+	  (message "You are being paged in %s"
+		   (buffer-name (current-buffer)))))
+    (beginning-of-line 2)))
+
+
+;;; set up highlighting stuff
+
+;;; OK.  Quite messy.  First, set up, or pick and existing face to use.
+;;; I had two modes, one for in RPG, one for not, so skip down past the RPG defun.
+;;; Look for the regexps.. and take a shot.
+;;; Set at least mud-player-name (Search for "Sleeper", make sure you're in the second, non-RPG block
+;;; You might want to hilight buddies... and pages...    Those are the core tihngs anyhow.
+;;; The regexps simply map to the faces
+;;;
+;;; Frankly, this is a disaster :)   But it works.   --Sleeper 10 Feb 2016
+
+(if window-system
+    (progn
+;;;      (scroll-bar-mode -1)    ;; Turn off the freakin scroll bar
+;;;      (menu-bar-mode -1)      ;; Turn off the freakin menu bar
+;;;      (transient-mark-mode t) ;; Show the freakin selected region
+      (set-face-background 'highlight "blue")
+;      (set-face-background 'secondary-selection "green")
+      (setq rmail-highlighted-headers "^x$" ;; hilit pkg and this don't mix
+	    hilit-background-mode       'dark
+	    hilit-mode-enable-list      '(not empire-map-mode text-mode)
+	    hilit-face-check            nil  ;; use t if changing fonts
+	    hilit-auto-rehighlight-fallback '(20000 . 200)
+	    hilit-auto-rehighlight      200) ;; max amount of rehighlighting
+
+      (setq hilit-user-face-table
+;;;         ;; face         light           dark            mono
+	    '(;;;(prompt     blue-bold       cyan-bold       default-bold)
+	      (prompt     blue-bold       cyan       default-bold)
+	      ;;;(input      firebrick-bold-italic khaki-bold default-bold)
+	      (input      firebrick-bold-italic khaki default-bold)
+	      ;;;(error	  red-bold           yellow	       bold)
+	      (error	  red                yellow	       bold)
+	      (mud-player-name blue        cyan-italic    bold)
+	      (mud-buddy  pink             pink           bold-italic)
+	      (mud-page   orange           yellow/gray50  bold-italic)
+	      (mud-time-sep black          black/white    bold-italic)
+;	      (mud-mood   blue             green/gray50   bold-italic)
+	      (mud-helpers blue            orange/gray50  bold-italic)
+	      (mud-help    brown           yellow/black   bold-italic)
+	      (mud-sc     brown           yellow          bold-italic)
+	      (mud-ben    black            black/gray50   bold-italic)
+	      (mud-schmoo purple           Plum1/gray50   bold-italic)
+	      (mud-psycho purple           Plum1          bold-italic)
+	      (mud-BAM    red              white/gray50   bold-italic)
+	      (mud-injury red              red/gray50     bold-italic)
+	      ))
+      (setq hilit-hook-list
+	    '(yank yank-pop recenter find-file info mail gnus dired))
+      (setq hilit-new-style-patterns t) ;; use mega single patterns
+
+      (require 'hl319)
+
+      ;;
+      ;; Set up mud highlighting
+      ;;
+      ;; RPG hilit ---------------------------------------------------------
+      (if (featurep 'hilit19)
+	  (defun mud-hilit-rpg ()
+	    (interactive)
+	    (hilit-set-mode-patterns
+	     'mud-interactive-mode
+	     '(("none_Guest\\|Sleeper[_ ]King\\|to you, \"\\|Sleeper\\|\\bblue\\b" nil mud-player-name)
+	       ("\\bHasues\\b\\|\\bThe Thinker\\b\\|\\bWeedkiller\\b\\|\\bSerene\\b\\|\\bElfi\\b\\|Bruce\\|\\bStainless\\b\\|\\bAvenger\\b\\|\\bPooh_Bear\\b\\|\\bWintermute\\b\\|\\bnuv\\b\\|\\bNuveena\\b\\|\\bmuds\\b\\|\\bmudslide\\b\\|\\bGarbo\\b\\|\\bMystress\\b\\|\\bRyogo\\b\\|\\bDovetail\\b\\|\\bTesla\\b\\|\\bnil\\b\\|\\bFulsome\\b\\|\\bAmazon_Bitch\\b\\|\\bCognac\\b\\|\\bMugWump\\b\\|\\bJason\\b\\|\\bsugah\\b\\|\\bStetson\\b\\|\\bjen\\b\\|\\bejn\\b\\|\\bFiresign\\b\\|\\bFord_Prefect\\b\\|\\bFraud_Prefix\\b\\|\\bCutiePie\\b\\|\\bShmool\\b\\|\\bBartleBooth\\b\\|\\bQuirk\\b\\|\\balta\\b\\|helpdesk_in_thigh-highs\\|bad_kitty\\|triple_muse\\|darkrider\\|Dagard\\|\\bKozel\\b\\|Rockies\\|Breanne\\|\\bJai\\b\\|\\bpink\\b\\|TMFKAN64\\|Tetani\\|Gwynne\\|\\bYib\\b\\|Ruscha\\|Kimmy\\|Keri\\|That_Darn_Cat\\|SkyBlue\\|NyteKat\\|Jaybird\\|maribou\\|Krate\\|Wikked\\|Makonan\\|\\bmkn\\b\\|maggot\\|Sick\\|\\bili\\b\\|hhsb\\|aichster\\|spigot\\|RiotKrrn\\|Obvious\\|katydid" nil mud-buddy)
+	       ("^HELP>.*\\|^Reaper: .*" nil mud-help)
+	       ("^\\[.\\]\\[Helpers\\].*" nil mud-helpers)
+	       ("^-> .*\\|.* pages?[,:].*\\|.* responds?,.*\\|^(from .*).*\\|^\\[from .*\\].*\\|<hiding under \\(the\\|your\\) bed>.*\\|^From the shadows, .*\\|^You have new mail .*\\|.* is dead!\\|^You feel your wounds magically heal\\.\\|^You feel your mental fatigue lift\\.\\|^The storm over your head slowly dissipates\\|^[^ ]+ killed .*!\\|The flower on the pommel\\|you feel a healing warmth\\|The restoring waters of the spring have washed away some of your fatigue\\.\\|seems to weaken\\. \\. \\.\\|wooden torch finally burns out\\.\\|picks up a huge rock" nil mud-page)
+	       (".*mood changes from.*\\|^A page to Arbitrator:.*\\|^You parry\\|^You miss\\.\\|^You Dodge\\.\\|^The voice of the Bovine Illuminati MOOs an urgent dictum.\\|^\\[.\\]\\[Linux\\].*" nil mud-mood)
+	       ("^You are \\(blasted\\|suffocating\\|hit\\|scratched\\|.*bruised\\|.*wounded\\|given a powerful shock\\.\\)\\|^You feel a searing pain\\.\\|Your flesh is blistered by the firey touch\\.\\|You struggle to remain standing as the firey blast strikes you\\.\\|^You black out briefly\\|impacting into \\(Sleeper\\|Powerlass\\)\\.\\|bolt .* strikes \\(Sleeper\\|Powerlass\\),? enveloping \\(him\\|her\\) in flame\\.\\|^\\(Sleeper\\|Powerlass\\) seems to slow down suddenly\\|your eyebrows are a bit singed\\|^The flames sear your unprotected flesh\\.\\.\\.\\|^Your armour heats up and burns your skin\\.\\|^The beam of light strikes you squarely\\.\\|worse for wear\\|[^ ]+ begins? to gibber\\|^Your Amulet .* crumbles to dust and blows away\\.\\|The air in your lungs is exhausted!  You're drowning!\\|dull throbbing as energy\\|Flames singe your face\\|You are merely scalded\\|sprays hot against your flesh\\|You suffer a telling blow, rending you flesh and bone!\\|^>> ?Network buffer overflow:\\|I don't understand that\\.\\|There's a new edition of the newspaper\\." nil mud-injury)
+	       ("^\\[.\\]\\[BAM\\].*\\|^.* is \\(lightly toasted\\|scratched\\|.*bruised\\|.*wounded\\|blasted\\|hit\\|stunned\\)\\( and stunned\\)?\\| impacting into .*\\| \\(electrocutes\\|incinerates\\) .*\\|bolt strikes .* forcefully\\|burns in the magikal flame!\\|scorched by the firey blast\\.\\|staggered by the tremendous power\\|looks disoriented by the force of the firey impact\\.\\|deeply charred by eldritch fire!\\|thin arc of electricity hits .*\\|bolt shocks\\|is slain\\|slight jolt\\|\\(flicker\\|glow\\) briefly\\|seems to slow down suddenly\\|.*'s speed picks up suddenly\\.\\|You feel .* draw\\|Your shot smashes bone and muscle alike!\\|tearing flesh and bone asunder\\.\\|web tangles around\\|breaks free of the webs\\|shatters into a thousand slivers!\\|seems tougher and more resilient!" nil mud-BAM)
+	       ("^\\[.\\]\\[\\(P7-2000\\|stonecutters\\)\\].*" nil mud-sc)
+	       ("^\\[[SCB]S\\].*" nil mud-schmoo)
+	       ("^\\[PS\\].*\\|^\\[.\\]\\[Bovine\\].*" nil mud-psycho)
+	       ("^  (Benjamin) .*" nil mud-ben)
+	       ("^\\(A\\|Your watch\\) chirp.*" nil mud-time-sep)
+	       )
+	     nil
+	     t)
+	    (setq hilit-buffer-compiled-patterns nil)
+	    (hilit-rehighlight-buffer)
+	    )
+	)
+      ;; END RPG hilit ---------------------------------------------------------
+      ;; NON-RPG hilit -----------------------------------------------------------
+      (if (featurep 'hilit19)
+	  (defun mud-hilit-non-rpg ()
+	    (interactive)
+	    (hilit-set-mode-patterns
+	     'mud-interactive-mode
+	     '(("none_Guest\\|Sleeper[_ ]King\\|to you, \"\\|Sleeper\\|\\bblue\\b" nil mud-player-name)
+	       ("\\bHasues\\b\\|\\bThe Thinker\\b\\|\\bWeedkiller\\b\\|\\bSerene\\b\\|\\bElfi\\b\\|Bruce\\|\\bStainless\\b\\|\\bAvenger\\b\\|\\bPooh_Bear\\b\\|\\bWintermute\\b\\|\\bnuv\\b\\|\\bNuveena\\b\\|\\bmuds\\b\\|\\bmudslide\\b\\|\\bGarbo\\b\\|\\bMystress\\b\\|\\bRyogo\\b\\|\\bDovetail\\b\\|\\bTesla\\b\\|\\bnil\\b\\|\\bFulsome\\b\\|\\bAmazon_Bitch\\b\\|\\bCognac\\b\\|\\bMugWump\\b\\|\\bJason\\b\\|\\bsugah\\b\\|\\bStetson\\b\\|\\bjen\\b\\|\\bejn\\b\\|\\bFiresign\\b\\|\\bFord_Prefect\\b\\|\\bFraud_Prefix\\b\\|\\bCutiePie\\b\\|\\bShmool\\b\\|\\bBartleBooth\\b\\|\\bQuirk\\b\\|\\balta\\b\\|helpdesk_in_thigh-highs\\|bad_kitty\\|triple_muse\\|darkrider\\|Dagard\\|\\bKozel\\b\\|Rockies\\|Breanne\\|\\bJai\\b\\|\\bpink\\b\\|TMFKAN64\\|Tetani\\|Gwynne\\bYib\\b\\|Ruscha\\|Kimmy\\|Keri\\|That_Darn_Cat\\|SkyBlue\\|NyteKat\\|Jaybird\\|maribou\\|Krate\\|Wikked\\|Makonan\\|\\bmkn\\b\\|maggot\\|Sick\\|\\bili\\b\\|hhsb\\|aichster\\|spigot\\|RiotKrrn\\|Obvious\\|katydid" nil mud-buddy)
+	       ("^HELP>.*\\|^>> ?Network buffer overflow:\\|^Reaper: .*\\|I don't understand that\\.\\|There's a new edition of the newspaper\\." nil mud-help)
+	       ("^\\[.\\]\\[Helpers\\].*" nil mud-helpers)
+	       ("^-> .*\\|.* pages?[,:].*\\|.* responds?,.*\\|^(from .*).*\\|^\\[from .*\\].*\\|<hiding under \\(the\\|your\\) bed>.*\\|<in the hot tub>.*\\|^From the shadows, .*\\|^You have new mail .*" nil mud-page)
+	       (".*mood changes from .*\\|^A page to Arbitrator:.*\\|^The voice of the Bovine Illuminati MOOs an urgent dictum.\\|^\\[.\\]\\[Linux\\].*" nil mud-mood)
+	       ("^\\[.\\]\\[BAM\\].*" nil mud-BAM)
+	       ("^\\[.\\]\\[\\(P7-2000\\|stonecutters\\)\\].*" nil mud-sc)
+	       ("^\\[[SCB]S\\].*" nil mud-schmoo)
+	       ("^\\[PS\\].*\\|^\\[.\\]\\[Bovine\\].*" nil mud-psycho)
+	       ("^  (Benjamin) .*" nil mud-ben)
+	       ("^\\(A\\|Your watch\\) chirp.*" nil mud-time-sep)
+	       )
+	     nil
+	     t)
+	    (setq hilit-buffer-compiled-patterns nil)
+	    (hilit-rehighlight-buffer)
+	    )
+	)
+      ;; END NON-RPG hilit ----------------------------------------------------------
+      (mud-hilit-non-rpg)
+      )
+  )
+
