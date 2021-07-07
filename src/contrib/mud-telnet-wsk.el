@@ -2,7 +2,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;
 ; File:         mud-telnet-wsk.el
-; RCS:          $Header: /repo/public.cvs/app/lambda/src/contrib/mud-telnet-wsk.el,v 1.1 2004/11/13 21:42:43 bruce Exp $
+; RCS:          $Header: /data/home/wsk/emacs/lisp/RCS/mud-telnet-wsk.el,v 1.18 1998/03/02 06:11:52 wsk Exp wsk $
 ; Description:  Combo of all mud.el's that I found
 ; Author:       William S. Kaster
 ; Created:      Fri Aug 26 11:35:01 1994
@@ -11,7 +11,7 @@
 ; Package:      N/A
 ; Status:       Experimental (Do Not Distribute)
 ;
-; (C) Copyright 1994, SGML Skunkworks, all rights reserved.
+; wsk mods (C) Copyright 1994,5,6 SGML Skunkworks, all rights reserved.
 ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -47,23 +47,42 @@
 ;;;
 ;;;      May 1994 - Merge all these (mud.el's) I can find, added moo-code.el
 ;;;                 support, well... the (require... line.
-;  Merged in highlight code from afo.
-  ;;; February 1994 - Added support for emacs V19 and hilit19
-  ;;;                 (Aaron Oppenheimer afo@wal.hp.com)
-  ;;;                 To use hilit19 support, put this in your .emacs *after*
-  ;;;                 you load hilit19.el:
-  ;;;                    (hilit-translate mud-player-name         'cyan)
-  ;;;                    (hilit-translate mud-page                'yellow)
-  ;;;                    (hilit-set-mode-patterns
-  ;;;                       'mud-interactive-mode
-  ;;;                       '((".*page.*" nil mud-page))
-  ;;;                       nil
-  ;;;                       t)
-
+;;; wsk Merged in highlight code from afo.
+    ;;; February 1994 - Added support for emacs V19 and hilit19
+    ;;;                 (Aaron Oppenheimer afo@wal.hp.com)
+    ;;;                 To use hilit19 support, put this in your .emacs *after*
+    ;;;                 you load hilit19.el:
+    ;;;                    (hilit-translate mud-player-name         'cyan)
+    ;;;                    (hilit-translate mud-page                'yellow)
+    ;;;                    (hilit-set-mode-patterns
+    ;;;                       'mud-interactive-mode
+    ;;;                       '((".*page.*" nil mud-page))
+    ;;;                       nil
+    ;;;                       t)
+;;;
 ;;;  wsk  May 1995 - Merged in Pavel's latest changes from ftp.parc.
-
+;;;
 ;;;  wsk  June 1995 - Fix for hilighting bug encountered when ^U M-x mud
 ;;;                   was used without having a character.
+;;;
+;;;  wsk  January-March 1996 - 
+;;;                    Merged in Dave Van Buren's AstroVR hook for Mosaic.
+;;;		       Added a separate ZENMOO type (rings the bell)
+;;;		       Don't capitalize initial letters of every word
+;;;		       in mud-send-kill-prefix added to page regexps
+;;;		       using the variable `baud-rate' instead of the
+;;;		       obsolete function added code to popup the
+;;;		       window in mud-check-page
+;;;
+;;;  wsk  Sept 1996 - Add word boundary to name if its short, to
+;;;                   reduce mid-word highighting. (If name was `A',
+;;;                   *a*ll *a*'s *a*re highlighted....)
+;;;
+;;;  wsk  Oct  1996 - Remove extra blank linke from mud-send-kill-prefix.
+;;;
+;;;  wsk  Feb  1998 - Added Cold type.
+;;;
+
 (if window-system
     (require 'hilit19)
 )
@@ -137,7 +156,7 @@
     ("PMC"              MOO     "hero.village.virginia.edu"     7777) 
     ("DiversityMOO"     MOO     "erau.db.erau.edu"              8888)
     ("AlphaMOO"		MOO	"belch.berkeley.edu"		7777)
-    ("LambdaMOO"	MOO	"lambda.parc.xerox.com"		8888)
+    ("LambdaMOO"	MOO	"lambda.moo.mud.org"		8888)
     ("MOO2000"          MOO     "sunlab.npac.syr.edu"           2000)
     ("ChibaSprawl"	MOO	"sequoia.picosof.com"		7777)
     ("WorldMOO"  	MOO	"world.sensemedia.net"          1234)
@@ -260,9 +279,19 @@
   'nil
   'nil
   'moo-mode-hook
-  ".* pages?\\(, \"\\|: \\)\\|-> .*\\|.* responds?, \".*\\|(from .*).*"
+  ".* pages?\\(, \"\\|: \\)\\|-> .*\\|.* responds?, \".*\\|(from .*).*\\|\\[from .*\\].*\\|<hiding under \\(the\\|your\\) bed>.*\\|<in the hot tub>.*\\|From the shadows, .*\\|You have new mail .*\\|Help>>>"
   )
-;  "[^ ]+ [^ ]* *pages[,:] \""
+
+(defmud Cold
+  ?>
+  'tinymud-connect-filter
+  "connect"
+  'cold-filter-hook
+  'nil
+  'nil
+  'cold-mode-hook
+  ".* pages?\\(, \"\\|: \\)\\|-> .*\\|.* responds?, \".*\\|(from .*).*\\|\\[from .*\\].*\\|<hiding under \\(the\\|your\\) bed>.*\\|<in the hot tub>.*\\|From the shadows, .*\\|You have new mail .*\\|Help>>>"
+  )
 
 (defmud ZENMOO
   ?>
@@ -364,15 +393,14 @@ site already exists."
   (while (not (eobp))
     (if (and mud-show-page (looking-at (mud-page-regexp)))
 	(progn
-	  (make-frame-visible)
+          ;(make-frame-visible)   ; <- deiconify, but don't raise
+	  (raise-frame (selected-frame)) ; <- deiconify and/or raise
 	  (display-buffer (current-buffer))
-	  (ding)
 	  (message "You are being paged in %s"
 		   (buffer-name (current-buffer)))))
-    (beginning-of-line 2))
-)
+    (beginning-of-line 2)))
 
-; line wrap?
+
 (defvar mud-break-lines t
   "*Non-nil if lines of output from the MUD should be broken as necessary at word boundaries.  (buffer-local)")
 
@@ -479,6 +507,33 @@ current process if so."
 		 (recenter -1))
 	     )))))
 
+(defun mud-mouse-send ()
+  "Insert tkMOOTAG command string and send it to a MUVE."
+  (interactive)
+  (let ((proc (get-buffer-process (current-buffer))))
+    (cond ((or (null proc)
+	       (not (memq (process-status proc) '(open run))))
+	   (message "Not connected--- nothing sent.")
+	   (insert ?\n))
+	  (t
+	   ;; process exists, send line
+	   (let ((start (mud-find-input)))
+	     (send-region proc (1+ (match-beginning 0)) (1- (match-end 0)))
+	     (send-string proc "\n")
+	     (mud-remember-input (buffer-substring-no-properties
+				  (1+ (match-beginning 0))
+				  (1- (match-end 0))))
+	     (goto-char (point-max))
+	     (insert (buffer-substring-no-properties
+				  (1+ (match-beginning 0))
+				  (1- (match-end 0))))       
+	     (insert ?\n)
+	     (move-marker (process-mark proc) (point))
+	     (insert (mud-prompt))
+	     (if (= scroll-step 1)
+		 (recenter -1))
+	     )))))
+
 (defun mud-realign-and-send ()
   (interactive)
   (recenter 0)
@@ -507,6 +562,13 @@ current process if so."
 	    (case-replace nil))
 	(goto-char (point-min))
 	(untabify (point-min) (point-max))
+	;; remove last char if it is a newline
+	(if (string-equal
+	     (buffer-substring (- (point-max) 1) (point-max)) "\n")
+	    (progn
+	      (goto-char (1- (point-max)))
+	      (delete-char 1)
+	      (goto-char (point-min))))
 	(while (re-search-forward "^\\(.*\\)$" nil t)
 	  (replace-match (concat prefix "\\1" suffix) t))
 	(send-region proc (point-min) (point-max))
@@ -540,8 +602,13 @@ current process if so."
     (define-key map "\^c\^y" 'mud-send-kill)
     (define-key map "\ep" 'mud-previous-command)
     (define-key map "\en" 'mud-next-command)
+    (define-key map [S-mouse-3] 'cold-mouse-find-and-send)
     map)
   "Keymap for MUD interactive mode.")
+
+(defvar mud-interactive-mode-abbrev-table nil
+  "Abbreviation table used in mud-interactive buffers.")
+(define-abbrev-table 'mud-interactive-mode-abbrev-table ())
 
 (defun mud-interactive-mode (mud-type)
   "Major Mode for talking to inferior MUD processes.
@@ -584,9 +651,10 @@ defmud parameters:
 "
   (interactive)
   (kill-all-local-variables)
-  (setq mud mud-type)
-  (setq mode-name (symbol-name mud-type))
   (setq major-mode 'mud-interactive-mode)
+  (setq mode-name (symbol-name mud-type))
+  (setq local-abbrev-table mud-interactive-mode-abbrev-table)
+  (setq mud mud-type)
   (setq fill-column (1- (window-width)))
   (setq indent-tabs-mode nil)
   (if (null mud-mode-syntax-table)
@@ -604,19 +672,6 @@ defmud parameters:
 		   (t (if (> (length s) 20) (substring s 0 20) s)))))
     (setq mode-line-process (list (concat ss ":%s"))))
   (run-hooks (mud-startup-hook)))
-
-(defun mud-start ()
-  (interactive)
-  (let* (
-    (server (mud-default-server))
-    (choice (assoc server (mud-servers)))
-    (mud-name (car choice))
-    (mud-sys (car (cdr choice)))
-    (mud-server (car (cdr (cdr choice))))
-    (mud-port (car (cdr (cdr (cdr choice))))))
-    (open-mud mud-sys t)
-  )
-)
 
 (defun mud (&optional server autoconnect)
   "Connect to MUD, asking for site to connect to.
@@ -688,7 +743,12 @@ for name to connect with and attempt connect."
           (if (and entry (featurep 'hilit19))
               (let*
                   ((name (car entry))
-                   (list (cons name '(nil mud-player-name)))
+		   ;; hack to keep short player names from
+		   ;; being highlighted in mid-word.
+                   (list (if (> (length name) 3)
+			     (cons name '(nil mud-player-name))
+			   (cons (concat "\\b" name "\\b")
+				 '(nil mud-player-name))))
                    (args (cons list nil))
                    (current 
                     (assoc 'mud-interactive-mode hilit-patterns-alist)))
@@ -815,7 +875,7 @@ for name to connect with and attempt connect."
 (defvar mud-current-process nil "Current MUD process")
 (defvar mud-current-macro-commands-alist nil "Current MUD macro command alist")
 
-(defvar mud-macro-commands-alist (list (cons "nil" ""))
+(defvar mud-macro-commands-alist (list (cons nil ""))
   "*Alist of macros (keyed by strings)")
 (make-variable-buffer-local 'mud-macro-commands-alist)
 
@@ -928,7 +988,7 @@ Commands:
     (unwind-protect
 	(progn
 	  (set-buffer buffer)
-	  (buffer-flush-undo buffer)
+	  (buffer-disable-undo buffer)
 	  (insert-file-contents file)
 	  ;; Don't lose if no final newline.
 	  (goto-char (point-max))
@@ -1089,6 +1149,8 @@ as they are likely code objects."
 ;;; MOO
 
 (defvar moo-mode-hook '(define-moo-mode-commands))
+
+(defvar cold-mode-hook nil)
 
 (defun define-moo-mode-commands ()
   (define-key (current-local-map) "\^c\^d" 'moo-get-description)
@@ -1307,8 +1369,14 @@ as they are likely code objects."
 (defvar moo-object nil)
 (defvar moo-fixer nil)
 (defvar moo-filter-hook
-  '(moo-filter moo-check-fetch moo-check-gopher mud-check-page mud-check-reconnect
-	       astrovr-mosaic-hook mud-fill-lines))
+  '(moo-filter moo-check-fetch moo-check-gopher mud-check-page
+	       mud-check-reconnect astrovr-mosaic-hook
+	       wsk-netscape-browser-hook GOES-map-hook mud-fill-lines))
+(defvar cold-filter-hook
+  '(cold-filter moo-check-fetch moo-check-gopher mud-check-page
+	       mud-check-reconnect astrovr-mosaic-hook
+	       wsk-netscape-browser-hook
+	       cold-tkMOOTAG-hook mud-fill-lines))
 (defvar zenmoo-filter-hook
   '(moo-filter zen-alert mud-check-page mud-check-reconnect mud-fill-lines))
 
@@ -1353,7 +1421,7 @@ as they are likely code objects."
 	       (beginning-of-line 2)
 	       (delete-region start (point))
 	       (setq moo-state 'copying
-		     moo-buffer (get-buffer-create name)
+		     moo-buffer (get-buffer-create (concat name "-" (buffer-name)))
 		     mud-current-process (get-buffer-process (current-buffer))
 		     moo-fixer 'moo-unquote-dots)
 	       (moo-set-delimiter ".")
@@ -1399,6 +1467,219 @@ as they are likely code objects."
 	    (t
 	     (beginning-of-line 2))))))
 
+
+;;; Cold
+
+(defun cold-filter ()
+  (goto-char (point-min))
+  (while (not (eobp))
+    (let ((start (point)))
+      (cond ((and (eq moo-state 'waiting)
+		  (looking-at (concat moo-prefix "\n")))
+	     (beginning-of-line 2)
+	     (delete-region start (point))
+	     (setq moo-state 'copying
+		   moo-upload-command nil))
+	    ((and (eq moo-state 'idle)
+		  '(let ((string (buffer-substring (point) (point-max))))
+		     (save-excursion
+		       (set-buffer (get-buffer-create "*MUD Packets*"))
+		       (goto-char (point-max))
+		       (insert "\n\n[[")
+		       (insert string)
+		       (insert "]]")
+		       t))
+		  (looking-at moo-edit-regexp))
+	     (let ((name (mud-match-field 1))
+		   (upload (mud-match-field 2)))
+	       (beginning-of-line 2)
+	       (delete-region start (point))
+	       (setq moo-state 'copying
+		     moo-buffer (get-buffer-create (concat name "-" (buffer-name)))
+		     mud-current-process (get-buffer-process (current-buffer))
+		     moo-fixer 'moo-unquote-dots)
+	       (moo-set-delimiter ".")
+	       (let ((buff (current-buffer)))
+		 (set-buffer moo-buffer)
+		 (erase-buffer)
+		 (setq moo-upload-command upload)
+		 (set-buffer buff))))
+	    ((eq moo-state 'copying)
+	     (cond ((looking-at moo-delim-regexp)
+		    (setq moo-state 'idle)
+		    (beginning-of-line 2)
+		    (delete-region start (point))
+		    (let ((buff (current-buffer)))
+		      (set-buffer moo-buffer)
+		      (goto-char (point-min))
+		      (let ((upload moo-upload-command))
+			(if (string-match "\\." (buffer-name))
+			    ;; Assume method edit, since there is a "."
+			    ;; (Hmm.  Can Cold varibales have periods in them?)
+			    ;; (who cares if we have some extra verbing keys?)
+			    (progn
+			      (coldc-mode)
+			      (and (setq tmap (current-local-map))
+				   (define-key tmap
+				     "\^c\^c" 'mud-macro-send-and-destroy)
+				   (define-key tmap
+				     "\^c\^s" 'mud-macro-send)
+				   (define-key tmap
+				     "\^cs"   'mud-macro-send)
+				   (define-key tmap
+				     "\^c\^]" 'mud-macro-abort)
+				   (define-key tmap
+				     "\^c\^k" 'comment-region)))
+			  (mud-macro-expansion-mode))
+			(if upload
+			    (setq moo-upload-command upload)))
+		      (and moo-fixer (funcall moo-fixer))
+		      (setq mud-select-buffer moo-buffer)
+		      (set-buffer buff)))
+		   (t
+		    (beginning-of-line 2)
+		    (let* ((buff (current-buffer))
+			   (str (buffer-substring start (point)))
+			   (len (length str)))
+		      (if (or (> len (length moo-delim-string))
+			      (not (equal (substring moo-delim-string 0 len)
+					  str)))
+			  (progn
+			    (delete-region start (point))
+			    (set-buffer moo-buffer)
+			    (goto-char (point-max))
+			    (insert str)
+			    (set-buffer buff)))))))
+	    (t
+	     (beginning-of-line 2))))))
+
+(defun cold-tkMOOTAG-hook ()
+;;; NORMAL   {link {command "look something"} {text "LABEL"}}
+;;; unquote  {link {command look} {text LABEL}}
+;;; LBracket {link {command "look \{brsomething"} {text "LABEL"}}
+;;; RBracket {link {command "look \}brsomething"} {text "LABEL"}}
+;;;URBracket {link {command \}brsomething} {text \}LA\BEL}}
+  (goto-char (point-min))
+  (while (and
+	  (not (eobp))
+    	  (re-search-forward "\\({link {command \\)\\(\\([^\\\\}\n]\\|\\\\.\\)*\\)\\(} {text \\)\\(\\([^\\\\}\n]\\|\\\\.\\)*\\)\\(}}\\)" nil t))
+	  ;; 1 -- beginning junk
+	  ;; 2 -- possibly quoted command
+	  ;; 3 -- unusable
+	  ;; 4 -- middle junk
+	  ;; 5 -- possibly quoted LABEL
+	  ;; 6 -- unusable
+	  ;; 7 -- ending junk
+	  (goto-char (match-beginning 0))	       
+	  (let ((tkmootag-cmd (buffer-substring-no-properties
+			       (match-beginning 2) (match-end 2)))
+		(tkmootag-label (buffer-substring-no-properties
+				 (match-beginning 5) (match-end 5))))
+	    (delete-region (match-beginning 0) (match-end 0))
+	    ;; ugly hack to remove possibly optional quotes
+            (set-mark (point))
+	    (insert (if (= (string-to-char tkmootag-label) ?\")
+			(substring tkmootag-label
+				   1
+				   (1- (length tkmootag-label)))
+		      tkmootag-label))
+	    ;; clean text label
+	    (exchange-point-and-mark)
+	    ;; Replace escaped escapes
+	    (save-excursion
+	      (while (re-search-forward "\\\\\\\\" (mark) t)
+		(replace-match "\\\\" nil nil)))
+            ;; Escaped quotes
+	    (save-excursion
+	      (while (re-search-forward "\\\\\"" (mark) t)
+		(replace-match "\"" nil nil)))
+	    ;; Handle after, to catch normal escaped ones.
+	    ;; Escaped curlies
+	    ;;(save-excursion
+	    ;;  (while (re-search-forward "\\\\\\\({\\|}\\)" (mark) t)
+	    ;;	(replace-match "\\1" nil nil)))
+	    (exchange-point-and-mark)
+	    (put-text-property (mark) (point)
+			       'mouse-face 'highlight)	    
+	    (put-text-property (mark) (point)
+			       'face 'default)	    
+	    
+	    ;; Adjacent faces... cause weirdness when mouse-highlight is on.
+	    ;; Slap out a character to workaround it.
+	    (insert "*")
+            ;;
+	    (set-mark (point))
+	    (insert "[" (if (= (string-to-char tkmootag-cmd) ?\")
+			(substring tkmootag-cmd
+				   1
+				   (1- (length tkmootag-cmd)))
+		      tkmootag-cmd) "]")
+	    ;; clean command string
+	    (exchange-point-and-mark)
+	    ;; Replace escaped escapes
+	    (save-excursion
+	      (while (re-search-forward "\\\\\\\\" (mark) t)
+		(replace-match "\\\\" nil nil)))
+            ;; Escaped quotes
+	    (save-excursion
+	      (while (re-search-forward "\\\\\"" (mark) t)
+		(replace-match "\"" nil nil)))
+	    ;; Handle after, to catch normal escaped ones.
+	    ;; Escaped curlies
+	    ;;(save-excursion
+	    ;;  (while (re-search-forward "\\\\\\\({\\|}\\)" (mark) t)
+	    ;;	(replace-match "\\1" nil nil)))
+	    (exchange-point-and-mark)
+	    (put-text-property (mark) (point)
+			       'invisible t)
+	    (put-text-property (mark) (point) 
+			       'intangible t)
+	    ))
+  ;; Handle stray  hardcoded \{ and \}
+  ;; Then clean up, so only the server provided \{ and \} remain
+  (goto-char (point-min))
+  (while (re-search-forward "\\\\\\({\\|}\\)" nil t)
+    (replace-match "\\1" nil nil))
+)
+
+;;; Send the string without moving showing 
+;(defun cold-mouse-find-and-send (click)
+;  "Find the next command associated with a link and send it to the server."
+;  (interactive "e")
+;  (let* ((start (event-start click))
+;	 (window (car start))
+;	 (pos (car (cdr start))))
+;    (select-window window)
+;    (goto-char pos))
+;  (if (not (re-search-forward "\\[[^]]*\\]" nil t))
+;      (message "No command there.")      
+;    (mud-send-string (buffer-substring-no-properties
+;				(1+ (match-beginning 0))
+;				(1- (match-end 0)))
+;		     mud-current-process)
+;    (message (buffer-substring-no-properties
+;				(1+ (match-beginning 0))
+;				(1- (match-end 0))))
+;    ))
+
+(defun cold-mouse-find-and-send (click)
+  "Find the next command associated with a link and send it to the server."
+  (interactive "e")
+  (let* ((start (event-start click))
+	 (window (car start))
+	 (pos (car (cdr start))))
+    (select-window window)
+    (goto-char pos))
+  (if (not (re-search-forward "\\[[^]]*\\]" nil t))
+      (message "No command there.")      
+    (mud-mouse-send)
+    (message (buffer-substring-no-properties
+				(1+ (match-beginning 0))
+				(1- (match-end 0))))
+    ))
+
+
+;;; ZenMOO
 (defun zen-alert ()
   (ding t)
   (message "ZenMOO beckons.")
@@ -1522,7 +1803,7 @@ as they are likely code objects."
 		(insert-file filename)
 		(prog1 (car (read-from-string (buffer-string)))
 		  (set-buffer buf))))
-	  '("nil" . ""))))
+	  '(nil . ""))))
 
 (defun mud-store-macro-commands (filename)
   "Store MUD macros in filename"
@@ -1683,20 +1964,58 @@ sends alist entry directly to process."
         (astrovr-del-request-line)
         (if (not(process-status "mosaic"))
             (start-process "mosaic" "*mosaic*" "Mosaic" "-home"
-             astrovr-mosaic-url)
-        (save-excursion
-          (set-buffer (generate-new-buffer "*mosaic-cmd*"))
-          (insert astrovr-mosaic-command)
-          (insert "\n")
-          (insert astrovr-mosaic-url)
-          (setq mosaic-cmd-file (format "/tmp/Mosaic.%d"
-             (process-id (get-process "mosaic"))))
-          (write-region (point-min) (point-max) mosaic-cmd-file nil 'foo)
-          (start-process "kill" "*kill*" "kill" "-USR1" (format "%d"
-             (process-id (get-process "mosaic"))))
-          (kill-buffer (current-buffer))
-          ))))
+			   astrovr-mosaic-url)
+	  (save-excursion
+	    (set-buffer (generate-new-buffer "*mosaic-cmd*"))
+	    (insert astrovr-mosaic-command)
+	    (insert "\n")
+	    (insert astrovr-mosaic-url)
+	    (setq mosaic-cmd-file
+		  (format "/tmp/Mosaic.%d" (process-id (get-process "mosaic"))))
+	    (write-region (point-min) (point-max) mosaic-cmd-file nil 'foo)
+	    (start-process "kill" "*kill*" "kill" "-USR1"
+			   (format "%d" (process-id (get-process "mosaic"))))
+	    (kill-buffer (current-buffer))
+	    ))))
+    (beginning-of-line 2)))
+
+
+(defun wsk-netscape-browser-hook ()
+  "service a browser request."
+  (goto-char (point-min))
+  (while (not (eobp))
+    (if (looking-at (concat "#\\$#display-url \\(.*\\) ?"
+			    "url: \\(.*\\)"))
+        (let ((astrovr-mosaic-url (mud-match-field 2)))
+	  (astrovr-del-request-line)
+	  (if (not(process-status "webviewer"))
+	      (start-process "webviewer" "*webview*" "netscape" astrovr-mosaic-url)
+	    (start-process "webupdate" "*webupdate*" "netscape" "-remote" (concat "openURL(" astrovr-mosaic-url ")"))
+	    )
+	  (insert "Displaying URL: " astrovr-mosaic-url "\n")))
+    (beginning-of-line 2)))
+
+
+(defun GOES-map-hook ()
+  "service a map request."
+  (goto-char (point-min))
+  (while (not (eobp))
+    (if (looking-at "\\[\\+\\]\\[Helpers\\] Doit: \\(/bin/cp\\) \\(.*\\) \\(.*\\)")
+        (let ((map-move-cmd (mud-match-field 1))
+	      (map-move-first (mud-match-field 2))
+	      (map-move-second (mud-match-field 3)))
+	  ;(astrovr-del-request-line)
+	  (if (not (process-status "mapmover"))
+	      (start-process "mapmover" "*mapmove*" map-move-cmd map-move-first map-move-second)
+	    (start-process "mapupdate" "*mapupdate*" map-move-cmd map-move-first map-move-second)
+	    )))
+    (if (looking-at "\\[\\+\\]\\[Helpers\\] Display: \\(.*\\)")
+        (let ((the-display (mud-match-field 1)))
+	  ;;(astrovr-del-request-line)
+	  (make-frame-on-display the-display)
+	  ))
     (beginning-of-line 2)))
 
 
 (require 'moo-code)
+(require 'coldc-mode)
