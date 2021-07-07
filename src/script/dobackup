@@ -1,0 +1,72 @@
+#!/bin/csh -f
+# $Header: /repo/public.cvs/app/lambda/src/script/dobackup,v 1.2 2001/06/24 02:14:15 bruce Exp $
+#
+# dobackup -- keep backup copies of the DB at periodic intervals.
+#
+# Usage:  dobackup <dbase-prefix> <number> [<doftp>]
+#   where <dbase-prefix> is the prefix of the MOO DB file to back up (same as
+#   is specified for the restart script that comes with MOO), and <number> is
+#   the number of backup copies to keep.  After backing up locally, if a
+#   third parameter is provided and a file with the name
+#   <dbase-prefix>_backup.ftp exists, it will be executed as a list of FTP
+#   commands (for remote-site backups).
+#
+# This script will also backup a "files" subdirectory, if present, into the
+# same tarfile as the database file (for backing up FUP-diskbased data).
+#
+# This is intended primarily to be run from a crontab entry (output should
+# probably be redirected to a log file), but can be used on a standalone basis.
+#
+# To customize this script, change the value of MOOhome to the directory 
+# where your MOO database file is located, and the value of gzhome to 
+# the location of your system's copy of gzip.
+#
+set MOOhome = "/usr/du/world/moo"
+set gzhome = "/usr/du/world/bin"
+
+cd $MOOhome
+
+if ($#argv < 2) then
+  echo 'Usage: dobackup dbase-prefix number [doftp]'
+  exit 1
+endif
+
+echo `date`:  Backing up $1.db...
+echo $$ >! $1_backup.pid
+nice +5
+
+if (! -r $1.db) then
+  echo Error:  $1.db does not exist.  exiting.
+  exit 1
+endif
+if ( -r files ) then
+  set files=files
+endif
+
+tar cf - $1.db ${files} | $gzhome/gzip -c - >! $1.backup.0.tar.gz
+if (-r ./backup.dbs/$1.backup.1.tar.gz && { cmp -s $1.backup.0.tar.gz ./backup.dbs/$1.backup.1.tar.gz } ) then
+  rm $1.backup.0.tar.gz
+  echo 'File has not been modified since last backup.  exiting.'
+  exit 0
+endif
+
+mv $1.backup.0.tar.gz ./backup.dbs
+cd ./backup.dbs
+
+@ vnum = $2
+while ($vnum)
+  @ pvnum = ${vnum} - 1
+  if (-r $1.backup.${pvnum}.tar.gz) then
+    mv -f $1.backup.${pvnum}.tar.gz $1.backup.${vnum}.tar.gz
+  endif
+# (the following is temporary...)
+  if (-r $1.db.backup.${pvnum}.gz) then
+    mv -f $1.db.backup.${pvnum}.gz $1.db.backup.${vnum}.gz
+  endif
+  @ vnum = ${pvnum}
+end
+
+if ( ( $#argv > 2 ) && ( -r $1_backup.ftp ) ) then
+  echo `date`: FTPing...
+  ftp -n < $1_backup.ftp
+endif

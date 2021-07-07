@@ -1,0 +1,89 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.51
+     from ProgrammersManual.texinfo on 4 March 1997 -->
+
+<TITLE>LambdaMOO Programmer's Manual - Precedence</TITLE>
+</HEAD>
+<BODY>
+Go to the <A HREF="ProgrammersManual_1.html">first</A>, <A HREF="ProgrammersManual_26.html">previous</A>, <A HREF="ProgrammersManual_28.html">next</A>, <A HREF="ProgrammersManual_77.html">last</A> section, <A HREF="ProgrammersManual_toc.html">table of contents</A>.
+<P><HR><P>
+
+
+<H3><A NAME="SEC27" HREF="ProgrammersManual_toc.html#TOC27">Parentheses and Operator Precedence</A></H3>
+
+<P>
+As shown in a few examples above, MOO allows you to use parentheses to make it
+clear how you intend for complex expressions to be grouped.  For example, the
+expression
+
+</P>
+
+<PRE>
+3 * (4 + 5)
+</PRE>
+
+<P>
+performs the addition of 4 and 5 before multiplying the result by 3.
+
+</P>
+<P>
+If you leave out the parentheses, MOO will figure out how to group the
+expression according to certain rules.  The first of these is that some
+operators have higher <STRONG>precedence</STRONG> than others; operators with higher
+precedence will more tightly bind to their operands than those with lower
+precedence.  For example, multiplication has higher precedence than addition;
+thus, if the parentheses had been left out of the expression in the previous
+paragraph, MOO would have grouped it as follows:
+
+</P>
+
+<PRE>
+(3 * 4) + 5
+</PRE>
+
+<P>
+The table below gives the relative precedence of all of the MOO
+operators; operators on higher lines in the table have higher precedence
+and those on the same line have identical precedence:
+
+</P>
+
+<PRE>
+!       - (without a left operand)
+^
+*       /       %
++       -
+==      !=      &#60;       &#60;=      &#62;       &#62;=      in
+&#38;&#38;      ||
+... ? ... | ... (the conditional expression)
+=
+</PRE>
+
+<P>
+Thus, the horrendous expression
+
+</P>
+
+<PRE>
+x = a &#60; b &#38;&#38; c &#62; d + e * f ? w in y | - q - r
+</PRE>
+
+<P>
+would be grouped as follows:
+
+</P>
+
+<PRE>
+x = (((a &#60; b) &#38;&#38; (c &#62; (d + (e * f)))) ? (w in y) | ((- q) - r))
+</PRE>
+
+<P>
+It is best to keep expressions simpler than this and to use parentheses
+liberally to make your meaning clear to other humans.
+
+</P>
+<P><HR><P>
+Go to the <A HREF="ProgrammersManual_1.html">first</A>, <A HREF="ProgrammersManual_26.html">previous</A>, <A HREF="ProgrammersManual_28.html">next</A>, <A HREF="ProgrammersManual_77.html">last</A> section, <A HREF="ProgrammersManual_toc.html">table of contents</A>.
+</BODY>
+</HTML>

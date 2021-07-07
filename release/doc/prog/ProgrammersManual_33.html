@@ -1,0 +1,69 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.51
+     from ProgrammersManual.texinfo on 4 March 1997 -->
+
+<TITLE>LambdaMOO Programmer's Manual - Breaking</TITLE>
+</HEAD>
+<BODY>
+Go to the <A HREF="ProgrammersManual_1.html">first</A>, <A HREF="ProgrammersManual_32.html">previous</A>, <A HREF="ProgrammersManual_34.html">next</A>, <A HREF="ProgrammersManual_77.html">last</A> section, <A HREF="ProgrammersManual_toc.html">table of contents</A>.
+<P><HR><P>
+
+
+<H3><A NAME="SEC33" HREF="ProgrammersManual_toc.html#TOC33">Terminating One or All Iterations of a Loop</A></H3>
+
+<P>
+Sometimes, it is useful to exit a loop before it finishes all of its
+iterations.  For example, if the loop is used to search for a particular kind
+of element of a list, then it might make sense to stop looping as soon as the
+right kind of element is found, even if there are more elements yet to see.
+The <SAMP>`break'</SAMP> statement is used for this purpose; it has the form
+
+</P>
+
+<PRE>
+break;
+</PRE>
+
+<P>
+or
+
+</P>
+
+<PRE>
+break <VAR>name</VAR>;
+</PRE>
+
+<P>
+Each <SAMP>`break'</SAMP> statement indicates a specific surrounding loop; if
+<VAR>name</VAR> is not given, the statement refers to the innermost one.  If it is
+given, <VAR>name</VAR> must be the name appearing right after the <SAMP>`for'</SAMP> or
+<SAMP>`while'</SAMP> keyword of the desired enclosing loop.  When the <SAMP>`break'</SAMP>
+statement is executed, the indicated loop is immediately terminated and
+executing continues just as if the loop had completed its iterations normally.
+
+</P>
+<P>
+MOO also allows you to terminate just the current iteration of a loop, making
+it immediately go on to the next one, if any.  The <SAMP>`continue'</SAMP> statement
+does this; it has precisely the same forms as the <SAMP>`break'</SAMP> statement:
+
+</P>
+
+<PRE>
+continue;
+</PRE>
+
+<P>
+or
+
+</P>
+
+<PRE>
+continue <VAR>name</VAR>;
+</PRE>
+
+<P><HR><P>
+Go to the <A HREF="ProgrammersManual_1.html">first</A>, <A HREF="ProgrammersManual_32.html">previous</A>, <A HREF="ProgrammersManual_34.html">next</A>, <A HREF="ProgrammersManual_77.html">last</A> section, <A HREF="ProgrammersManual_toc.html">table of contents</A>.
+</BODY>
+</HTML>

@@ -1,0 +1,473 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.51
+     from ProgrammersManual.texinfo on 4 March 1997 -->
+
+<TITLE>LambdaMOO Programmer's Manual - Manipulating Connections</TITLE>
+</HEAD>
+<BODY>
+Go to the <A HREF="ProgrammersManual_1.html">first</A>, <A HREF="ProgrammersManual_51.html">previous</A>, <A HREF="ProgrammersManual_53.html">next</A>, <A HREF="ProgrammersManual_77.html">last</A> section, <A HREF="ProgrammersManual_toc.html">table of contents</A>.
+<P><HR><P>
+
+
+<H3><A NAME="SEC52" HREF="ProgrammersManual_toc.html#TOC52">Operations on Network Connections</A></H3>
+
+<P>
+<DL>
+<DT><U>Function:</U> list <B>connected_players</B> <I>([<VAR>include-all</VAR>])</I>
+<DD><A NAME="IDX83"></A>
+Returns a list of the object numbers of those player objects with
+currently-active connections.  If <VAR>include-all</VAR> is provided and true, then
+the list includes the object numbers associated with <EM>all</EM> current
+connections, including ones that are outbound and/or not yet logged-in.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> int <B>connected_seconds</B> <I>(obj <VAR>player</VAR>)</I>
+<DD><A NAME="IDX84"></A>
+<DT><U>Function:</U> int <B>idle_seconds</B> <I>(obj <VAR>player</VAR>)</I>
+<DD><A NAME="IDX85"></A>
+These functions return the number of seconds that the currently-active
+connection to <VAR>player</VAR> has existed and been idle, respectively.  If
+<VAR>player</VAR> is not the object number of a player object with a
+currently-active connection, then <CODE>E_INVARG</CODE> is raised.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> none <B>notify</B> <I>(obj <VAR>conn</VAR>, str <VAR>string</VAR> [, <VAR>no-flush</VAR>])</I>
+<DD><A NAME="IDX86"></A>
+Enqueues <VAR>string</VAR> for output (on a line by itself) on the connection
+<VAR>conn</VAR>.  If the programmer is not <VAR>conn</VAR> or a wizard, then
+<CODE>E_PERM</CODE> is raised.  If <VAR>conn</VAR> is not a currently-active connection,
+then this function does nothing.  Output is normally written to connections
+only between tasks, not during execution.
+
+</P>
+<P>
+The server will not queue an arbitrary amount of output for a connection; the
+<CODE>MAX_QUEUED_OUTPUT</CODE> compilation option (in <SAMP>`options.h'</SAMP>) controls the
+limit.  When an attempt is made to enqueue output that would take the server
+over its limit, it first tries to write as much output as possible to the
+connection without having to wait for the other end.  If that doesn't result in
+the new output being able to fit in the queue, the server starts throwing away
+the oldest lines in the queue until the new ouput will fit.  The server
+remembers how many lines of output it has `flushed' in this way and, when next
+it can succeed in writing anything to the connection, it first writes a line
+like <CODE>&#62;&#62; Network buffer overflow: <VAR>X</VAR> lines of output to you have been
+lost &#60;&#60;</CODE> where <VAR>X</VAR> is the number of flushed lines.
+
+</P>
+<P>
+If <VAR>no-flush</VAR> is provided and true, then <CODE>notify()</CODE> never flushes any
+output from the queue; instead it immediately returns false.  <CODE>Notify()</CODE>
+otherwise always returns true.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> int <B>buffered_output_length</B> <I>([obj <VAR>conn</VAR>])</I>
+<DD><A NAME="IDX87"></A>
+Returns the number of bytes currently buffered for output to the connection
+<VAR>conn</VAR>.  If <VAR>conn</VAR> is not provided, returns the maximum number of bytes
+that will be buffered up for output on any connection.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> str <B>read</B> <I>([obj <VAR>conn</VAR> [, <VAR>non-blocking</VAR>]])</I>
+<DD><A NAME="IDX88"></A>
+Reads and returns a line of input from the connection <VAR>conn</VAR> (or, if not
+provided, from the player that typed the command that initiated the current
+task).  If <VAR>non-blocking</VAR> is false or not provided, this function suspends
+the current task, resuming it when there is input available to be read.  If
+<VAR>non-blocking</VAR> is provided and true, this function never suspends the
+calling task; if there is no input currently available for input, <CODE>read()</CODE>
+simply returns 0 immediately.
+
+</P>
+<P>
+If <VAR>player</VAR> is provided, then the programmer must either be a wizard or the
+owner of <CODE>player</CODE>; if <CODE>player</CODE> is not provided, then <CODE>read()</CODE>
+may only be called by a wizard and only in the task that was last spawned by a
+command from the connection in question.  Otherwise, <CODE>E_PERM</CODE> is raised.
+If the given <CODE>player</CODE> is not currently connected and has no pending lines
+of input, or if the connection is closed while a task is waiting for input but
+before any lines of input are received, then <CODE>read()</CODE> raises
+<CODE>E_INVARG</CODE>.
+
+</P>
+<P>
+The restriction on the use of <CODE>read()</CODE> without any arguments preserves the
+following simple invariant: if input is being read from a player, it is for the
+task started by the last command that player typed.  This invariant adds
+responsibility to the programmer, however.  If your program calls another verb
+before doing a <CODE>read()</CODE>, then either that verb must not suspend or else
+you must arrange that no commands will be read from the connection in the
+meantime.  The most straightforward way to do this is to call
+
+<PRE>
+set_connection_option(player, "hold-input", 1)
+</PRE>
+
+<P>
+before any task suspension could happen, then make all of your calls to
+<CODE>read()</CODE> and other code that might suspend, and finally call
+
+<PRE>
+set_connection_option(player, "hold-input", 0)
+</PRE>
+
+<P>
+to allow commands once again to be read and interpreted normally.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> none <B>force_input</B> <I>(obj <VAR>conn</VAR>, str <VAR>line</VAR> [, <VAR>at-front</VAR>])</I>
+<DD><A NAME="IDX89"></A>
+Inserts the string <VAR>line</VAR> as an input task in the queue for the connection
+<VAR>conn</VAR>, just as if it had arrived as input over the network.  If
+<VAR>at_front</VAR> is provided and true, then the new line of input is put at the
+front of <VAR>conn</VAR>'s queue, so that it will be the very next line of input
+processed even if there is already some other input in that queue.  Raises
+<CODE>E_INVARG</CODE> if <VAR>conn</VAR> does not specify a current connection and
+<CODE>E_PERM</CODE> if the programmer is neither <VAR>conn</VAR> nor a wizard.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> none <B>flush_input</B> <I>(obj <VAR>conn</VAR> [<VAR>show-messages</VAR>])</I>
+<DD><A NAME="IDX90"></A>
+Performs the same actions as if the connection <VAR>conn</VAR>'s defined flush
+command had been received on that connection, i.e., removes all pending lines
+of input from <VAR>conn</VAR>'s queue and, if <VAR>show-messages</VAR> is provided and
+true, prints a message to <VAR>conn</VAR> listing the flushed lines, if any.  See
+the chapter on server assumptions about the database for more information about
+a connection's defined flush command.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> list <B>output_delimiters</B> <I>(obj <VAR>player</VAR>)</I>
+<DD><A NAME="IDX91"></A>
+Returns a list of two strings, the current <STRONG>output prefix</STRONG> and <STRONG>output
+suffix</STRONG> for <VAR>player</VAR>.  If <VAR>player</VAR> does not have an active network
+connection, then <CODE>E_INVARG</CODE> is raised.  If either string is currently
+undefined, the value <CODE>""</CODE> is used instead.  See the discussion of the
+<CODE>PREFIX</CODE> and <CODE>SUFFIX</CODE> commands in the next chapter for more
+information about the output prefix and suffix.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> none <B>boot_player</B> <I>(obj <VAR>player</VAR>)</I>
+<DD><A NAME="IDX92"></A>
+Marks for disconnection any currently-active connection to the given
+<VAR>player</VAR>.  The connection will not actually be closed until the
+currently-running task returns or suspends, but all MOO functions (such as
+<CODE>notify()</CODE>, <CODE>connected_players()</CODE>, and the like) immediately behave
+as if the connection no longer exists.  If the programmer is not either a
+wizard or the same as <VAR>player</VAR>, then <CODE>E_PERM</CODE> is raised.  If there
+is no currently-active connection to <VAR>player</VAR>, then this function does
+nothing.
+
+</P>
+<P>
+If there was a currently-active connection, then the following verb call is
+made when the connection is actually closed:
+
+</P>
+
+<PRE>
+$user_disconnected(<VAR>player</VAR>)
+</PRE>
+
+<P>
+It is not an error if this verb does not exist; the call is simply skipped.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> str <B>connection_name</B> <I>(obj <VAR>player</VAR>)</I>
+<DD><A NAME="IDX93"></A>
+Returns a network-specific string identifying the connection being used by the
+given player.  If the programmer is not a wizard and not <VAR>player</VAR>, then
+<CODE>E_PERM</CODE> is raised.  If <VAR>player</VAR> is not currently connected, then
+<CODE>E_INVARG</CODE> is raised.
+
+</P>
+<P>
+For the TCP/IP networking configurations, for in-bound connections, the string
+has the form
+
+<PRE>
+"port <VAR>lport</VAR> from <VAR>host</VAR>, port <VAR>port</VAR>"
+</PRE>
+
+<P>
+where <VAR>lport</VAR> is the decimal TCP listening port on which the connection
+arrived, <VAR>host</VAR> is either the name or decimal TCP address of the host from
+which the player is connected, and <VAR>port</VAR> is the decimal TCP port of the
+connection on that host.
+
+</P>
+<P>
+For outbound TCP/IP connections, the string has the form
+
+<PRE>
+"port <VAR>lport</VAR> to <VAR>host</VAR>, port <VAR>port</VAR>"
+</PRE>
+
+<P>
+where <VAR>lport</VAR> is the decimal local TCP port number from which the
+connection originated, <VAR>host</VAR> is either the name or decimal TCP address of
+the host to which the connection was opened, and <VAR>port</VAR> is the decimal TCP
+port of the connection on that host.
+
+</P>
+<P>
+For the System V `local' networking configuration, the string is the UNIX login
+name of the connecting user or, if no such name can be found, something of the
+form
+
+<PRE>
+"User #<VAR>number</VAR>"
+</PRE>
+
+<P>
+where <VAR>number</VAR> is a UNIX numeric user ID.
+
+</P>
+<P>
+For the other networking configurations, the string is the same for all
+connections and, thus, useless.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> none <B>set_connection_option</B> <I>(obj <VAR>conn</VAR>, str <VAR>option</VAR>, <VAR>value</VAR>)</I>
+<DD><A NAME="IDX94"></A>
+Controls a number of optional behaviors associated the connection <VAR>conn</VAR>.
+Raises <CODE>E_INVARG</CODE> if <VAR>conn</VAR> does not specify a current connection and
+<CODE>E_PERM</CODE> if the programmer is neither <VAR>conn</VAR> nor a wizard.  The
+following values for <VAR>option</VAR> are currently supported:
+
+</P>
+<DL COMPACT>
+
+<DT><CODE>"hold-input"</CODE>
+<DD>
+If <VAR>value</VAR> is true, then input received on <VAR>conn</VAR> will never be treated
+as a command; instead, it will remain in the queue until retrieved by a call to
+<CODE>read()</CODE>.
+
+<DT><CODE>"client-echo"</CODE>
+<DD>
+Send the Telnet Protocol <SAMP>`WONT ECHO'</SAMP> or <SAMP>`WILL ECHO'</SAMP> command,
+depending on whether <VAR>value</VAR> is true or false, respectively.  For clients
+that support the Telnet Protocol, this should toggle whether or not the client
+echoes locally the characters typed by the user.  Note that the server itself
+never echoes input characters under any circumstances.  (This option is only
+available under the TCP/IP networking configurations.)
+
+<DT><CODE>"binary"</CODE>
+<DD>
+If <VAR>value</VAR> is true, then both input from and output to <VAR>conn</VAR> can
+contain arbitrary bytes.  Input from a connection in binary mode is not broken
+into lines at all; it is delivered to either the read() function or the
+built-in command parser as <STRONG>binary strings</STRONG>, in whatever size chunks come
+back from the operating system.  (See the early section on MOO value types for
+a description of the binary string representation.)  For output to a connection
+in binary mode, the second argument to `notify()' must be a binary string; if
+it is malformed, E_INVARG is raised.
+
+<DT><CODE>"flush-command"</CODE>
+<DD>
+If <VAR>value</VAR> is a non-empty string, then it becomes the new <STRONG>flush</STRONG>
+command for this connection, by which the player can flush all queued input
+that has not yet been processed by the server.  If <VAR>value</VAR> is not a
+non-empty string, then <VAR>conn</VAR> is set to have no flush command at all.  The
+default value of this option can be set via the property
+<CODE>$server_options.default_flush_command</CODE>; see the chapter on server
+assumptions about the database for details.
+</DL>
+</DL>
+
+<P>
+<DL>
+<DT><U>Function:</U> list <B>connection_options</B> <I>(obj <VAR>conn</VAR>)</I>
+<DD><A NAME="IDX95"></A>
+Returns a list of <CODE>{<VAR>name</VAR>, <VAR>value</VAR>}</CODE> pairs describing the
+current settings of all of the allowed options for the connection <VAR>conn</VAR>.
+Raises <CODE>E_INVARG</CODE> if <VAR>conn</VAR> does not specify a current connection and
+<CODE>E_PERM</CODE> if the programmer is neither <VAR>conn</VAR> nor a wizard.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> value <B>connection_option</B> <I>(obj <VAR>conn</VAR>, str <VAR>name</VAR>)</I>
+<DD><A NAME="IDX96"></A>
+Returns the current setting of the option <VAR>name</VAR> for the connection
+<VAR>conn</VAR>.  Raises <CODE>E_INVARG</CODE> if <VAR>conn</VAR> does not specify a current
+connection and <CODE>E_PERM</CODE> if the programmer is neither <VAR>conn</VAR> nor a
+wizard.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> obj <B>open_network_connection</B> <I>(<VAR>value</VAR>, ...)</I>
+<DD><A NAME="IDX97"></A>
+Establishes a network connection to the place specified by the arguments and
+more-or-less pretends that a new, normal player connection has been established
+from there.  The new connection, as usual, will not be logged in initially and
+will have a negative object number associated with it for use with
+<CODE>read()</CODE>, <CODE>notify()</CODE>, and <CODE>boot_player()</CODE>.  This object number
+is the value returned by this function.
+
+</P>
+<P>
+If the programmer is not a wizard or if the <CODE>OUTBOUND_NETWORK</CODE> compilation
+option was not used in building the server, then <CODE>E_PERM</CODE> is raised.  If
+the network connection cannot be made for some reason, then other errors will
+be returned, depending upon the particular network implementation in use.
+
+</P>
+<P>
+For the TCP/IP network implementations (the only ones as of this writing that
+support outbound connections), there must be two arguments, a string naming a
+host (possibly using the numeric Internet syntax) and an integer specifying a TCP
+port.  If a connection cannot be made because the host does not exist, the port
+does not exist, the host is not reachable or refused the connection,
+<CODE>E_INVARG</CODE> is raised.  If the connection cannot be made for other
+reasons, including resource limitations, then <CODE>E_QUOTA</CODE> is raised.
+
+</P>
+<P>
+The outbound connection process involves certain steps that can take quite a
+long time, during which the server is not doing anything else, including
+responding to user commands and executing MOO tasks.  See the chapter on
+server assumptions about the database for details about how the server limits
+the amount of time it will wait for these steps to successfully complete.
+
+</P>
+<P>
+It is worth mentioning one tricky point concerning the use of this function.
+Since the server treats the new connection pretty much like any normal player
+connection, it will naturally try to parse any input from that connection as
+commands in the usual way.  To prevent this treatment, you should use
+<CODE>set_connection_option()</CODE> to set the <CODE>"hold-input"</CODE> option true on
+the connection.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> value <B>listen</B> <I>(obj <VAR>object</VAR>, <VAR>point</VAR> [, <VAR>print-messages</VAR>])</I>
+<DD><A NAME="IDX98"></A>
+Create a new point at which the server will listen for network connections,
+just as it does normally.  <VAR>Object</VAR> is the object whose verbs
+<CODE>do_login_command</CODE>, <CODE>do_command</CODE>, <CODE>do_out_of_band_command</CODE>,
+<CODE>user_connected</CODE>, <CODE>user_created</CODE>, <CODE>user_reconnected</CODE>,
+<CODE>user_disconnected</CODE>, and <CODE>user_client_disconnected</CODE> will be called at
+appropriate points, just as these verbs are called on <CODE>#0</CODE> for normal
+connections.  (See the chapter on server assumptions about the database for the
+complete story on when these functions are called.)  <VAR>Point</VAR> is a
+network-configuration-specific parameter describing the listening point.  If
+<VAR>print-messages</VAR> is provided and true, then the various
+database-configurable messages (also detailed in the chapter on server
+assumptions) will be printed on connections received at the new listening
+point.  <CODE>Listen()</CODE> returns <VAR>canon</VAR>, a `canonicalized' version of
+<VAR>point</VAR>, with any configuration-specific defaulting or aliasing accounted
+for.
+
+</P>
+<P>
+This raises <CODE>E_PERM</CODE> if the programmer is not a wizard, <CODE>E_INVARG</CODE> if
+<VAR>object</VAR> is invalid or there is already a listening point described by
+<VAR>point</VAR>, and <CODE>E_QUOTA</CODE> if some network-configuration-specific error
+occurred.
+
+</P>
+<P>
+For the TCP/IP configurations, <VAR>point</VAR> is a TCP port number on which to
+listen and <VAR>canon</VAR> is equal to <VAR>point</VAR> unless <VAR>point</VAR> is zero, in
+which case <VAR>canon</VAR> is a port number assigned by the operating system.
+
+</P>
+<P>
+For the local multi-user configurations, <VAR>point</VAR> is the UNIX file name to
+be used as the connection point and <VAR>canon</VAR> is always equal to <VAR>point</VAR>.
+
+</P>
+<P>
+In the single-user configuration, the can be only one listening point at a
+time; <VAR>point</VAR> can be any value at all and <VAR>canon</VAR> is always zero.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> none <B>unlisten</B> <I>(<VAR>canon</VAR>)</I>
+<DD><A NAME="IDX99"></A>
+Stop listening for connections on the point described by <VAR>canon</VAR>, which
+should be the second element of some element of the list returned by
+<CODE>listeners()</CODE>.  Raises <CODE>E_PERM</CODE> if the programmer is not a wizard and
+<CODE>E_INVARG</CODE> if there does not exist a listener with that description.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> list <B>listeners</B> <I>()</I>
+<DD><A NAME="IDX100"></A>
+Returns a list describing all existing listening points, including the default
+one set up automatically by the server when it was started (unless that one has
+since been destroyed by a call to <CODE>unlisten()</CODE>).  Each element of the list
+has the following form:
+
+</P>
+
+<PRE>
+{<VAR>object</VAR>, <VAR>canon</VAR>, <VAR>print-messages</VAR>}
+</PRE>
+
+<P>
+where <VAR>object</VAR> is the first argument given in the call to <CODE>listen()</CODE>
+to create this listening point, <VAR>print-messages</VAR> is true if the third
+argument in that call was provided and true, and <VAR>canon</VAR> was the value
+returned by that call.  (For the initial listening point, <VAR>object</VAR> is
+<CODE>#0</CODE>, <VAR>canon</VAR> is determined by the command-line arguments or a
+network-configuration-specific default, and <VAR>print-messages</VAR> is true.)
+</DL>
+
+</P>
+<P>
+Please note that there is nothing special about the initial listening point
+created by the server when it starts; you can use <CODE>unlisten()</CODE> on it just
+as if it had been created by <CODE>listen()</CODE>.  This can be useful; for example,
+under one of the TCP/IP configurations, you might start up your server on some
+obscure port, say 12345, connect to it by yourself for a while, and then open
+it up to normal users by evaluating the statments
+
+<PRE>
+unlisten(12345); listen(#0, 7777, 1)
+</PRE>
+
+<P><HR><P>
+Go to the <A HREF="ProgrammersManual_1.html">first</A>, <A HREF="ProgrammersManual_51.html">previous</A>, <A HREF="ProgrammersManual_53.html">next</A>, <A HREF="ProgrammersManual_77.html">last</A> section, <A HREF="ProgrammersManual_toc.html">table of contents</A>.
+</BODY>
+</HTML>

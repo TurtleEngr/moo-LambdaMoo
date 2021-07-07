@@ -1,0 +1,77 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.51
+     from ProgrammersManual.texinfo on 4 March 1997 -->
+
+<TITLE>LambdaMOO Programmer's Manual - Server Options</TITLE>
+</HEAD>
+<BODY>
+Go to the <A HREF="ProgrammersManual_1.html">first</A>, <A HREF="ProgrammersManual_62.html">previous</A>, <A HREF="ProgrammersManual_64.html">next</A>, <A HREF="ProgrammersManual_77.html">last</A> section, <A HREF="ProgrammersManual_toc.html">table of contents</A>.
+<P><HR><P>
+
+
+<H3><A NAME="SEC63" HREF="ProgrammersManual_toc.html#TOC63">Server Options Set in the Database</A></H3>
+
+<P>
+Many optional behaviors of the server can be controlled from within the
+database by creating the property <CODE>#0.server_options</CODE> (also known as
+<CODE>$server_options</CODE>), assigning as its value a valid object number, and then
+defining various properties on that object.  At a number of times, the server
+checks for whether the property <CODE>$server_options</CODE> exists and has an object
+number as its value.  If so, then the server looks for a variety of other
+properties on that <CODE>$server_options</CODE> object and, if they exist, uses their
+values to control how the server operates.
+
+</P>
+<P>
+The specific properties searched for are each described in the appropriate
+section below, but here is a brief list of all of the relevant properties for
+ease of reference:
+
+</P>
+<DL COMPACT>
+
+<DT><CODE>bg_seconds</CODE>
+<DD>
+The number of seconds allotted to background tasks.
+<DT><CODE>bg_ticks</CODE>
+<DD>
+The number of ticks allotted to background tasks.
+<DT><CODE>connect_timeout</CODE>
+<DD>
+The maximum number of seconds to allow an un-logged-in in-bound connection to
+remain open.
+<DT><CODE>default_flush_command</CODE>
+<DD>
+The initial setting of each new connection's flush command.
+<DT><CODE>fg_seconds</CODE>
+<DD>
+The number of seconds allotted to foreground tasks.
+<DT><CODE>fg_ticks</CODE>
+<DD>
+The number of ticks allotted to foreground tasks.
+<DT><CODE>max_stack_depth</CODE>
+<DD>
+The maximum number of levels of nested verb calls.
+<DT><CODE>name_lookup_timeout</CODE>
+<DD>
+The maximum number of seconds to wait for a network hostname/address lookup.
+<DT><CODE>outbound_connect_timeout</CODE>
+<DD>
+The maximum number of seconds to wait for an outbound network connection to
+successfully open.
+<DT><CODE>protect_<VAR>property</VAR></CODE>
+<DD>
+Restrict reading of built-in <VAR>property</VAR> to wizards.
+<DT><CODE>protect_<VAR>function</VAR></CODE>
+<DD>
+Restrict use of built-in <VAR>function</VAR> to wizards.
+<DT><CODE>support_numeric_verbname_strings</CODE>
+<DD>
+Enables use of an obsolete verb-naming mechanism.
+</DL>
+
+<P><HR><P>
+Go to the <A HREF="ProgrammersManual_1.html">first</A>, <A HREF="ProgrammersManual_62.html">previous</A>, <A HREF="ProgrammersManual_64.html">next</A>, <A HREF="ProgrammersManual_77.html">last</A> section, <A HREF="ProgrammersManual_toc.html">table of contents</A>.
+</BODY>
+</HTML>

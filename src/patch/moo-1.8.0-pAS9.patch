@@ -1,0 +1,85 @@
+Patchfile:       moo-1.8.0-pAS9.patch
+Author:          Alex Stewart <riche@crl.com>
+Release Date:    March 8, 1997
+Patch Version:   1.1
+Patchfile Type:  Context diff (apply using the standard unix 'patch' utility)
+Description:
+
+This patch attempts to address some of the (unfortunately increasingly 
+familiar) problems of flawed client programs (in particular, flawed Windows
+telnet programs), which don't properly communicate with the MOO server, 
+resulting in inconvenience or simple inability to use the MOO by those stuck 
+with such programs.
+
+There are three prevalant forms of problems in this area:
+ 1. Raw-mode transmission of data.  The telnet standard specifies that,
+    unless overridden by special telnet negotiations (which the MOO does not
+    do), data sent over the connection is to be line-buffered, and local
+    line editing should be supported.  Nevertheless, some broken
+    implementations of telnet programs assume they're talking to a unix host
+    or some other byte-oriented connection, and always send in "raw" mode
+    (every keystroke is sent, no local editing).  This results in backspace
+    characters, instead of doing what the user expects, being sent on to the
+    MOO, which ignores them.
+ 2. Improper EOL sequences.  The telnet standard specifies that unless,
+    overridden by telnet negotiations, all lines should be sent terminated
+    with a CRLF pair.  Because of this and because of some flawed unix MOO
+    clients (aka TinyFugue, for one) which send a unix EOL (LF by itself),
+    the MOO is designed to look for LF characters as the EOL.  Some flawed
+    Windoze programs, however, send a raw CR as the EOL, which results in no
+    input line ever being terminated, and thus no input being sent on to be
+    interpreted by the MOO. [This appears to have been dealt with in 1.8.0,
+    and is thus no longer a problem]
+ 3. Non-echoing input.  The telnet spec also requires that, unless
+    overridden, all input should be echoed locally by the client on the
+    user's screen.  Some flawed telnet clients (most notably those that tend
+    to be in raw mode all the time) don't echo locally, however, and expect
+    the characters to be echoed back to them by the server, which the MOO
+    doesn't do.
+
+This patch attempts to deal, as well as possible, with problem 1 listed
+above, and at the very least deals with it better than a stock server will.
+Problem 2, as noted, appears to be fixed in 1.8.0 and thus this patch
+no longer does anything in that regard.
+
+Unfortunately, there's not much that can be done about problem 3
+without knowing beforehand whether someone's got a broken client of that 
+nature or not, which the MOO server can't do.  There have been reports, 
+however, that at least one client with this problem corrects itself if it 
+receives the telnet IAC sequence to do local-echoing (which, conveniently, 
+can be sent using the set_connection_option() builtin provided in 1.8.0).
+
+[Update note:  Changed to fit with 1.8.0's net_multi.c.  1.8.0 apparently
+already has code to deal with the CR/LF issue, so that section has been
+removed from this patch.]
+
+--- Begin Patchfile ---
+*** patchlevel	Sat Mar 08 00:00:00 1997
+--- pAS9/patchlevel	Sat Mar 08 00:00:00 1997
+******************
+*** 0 ***
+--- 1,6 ---
++ Patch pAS9:  by Alex Stewart, Mar 08, 1997
++   Modifies net_multi.c
++   Changes network input routines to be slightly more forgiving of
++   not-quite-right input.  Receiving BS or DEL characters will erase
++   previous input.
++
+*** net_multi.c	Sat Mar 08 00:00:00 1997
+--- pAS9/net_multi.c	Sat Mar 08 00:00:00 1997
+***************
+*** 274,278 ****
+--- 274,286 ----
+  	    for (ptr = buffer, end = buffer + count; ptr < end; ptr++) {
+  		unsigned char	c = *ptr;
+  
++ /* Begin Patch Section (pAS9) (addition) */
++ 		if (c == 0x08 || c == 0x7F)
++ 		    /* backspace character.  User's (flawed) client is in raw
++ 		       mode even though it should be in line mode.  Deal with
++ 		       this as graciously as we can. [This code is ugly,
++ 		       but there's no stream_del_char(), so..] */
++ 		    (s->current > 0) ? s->current-- : 0;
++ /* End Patch Section (pAS9) (addition) */
+  		if (isgraph(c)  ||  c == ' '  ||  c == '\t')
+  		    stream_add_char(s, c);

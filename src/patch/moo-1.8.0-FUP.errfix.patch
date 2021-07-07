@@ -1,0 +1,24 @@
+Patchfile:       moo-1.8.0-FUP.errfix.patch
+Author:          Eric Mercer <mercer@du.org>
+Release Date:    March 10, 1997
+Patch Version:   1.0
+Patchfile Type:  Context diff (apply using the standard unix 'patch' utility)
+Requires:        moo-1.8.0-FUP.patch and moo-1.8.0-files.c.patch
+Description:
+
+Supplimentary patch for FUP-1.8-MOO1.8.0
+
+ONLY apply this patch if after you use the "make" command you get the 
+error:
+
+  `FUP_version' undeclared (first use this function)
+
+--- Begin Patchfile ---
+
+*** version.h		Mon Mar 10 00:00:00 1997
+--- FUP/version.h	Mon Mar 10 00:00:00 1997
+***************
+*** 23 ****
+--- 23,24 ----
++ extern const char      *FUP_version;
+  extern const char      *server_version;

@@ -1,0 +1,115 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.51
+     from ProgrammersManual.texinfo on 4 March 1997 -->
+
+<TITLE>LambdaMOO Programmer's Manual - Verbs</TITLE>
+</HEAD>
+<BODY>
+Go to the <A HREF="ProgrammersManual_1.html">first</A>, <A HREF="ProgrammersManual_6.html">previous</A>, <A HREF="ProgrammersManual_8.html">next</A>, <A HREF="ProgrammersManual_77.html">last</A> section, <A HREF="ProgrammersManual_toc.html">table of contents</A>.
+<P><HR><P>
+
+
+<H3><A NAME="SEC7" HREF="ProgrammersManual_toc.html#TOC7">Verbs on Objects</A></H3>
+
+<P>
+The final kind of piece making up an object is <STRONG>verbs</STRONG>.  A verb is a named
+MOO program that is associated with a particular object.  Most verbs implement
+commands that a player might type; for example, in the LambdaCore database,
+there is a verb on all objects representing containers that implements
+commands of the form `put <VAR>object</VAR> in <VAR>container</VAR>'.  It is also
+possible for MOO programs to invoke the verbs defined on objects.  Some verbs,
+in fact, are designed to be used only from inside MOO code; they do not
+correspond to any particular player command at all.  Thus, verbs in MOO are
+like the `procedures' or `methods' found in some other programming languages.
+
+</P>
+<P>
+As with properties, every verb has an owner and a set of permission bits.  The
+owner of a verb can change its program, its permission bits, and its argument
+specifiers (discussed below).  Only a wizard can change the owner of a verb.
+The owner of a verb also determines the permissions with which that verb runs;
+that is, the program in a verb can do whatever operations the owner of that
+verb is allowed to do and no others.  Thus, for example, a verb owned by a
+wizard must be written very carefully, since wizards are allowed to do just
+about anything.
+
+</P>
+<P>
+The permission bits on verbs are drawn from this set: <SAMP>`r'</SAMP> (read),
+<SAMP>`w'</SAMP> (write), <SAMP>`x'</SAMP> (execute), and <SAMP>`d'</SAMP> (debug).  Read permission
+lets non-owners see the program for a verb and, symmetrically, write
+permission lets them change that program.  The other two bits are not,
+properly speaking, permission bits at all; they have a universal effect,
+covering both the owner and non-owners.
+
+</P>
+<P>
+The execute bit determines whether or not the verb can be invoked from within
+a MOO program (as opposed to from the command line, like the <SAMP>`put'</SAMP> verb
+on containers).  If the <SAMP>`x'</SAMP> bit is not set, the verb cannot be called
+from inside a program.  The <SAMP>`x'</SAMP> bit is usually set.
+
+</P>
+<P>
+The setting of the debug bit determines what happens when the verb's program
+does something erroneous, like subtracting a number from a character string.
+If the <SAMP>`d'</SAMP> bit is set, then the server <STRONG>raises</STRONG> an error value; such
+raised errors can be <STRONG>caught</STRONG> by certain other pieces of MOO code.  If the
+error is not caught, however, the server aborts execution of the command and,
+by default, prints an error message on the terminal of the player whose command
+is being executed.  (See the chapter on server assumptions about the database
+for details on how uncaught errors are handled.)  If the <SAMP>`d'</SAMP> bit is not
+set, then no error is raised, no message is printed, and the command is not
+aborted; instead the error value is returned as the result of the erroneous
+operation.
+
+</P>
+
+<BLOCKQUOTE>
+<P>
+<STRONG>Note:</STRONG> the <SAMP>`d'</SAMP> bit exists only for historical reasons; it used to
+be the only way for MOO code to catch and handle errors.  With the introduction
+of the <CODE>try</CODE>-<CODE>except</CODE> statement and the error-catching expression,
+the <SAMP>`d'</SAMP> bit is no longer useful.  All new verbs should have the <SAMP>`d'</SAMP>
+bit set, using the newer facilities for error handling if desired.  Over time,
+old verbs written assuming the <SAMP>`d'</SAMP> bit would not be set should be changed
+to use the new facilities instead.
+</BLOCKQUOTE>
+
+<P>
+In addition to an owner and some permission bits, every verb has three
+`argument specifiers', one each for the direct object, the preposition, and
+the indirect object.  The direct and indirect specifiers are each drawn from
+this set: <SAMP>`this'</SAMP>, <SAMP>`any'</SAMP>, or <SAMP>`none'</SAMP>.  The preposition specifier
+is <SAMP>`none'</SAMP>, <SAMP>`any'</SAMP>, or one of the items in this list:
+
+</P>
+
+<PRE>
+with/using
+at/to
+in front of
+in/inside/into
+on top of/on/onto/upon
+out of/from inside/from
+over
+through
+under/underneath/beneath
+behind
+beside
+for/about
+is
+as
+off/off of
+</PRE>
+
+<P>
+The argument specifiers are used in the process of parsing commands,
+described in the next chapter.
+
+</P>
+<P><HR><P>
+Go to the <A HREF="ProgrammersManual_1.html">first</A>, <A HREF="ProgrammersManual_6.html">previous</A>, <A HREF="ProgrammersManual_8.html">next</A>, <A HREF="ProgrammersManual_77.html">last</A> section, <A HREF="ProgrammersManual_toc.html">table of contents</A>.
+</BODY>
+</HTML>

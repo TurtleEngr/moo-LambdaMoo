@@ -1,0 +1,47 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.51
+     from ProgrammersManual.texinfo on 4 March 1997 -->
+
+<TITLE>LambdaMOO Programmer's Manual - Returning</TITLE>
+</HEAD>
+<BODY>
+Go to the <A HREF="ProgrammersManual_1.html">first</A>, <A HREF="ProgrammersManual_33.html">previous</A>, <A HREF="ProgrammersManual_35.html">next</A>, <A HREF="ProgrammersManual_77.html">last</A> section, <A HREF="ProgrammersManual_toc.html">table of contents</A>.
+<P><HR><P>
+
+
+<H3><A NAME="SEC34" HREF="ProgrammersManual_toc.html#TOC34">Returning a Value from a Verb</A></H3>
+
+<P>
+The MOO program in a verb is just a sequence of statements.  Normally, when
+the verb is called, those statements are simply executed in order and then the
+integer 0 is returned as the value of the verb-call expression.  Using the
+<SAMP>`return'</SAMP> statement, one can change this behavior.  The <SAMP>`return'</SAMP>
+statement has one of the following two forms:
+
+</P>
+
+<PRE>
+return;
+</PRE>
+
+<P>
+or
+
+</P>
+
+<PRE>
+return <VAR>expression</VAR>;
+</PRE>
+
+<P>
+When it is executed, execution of the current verb is terminated immediately
+after evaluating the given <VAR>expression</VAR>, if any.  The verb-call expression
+that started the execution of this verb then returns either the value of
+<VAR>expression</VAR> or the integer 0, if no <VAR>expression</VAR> was provided.
+
+</P>
+<P><HR><P>
+Go to the <A HREF="ProgrammersManual_1.html">first</A>, <A HREF="ProgrammersManual_33.html">previous</A>, <A HREF="ProgrammersManual_35.html">next</A>, <A HREF="ProgrammersManual_77.html">last</A> section, <A HREF="ProgrammersManual_toc.html">table of contents</A>.
+</BODY>
+</HTML>

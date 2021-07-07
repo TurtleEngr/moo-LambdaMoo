@@ -1,0 +1,222 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.51
+     from ProgrammersManual.texinfo on 4 March 1997 -->
+
+<TITLE>LambdaMOO Programmer's Manual - Values</TITLE>
+</HEAD>
+<BODY>
+Go to the <A HREF="ProgrammersManual_1.html">first</A>, <A HREF="ProgrammersManual_2.html">previous</A>, <A HREF="ProgrammersManual_4.html">next</A>, <A HREF="ProgrammersManual_77.html">last</A> section, <A HREF="ProgrammersManual_toc.html">table of contents</A>.
+<P><HR><P>
+
+
+<H2><A NAME="SEC3" HREF="ProgrammersManual_toc.html#TOC3">MOO Value Types</A></H2>
+
+<P>
+There are only a few kinds of values that MOO programs can manipulate:
+
+</P>
+
+<UL>
+<LI>
+
+integers (in a specific, large range)
+<LI>
+
+real numbers (represented with floating-point numbers)
+<LI>
+
+strings (of characters)
+<LI>
+
+objects (in the virtual reality)
+<LI>
+
+errors (arising during program execution)
+<LI>
+
+lists (of all of the above, including lists)
+</UL>
+
+<P>
+MOO supports the integers from -2^31 (that is, negative two to the power
+of 31) up to 2^31 - 1 (one less than two to the power of 31); that's
+from -2147483648 to 2147483647, enough for most purposes.  In MOO
+programs, integers are written just as you see them here, an optional minus
+sign followed by a non-empty sequence of decimal digits.  In particular, you
+may not put commas, periods, or spaces in the middle of large integers, as we
+sometimes do in English and other natural languages (e.g., `2,147,483,647').
+
+</P>
+<P>
+Real numbers in MOO are represented as they are in almost all other programming
+languages, using so-called <STRONG>floating-point</STRONG> numbers.  These have certain
+(large) limits on size and precision that make them useful for a wide range of
+applications.  Floating-point numbers are written with an optional minus sign
+followed by a non-empty sequence of digits punctuated at some point with a
+decimal point (`.') and/or followed by a scientific-notation marker (the letter
+`E' or `e' followed by an optional sign and one or more digits).  Here are some
+examples of floating-point numbers:
+
+</P>
+
+<PRE>
+325.0   325.   3.25e2   0.325E3   325.E1   .0325e+4   32500e-2
+</PRE>
+
+<P>
+All of these examples mean the same number.  The third of these, as an example
+of scientific notation, should be read "3.25 times 10 to the power of 2".
+
+</P>
+
+<BLOCKQUOTE>
+<P>
+<EM>Fine points:</EM> The MOO represents floating-point numbers using the local
+meaning of the C-language <CODE>double</CODE> type, which is almost always equivalent
+to IEEE 754 double precision floating point.  If so, then the smallest positive
+floating-point number is no larger than <CODE>2.2250738585072014e-308</CODE> and the
+largest floating-point number is <CODE>1.7976931348623157e+308</CODE>.
+
+</P>
+<P>
+IEEE infinities and NaN values are not allowed in MOO.  The error
+<CODE>E_FLOAT</CODE> is raised whenever an infinity would otherwise be computed;
+<CODE>E_INVARG</CODE> is raised whenever a NaN would otherwise arise.  The value
+<CODE>0.0</CODE> is always returned on underflow.
+</BLOCKQUOTE>
+
+<P>
+Character <STRONG>strings</STRONG> are arbitrarily-long sequences of normal, ASCII
+printing characters.  When written as values in a program, strings are
+enclosed in double-quotes, like this:
+
+</P>
+
+<PRE>
+"This is a character string."
+</PRE>
+
+<P>
+To include a double-quote in the string, precede it with a backslash
+(<SAMP>`\'</SAMP>), like this:
+
+</P>
+
+<PRE>
+"His name was \"Leroy\", but nobody ever called him that."
+</PRE>
+
+<P>
+Finally, to include a backslash in a string, double it:
+
+</P>
+
+<PRE>
+"Some people use backslash ('\\') to mean set difference."
+</PRE>
+
+<P>
+MOO strings may not include special ASCII characters like carriage-return,
+line-feed, bell, etc.  The only non-printing characters allowed are spaces and
+tabs.
+
+</P>
+
+<BLOCKQUOTE>
+<P>
+<EM>Fine point:</EM> There is a special kind of string used for representing the
+arbitrary bytes used in general, binary input and output.  In a <STRONG>binary
+string</STRONG>, any byte that isn't an ASCII printing character or the space character
+is represented as the three-character substring "~XX", where XX is the
+hexadecimal representation of the byte; the input character `~' is represented
+by the three-character substring "~7E".  This special representation is used by
+the functions <CODE>encode_binary()</CODE> and <CODE>decode_binary()</CODE> and by the
+functions <CODE>notify()</CODE> and <CODE>read()</CODE> with network connections that are
+in binary mode.  See the descriptions of the <CODE>set_connection_option()</CODE>,
+<CODE>encode_binary()</CODE>, and <CODE>decode_binary()</CODE> functions for more details.
+</BLOCKQUOTE>
+
+<P>
+<STRONG>Objects</STRONG> are the backbone of the MOO database and, as such, deserve a
+great deal of discussion; the entire next section is devoted to them.  For now,
+let it suffice to say that every object has a number, unique to that object.
+In programs, we write a reference to a particular object by putting a hash mark
+(<SAMP>`#'</SAMP>) followed by the number, like this:
+
+</P>
+
+<PRE>
+#495
+</PRE>
+
+<P>
+Object numbers are always integers.
+
+</P>
+<P>
+There are three special object numbers used for a variety of purposes:
+<CODE>#-1</CODE>, <CODE>#-2</CODE>, and <CODE>#-3</CODE>, usually referred to in the
+LambdaCore database as <CODE>$nothing</CODE>, <CODE>$ambiguous_match</CODE>, and
+<CODE>$failed_match</CODE>, respectively.
+
+</P>
+<P>
+<STRONG>Errors</STRONG> are, by far, the least frequently used values in MOO.  In the
+normal case, when a program attempts an operation that is erroneous for some
+reason (for example, trying to add a number to a character string), the server
+stops running the program and prints out an error message.  However, it is
+possible for a program to stipulate that such errors should not stop execution;
+instead, the server should just let the value of the operation be an error
+value.  The program can then test for such a result and take some appropriate
+kind of recovery action.  In programs, error values are written as words
+beginning with <SAMP>`E_'</SAMP>.  The complete list of error values, along with their
+associated messages, is as follows:
+
+</P>
+
+<PRE>
+E_NONE      No error
+E_TYPE      Type mismatch
+E_DIV       Division by zero
+E_PERM      Permission denied
+E_PROPNF    Property not found
+E_VERBNF    Verb not found
+E_VARNF     Variable not found
+E_INVIND    Invalid indirection
+E_RECMOVE   Recursive move
+E_MAXREC    Too many verb calls
+E_RANGE     Range error
+E_ARGS      Incorrect number of arguments
+E_NACC      Move refused by destination
+E_INVARG    Invalid argument
+E_QUOTA     Resource limit exceeded
+E_FLOAT     Floating-point arithmetic error
+</PRE>
+
+<P>
+The final kind of value in MOO programs is <STRONG>lists</STRONG>.  A list is a sequence
+of arbitrary MOO values, possibly including other lists.  In programs,
+lists are written in mathematical set notation with each of the elements
+written out in order, separated by commas, the whole enclosed in curly
+braces (<SAMP>`{'</SAMP> and <SAMP>`}'</SAMP>).  For example, a list of the names of
+the days of the week is written like this:
+
+</P>
+
+<PRE>
+{"Sunday", "Monday", "Tuesday", "Wednesday",
+ "Thursday", "Friday", "Saturday"}
+</PRE>
+
+<P>
+Note that it doesn't matter that we put a line-break in the middle of
+the list.  This is true in general in MOO: anywhere that a space can go,
+a line-break can go, with the same meaning.  The only exception is
+inside character strings, where line-breaks are not allowed.
+
+</P>
+<P><HR><P>
+Go to the <A HREF="ProgrammersManual_1.html">first</A>, <A HREF="ProgrammersManual_2.html">previous</A>, <A HREF="ProgrammersManual_4.html">next</A>, <A HREF="ProgrammersManual_77.html">last</A> section, <A HREF="ProgrammersManual_toc.html">table of contents</A>.
+</BODY>
+</HTML>

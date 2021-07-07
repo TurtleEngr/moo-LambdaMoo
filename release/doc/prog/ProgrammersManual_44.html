@@ -1,0 +1,544 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.51
+     from ProgrammersManual.texinfo on 4 March 1997 -->
+
+<TITLE>LambdaMOO Programmer's Manual - Manipulating Strings</TITLE>
+</HEAD>
+<BODY>
+Go to the <A HREF="ProgrammersManual_1.html">first</A>, <A HREF="ProgrammersManual_43.html">previous</A>, <A HREF="ProgrammersManual_45.html">next</A>, <A HREF="ProgrammersManual_77.html">last</A> section, <A HREF="ProgrammersManual_toc.html">table of contents</A>.
+<P><HR><P>
+
+
+<H4><A NAME="SEC44" HREF="ProgrammersManual_toc.html#TOC44">Operations on Strings</A></H4>
+
+<P>
+<DL>
+<DT><U>Function:</U> int <B>length</B> <I>(str <VAR>string</VAR>)</I>
+<DD><A NAME="IDX33"></A>
+Returns the number of characters in <VAR>string</VAR>.  It is also permissible to
+pass a list to <CODE>length()</CODE>; see the description in the next section.
+
+</P>
+
+<PRE>
+length("foo")   =>   3
+length("")      =>   0
+</PRE>
+
+</DL>
+
+<P>
+<DL>
+<DT><U>Function:</U> str <B>strsub</B> <I>(str <VAR>subject</VAR>, str <VAR>what</VAR>, str <VAR>with</VAR> [, <VAR>case-matters</VAR>])</I>
+<DD><A NAME="IDX34"></A>
+Replaces all occurrences in <VAR>subject</VAR> of <VAR>what</VAR> with <VAR>with</VAR>,
+performing string substitution.  The occurrences are found from left to right
+and all substitutions happen simultaneously.  By default, occurrences of
+<VAR>what</VAR> are searched for while ignoring the upper/lower case distinction.
+If <VAR>case-matters</VAR> is provided and true, then case is treated as significant
+in all comparisons.
+
+</P>
+
+<PRE>
+strsub("%n is a fink.", "%n", "Fred")   =>   "Fred is a fink."
+strsub("foobar", "OB", "b")             =>   "fobar"
+strsub("foobar", "OB", "b", 1)          =>   "foobar"
+</PRE>
+
+</DL>
+
+<P>
+<DL>
+<DT><U>Function:</U> int <B>index</B> <I>(str <VAR>str1</VAR>, str <VAR>str2</VAR> [, <VAR>case-matters</VAR>])</I>
+<DD><A NAME="IDX35"></A>
+<DT><U>Function:</U> int <B>rindex</B> <I>(str <VAR>str1</VAR>, str <VAR>str2</VAR> [, <VAR>case-matters</VAR>])</I>
+<DD><A NAME="IDX36"></A>
+The function <CODE>index()</CODE> (<CODE>rindex()</CODE>) returns the index of the first
+character of the first (last) occurrence of <VAR>str2</VAR> in <VAR>str1</VAR>, or zero
+if <VAR>str2</VAR> does not occur in <VAR>str1</VAR> at all.  By default the search for
+an occurrence of <VAR>str2</VAR> is done while ignoring the upper/lower case
+distinction.  If <VAR>case-matters</VAR> is provided and true, then case is treated
+as significant in all comparisons.
+
+</P>
+
+<PRE>
+index("foobar", "o")        =>   2
+rindex("foobar", "o")       =>   3
+index("foobar", "x")        =>   0
+index("foobar", "oba")      =>   3
+index("Foobar", "foo", 1)   =>   0
+</PRE>
+
+</DL>
+
+<P>
+<DL>
+<DT><U>Function:</U> int <B>strcmp</B> <I>(str <VAR>str1</VAR>, str <VAR>str2</VAR>)</I>
+<DD><A NAME="IDX37"></A>
+Performs a case-sensitive comparison of the two argument strings.  If
+<VAR>str1</VAR> is lexicographically less than <VAR>str2</VAR>, the
+<CODE>strcmp()</CODE> returns a negative integer.  If the two strings are
+identical, <CODE>strcmp()</CODE> returns zero.  Otherwise, <CODE>strcmp()</CODE>
+returns a positive integer.  The ASCII character ordering is used for the
+comparison.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> list <B>decode_binary</B> <I>(str <VAR>bin-string</VAR> [, <VAR>fully</VAR>])</I>
+<DD><A NAME="IDX38"></A>
+Returns a list of strings and/or integers representing the bytes in the binary
+string <VAR>bin_string</VAR> in order.  If <VAR>fully</VAR> is false or omitted, the list
+contains an integer only for each non-printing, non-space byte; all other
+characters are grouped into the longest possible contiguous substrings.  If
+<VAR>fully</VAR> is provided and true, the list contains only integers, one for each
+byte represented in <VAR>bin_string</VAR>.  Raises <CODE>E_INVARG</CODE> if
+<VAR>bin_string</VAR> is not a properly-formed binary string.  (See the early
+section on MOO value types for a full description of binary strings.)
+
+</P>
+
+<PRE>
+decode_binary("foo")               =>   {"foo"}
+decode_binary("~~foo")             =>   {"~foo"}
+decode_binary("foo~0D~0A")         =>   {"foo", 13, 10}
+decode_binary("foo~0Abar~0Abaz")   =>   {"foo", 10, "bar", 10, "baz"}
+decode_binary("foo~0D~0A", 1)      =>   {102, 111, 111, 13, 10}
+</PRE>
+
+</DL>
+
+<P>
+<DL>
+<DT><U>Function:</U> str <B>encode_binary</B> <I>(<VAR>arg</VAR>, ...)</I>
+<DD><A NAME="IDX39"></A>
+Each argument must be an integer between 0 and 255, a string, or a list
+containing only legal arguments for this function.  This function translates
+each integer and string in turn into its binary string equivalent, returning the
+concatenation of all these substrings into a single binary string.  (See the
+early section on MOO value types for a full description of binary strings.)
+
+</P>
+
+<PRE>
+encode_binary("~foo")                     =>   "~7Efoo"
+encode_binary({"foo", 10}, {"bar", 13})   =>   "foo~0Abar~0D"
+encode_binary("foo", 10, "bar", 13)       =>   "foo~0Abar~0D"
+</PRE>
+
+</DL>
+
+<P>
+<DL>
+<DT><U>Function:</U> list <B>match</B> <I>(str <VAR>subject</VAR>, str <VAR>pattern</VAR> [, <VAR>case-matters</VAR>])</I>
+<DD><A NAME="IDX40"></A>
+<DT><U>Function:</U> list <B>rmatch</B> <I>(str <VAR>subject</VAR>, str <VAR>pattern</VAR> [, <VAR>case-matters</VAR>])</I>
+<DD><A NAME="IDX41"></A>
+The function <CODE>match()</CODE> (<CODE>rmatch()</CODE>) searches for the first (last)
+occurrence of the regular expression <VAR>pattern</VAR> in the string <VAR>subject</VAR>.
+If <VAR>pattern</VAR> is syntactically malformed, then <CODE>E_INVARG</CODE> is raised.
+The process of matching can in some cases consume a great deal of memory in the
+server; should this memory consumption become excessive, then the matching
+process is aborted and <CODE>E_QUOTA</CODE> is raised.
+
+</P>
+<P>
+If no match is found, the empty list is returned; otherwise, these functions
+return a list containing information about the match (see below).  By default,
+the search ignores upper-/lower-case distinctions.  If <VAR>case-matters</VAR> is
+provided and true, then case is treated as significant in all comparisons.
+
+</P>
+<P>
+The list that <CODE>match()</CODE> (<CODE>rmatch()</CODE>) returns contains the details
+about the match made.  The list is in the form:
+
+</P>
+
+<PRE>
+{<VAR>start</VAR>, <VAR>end</VAR>, <VAR>replacements</VAR>, <VAR>subject</VAR>}
+</PRE>
+
+<P>
+where <VAR>start</VAR> is the index in <VAR>subject</VAR> of the beginning of the match,
+<VAR>end</VAR> is the index of the end of the match, <VAR>replacements</VAR> is a list
+described below, and <VAR>subject</VAR> is the same string that was given as the
+first argument to the <CODE>match()</CODE> or <CODE>rmatch()</CODE>.
+
+</P>
+<P>
+The <VAR>replacements</VAR> list is always nine items long, each item itself being a
+list of two integers, the start and end indices in <VAR>string</VAR> matched by some
+parenthesized sub-pattern of <VAR>pattern</VAR>.  The first item in
+<VAR>replacements</VAR> carries the indices for the first parenthesized sub-pattern,
+the second item carries those for the second sub-pattern, and so on.  If there
+are fewer than nine parenthesized sub-patterns in <VAR>pattern</VAR>, or if some
+sub-pattern was not used in the match, then the corresponding item in
+<VAR>replacements</VAR> is the list {0, -1}.  See the discussion of <SAMP>`%)'</SAMP>,
+below, for more information on parenthesized sub-patterns.
+
+</P>
+
+<PRE>
+match("foo", "^f*o$")        =>  {}
+match("foo", "^fo*$")        =>  {1, 3, {{0, -1}, ...}, "foo"}
+match("foobar", "o*b")       =>  {2, 4, {{0, -1}, ...}, "foobar"}
+rmatch("foobar", "o*b")      =>  {4, 4, {{0, -1}, ...}, "foobar"}
+match("foobar", "f%(o*%)b")
+        =>  {1, 4, {{2, 3}, {0, -1}, ...}, "foobar"}
+</PRE>
+
+<P>
+<STRONG>Regular expression</STRONG> matching allows you to test whether a string fits into
+a specific syntactic shape.  You can also search a string for a substring that
+fits a pattern.
+
+</P>
+<P>
+A regular expression describes a set of strings.  The simplest case is one that
+describes a particular string; for example, the string <SAMP>`foo'</SAMP> when regarded
+as a regular expression matches <SAMP>`foo'</SAMP> and nothing else.  Nontrivial
+regular expressions use certain special constructs so that they can match more
+than one string.  For example, the regular expression <SAMP>`foo%|bar'</SAMP> matches
+either the string <SAMP>`foo'</SAMP> or the string <SAMP>`bar'</SAMP>; the regular expression
+<SAMP>`c[ad]*r'</SAMP> matches any of the strings <SAMP>`cr'</SAMP>, <SAMP>`car'</SAMP>, <SAMP>`cdr'</SAMP>,
+<SAMP>`caar'</SAMP>, <SAMP>`cadddar'</SAMP> and all other such strings with any number of
+<SAMP>`a'</SAMP>'s and <SAMP>`d'</SAMP>'s.
+
+</P>
+<P>
+Regular expressions have a syntax in which a few characters are special
+constructs and the rest are <STRONG>ordinary</STRONG>.  An ordinary character is a simple
+regular expression that matches that character and nothing else.  The special
+characters are <SAMP>`$'</SAMP>, <SAMP>`^'</SAMP>, <SAMP>`.'</SAMP>, <SAMP>`*'</SAMP>, <SAMP>`+'</SAMP>, <SAMP>`?'</SAMP>,
+<SAMP>`['</SAMP>, <SAMP>`]'</SAMP> and <SAMP>`%'</SAMP>.  Any other character appearing in a regular
+expression is ordinary, unless a <SAMP>`%'</SAMP> precedes it.
+
+</P>
+<P>
+For example, <SAMP>`f'</SAMP> is not a special character, so it is ordinary, and
+therefore <SAMP>`f'</SAMP> is a regular expression that matches the string <SAMP>`f'</SAMP> and
+no other string.  (It does <EM>not</EM>, for example, match the string
+<SAMP>`ff'</SAMP>.)  Likewise, <SAMP>`o'</SAMP> is a regular expression that matches only
+<SAMP>`o'</SAMP>.
+
+</P>
+<P>
+Any two regular expressions <VAR>a</VAR> and <VAR>b</VAR> can be concatenated.  The
+result is a regular expression which matches a string if <VAR>a</VAR> matches some
+amount of the beginning of that string and <VAR>b</VAR> matches the rest of the
+string.
+
+</P>
+<P>
+As a simple example, we can concatenate the regular expressions <SAMP>`f'</SAMP> and
+<SAMP>`o'</SAMP> to get the regular expression <SAMP>`fo'</SAMP>, which matches only the string
+<SAMP>`fo'</SAMP>.  Still trivial.
+
+</P>
+<P>
+The following are the characters and character sequences that have special
+meaning within regular expressions.  Any character not mentioned here is not
+special; it stands for exactly itself for the purposes of searching and
+matching.
+
+</P>
+<DL COMPACT>
+
+<DT><SAMP>`.'</SAMP>
+<DD>
+is a special character that matches any single character.  Using concatenation,
+we can make regular expressions like <SAMP>`a.b'</SAMP>, which matches any
+three-character string that begins with <SAMP>`a'</SAMP> and ends with <SAMP>`b'</SAMP>.
+
+<DT><SAMP>`*'</SAMP>
+<DD>
+is not a construct by itself; it is a suffix that means that the preceding
+regular expression is to be repeated as many times as possible.  In <SAMP>`fo*'</SAMP>,
+the <SAMP>`*'</SAMP> applies to the <SAMP>`o'</SAMP>, so <SAMP>`fo*'</SAMP> matches <SAMP>`f'</SAMP> followed
+by any number of <SAMP>`o'</SAMP>'s.
+
+The case of zero <SAMP>`o'</SAMP>'s is allowed: <SAMP>`fo*'</SAMP> does match <SAMP>`f'</SAMP>.
+
+<SAMP>`*'</SAMP> always applies to the <EM>smallest</EM> possible preceding expression.
+Thus, <SAMP>`fo*'</SAMP> has a repeating <SAMP>`o'</SAMP>, not a repeating <SAMP>`fo'</SAMP>.
+
+The matcher processes a <SAMP>`*'</SAMP> construct by matching, immediately, as many
+repetitions as can be found.  Then it continues with the rest of the pattern.
+If that fails, it backtracks, discarding some of the matches of the <SAMP>`*'</SAMP>'d
+construct in case that makes it possible to match the rest of the pattern.  For
+example, matching <SAMP>`c[ad]*ar'</SAMP> against the string <SAMP>`caddaar'</SAMP>, the
+<SAMP>`[ad]*'</SAMP> first matches <SAMP>`addaa'</SAMP>, but this does not allow the next
+<SAMP>`a'</SAMP> in the pattern to match.  So the last of the matches of <SAMP>`[ad]'</SAMP> is
+undone and the following <SAMP>`a'</SAMP> is tried again.  Now it succeeds.
+
+<DT><SAMP>`+'</SAMP>
+<DD>
+<SAMP>`+'</SAMP> is like <SAMP>`*'</SAMP> except that at least one match for the preceding
+pattern is required for <SAMP>`+'</SAMP>.  Thus, <SAMP>`c[ad]+r'</SAMP> does not match
+<SAMP>`cr'</SAMP> but does match anything else that <SAMP>`c[ad]*r'</SAMP> would match.
+
+<DT><SAMP>`?'</SAMP>
+<DD>
+<SAMP>`?'</SAMP> is like <SAMP>`*'</SAMP> except that it allows either zero or one match for
+the preceding pattern.  Thus, <SAMP>`c[ad]?r'</SAMP> matches <SAMP>`cr'</SAMP> or <SAMP>`car'</SAMP> or
+<SAMP>`cdr'</SAMP>, and nothing else.
+
+<DT><SAMP>`[ ... ]'</SAMP>
+<DD>
+<SAMP>`['</SAMP> begins a <STRONG>character set</STRONG>, which is terminated by a <SAMP>`]'</SAMP>.  In
+the simplest case, the characters between the two brackets form the set.  Thus,
+<SAMP>`[ad]'</SAMP> matches either <SAMP>`a'</SAMP> or <SAMP>`d'</SAMP>, and <SAMP>`[ad]*'</SAMP> matches any
+string of <SAMP>`a'</SAMP>'s and <SAMP>`d'</SAMP>'s (including the empty string), from which it
+follows that <SAMP>`c[ad]*r'</SAMP> matches <SAMP>`car'</SAMP>, etc.
+
+Character ranges can also be included in a character set, by writing two
+characters with a <SAMP>`-'</SAMP> between them.  Thus, <SAMP>`[a-z]'</SAMP> matches any
+lower-case letter.  Ranges may be intermixed freely with individual characters,
+as in <SAMP>`[a-z$%.]'</SAMP>, which matches any lower case letter or <SAMP>`$'</SAMP>,
+<SAMP>`%'</SAMP> or period.
+
+Note that the usual special characters are not special any more inside a
+character set.  A completely different set of special characters exists inside
+character sets: <SAMP>`]'</SAMP>, <SAMP>`-'</SAMP> and <SAMP>`^'</SAMP>.
+
+To include a <SAMP>`]'</SAMP> in a character set, you must make it the first character.
+For example, <SAMP>`[]a]'</SAMP> matches <SAMP>`]'</SAMP> or <SAMP>`a'</SAMP>.  To include a <SAMP>`-'</SAMP>,
+you must use it in a context where it cannot possibly indicate a range: that
+is, as the first character, or immediately after a range.
+
+<DT><SAMP>`[^ ... ]'</SAMP>
+<DD>
+<SAMP>`[^'</SAMP> begins a <STRONG>complement character set</STRONG>, which matches any character
+except the ones specified.  Thus, <SAMP>`[^a-z0-9A-Z]'</SAMP> matches all characters
+<EM>except</EM> letters and digits.
+
+<SAMP>`^'</SAMP> is not special in a character set unless it is the first character.
+The character following the <SAMP>`^'</SAMP> is treated as if it were first (it may be
+a <SAMP>`-'</SAMP> or a <SAMP>`]'</SAMP>).
+
+<DT><SAMP>`^'</SAMP>
+<DD>
+is a special character that matches the empty string -- but only if at the
+beginning of the string being matched.  Otherwise it fails to match anything.
+Thus, <SAMP>`^foo'</SAMP> matches a <SAMP>`foo'</SAMP> which occurs at the beginning of the
+string.
+
+<DT><SAMP>`$'</SAMP>
+<DD>
+is similar to <SAMP>`^'</SAMP> but matches only at the <EM>end</EM> of the string.  Thus,
+<SAMP>`xx*$'</SAMP> matches a string of one or more <SAMP>`x'</SAMP>'s at the end of the
+string.
+
+<DT><SAMP>`%'</SAMP>
+<DD>
+has two functions: it quotes the above special characters (including <SAMP>`%'</SAMP>),
+and it introduces additional special constructs.
+
+Because <SAMP>`%'</SAMP> quotes special characters, <SAMP>`%$'</SAMP> is a regular expression
+that matches only <SAMP>`$'</SAMP>, and <SAMP>`%['</SAMP> is a regular expression that matches
+only <SAMP>`['</SAMP>, and so on.
+
+For the most part, <SAMP>`%'</SAMP> followed by any character matches only that
+character.  However, there are several exceptions: characters that, when
+preceded by <SAMP>`%'</SAMP>, are special constructs.  Such characters are always
+ordinary when encountered on their own.
+
+No new special characters will ever be defined.  All extensions to the regular
+expression syntax are made by defining new two-character constructs that begin
+with <SAMP>`%'</SAMP>.
+
+<DT><SAMP>`%|'</SAMP>
+<DD>
+specifies an alternative.  Two regular expressions <VAR>a</VAR> and <VAR>b</VAR> with
+<SAMP>`%|'</SAMP> in between form an expression that matches anything that either
+<VAR>a</VAR> or <VAR>b</VAR> will match.
+
+Thus, <SAMP>`foo%|bar'</SAMP> matches either <SAMP>`foo'</SAMP> or <SAMP>`bar'</SAMP> but no other
+string.
+
+<SAMP>`%|'</SAMP> applies to the largest possible surrounding expressions.  Only a
+surrounding <SAMP>`%( ... %)'</SAMP> grouping can limit the grouping power of
+<SAMP>`%|'</SAMP>.
+
+Full backtracking capability exists for when multiple <SAMP>`%|'</SAMP>'s are used.
+
+<DT><SAMP>`%( ... %)'</SAMP>
+<DD>
+is a grouping construct that serves three purposes:
+
+
+<OL>
+<LI>
+
+To enclose a set of <SAMP>`%|'</SAMP> alternatives for other operations.  Thus,
+<SAMP>`%(foo%|bar%)x'</SAMP> matches either <SAMP>`foox'</SAMP> or <SAMP>`barx'</SAMP>.
+
+<LI>
+
+To enclose a complicated expression for a following <SAMP>`*'</SAMP>, <SAMP>`+'</SAMP>, or
+<SAMP>`?'</SAMP> to operate on.  Thus, <SAMP>`ba%(na%)*'</SAMP> matches <SAMP>`bananana'</SAMP>, etc.,
+with any number of <SAMP>`na'</SAMP>'s, including none.
+
+<LI>
+
+To mark a matched substring for future reference.
+</OL>
+
+This last application is not a consequence of the idea of a parenthetical
+grouping; it is a separate feature that happens to be assigned as a second
+meaning to the same <SAMP>`%( ... %)'</SAMP> construct because there is no conflict
+in practice between the two meanings.  Here is an explanation of this feature:
+
+<DT><SAMP>`%<VAR>digit</VAR>'</SAMP>
+<DD>
+After the end of a <SAMP>`%( ... %)'</SAMP> construct, the matcher remembers the
+beginning and end of the text matched by that construct.  Then, later on in the
+regular expression, you can use <SAMP>`%'</SAMP> followed by <VAR>digit</VAR> to mean
+"match the same text matched by the <VAR>digit</VAR>'th <SAMP>`%( ... %)'</SAMP>
+construct in the pattern."  The <SAMP>`%( ... %)'</SAMP> constructs are numbered
+in the order that their <SAMP>`%('</SAMP>'s appear in the pattern.
+
+The strings matching the first nine <SAMP>`%( ... %)'</SAMP> constructs appearing
+in a regular expression are assigned numbers 1 through 9 in order of their
+beginnings.  <SAMP>`%1'</SAMP> through <SAMP>`%9'</SAMP> may be used to refer to the text
+matched by the corresponding <SAMP>`%( ... %)'</SAMP> construct.
+
+For example, <SAMP>`%(.*%)%1'</SAMP> matches any string that is composed of two
+identical halves.  The <SAMP>`%(.*%)'</SAMP> matches the first half, which may be
+anything, but the <SAMP>`%1'</SAMP> that follows must match the same exact text.
+
+<DT><SAMP>`%b'</SAMP>
+<DD>
+matches the empty string, but only if it is at the beginning or
+end of a word.  Thus, <SAMP>`%bfoo%b'</SAMP> matches any occurrence of
+<SAMP>`foo'</SAMP> as a separate word.  <SAMP>`%bball%(s%|%)%b'</SAMP> matches
+<SAMP>`ball'</SAMP> or <SAMP>`balls'</SAMP> as a separate word.
+
+For the purposes of this construct and the five that follow, a word is defined
+to be a sequence of letters and/or digits.
+
+<DT><SAMP>`%B'</SAMP>
+<DD>
+matches the empty string, provided it is <EM>not</EM> at the beginning or
+end of a word.
+
+<DT><SAMP>`%&#60;'</SAMP>
+<DD>
+matches the empty string, but only if it is at the beginning
+of a word.
+
+<DT><SAMP>`%&#62;'</SAMP>
+<DD>
+matches the empty string, but only if it is at the end of a word.
+
+<DT><SAMP>`%w'</SAMP>
+<DD>
+matches any word-constituent character (i.e., any letter or digit).
+
+<DT><SAMP>`%W'</SAMP>
+<DD>
+matches any character that is not a word constituent.
+</DL>
+</DL>
+
+<P>
+<DL>
+<DT><U>Function:</U> str <B>substitute</B> <I>(str <VAR>template</VAR>, list <VAR>subs</VAR>)</I>
+<DD><A NAME="IDX42"></A>
+Performs a standard set of substitutions on the string <VAR>template</VAR>, using
+the information contained in <VAR>subs</VAR>, returning the resulting, transformed
+<VAR>template</VAR>.  <VAR>Subs</VAR> should be a list like those returned by
+<CODE>match()</CODE> or <CODE>rmatch()</CODE> when the match succeeds; otherwise,
+<CODE>E_INVARG</CODE> is raised.
+
+</P>
+<P>
+In <VAR>template</VAR>, the strings <SAMP>`%1'</SAMP> through <SAMP>`%9'</SAMP> will be replaced by
+the text matched by the first through ninth parenthesized sub-patterns when
+<CODE>match()</CODE> or <CODE>rmatch()</CODE> was called.  The string <SAMP>`%0'</SAMP> in
+<VAR>template</VAR> will be replaced by the text matched by the pattern as a whole
+when <CODE>match()</CODE> or <CODE>rmatch()</CODE> was called.  The string <SAMP>`%%'</SAMP> will
+be replaced by a single <SAMP>`%'</SAMP> sign.  If <SAMP>`%'</SAMP> appears in <VAR>template</VAR>
+followed by any other character, <CODE>E_INVARG</CODE> will be raised.
+
+</P>
+
+<PRE>
+subs = match("*** Welcome to LambdaMOO!!!", "%(%w*%) to %(%w*%)");
+substitute("I thank you for your %1 here in %2.", subs)
+        =>   "I thank you for your Welcome here in LambdaMOO."
+</PRE>
+
+</DL>
+
+<P>
+<DL>
+<DT><U>Function:</U> str <B>crypt</B> <I>(str <VAR>text</VAR> [, str <VAR>salt</VAR>])</I>
+<DD><A NAME="IDX43"></A>
+Encrypts the given <VAR>text</VAR> using the standard UNIX encryption method.  If
+provided, <VAR>salt</VAR> should be a string at least two characters long, the first
+two characters of which will be used as the extra encryption "salt" in the
+algorithm.  If <VAR>salt</VAR> is not provided, a random pair of characters is used.
+In any case, the salt used is also returned as the first two characters of the
+resulting encrypted string.
+
+</P>
+<P>
+Aside from the possibly-random selection of the salt, the encryption algorithm
+is entirely deterministic.  In particular, you can test whether or not a given
+string is the same as the one used to produce a given piece of encrypted text;
+simply extract the first two characters of the encrypted text and pass the
+candidate string and those two characters to <CODE>crypt()</CODE>.  If the result is
+identical to the given encrypted text, then you've got a match.
+
+</P>
+
+<PRE>
+crypt("foobar")         =>   "J3fSFQfgkp26w"
+crypt("foobar", "J3")   =>   "J3fSFQfgkp26w"
+crypt("mumble", "J3")   =>   "J3D0.dh.jjmWQ"
+crypt("foobar", "J4")   =>   "J4AcPxOJ4ncq2"
+</PRE>
+
+</DL>
+
+<P>
+<DL>
+<DT><U>Function:</U> str <B>string_hash</B> <I>(str <VAR>text</VAR>)</I>
+<DD><A NAME="IDX44"></A>
+<DT><U>Function:</U> str <B>binary_hash</B> <I>(str <VAR>bin-string</VAR>)</I>
+<DD><A NAME="IDX45"></A>
+Returns a 32-character hexadecimal string encoding the result of applying the
+MD5 cryptographically secure hash function to the contents of the string
+<VAR>text</VAR> or the binary string <VAR>bin-string</VAR>.  MD5, like other such
+functions, has the property that, if
+
+<PRE>
+string_hash(<VAR>x</VAR>) == string_hash(<VAR>y</VAR>)
+</PRE>
+
+<P>
+then, almost certainly,
+
+<PRE>
+equal(<VAR>x</VAR>, <VAR>y</VAR>)
+</PRE>
+
+<P>
+This can be useful, for example, in certain networking applications: after
+sending a large piece of text across a connection, also send the result of
+applying <CODE>string_hash()</CODE> to the text; if the destination site also
+applies <CODE>string_hash()</CODE> to the text and gets the same result, you can be
+quite confident that the large text has arrived unchanged.
+</DL>
+
+</P>
+<P><HR><P>
+Go to the <A HREF="ProgrammersManual_1.html">first</A>, <A HREF="ProgrammersManual_43.html">previous</A>, <A HREF="ProgrammersManual_45.html">next</A>, <A HREF="ProgrammersManual_77.html">last</A> section, <A HREF="ProgrammersManual_toc.html">table of contents</A>.
+</BODY>
+</HTML>

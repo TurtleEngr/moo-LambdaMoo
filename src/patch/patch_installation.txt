@@ -1,0 +1,99 @@
+Patching the LambdaMOO Server Version 1.8.0p6 for the EduCore
+*************************************************************
+
+If you are going to run the eduCore on a UNIX system, there are 
+several server patches that are desirable.  Patches should be installed 
+by creating a subdirectory named "patches" in the location of the 
+MOO server source files, and copying the patches to there.  Then, from the 
+MOO server source files directory, use:
+
+	patch -l < patches/patchfile
+
+where "patchfile" is the name of the patch file to apply.  Note that 
+patch command switch is the letter "ell" and not the number one.
+
+We suggest the following procedure:
+
+1. Unpack the server package.  It should create a directory named 
+   MOO-1.8.0p6 containing all the source files.
+       gzip -dc LambdaMOO-1.8.0p6.tar.Z | tar -xf -
+2. From in the MOO-1.8.0p6 directory, issue "sh configure" to create a 
+   Makefile file for your system.
+3. Edit the options.h files, as described in the LambdaMOO server README 
+   file.  Usually, the only changes to make are to set the port and to 
+   uncomment the OUTBOUND_NETWORK line.
+4. Use "make" to compile the server.  If the server doesn't compile, first 
+   solve that problem before dealing with any patches.
+5. If the server compiles successfully, proceed with installing the 
+   patches.
+6. Create a "patches" subdirectory in the MOO-1.8.0p6 directory, and place 
+   all the unpacked patches there.
+7. Edit the patches as needed, as described below.
+8. Install the patches using the "patch" utility.
+9. Use "make" again to recompile the server.
+
+If the server now won't compile, start over, but this time recompile (with 
+"make") after each patch is installed to determine which is the culprit.  
+None of the patches is actually critical for operation of the eduCore.
+
+If you place the patch files as described, then you'll be using the 
+following set of commands to install them:
+
+patch -l < patches/moo-1.8.0-pAS9.patch
+patch -l < patches/moo-1.8.0-pAS5.patch
+patch -l < patches/moo-1.8.0-pAS5.c.patch
+patch -l < patches/moo-1.8.0-FUP.patch
+patch -l < patches/moo-1.8.0-files.c.patch
+and possibly
+patch -l < patches/moo-1.8.0-FUP.errfix.patch
+
+________
+
+The recommended patches are:
+
+pAS5
+
+  Description: Written by Alex Stewart.  Provides additional built-in 
+functions that allow the MOO to access certain UNIX time zone functions.  
+That is preferable to using the plain MOO server's rather weak support for 
+time zones.
+  File names: moo-1.8.0-pAS5.patch and moo-1.8.0-pAS5.c.patch
+  Installation:  Although it might not be absolutely needed on your 
+machine, it's probably a good idea to set the TZ variable in the 
+moo-1.8.0-pAS5.c.patch file.  Look for the line
+    + static char tzdefault[] = "TZ=localtime";
+And change `localtime' to the appropriate UNIX time zone for your 
+site (e.g. US/Eastern).  Save the changed patch file, and install BOTH 
+patches, in the standard way.
+
+pAS9
+
+  Description: Written by Alex Stewart.  Provides backspace support for 
+bad telnet clients.  Some really poor telnet clients handle 
+backspace/delete keys in a nonstandard way.  This patch makes the MOO a 
+bit more forgiving for those.
+  File name: moo-1.8.0-pAS9.patch
+  Installation: Install the patch in the standard way.
+
+FUP
+
+  Description: Written by Jaime Prilusky and Gustavo Glusman.  This is 
+the File Utiltiies Pacakage system, written as patch files.  FUP allows 
+the MOO to store various sections of database information externally in 
+files on the UNIX server.  See the FUP documentation for more details 
+on custom configuration of the FUP system.  This patchfile is set to 
+provide the most commonly desired configuration.
+  File names: moo-1.8.0-FUP.patch and moo-1.8.0-files.c.patch
+  Installation: Install BOTH patches in the standard way.
+
+FUP.errfix
+
+  Description: This patch is to be used ONLY if there is a problem with 
+version.c after you try using "make" to compile the system.  If you get 
+the error "`FUP_version' undeclared (first use this function)" and the 
+compilation fails.
+  File name: moo-1.8.0-FUP.errfix.patch
+  Installation: Install this patch in the standard way, but ONLY if you 
+get the stated error when compiling.  After applying the patch, issue 
+the "make" command again to recompile.
+

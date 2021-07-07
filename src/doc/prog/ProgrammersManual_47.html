@@ -1,0 +1,199 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.51
+     from ProgrammersManual.texinfo on 4 March 1997 -->
+
+<TITLE>LambdaMOO Programmer's Manual - Fundamentals</TITLE>
+</HEAD>
+<BODY>
+Go to the <A HREF="ProgrammersManual_1.html">first</A>, <A HREF="ProgrammersManual_46.html">previous</A>, <A HREF="ProgrammersManual_48.html">next</A>, <A HREF="ProgrammersManual_77.html">last</A> section, <A HREF="ProgrammersManual_toc.html">table of contents</A>.
+<P><HR><P>
+
+
+<H4><A NAME="SEC47" HREF="ProgrammersManual_toc.html#TOC47">Fundamental Operations on Objects</A></H4>
+
+<P>
+<DL>
+<DT><U>Function:</U> obj <B>create</B> <I>(obj <VAR>parent</VAR> [, obj <VAR>owner</VAR>])</I>
+<DD><A NAME="IDX54"></A>
+Creates and returns a new object whose parent is <VAR>parent</VAR> and whose owner
+is as described below.  Either the given <VAR>parent</VAR> object must be <CODE>#-1</CODE>
+or valid and fertile (i.e., its <SAMP>`f'</SAMP> bit must be set) or else the
+programmer must own <VAR>parent</VAR> or be a wizard; otherwise <CODE>E_PERM</CODE> is
+raised.  <CODE>E_PERM</CODE> is also raised if <VAR>owner</VAR> is provided and not
+the same as the programmer, unless the programmer is a wizard.  After the new
+object is created, its <CODE>initialize</CODE> verb, if any, is called with no
+arguments.
+
+</P>
+<P>
+The new object is assigned the least non-negative object number that has not
+yet been used for a created object.  Note that no object number is ever reused,
+even if the object with that number is recycled.
+
+</P>
+<P>
+The owner of the new object is either the programmer (if <VAR>owner</VAR> is not
+provided), the new object itself (if <VAR>owner</VAR> was given as <CODE>#-1</CODE>), or
+<VAR>owner</VAR> (otherwise).
+
+</P>
+<P>
+The other built-in properties of the new object are initialized as follows:
+
+<PRE>
+name         ""
+location     #-1
+contents     {}
+programmer   0
+wizard       0
+r            0
+w            0
+f            0
+</PRE>
+
+<P>
+The function <SAMP>`is_player()'</SAMP> returns false for newly created objects.
+
+</P>
+<P>
+In addition, the new object inherits all of the other properties on
+<VAR>parent</VAR>.  These properties have the same permission bits as on
+<VAR>parent</VAR>.  If the <SAMP>`c'</SAMP> permissions bit is set, then the owner of the
+property on the new object is the same as the owner of the new object itself;
+otherwise, the owner of the property on the new object is the same as that on
+<VAR>parent</VAR>.  The initial value of every inherited property is <STRONG>clear</STRONG>;
+see the description of the built-in function <CODE>clear_property()</CODE> for
+details.
+
+</P>
+<P>
+If the intended owner of the new object has a property named
+<SAMP>`ownership_quota'</SAMP> and the value of that property is an integer, then
+<CODE>create()</CODE> treats that value as a <STRONG>quota</STRONG>.  If the quota is less than
+or equal to zero, then the quota is considered to be exhausted and
+<CODE>create()</CODE> raises <CODE>E_QUOTA</CODE> instead of creating an object.
+Otherwise, the quota is decremented and stored back into the
+<SAMP>`ownership_quota'</SAMP> property as a part of the creation of the new object.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> none <B>chparent</B> <I>(obj <VAR>object</VAR>, obj <VAR>new-parent</VAR>)</I>
+<DD><A NAME="IDX55"></A>
+Changes the parent of <VAR>object</VAR> to be <VAR>new-parent</VAR>.  If <VAR>object</VAR> is
+not valid, or if <VAR>new-parent</VAR> is neither valid nor equal to <CODE>#-1</CODE>,
+then <CODE>E_INVARG</CODE> is raised.  If the programmer is neither a wizard or the
+owner of <VAR>object</VAR>, or if <VAR>new-parent</VAR> is not fertile (i.e., its
+<SAMP>`f'</SAMP> bit is not set) and the programmer is neither the owner of
+<VAR>new-parent</VAR> nor a wizard, then <CODE>E_PERM</CODE> is raised.  If
+<VAR>new-parent</VAR> is equal to <CODE>object</CODE> or one of its current ancestors,
+<CODE>E_RECMOVE</CODE> is raised.  If <VAR>object</VAR> or one of its descendants
+defines a property with the same name as one defined either on <VAR>new-parent</VAR>
+or on one of its ancestors, then <CODE>E_INVARG</CODE> is raised.
+
+</P>
+<P>
+Changing an object's parent can have the effect of removing some properties
+from and adding some other properties to that object and all of its descendants
+(i.e., its children and its children's children, etc.).  Let <VAR>common</VAR> be
+the nearest ancestor that <VAR>object</VAR> and <VAR>new-parent</VAR> have in common
+before the parent of <VAR>object</VAR> is changed.  Then all properties defined by
+ancestors of <VAR>object</VAR> under <VAR>common</VAR> (that is, those ancestors of
+<VAR>object</VAR> that are in turn descendants of <VAR>common</VAR>) are removed from
+<VAR>object</VAR> and all of its descendants.  All properties defined by
+<VAR>new-parent</VAR> or its ancestors under <VAR>common</VAR> are added to <VAR>object</VAR>
+and all of its descendants.  As with <CODE>create()</CODE>, the newly-added
+properties are given the same permission bits as they have on <VAR>new-parent</VAR>,
+the owner of each added property is either the owner of the object it's added
+to (if the <SAMP>`c'</SAMP> permissions bit is set) or the owner of that property on
+<VAR>new-parent</VAR>, and the value of each added property is <STRONG>clear</STRONG>; see the
+description of the built-in function <CODE>clear_property()</CODE> for details.  All
+properties that are not removed or added in the reparenting process are
+completely unchanged.
+
+</P>
+<P>
+If <VAR>new-parent</VAR> is equal to <CODE>#-1</CODE>, then <VAR>object</VAR> is given no
+parent at all; it becomes a new root of the parent/child hierarchy.  In this
+case, all formerly inherited properties on <VAR>object</VAR> are simply removed.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> int <B>valid</B> <I>(obj <VAR>object</VAR>)</I>
+<DD><A NAME="IDX56"></A>
+Returns a non-zero integer (i.e., a true value) if <VAR>object</VAR> is a valid
+object (one that has been created and not yet recycled) and zero (i.e., a false
+value) otherwise.
+
+</P>
+
+<PRE>
+valid(#0)    =>   1
+valid(#-1)   =>   0
+</PRE>
+
+</DL>
+
+<P>
+<DL>
+<DT><U>Function:</U> obj <B>parent</B> <I>(obj <VAR>object</VAR>)</I>
+<DD><A NAME="IDX57"></A>
+<DT><U>Function:</U> list <B>children</B> <I>(obj <VAR>object</VAR>)</I>
+<DD><A NAME="IDX58"></A>
+These functions return the parent and a list of the children of <VAR>object</VAR>,
+respectively.  If <VAR>object</VAR> is not valid, then <CODE>E_INVARG</CODE> is raised.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> none <B>recycle</B> <I>(obj <VAR>object</VAR>)</I>
+<DD><A NAME="IDX59"></A>
+The given <VAR>object</VAR> is destroyed, irrevocably.  The programmer must either
+own <VAR>object</VAR> or be a wizard; otherwise, <CODE>E_PERM</CODE> is raised.  If
+<VAR>object</VAR> is not valid, then <CODE>E_INVARG</CODE> is raised.  The children of
+<VAR>object</VAR> are reparented to the parent of <VAR>object</VAR>.  Before <VAR>object</VAR>
+is recycled, each object in its contents is moved to <CODE>#-1</CODE> (implying a
+call to <VAR>object</VAR>'s <CODE>exitfunc</CODE> verb, if any) and then <VAR>object</VAR>'s
+<SAMP>`recycle'</SAMP> verb, if any, is called with no arguments.
+
+</P>
+<P>
+After <VAR>object</VAR> is recycled, if the owner of the former object has a
+property named <SAMP>`ownership_quota'</SAMP> and the value of that property is a
+integer, then <CODE>recycle()</CODE> treats that value as a <STRONG>quota</STRONG> and increments
+it by one, storing the result back into the <SAMP>`ownership_quota'</SAMP> property.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> int <B>object_bytes</B> <I>(obj <VAR>object</VAR>)</I>
+<DD><A NAME="IDX60"></A>
+Returns the number of bytes of the server's memory required to store the given
+<VAR>object</VAR>, including the space used by the values of all of its non-clear
+properties and by the verbs and properties defined directly on the object.
+Raised <CODE>E_INVARG</CODE> if <VAR>object</VAR> is not a valid object and <CODE>E_PERM</CODE>
+if the programmer is not a wizard.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> obj <B>max_object</B> <I>()</I>
+<DD><A NAME="IDX61"></A>
+Returns the largest object number yet assigned to a created object.  Note that
+the object with this number may no longer exist; it may have been recycled.
+The next object created will be assigned the object number one larger than the
+value of <CODE>max_object()</CODE>.
+</DL>
+
+</P>
+<P><HR><P>
+Go to the <A HREF="ProgrammersManual_1.html">first</A>, <A HREF="ProgrammersManual_46.html">previous</A>, <A HREF="ProgrammersManual_48.html">next</A>, <A HREF="ProgrammersManual_77.html">last</A> section, <A HREF="ProgrammersManual_toc.html">table of contents</A>.
+</BODY>
+</HTML>

@@ -1,0 +1,128 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.51
+     from ProgrammersManual.texinfo on 4 March 1997 -->
+
+<TITLE>LambdaMOO Programmer's Manual - Replacing</TITLE>
+</HEAD>
+<BODY>
+Go to the <A HREF="ProgrammersManual_1.html">first</A>, <A HREF="ProgrammersManual_18.html">previous</A>, <A HREF="ProgrammersManual_20.html">next</A>, <A HREF="ProgrammersManual_77.html">last</A> section, <A HREF="ProgrammersManual_toc.html">table of contents</A>.
+<P><HR><P>
+
+
+<H4><A NAME="SEC19" HREF="ProgrammersManual_toc.html#TOC19">Replacing an Element of a List or String</A></H4>
+
+<P>
+It often happens that one wants to change just one particular slot of a list or
+string, which is stored in a variable or a property.  This can be done
+conveniently using an <STRONG>indexed assignment</STRONG> having one of the following
+forms:
+
+</P>
+
+<PRE>
+<VAR>variable</VAR>[<VAR>index-expr</VAR>] = <VAR>result-expr</VAR>
+<VAR>object-expr</VAR>.<VAR>name</VAR>[<VAR>index-expr</VAR>] = <VAR>result-expr</VAR>
+<VAR>object-expr</VAR>.(<VAR>name-expr</VAR>)[<VAR>index-expr</VAR>] = <VAR>result-expr</VAR>
+$<VAR>name</VAR>[<VAR>index-expr</VAR>] = <VAR>result-expr</VAR>
+</PRE>
+
+<P>
+The first form writes into a variable, and the last three forms write into a
+property.  The usual errors (<CODE>E_TYPE</CODE>, <CODE>E_INVIND</CODE>, <CODE>E_PROPNF</CODE>
+and <CODE>E_PERM</CODE> for lack of read/write permission on the property) may be
+raised, just as in reading and writing any object property; see the
+discussion of object property expressions below for details.  Correspondingly,
+if <VAR>variable</VAR> does not yet have a value (i.e., it has never been assigned
+to), <CODE>E_VARNF</CODE> will be raised.
+
+</P>
+<P>
+If <VAR>index-expr</VAR> is not an integer, or if the value of <VAR>variable</VAR> or the
+property is not a list or string, <CODE>E_TYPE</CODE> is raised.  If
+<VAR>result-expr</VAR> is a string, but not of length 1, <CODE>E_INVARG</CODE> is
+raised.  Now suppose <VAR>index-expr</VAR> evaluates to an integer <VAR>k</VAR>.  If
+<VAR>k</VAR> is outside the range of the list or string (i.e.  smaller than 1 or
+greater than the length of the list or string), <CODE>E_RANGE</CODE> is raised.
+Otherwise, the actual assignment takes place.  For lists, the variable or the
+property is assigned a new list that is identical to the original one except at
+the <VAR>k</VAR>-th position, where the new list contains the result of
+<VAR>result-expr</VAR> instead.  For strings, the variable or the property is
+assigned a new string that is identical to the original one, except the
+<VAR>k</VAR>-th character is changed to be <VAR>result-expr</VAR>.
+
+</P>
+<P>
+The assignment expression itself returns the value of <VAR>result-expr</VAR>.  For
+the following examples, assume that <CODE>l</CODE> initially contains the list
+<CODE>{1, 2, 3}</CODE> and that <CODE>s</CODE> initially contains the string "foobar":
+
+</P>
+
+<PRE>
+l[5] = 3          error-->   E_RANGE
+l["first"] = 4    error-->   E_TYPE
+s[3] = "baz"      error-->   E_INVARG
+l[2] = l[2] + 3   =>   5
+l                 =>   {1, 5, 3}
+l[2] = "foo"      =>   "foo"
+l                 =>   {1, "foo", 3}
+s[2] = "u"        =>   "u"
+s                 =>   "fuobar"
+s[$] = "z"        =>   "z"
+s                 =>   "fuobaz"
+</PRE>
+
+<P>
+Note that the <CODE>$</CODE> expression may also be used in indexed assignments with
+the same meaning as before.
+
+</P>
+
+<BLOCKQUOTE>
+<P>
+<EM>Fine point:</EM> After an indexed assignment, the variable or property
+contains a <EM>new</EM> list or string, a copy of the original list in all but
+the <VAR>k</VAR>-th place, where it contains a new value.  In programming-language
+jargon, the original list is not mutated, and there is no aliasing.  (Indeed,
+no MOO value is mutable and no aliasing ever occurs.)
+</BLOCKQUOTE>
+
+<P>
+In the list case, indexed assignment can be nested to many levels, to work on
+nested lists.  Assume that <CODE>l</CODE> initially contains the list
+
+</P>
+
+<PRE>
+{{1, 2, 3}, {4, 5, 6}, "foo"}
+</PRE>
+
+<P>
+in the following examples:
+
+</P>
+
+<PRE>
+l[7] = 4             error-->   E_RANGE
+l[1][8] = 35         error-->   E_RANGE
+l[3][2] = 7          error-->   E_TYPE
+l[1][1][1] = 3       error-->   E_TYPE
+l[2][2] = -l[2][2]   =>   -5
+l                    =>   {{1, 2, 3}, {4, -5, 6}, "foo"}
+l[2] = "bar"         =>   "bar"
+l                    =>   {{1, 2, 3}, "bar", "foo"}
+l[2][$] = "z"        =>   "z"
+l                    =>   {{1, 2, 3}, "baz", "foo"}
+</PRE>
+
+<P>
+The first two examples raise <CODE>E_RANGE</CODE> because 7 is out of the range of
+<CODE>l</CODE> and 8 is out of the range of <CODE>l[1]</CODE>.  The next two examples
+raise <CODE>E_TYPE</CODE> because <CODE>l[3]</CODE> and <CODE>l[1][1]</CODE> are not lists.
+
+</P>
+<P><HR><P>
+Go to the <A HREF="ProgrammersManual_1.html">first</A>, <A HREF="ProgrammersManual_18.html">previous</A>, <A HREF="ProgrammersManual_20.html">next</A>, <A HREF="ProgrammersManual_77.html">last</A> section, <A HREF="ProgrammersManual_toc.html">table of contents</A>.
+</BODY>
+</HTML>

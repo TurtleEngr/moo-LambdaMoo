@@ -1,0 +1,193 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.51
+     from ProgrammersManual.texinfo on 4 March 1997 -->
+
+<TITLE>LambdaMOO Programmer's Manual - Variables</TITLE>
+</HEAD>
+<BODY>
+Go to the <A HREF="ProgrammersManual_1.html">first</A>, <A HREF="ProgrammersManual_12.html">previous</A>, <A HREF="ProgrammersManual_14.html">next</A>, <A HREF="ProgrammersManual_77.html">last</A> section, <A HREF="ProgrammersManual_toc.html">table of contents</A>.
+<P><HR><P>
+
+
+<H3><A NAME="SEC13" HREF="ProgrammersManual_toc.html#TOC13">Naming Values Within a Verb</A></H3>
+
+<P>
+As discussed earlier, it is possible to store values in properties on
+objects; the properties will keep those values forever, or until another
+value is explicitly put there.  Quite often, though, it is useful to
+have a place to put a value for just a little while.  MOO provides local
+variables for this purpose.
+
+</P>
+<P>
+Variables are named places to hold values; you can get and set the value
+in a given variable as many times as you like.  Variables are temporary,
+though; they only last while a particular verb is running; after it
+finishes, all of the variables given values there cease to exist and the
+values are forgotten.
+
+</P>
+<P>
+Variables are also "local" to a particular verb; every verb has its own
+set of them.  Thus, the variables set in one verb are not visible to the
+code of other verbs.
+
+</P>
+<P>
+The name for a variable is made up entirely of letters, digits, and the
+underscore character (<SAMP>`_'</SAMP>) and does not begin with a digit.  The
+following are all valid variable names:
+
+</P>
+
+<PRE>
+foo
+_foo
+this2that
+M68000
+two_words
+This_is_a_very_long_multiword_variable_name
+</PRE>
+
+<P>
+Note that, along with almost everything else in MOO, the case of the
+letters in variable names is insignificant.  For example, these are all
+names for the same variable:
+
+</P>
+
+<PRE>
+fubar
+Fubar
+FUBAR
+fUbAr
+</PRE>
+
+<P>
+A variable name is itself an expression; its value is the value of the named
+variable.  When a verb begins, almost no variables have values yet; if you try
+to use the value of a variable that doesn't have one, the error value
+<CODE>E_VARNF</CODE> is raised.  (MOO is unlike many other programming languages in
+which one must `declare' each variable before using it; MOO has no such
+declarations.)  The following variables always have values:
+
+</P>
+
+<PRE>
+INT         FLOAT        OBJ
+STR         LIST         ERR
+player      this         caller
+verb        args         argstr
+dobj        dobjstr      prepstr
+iobj        iobjstr      NUM
+</PRE>
+
+<P>
+The values of some of these variables always start out the same:
+
+</P>
+<DL COMPACT>
+
+<DT><CODE>INT</CODE>
+<DD>
+an integer, the type code for integers (see the description of the function
+<CODE>typeof()</CODE>, below)
+<DT><CODE>NUM</CODE>
+<DD>
+the same as <CODE>INT</CODE> (for historical reasons)
+<DT><CODE>FLOAT</CODE>
+<DD>
+an integer, the type code for floating-point numbers
+<DT><CODE>LIST</CODE>
+<DD>
+an integer, the type code for lists
+<DT><CODE>STR</CODE>
+<DD>
+an integer, the type code for strings
+<DT><CODE>OBJ</CODE>
+<DD>
+an integer, the type code for objects
+<DT><CODE>ERR</CODE>
+<DD>
+an integer, the type code for error values
+</DL>
+
+<P>
+For others, the general meaning of the value is consistent, though the
+value itself is different for different situations:
+
+</P>
+<DL COMPACT>
+
+<DT><CODE>player</CODE>
+<DD>
+an object, the player who typed the command that started the task that
+involved running this piece of code.
+<DT><CODE>this</CODE>
+<DD>
+an object, the object on which the currently-running verb was found.
+<DT><CODE>caller</CODE>
+<DD>
+an object, the object on which the verb that called the
+currently-running verb was found.  For the first verb called for a given
+command, <SAMP>`caller'</SAMP> has the same value as <SAMP>`player'</SAMP>.
+<DT><CODE>verb</CODE>
+<DD>
+a string, the name by which the currently-running verb was identified.
+<DT><CODE>args</CODE>
+<DD>
+a list, the arguments given to this verb.  For the first verb called for
+a given command, this is a list of strings, the words on the command
+line.
+</DL>
+
+<P>
+The rest of the so-called "built-in" variables are only really
+meaningful for the first verb called for a given command.  Their
+semantics is given in the discussion of command parsing, above.
+
+</P>
+<P>
+To change what value is stored in a variable, use an <STRONG>assignment</STRONG>
+expression:
+
+</P>
+
+<PRE>
+<VAR>variable</VAR> = <VAR>expression</VAR>
+</PRE>
+
+<P>
+For example, to change the variable named <SAMP>`x'</SAMP> to have the value 17,
+you would write <SAMP>`x = 17'</SAMP> as an expression.  An assignment
+expression does two things:
+
+</P>
+
+<UL>
+<LI>
+
+it changes the value of of the named variable, and
+<LI>
+
+it returns the new value of that variable.
+</UL>
+
+<P>
+Thus, the expression
+
+</P>
+
+<PRE>
+13 + (x = 17)
+</PRE>
+
+<P>
+changes the value of <SAMP>`x'</SAMP> to be 17 and returns 30.
+
+</P>
+<P><HR><P>
+Go to the <A HREF="ProgrammersManual_1.html">first</A>, <A HREF="ProgrammersManual_12.html">previous</A>, <A HREF="ProgrammersManual_14.html">next</A>, <A HREF="ProgrammersManual_77.html">last</A> section, <A HREF="ProgrammersManual_toc.html">table of contents</A>.
+</BODY>
+</HTML>

@@ -1,0 +1,59 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.51
+     from ProgrammersManual.texinfo on 4 March 1997 -->
+
+<TITLE>LambdaMOO Programmer's Manual - Network Connections</TITLE>
+</HEAD>
+<BODY>
+Go to the <A HREF="ProgrammersManual_1.html">first</A>, <A HREF="ProgrammersManual_65.html">previous</A>, <A HREF="ProgrammersManual_67.html">next</A>, <A HREF="ProgrammersManual_77.html">last</A> section, <A HREF="ProgrammersManual_toc.html">table of contents</A>.
+<P><HR><P>
+
+
+<H3><A NAME="SEC66" HREF="ProgrammersManual_toc.html#TOC66">Accepting and Initiating Network Connections</A></H3>
+
+<P>
+When the server first accepts a new, incoming network connection, it is given
+the low-level network address of computer on the other end.  It immediately
+attempts to convert this address into the human-readable host name that will be
+entered in the server log and returned by the <CODE>connection_name()</CODE>
+function.  This conversion can, for the TCP/IP networking configurations,
+involve a certain amount of communication with remote name servers, which can
+take quite a long time and/or fail entirely.  While the server is doing this
+conversion, it is not doing anything else at all; in particular, it it not
+responding to user commands or executing MOO tasks.
+
+</P>
+<P>
+By default, the server will wait no more than 5 seconds for such a name lookup
+to succeed; after that, it behaves as if the conversion had failed, using
+instead a printable representation of the low-level address.  If the property
+<CODE>name_lookup_timeout</CODE> exists on <CODE>$server_options</CODE> and has an integer
+as its value, that integer is used instead as the timeout interval.
+
+</P>
+<P>
+When the <CODE>open_network_connection()</CODE> function is used, the server must
+again do a conversion, this time from the host name given as an argument into
+the low-level address necessary for actually opening the connection.  This
+conversion is subject to the same timeout as in the in-bound case; if the
+conversion does not succeed before the timeout expires, the connection attempt
+is aborted and <CODE>open_network_connection()</CODE> raises <CODE>E_QUOTA</CODE>.
+
+</P>
+<P>
+After a successful conversion, though, the server must still wait for the
+actual connection to be accepted by the remote computer.  As before, this can
+take a long time during which the server is again doing nothing else.  Also as
+before, the server will by default wait no more than 5 seconds for the
+connection attempt to succeed; if the timeout expires,
+<CODE>open_network_connection()</CODE> again raises <CODE>E_QUOTA</CODE>.  This default
+timeout interval can also be overridden from within the database, by defining
+the property <CODE>outbound_connect_timeout</CODE> on <CODE>$server_options</CODE> with an
+integer as its value.
+
+</P>
+<P><HR><P>
+Go to the <A HREF="ProgrammersManual_1.html">first</A>, <A HREF="ProgrammersManual_65.html">previous</A>, <A HREF="ProgrammersManual_67.html">next</A>, <A HREF="ProgrammersManual_77.html">last</A> section, <A HREF="ProgrammersManual_toc.html">table of contents</A>.
+</BODY>
+</HTML>

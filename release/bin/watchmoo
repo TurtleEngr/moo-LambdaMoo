@@ -1,0 +1,5 @@
+#!/bin/sh
+# $Header: /data/public.cvs/app/lambda/src/script/watchmoo,v 1.7 2001/06/24 02:18:41 bruce Exp $
+
+echo 'Monitoring DU MOO log.  Hit ctrl-C to end.'
+tail -f $DUHOME/moo/du.log

@@ -1,0 +1,137 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Author" CONTENT="Eric Mercer">
+   <TITLE>Patching the LambdaMOO Server for the eDUcore</TITLE>
+</HEAD>
+<BODY>
+<IMG SRC="/images/logo/DUlogo_banner1.gif" HEIGHT=77 WIDTH=609>&nbsp;
+<HR SIZE=4 WIDTH="100%">
+<H1>
+Patching the LambdaMOO Server for the eDUcore</H1>
+If you are going to run a MOO based on the <A HREF="../../index.html">Diversity
+University eduCore</A> on a UNIX system, there are several server patches
+that are desirable. Patches should be installed by creating a subdirectory
+named "patches" in the location of the MOO server source files, and copying
+the patches to there. Then, from the MOO server source files directory,
+use:
+<UL>patch -l &lt; patches/patchfile</UL>
+where "patchfile" is the name of the patch file to apply. Note that patch
+command switch is the letter "ell" and not the number one. These patches
+are specifically for the <A HREF="../index.html">LambdaMOO
+Server</A> running on UNIX systems <B>only</B>.
+<H2>
+Installing the Patches</H2>
+We suggest the following procedure:
+
+<P><B><U>1.</U></B> Unpack the server package. It should create a directory named MOO-1.8.0p6 containing all the source files.
+<UL>gzip -dc LambdaMOO-1.8.0p6.tar.Z | tar -xf -</UL>
+
+<P><B><U>2.</U></B> From in the MOO-1.8.0p6 directory, issue "sh configure" to create a Makefile file for your system.
+
+<P><B><U>3.</U></B> Edit the options.h files, as described in the LambdaMOO server README
+file. Usually, the only changes to make are to set the port and to uncomment
+the OUTBOUND_NETWORK line.
+
+<P><B><U>4.</U></B> Use "make" to compile the server. If the server doesn't compile,
+first solve that problem before dealing with any patches.
+
+<P><B><U>5.</U></B> If the server compiles successfully, proceed with installing the
+patches.
+
+<P><B><U>6.</U></B> Create a "patches" subdirectory in the MOO-1.8.0p6 directory, and
+place all the unpacked patches there.
+
+<P><B><U>7.</U></B> Edit the patches as needed, as described below.
+
+<P><B><U>8.</U></B> Install the patches using the "patch" utility.
+
+<P><B><U>9.</U></B> Use "make" again to recompile the server.
+
+<P>If the server now won't compile, start over, but this time recompile
+(with "make") after each patch is installed to determine which is the culprit.
+
+<P>None of the patches is actually critical for operation of the eduCore.
+
+<P>If you place the patch files as described, then you'll be using the
+following set of commands to install them:
+<UL>patch -l &lt; patches/moo-1.8.0-pAS9.patch
+<BR>patch -l &lt; patches/moo-1.8.0-pAS5.patch
+<BR>patch -l &lt; patches/moo-1.8.0-pAS5.c.patch
+<BR>patch -l &lt; patches/moo-1.8.0-FUP.patch
+<BR>patch -l &lt; patches/moo-1.8.0-files.c.patch</UL>
+and possibly
+<UL>patch -l &lt; patches/moo-1.8.0-FUP.errfix.patch</UL>
+
+<H2>
+Recommended Patches</H2>
+The recommended patches are available <A HREF="moo-1.8.0-patches.tar.gz">together
+as a compressed archive</A>, or individually as listed:
+<H3>
+pAS5</H3>
+Description: Written by Alex Stewart. Provides additional built-in functions
+that allow the MOO to access certain UNIX time zone functions. That is
+preferable to using the plain MOO server's rather weak support for time
+zones.
+
+<P>File names: <A HREF="moo-1.8.0-pAS5.patch">moo-1.8.0-pAS5.patch</A>
+and <A HREF="moo-1.8.0-pAS5.c.patch">moo-1.8.0-pAS5.c.patch</A>
+
+<P>Installation: Although it might not be absolutely needed on your machine,
+it's probably a good idea to set the TZ variable in the moo-1.8.0-pAS5.c.patch
+file. Look for the line
+
+<P>+ static char tzdefault[] = "TZ=localtime";
+
+<P>And change `localtime' to the appropriate UNIX time zone for your site
+(e.g. US/Eastern). Save the changed patch file, and install BOTH patches,
+in the standard way.
+<H3>
+pAS9</H3>
+Description: Written by Alex Stewart. Provides backspace support for bad
+telnet clients. Some really poor telnet clients handle backspace/delete
+keys in a nonstandard way. This patch makes the MOO a bit more forgiving
+for those.
+
+<P>File name: <A HREF="moo-1.8.0-pAS9.patch">moo-1.8.0-pAS9.patch</A>
+
+<P>Installation: Install the patch in the standard way.
+<H3>
+FUP</H3>
+Description: Written by Jaime Prilusky and Gustavo Glusman. This is the
+File Utiltiies Pacakage system, written as patch files. FUP allows the
+MOO to store various sections of database information externally in files
+on the UNIX server. See the FUP documentation for more details on custom
+configuration of the FUP system. This patchfile is set to provide the most
+commonly desired configuration.
+
+<P>File names: <A HREF="moo-1.8.0-FUP.patch">moo-1.8.0-FUP.patch</A> and
+<A HREF="moo-1.8.0-files.c.patch">moo-1.8.0-files.c.patch</A>
+
+<P>Installation: Install BOTH patches in the standard way.
+<H3>
+FUP.errfix</H3>
+Description: This patch is to be used ONLY if there is a problem with version.c
+after you try using "make" to compile the system. If you get the error
+"`FUP_version' undeclared (first use this function)" and the compilation
+fails.
+
+<P>File name:<A HREF="moo-1.8.0-FUP.errfix.patch"> moo-1.8.0-FUP.errfix.patch</A>
+
+<P>Installation: Install this patch in the standard way, but ONLY if you
+get the stated error when compiling. After applying the patch, issue the
+"make" command again to recompile.
+<CENTER>
+<H3>
+<A HREF="../../index.html"><IMG SRC="../../images/eDUcore_logo_50.gif" BORDER=0 HEIGHT=50 WIDTH=143 ALIGN=ABSCENTER></A></H3></CENTER>
+
+<CENTER>
+<H3>
+<A HREF="../../index.html">Diversity University eDUcore</A></H3></CENTER>
+
+<HR SIZE=4 WIDTH="100%">
+<BR>Last modified 09Dec97
+<BR>Copyright 1997 &copy; <A HREF="http://www.du.org/">Diversity University</A>.
+All rights reserved.
+</BODY>
+</HTML>

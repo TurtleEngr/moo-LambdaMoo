@@ -1,0 +1,188 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.51
+     from ProgrammersManual.texinfo on 4 March 1997 -->
+
+<TITLE>LambdaMOO Programmer's Manual - Truth Values</TITLE>
+</HEAD>
+<BODY>
+Go to the <A HREF="ProgrammersManual_1.html">first</A>, <A HREF="ProgrammersManual_15.html">previous</A>, <A HREF="ProgrammersManual_17.html">next</A>, <A HREF="ProgrammersManual_77.html">last</A> section, <A HREF="ProgrammersManual_toc.html">table of contents</A>.
+<P><HR><P>
+
+
+<H3><A NAME="SEC16" HREF="ProgrammersManual_toc.html#TOC16">Values as True and False</A></H3>
+
+<P>
+There is a notion in MOO of <STRONG>true</STRONG> and <STRONG>false</STRONG> values; every value
+is one or the other.  The true values are as follows:
+
+</P>
+
+<UL>
+<LI>
+
+all integers other than zero,
+<LI>
+
+all floating-point numbers not equal to <CODE>0.0</CODE>,
+<LI>
+
+all non-empty strings (i.e., other than <SAMP>`""'</SAMP>), and
+<LI>
+
+all non-empty lists (i.e., other than <SAMP>`{}'</SAMP>).
+</UL>
+
+<P>
+All other values are false:
+
+</P>
+
+<UL>
+<LI>
+
+the integer zero,
+<LI>
+
+the floating-point numbers <CODE>0.0</CODE> and <CODE>-0.0</CODE>,
+<LI>
+
+the empty string (<SAMP>`""'</SAMP>),
+<LI>
+
+the empty list (<SAMP>`{}'</SAMP>),
+<LI>
+
+all object numbers, and
+<LI>
+
+all error values.
+</UL>
+
+<P>
+There are four kinds of expressions and two kinds of statements that depend
+upon this classification of MOO values.  In describing them, I sometimes refer
+to the <STRONG>truth value</STRONG> of a MOO value; this is just <STRONG>true</STRONG> or
+<STRONG>false</STRONG>, the category into which that MOO value is classified.
+
+</P>
+<P>
+The conditional expression in MOO has the following form:
+
+</P>
+
+<PRE>
+<VAR>expression-1</VAR> ? <VAR>expression-2</VAR> | <VAR>expression-3</VAR>
+</PRE>
+
+<P>
+First, <VAR>expression-1</VAR> is evaluated.  If it returns a true value, then
+<VAR>expression-2</VAR> is evaluated and whatever it returns is returned as the
+value of the conditional expression as a whole.  If <VAR>expression-1</VAR> returns
+a false value, then <VAR>expression-3</VAR> is evaluated instead and its value is
+used as that of the conditional expression.
+
+</P>
+
+<PRE>
+1 ? 2 | 3           =>  2
+0 ? 2 | 3           =>  3
+"foo" ? 17 | {#34}  =>  17
+</PRE>
+
+<P>
+Note that only one of <VAR>expression-2</VAR> and <VAR>expression-3</VAR> is evaluated,
+never both.
+
+</P>
+<P>
+To negate the truth value of a MOO value, use the <SAMP>`!'</SAMP> operator:
+
+</P>
+
+<PRE>
+! <VAR>expression</VAR>
+</PRE>
+
+<P>
+If the value of <VAR>expression</VAR> is true, <SAMP>`!'</SAMP> returns 0; otherwise, it
+returns 1:
+
+</P>
+
+<PRE>
+! "foo"     =>  0
+! (3 &#62;= 4)  =>  1
+</PRE>
+
+<P>
+The negation operator is usually read as "not."
+
+</P>
+<P>
+It is frequently useful to test more than one condition to see if some or all
+of them are true.  MOO provides two operators for this:
+
+</P>
+
+<PRE>
+<VAR>expression-1</VAR> &#38;&#38; <VAR>expression-2</VAR>
+<VAR>expression-1</VAR> || <VAR>expression-2</VAR>
+</PRE>
+
+<P>
+These operators are usually read as "and" and "or," respectively.
+
+</P>
+<P>
+The <SAMP>`&#38;&#38;'</SAMP> operator first evaluates <VAR>expression-1</VAR>.  If it returns a
+true value, then <VAR>expression-2</VAR> is evaluated and its value becomes the
+value of the <SAMP>`&#38;&#38;'</SAMP> expression as a whole; otherwise, the value of
+<VAR>expression-1</VAR> is used as the value of the <SAMP>`&#38;&#38;'</SAMP> expression.  Note
+that <VAR>expression-2</VAR> is only evaluated if <VAR>expression-1</VAR> returns a true
+value.  The <SAMP>`&#38;&#38;'</SAMP> expression is equivalent to the conditional expression
+
+</P>
+
+<PRE>
+<VAR>expression-1</VAR> ? <VAR>expression-2</VAR> | <VAR>expression-1</VAR>
+</PRE>
+
+<P>
+except that <VAR>expression-1</VAR> is only evaluated once.
+
+</P>
+<P>
+The <SAMP>`||'</SAMP> operator works similarly, except that <VAR>expression-2</VAR> is
+evaluated only if <VAR>expression-1</VAR> returns a false value.  It is equivalent
+to the conditional expression
+
+</P>
+
+<PRE>
+<VAR>expression-1</VAR> ? <VAR>expression-1</VAR> | <VAR>expression-2</VAR>
+</PRE>
+
+<P>
+except that, as with <SAMP>`&#38;&#38;'</SAMP>, <VAR>expression-1</VAR> is only evaluated once.
+
+</P>
+<P>
+These two operators behave very much like "and" and "or" in English:
+
+</P>
+
+<PRE>
+1 &#38;&#38; 1                  =>  1
+0 &#38;&#38; 1                  =>  0
+0 &#38;&#38; 0                  =>  0
+1 || 1                  =>  1
+0 || 1                  =>  1
+0 || 0                  =>  0
+17 &#60;= 23  &#38;&#38;  23 &#60;= 27  =>  1
+</PRE>
+
+<P><HR><P>
+Go to the <A HREF="ProgrammersManual_1.html">first</A>, <A HREF="ProgrammersManual_15.html">previous</A>, <A HREF="ProgrammersManual_17.html">next</A>, <A HREF="ProgrammersManual_77.html">last</A> section, <A HREF="ProgrammersManual_toc.html">table of contents</A>.
+</BODY>
+</HTML>

@@ -1,0 +1,83 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.51
+     from ProgrammersManual.texinfo on 4 March 1997 -->
+
+<TITLE>LambdaMOO Programmer's Manual - Aborted Tasks</TITLE>
+</HEAD>
+<BODY>
+Go to the <A HREF="ProgrammersManual_1.html">first</A>, <A HREF="ProgrammersManual_70.html">previous</A>, <A HREF="ProgrammersManual_72.html">next</A>, <A HREF="ProgrammersManual_77.html">last</A> section, <A HREF="ProgrammersManual_toc.html">table of contents</A>.
+<P><HR><P>
+
+
+<H3><A NAME="SEC71" HREF="ProgrammersManual_toc.html#TOC71">Controlling the Handling of Aborted Tasks</A></H3>
+
+<P>
+The server will abort the execution of tasks for either of two reasons:
+
+<OL>
+<LI>an error was raised within the task but not caught, or
+
+<LI>the task exceeded the limits on ticks and/or seconds.
+
+</OL>
+
+<P>
+In each case, after aborting the task, the server attempts to call a particular
+<STRONG>handler verb</STRONG> within the database to allow code there to handle this
+mishap in some appropriate way.  If this verb call suspends or returns a true
+value, then it is considered to have handled the situation completely and no
+further processing will be done by the server.  On the other hand, if the
+handler verb does not exist, or if the call either returns a false value
+without suspending or itself is aborted, the server takes matters into its own
+hands.
+
+</P>
+<P>
+First, an error message and a MOO verb-call stack <STRONG>traceback</STRONG> are
+printed to the player who typed the command that created the original aborted
+task, explaining why the task was aborted and where in the task the problem
+occurred.  Then, if the call to the handler verb was itself aborted, a second
+error message and traceback are printed, describing that problem as well.  Note
+that if the handler-verb call itself is aborted, no further `nested' handler
+calls are made; this policy prevents what might otherwise be quite a vicious
+little cycle.
+
+</P>
+<P>
+The specific handler verb, and the set of arguments it is passed, differs for
+the two causes of aborted tasks.
+
+</P>
+<P>
+If an error is raised and not caught, then the verb-call
+
+<PRE>
+$handle_uncaught_error(<VAR>code</VAR>, <VAR>msg</VAR>, <VAR>value</VAR>, <VAR>traceback</VAR>, <VAR>formatted</VAR>)
+</PRE>
+
+<P>
+is made, where <VAR>code</VAR>, <VAR>msg</VAR>, <VAR>value</VAR>, and <VAR>traceback</VAR> are the
+values that would have been passed to a handler in a <CODE>try</CODE>-<CODE>except</CODE>
+statement and <VAR>formatted</VAR> is a list of strings being the lines of error and
+traceback output that will be printed to the player if
+<CODE>$handle_uncaught_error</CODE> returns false without suspending.
+
+</P>
+<P>
+If a task runs out of ticks or seconds, then the verb-call
+
+<PRE>
+$handle_task_timeout(<VAR>resource</VAR>, <VAR>traceback</VAR>, <VAR>formatted</VAR>)
+</PRE>
+
+<P>
+is made, where <VAR>resource</VAR> is the appropriate one of the strings
+<CODE>"ticks"</CODE> or <CODE>"seconds"</CODE>, and <VAR>traceback</VAR> and <VAR>formatted</VAR> are
+as above.
+
+</P>
+<P><HR><P>
+Go to the <A HREF="ProgrammersManual_1.html">first</A>, <A HREF="ProgrammersManual_70.html">previous</A>, <A HREF="ProgrammersManual_72.html">next</A>, <A HREF="ProgrammersManual_77.html">last</A> section, <A HREF="ProgrammersManual_toc.html">table of contents</A>.
+</BODY>
+</HTML>

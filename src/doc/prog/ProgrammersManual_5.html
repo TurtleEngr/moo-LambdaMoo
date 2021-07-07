@@ -1,0 +1,56 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.51
+     from ProgrammersManual.texinfo on 4 March 1997 -->
+
+<TITLE>LambdaMOO Programmer's Manual - Attributes</TITLE>
+</HEAD>
+<BODY>
+Go to the <A HREF="ProgrammersManual_1.html">first</A>, <A HREF="ProgrammersManual_4.html">previous</A>, <A HREF="ProgrammersManual_6.html">next</A>, <A HREF="ProgrammersManual_77.html">last</A> section, <A HREF="ProgrammersManual_toc.html">table of contents</A>.
+<P><HR><P>
+
+
+<H3><A NAME="SEC5" HREF="ProgrammersManual_toc.html#TOC5">Fundamental Object Attributes</A></H3>
+
+<P>
+There are three fundamental <STRONG>attributes</STRONG> to every object:
+
+</P>
+
+<OL>
+<LI>
+
+A flag (either true or false) specifying whether or not the object represents
+a player,
+<LI>
+
+The object that is its <STRONG>parent</STRONG>, and
+<LI>
+
+A list of the objects that are its <STRONG>children</STRONG>; that is, those objects for
+which this object is their parent.
+</OL>
+
+<P>
+The act of creating a character sets the player attribute of an object and
+only a wizard (using the function <CODE>set_player_flag()</CODE>) can change that
+setting.  Only characters have the player bit set to 1.
+
+</P>
+<P>
+The parent/child hierarchy is used for classifying objects into general classes
+and then sharing behavior among all members of that class.  For example, the
+LambdaCore database contains an object representing a sort of "generic" room.
+All other rooms are <STRONG>descendants</STRONG> (i.e., children or children's children,
+or ...) of that one.  The generic room defines those pieces of behavior
+that are common to all rooms; other rooms specialize that behavior for their
+own purposes.  The notion of classes and specialization is the very essence of
+what is meant by <STRONG>object-oriented</STRONG> programming.  Only the functions
+<CODE>create()</CODE>, <CODE>recycle()</CODE>, <CODE>chparent()</CODE>, and <CODE>renumber()</CODE> can
+change the parent and children attributes.
+
+</P>
+<P><HR><P>
+Go to the <A HREF="ProgrammersManual_1.html">first</A>, <A HREF="ProgrammersManual_4.html">previous</A>, <A HREF="ProgrammersManual_6.html">next</A>, <A HREF="ProgrammersManual_77.html">last</A> section, <A HREF="ProgrammersManual_toc.html">table of contents</A>.
+</BODY>
+</HTML>

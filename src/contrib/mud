@@ -1,0 +1,161 @@
+# $Header: /repo/public.cvs/app/lambda/src/contrib/mud,v 1.1 2004/11/13 21:42:43 bruce Exp $
+# Put this file in ~/.mud
+
+# -------------------------------------
+# Set the default server
+default-server du
+#default-server moria
+
+# Default player (change NAME and PASSWORD)
+default NAME PASSWORD
+
+# ================================================================
+# Server list with login information
+
+# --------------------------
+# Moria - local MOO (not active)
+server moria MOO moria.dynu.com 8888
+server moriaarch MOO moria.dynu.com 8888
+server moriatest MOO moria.dynu.com 7777
+
+
+# --------------------------
+# Millennial MOO
+server fmf MOO srv2.thuntek.net 7777
+
+# --------------------------
+# VirtualRC
+server virtualrc MOO kobra.atl.hp.com 8888
+
+# --------------------------
+# Lambda
+server lambda MOO lambda.moo.mud.org 8888
+server lambda2 MOO 69.17.114.80 8888
+
+# --------------------------
+# CSUN - Calif. State Univ. at Northridge (Jai, Gofy)
+#DaMOO lrc.csun.edu 7777 has a nice WOO at http://damoo.csun.edu:8888/
+server damoo MOO DaMOO.csun.edu 7777
+server damoo2 MOO lrc.csun.edu 7777
+server damoo3 MOO 130.166.69.1 7777
+
+# --------------------------
+# Related server
+server mootiny MOO spsyc.nott.ac.uk 8888
+# URL: http://spsyc.nott.ac.uk:8888/
+
+# --------------------------
+server aussiemoo MOO farrer.riv.csu.edu.au 7777
+
+# --------------------------
+# TecfaMOO
+server tecfa MOO tecfamoo.unige.ch 7777
+
+# --------------------------
+# GNA (Globalwide Network Academy) - networked Moo's
+server bio MOO bioinfo.weizmann.ac.il 8888
+server gna MOO gnalab.uva.nl 7777
+server mediamoo MOO microworld.media.mit.edu 8888
+
+# --------------------------
+# Diversity University
+server du MOO moo.du.org 8888
+server du2 MOO erau.db.erau.edu 8888
+
+# --------------------------
+# BayMOO
+server baymoo MOO baymoo.sfsu.edu 8888
+
+# --------------------------
+# Internet Public Library (http://ipl.sils.umich.edu/moo/) (6/7/96)
+server ipl MOO ipl.sils.umich.edu 8888
+# or
+server ipl2 MOO ipl.org 8888
+
+# (http://www.ipl.org/)
+# (http://ipl.sils.umich.edu/classroom/index.text.html)
+# NNMMSS Conference Room (http://ipl.sils.umich.edu/moo/ConfRoom.html)
+
+# --------------------------
+# Eon - educational moo (WWW and gopher interfaces) - inactive?
+server eon MOO mcmuse.mc.maricopa.edu 8888
+
+# --------------------------
+server cold MOO ice.cold.org 1138
+
+# --------------------------
+# Sprawl - SenseMedia Communications Common Carrier (WWW interface)
+# URL: http://sensemedia.net/sprawl
+# chibamoo
+server sprawl MOO sensemedia.net 7777
+#server sprawl MOO chiba.picosof.com 7777
+#server sprawl MOO sydney.sensemedia.net 2001
+#server snow MOO sapparo.sensemedia.net 9030
+
+# Aerosmith - temp. DB (not always up)
+server aero MOO hpsdce.mayfield.hp.com 5000
+
+# VRML - Wax movie
+server wax MOO bug.village.virginia.edu 7777
+
+# NovaMoo - Edmonds School District
+server nova MOO nova.edmonds.wednet.edu 8888
+
+# JaysHouse
+server JaysHouse MOO jhm.ccs.neu.edu 1709
+server JaysHouseMOO MOO theory.cs.mankato.msus.edu 1709
+
+# MOO-OISE - Ontario Institute for Studies in Education, University of Toronto
+# [Educational Computer Mediated Communication (Ed-CMC)]
+server oise MOO tortoise.oise.on.ca 7777
+
+# MOO2000
+server moo2000 MOO moo.microwave.com 2000
+
+server anony MOO moo.stac.org 8888
+
+# RiverMOO
+server rivermoo MOO river.honors.indiana.edu 8888
+
+# --------------------------
+# AtheMOO
+server athemoo MOO moo.hawaii.edu 9999
+
+# --------------------------
+server astro MOO astrovr.ipac.caltech.edu 8888
+
+server gopher MOO reality.cs.umn.edu 6464
+
+server aqua MOO aqua.king.net 2345
+
+# MOOs in other countries: MOOtiny, Beto (#5499), rorbfurs@vortex.ufrgs.br
+# 
+# BRAZIL
+# moo.cpdee.ufmg.br 7777
+# esfinge.cpd.ufsm.br 7777
+# freire.futuro.usp.br 8888
+#
+# ITALY
+# kame.usr.dsi.unimi.it 4444
+# 
+# SPAIN
+# europa.syr.edu 8888
+# 
+# PORTUGAL
+# moo.di.uminho.pt 7777
+# bilobite.fe.up.pt 8888
+# 
+# FRANCE
+# logos.daedalus.com 8888
+# network.io.com 7777
+# 
+# CANADA/US
+# river.honors.indiana.edu 8888
+
+# ================================================================
+# Character login list
+
+lambda NAME PASSWORD
+moria NAME1 PASSWORD
+moriaarch NAME2 PASSWORD
+moriatest NAME3 PASSWORD

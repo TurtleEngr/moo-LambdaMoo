@@ -1,0 +1,55 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.51
+     from ProgrammersManual.texinfo on 4 March 1997 -->
+
+<TITLE>LambdaMOO Programmer's Manual - Subsequences</TITLE>
+</HEAD>
+<BODY>
+Go to the <A HREF="ProgrammersManual_1.html">first</A>, <A HREF="ProgrammersManual_19.html">previous</A>, <A HREF="ProgrammersManual_21.html">next</A>, <A HREF="ProgrammersManual_77.html">last</A> section, <A HREF="ProgrammersManual_toc.html">table of contents</A>.
+<P><HR><P>
+
+
+<H4><A NAME="SEC20" HREF="ProgrammersManual_toc.html#TOC20">Extracting a Subsequence of a List or String</A></H4>
+
+<P>
+The range expression extracts a specified subsequence from a list or string:
+
+</P>
+
+<PRE>
+<VAR>expression-1</VAR>[<VAR>expression-2</VAR>..<VAR>expression-3</VAR>]
+</PRE>
+
+<P>
+The three expressions are evaluated in order.  <VAR>Expression-1</VAR> must return a
+list or string (the <STRONG>sequence</STRONG>) and the other two expressions must return
+integers (the <STRONG>low</STRONG> and <STRONG>high</STRONG> indices, respectively); otherwise,
+<CODE>E_TYPE</CODE> is raised.  The <CODE>$</CODE> expression can be used in either or both
+of <VAR>expression-2</VAR> and <VAR>expression-3</VAR> just as before, meaning the length
+of the value of <VAR>expression-1</VAR>.
+
+</P>
+<P>
+If the low index is greater than the high index, then the empty string or list
+is returned, depending on whether the sequence is a string or a list.
+Otherwise, both indices must be between 1 and the length of the sequence;
+<CODE>E_RANGE</CODE> is raised if they are not.  A new list or string is returned
+that contains just the elements of the sequence with indices between the low
+and high bounds.
+
+</P>
+
+<PRE>
+"foobar"[2..$]                       =>  "oobar"
+"foobar"[3..3]                       =>  "o"
+"foobar"[17..12]                     =>  ""
+{"one", "two", "three"}[$ - 1..$]    =>  {"two", "three"}
+{"one", "two", "three"}[3..3]        =>  {"three"}
+{"one", "two", "three"}[17..12]      =>  {}
+</PRE>
+
+<P><HR><P>
+Go to the <A HREF="ProgrammersManual_1.html">first</A>, <A HREF="ProgrammersManual_19.html">previous</A>, <A HREF="ProgrammersManual_21.html">next</A>, <A HREF="ProgrammersManual_77.html">last</A> section, <A HREF="ProgrammersManual_toc.html">table of contents</A>.
+</BODY>
+</HTML>

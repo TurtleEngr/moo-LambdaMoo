@@ -1,0 +1,56 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.51
+     from ProgrammersManual.texinfo on 4 March 1997 -->
+
+<TITLE>LambdaMOO Programmer's Manual - Objects</TITLE>
+</HEAD>
+<BODY>
+Go to the <A HREF="ProgrammersManual_1.html">first</A>, <A HREF="ProgrammersManual_3.html">previous</A>, <A HREF="ProgrammersManual_5.html">next</A>, <A HREF="ProgrammersManual_77.html">last</A> section, <A HREF="ProgrammersManual_toc.html">table of contents</A>.
+<P><HR><P>
+
+
+<H2><A NAME="SEC4" HREF="ProgrammersManual_toc.html#TOC4">Objects in the MOO Database</A></H2>
+
+<P>
+Objects are, in a sense, the whole point of the MOO programming language.
+They are used to represent objects in the virtual reality, like people, rooms,
+exits, and other concrete things.  Because of this, MOO makes a bigger deal
+out of creating objects than it does for other kinds of value, like integers.
+
+</P>
+<P>
+Numbers always exist, in a sense; you have only to write them down in order to
+operate on them.  With objects, it is different.  The object with number
+<SAMP>`#958'</SAMP> does not exist just because you write down its number.  An
+explicit operation, the <SAMP>`create()'</SAMP> function described later, is required
+to bring an object into existence.  Symmetrically, once created, objects
+continue to exist until they are explicitly destroyed by the <SAMP>`recycle()'</SAMP>
+function (also described later).
+
+</P>
+<P>
+The identifying number associated with an object is unique to that
+object.  It was assigned when the object was created and will never be
+reused, even if the object is destroyed.  Thus, if we create an object
+and it is assigned the number <SAMP>`#1076'</SAMP>, the next object to be
+created will be assigned <SAMP>`#1077'</SAMP>, even if <SAMP>`#1076'</SAMP> is destroyed
+in the meantime.
+
+</P>
+<P>
+Every object is made up of three kinds of pieces that together define its
+behavior: <STRONG>attributes</STRONG>, <STRONG>properties</STRONG>, and <STRONG>verbs</STRONG>.
+
+</P>
+
+<UL>
+<LI><A HREF="ProgrammersManual_5.html#SEC5">Attributes</A>: Fundamental Object Attributes
+<LI><A HREF="ProgrammersManual_6.html#SEC6">Properties</A>: Properties on Objects
+<LI><A HREF="ProgrammersManual_7.html#SEC7">Verbs</A>: Verbs on Objects
+</UL>
+
+<P><HR><P>
+Go to the <A HREF="ProgrammersManual_1.html">first</A>, <A HREF="ProgrammersManual_3.html">previous</A>, <A HREF="ProgrammersManual_5.html">next</A>, <A HREF="ProgrammersManual_77.html">last</A> section, <A HREF="ProgrammersManual_toc.html">table of contents</A>.
+</BODY>
+</HTML>

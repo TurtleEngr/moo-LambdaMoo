@@ -1,0 +1,63 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.51
+     from ProgrammersManual.texinfo on 4 March 1997 -->
+
+<TITLE>LambdaMOO Programmer's Manual - Out-of-band Commands</TITLE>
+</HEAD>
+<BODY>
+Go to the <A HREF="ProgrammersManual_1.html">first</A>, <A HREF="ProgrammersManual_67.html">previous</A>, <A HREF="ProgrammersManual_69.html">next</A>, <A HREF="ProgrammersManual_77.html">last</A> section, <A HREF="ProgrammersManual_toc.html">table of contents</A>.
+<P><HR><P>
+
+
+<H3><A NAME="SEC68" HREF="ProgrammersManual_toc.html#TOC68">Out-of-Band Commands</A></H3>
+
+<P>
+It is possible to compile the server with an option defining an
+<STRONG>out-of-band prefix</STRONG> for commands.  This is a string that the server will
+check for at the beginning of every line of input from players, regardless of
+whether or not those players are logged in and regardless of whether or not
+reading tasks are waiting for input from those players.  If a given line of
+input begins with the defined out-of-band prefix (leading spaces, if any, are
+<EM>not</EM> stripped before testing), then it is not treated as a normal command
+or as input to any reading task.  Instead, the line is parsed into a list of
+words in the usual way and those words are given as the arguments in a call to
+<CODE>$do_out_of_band_command()</CODE>.  For example, if the out-of-band prefix were
+defined to be <SAMP>`#$#'</SAMP>, then the line of input
+
+</P>
+
+<PRE>
+#$# client-type fancy
+</PRE>
+
+<P>
+would result in the following call being made in a new server task:
+
+</P>
+
+<PRE>
+$do_out_of_band_command("#$#", "client-type", "fancy")
+</PRE>
+
+<P>
+During the call to <CODE>$do_out_of_band_command()</CODE>, the variable <CODE>player</CODE>
+is set to the object number representing the player associated with the
+connection from which the input line came.  Of course, if that connection has
+not yet logged in, the object number will be negative.  Also, the variable
+<CODE>argstr</CODE> will have as its value the unparsed input line as received on the
+network connection.
+
+</P>
+<P>
+Out-of-band commands are intended for use by fancy client programs that may
+generate asynchronous <STRONG>events</STRONG> of which the server must be notified.  Since
+the client cannot, in general, know the state of the player's connection
+(logged-in or not, reading task or not), out-of-band commands provide the only
+reliable client-to-server communications channel.
+
+</P>
+<P><HR><P>
+Go to the <A HREF="ProgrammersManual_1.html">first</A>, <A HREF="ProgrammersManual_67.html">previous</A>, <A HREF="ProgrammersManual_69.html">next</A>, <A HREF="ProgrammersManual_77.html">last</A> section, <A HREF="ProgrammersManual_toc.html">table of contents</A>.
+</BODY>
+</HTML>

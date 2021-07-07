@@ -1,0 +1,13 @@
+#!/bin/sh
+# $Header: /repo/public.cvs/app/lambda/src/script/statmoo,v 1.2 2001/06/24 02:14:15 bruce Exp $
+
+# To use this script, set the value of MOOhome below.
+
+MOOhome="/usr/du/world/moo"
+
+/usr/ucb/ps `cat $MOOhome/moo.pid` >&- && echo "The MOO server is running:" || echo "The MOO server is not running."
+# echo ""
+/usr/ucb/ps avgxww | egrep "(^ *PID |[.]/moo|[(]MOO)"
+# /usr/ucb/ps augx | egrep "(^USER |[.]/moo)"
+echo ""
+vmstat 5 2

@@ -1,0 +1,103 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.51
+     from ProgrammersManual.texinfo on 4 March 1997 -->
+
+<TITLE>LambdaMOO Programmer's Manual - Subsequence Replacement</TITLE>
+</HEAD>
+<BODY>
+Go to the <A HREF="ProgrammersManual_1.html">first</A>, <A HREF="ProgrammersManual_20.html">previous</A>, <A HREF="ProgrammersManual_22.html">next</A>, <A HREF="ProgrammersManual_77.html">last</A> section, <A HREF="ProgrammersManual_toc.html">table of contents</A>.
+<P><HR><P>
+
+
+<H4><A NAME="SEC21" HREF="ProgrammersManual_toc.html#TOC21">Replacing a Subsequence of a List or String</A></H4>
+
+<P>
+  The subrange assigment replaces a specified subsequence of a list or string
+with a supplied subsequence.  The allowed forms are:
+
+</P>
+
+<PRE>
+<VAR>variable</VAR>[<VAR>start-index-expr</VAR>..<VAR>end-index-expr</VAR>] = <VAR>result-expr</VAR>
+<VAR>object-expr</VAR>.<VAR>name</VAR>[<VAR>start-index-expr</VAR>..<VAR>end-index-expr</VAR>] = <VAR>result-expr</VAR>
+<VAR>object-expr</VAR>.(<VAR>name-expr</VAR>)[<VAR>start-index-expr</VAR>..<VAR>end-index-expr</VAR>] = <VAR>result-expr</VAR>
+$<VAR>name</VAR>[<VAR>start-index-expr</VAR>..<VAR>end-index-expr</VAR>] = <VAR>result-expr</VAR>
+</PRE>
+
+<P>
+As with indexed assigments, the first form writes into a variable, and the last
+three forms write into a property.  The same errors (<CODE>E_TYPE</CODE>,
+<CODE>E_INVIND</CODE>, <CODE>E_PROPNF</CODE> and <CODE>E_PERM</CODE> for lack of read/write
+permission on the property) may be raised.  If <VAR>variable</VAR> does not yet have
+a value (i.e., it has never been assigned to), <CODE>E_VARNF</CODE> will be raised.
+As before, the <CODE>$</CODE> expression can be used in either <VAR>start-index-expr</VAR>
+or <VAR>end-index-expr</VAR>, meaning the length of the original value of the
+expression just before the <CODE>[...]</CODE> part.
+
+</P>
+<P>
+If <VAR>start-index-expr</VAR> or <VAR>end-index-expr</VAR> is not an integer, if the value
+of <VAR>variable</VAR> or the property is not a list or string, or <VAR>result-expr</VAR>
+is not the same type as <VAR>variable</VAR> or the property, <CODE>E_TYPE</CODE> is
+raised.  <CODE>E_RANGE</CODE> is raised if <VAR>end-index-expr</VAR> is less than zero
+or if <VAR>start-index-expr</VAR> is greater than the length of the list or string
+plus one.  Note: the length of <VAR>result-expr</VAR> does not need to be the same
+as the length of the specified range.
+
+</P>
+<P>
+In precise terms, the subrange assigment
+
+<PRE>
+<VAR>v</VAR>[<VAR>start</VAR>..<VAR>end</VAR>] = <VAR>value</VAR>
+</PRE>
+
+<P>
+is equivalent to
+
+<PRE>
+<VAR>v</VAR> = {@<VAR>v</VAR>[1..<VAR>start</VAR> - 1], @<VAR>value</VAR>, @<VAR>v</VAR>[<VAR>end</VAR> + 1..$]}
+</PRE>
+
+<P>
+if <VAR>v</VAR> is a list and to
+
+<PRE>
+<VAR>v</VAR> = <VAR>v</VAR>[1..<VAR>start</VAR> - 1] + <VAR>value</VAR> + <VAR>v</VAR>[<VAR>end</VAR> + 1..$]
+</PRE>
+
+<P>
+if <VAR>v</VAR> is a string.
+
+</P>
+<P>
+The assigment expression itself returns the value of <VAR>result-expr</VAR>.  For
+the following examples, assume that <CODE>l</CODE> initially contains the list
+<CODE>{1, 2, 3}</CODE> and that <CODE>s</CODE> initially contains the string "foobar":
+
+</P>
+
+<PRE>
+l[5..6] = {7, 8}       error-->   E_RANGE
+l[2..3] = 4            error-->   E_TYPE
+l[#2..3] = {7}         error-->   E_TYPE
+s[2..3] = {6}          error-->   E_TYPE
+l[2..3] = {6, 7, 8, 9} =>   {6, 7, 8, 9}
+l                      =>   {1, 6, 7, 8, 9}
+l[2..1] = {10, "foo"}  =>   {10, "foo"}
+l                      =>   {1, 10, "foo", 6, 7, 8, 9}
+l[3][2..$] = "u"       =>   "u"
+l                      =>   {1, 10, "fu", 6, 7, 8, 9}
+s[7..12] = "baz"       =>   "baz"
+s                      =>   "foobarbaz"
+s[1..3] = "fu"         =>   "fu"
+s                      =>   "fubarbaz"
+s[1..0] = "test"       =>   "test"
+s                      =>   "testfubarbaz"
+</PRE>
+
+<P><HR><P>
+Go to the <A HREF="ProgrammersManual_1.html">first</A>, <A HREF="ProgrammersManual_20.html">previous</A>, <A HREF="ProgrammersManual_22.html">next</A>, <A HREF="ProgrammersManual_77.html">last</A> section, <A HREF="ProgrammersManual_toc.html">table of contents</A>.
+</BODY>
+</HTML>

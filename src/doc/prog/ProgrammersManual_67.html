@@ -1,0 +1,154 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.51
+     from ProgrammersManual.texinfo on 4 March 1997 -->
+
+<TITLE>LambdaMOO Programmer's Manual - Logging In</TITLE>
+</HEAD>
+<BODY>
+Go to the <A HREF="ProgrammersManual_1.html">first</A>, <A HREF="ProgrammersManual_66.html">previous</A>, <A HREF="ProgrammersManual_68.html">next</A>, <A HREF="ProgrammersManual_77.html">last</A> section, <A HREF="ProgrammersManual_toc.html">table of contents</A>.
+<P><HR><P>
+
+
+<H3><A NAME="SEC67" HREF="ProgrammersManual_toc.html#TOC67">Associating Network Connections with Players</A></H3>
+
+<P>
+When a network connection is first made to the MOO, it is identified by a
+unique, negative object number.  Such a connection is said to be
+<STRONG>un-logged-in</STRONG> and is not yet associated with any MOO player object.
+
+</P>
+<P>
+Each line of input on an un-logged-in connection is first parsed into words in
+the usual way (see the chapter on command parsing for details) and then these
+words are passed as the arguments in a call to the verb
+<CODE>$do_login_command()</CODE>.  For example, the input line
+
+</P>
+
+<PRE>
+connect Munchkin frebblebit
+</PRE>
+
+<P>
+would result in the following call being made:
+
+</P>
+
+<PRE>
+$do_login_command("connect", "Munchkin", "frebblebit")
+</PRE>
+
+<P>
+In that call, the variable <CODE>player</CODE> will have as its value the negative
+object number associated with the appropriate network connection.  The
+functions <CODE>notify()</CODE> and <CODE>boot_player()</CODE> can be used with such object
+numbers to send output to and disconnect un-logged-in connections.  Also, the
+variable <CODE>argstr</CODE> will have as its value the unparsed command line as
+received on the network connection.
+
+</P>
+<P>
+If <CODE>$do_login_command()</CODE> returns a valid player object and the connection
+is still open, then the connection is considered to have <STRONG>logged into</STRONG> that
+player.  The server then makes one of the following verbs calls, depending on
+the player object that was returned:
+
+</P>
+
+<PRE>
+$user_created(<VAR>player</VAR>)
+$user_connected(<VAR>player</VAR>)
+$user_reconnected(<VAR>player</VAR>)
+</PRE>
+
+<P>
+The first of these is used if the returned object number is greater than the
+value returned by the <CODE>max_object()</CODE> function before
+<CODE>$do_login_command()</CODE> was invoked, that is, it is called if the returned
+object appears to have been freshly created.  If this is not the case, then one
+of the other two verb calls is used.  The <CODE>$user_connected()</CODE> call is used
+if there was no existing active connection for the returned player object.
+Otherwise, the <CODE>$user_reconnected()</CODE> call is used instead.
+
+</P>
+
+<BLOCKQUOTE>
+<P>
+<EM>Fine point:</EM> If a user reconnects and the user's old and new connections
+are on two different listening points being handled by different objects (see
+the description of the <CODE>listen()</CODE> function for more details), then
+<CODE>user_client_disconnected</CODE> is called for the old connection and
+<CODE>user_connected</CODE> for the new one.
+</BLOCKQUOTE>
+
+<P>
+If an in-bound network connection does not successfully log in within a certain
+period of time, the server will automatically shut down the connection, thereby
+freeing up the resources associated with maintaining it.  Let <VAR>L</VAR> be the
+object handling the listening point on which the connection was received (or
+<CODE>#0</CODE> if the connection came in on the initial listening point).  To
+discover the timeout period, the server checks on
+<CODE><VAR>L</VAR>.server_options</CODE> or, if it doesn't exist, on
+<CODE>$server_options</CODE> for a <CODE>connect_timeout</CODE> property.  If one is found
+and its value is a positive integer, then that's the number of seconds the
+server will use for the timeout period.  If the <CODE>connect_timeout</CODE> property
+exists but its value isn't a positive integer, then there is no timeout at
+all.  If the property doesn't exist, then the default timeout is 300 seconds.
+
+</P>
+<P>
+When any network connection (even an un-logged-in or outbound one) is
+terminated, by either the server or the client, then one of the following two
+verb calls is made:
+
+</P>
+
+<PRE>
+$user_disconnected(<VAR>player</VAR>)
+$user_client_disconnected(<VAR>player</VAR>)
+</PRE>
+
+<P>
+The first is used if the disconnection is due to actions taken by the server
+(e.g., a use of the <CODE>boot_player()</CODE> function or the un-logged-in timeout
+described above) and the second if the disconnection was initiated by the
+client side.
+
+</P>
+<P>
+It is not an error if any of these five verbs do not exist; the corresponding
+call is simply skipped.
+
+</P>
+
+<BLOCKQUOTE>
+<P>
+<STRONG>Note</STRONG>: Only one network connection can be controlling a given player
+object at a given time; should a second connection attempt to log in as that
+player, the first connection is unceremoniously closed (and
+<CODE>$user_reconnected()</CODE> called, as described above).  This makes it easy to
+recover from various kinds of network problems that leave connections open but
+inaccessible.
+</BLOCKQUOTE>
+
+<P>
+When the network connection is first established, the null command is
+automatically entered by the server, resulting in an initial call to
+<CODE>$do_login_command()</CODE> with no arguments.  This signal can be used by the
+verb to print out a welcome message, for example.
+
+</P>
+
+<BLOCKQUOTE>
+<P>
+<STRONG>Warning</STRONG>: If there is no <CODE>$do_login_command()</CODE> verb defined, then
+lines of input from un-logged-in connections are simply discarded.  Thus, it is
+<EM>necessary</EM> for any database to include a suitable definition for this
+verb.
+</BLOCKQUOTE>
+
+<P><HR><P>
+Go to the <A HREF="ProgrammersManual_1.html">first</A>, <A HREF="ProgrammersManual_66.html">previous</A>, <A HREF="ProgrammersManual_68.html">next</A>, <A HREF="ProgrammersManual_77.html">last</A> section, <A HREF="ProgrammersManual_toc.html">table of contents</A>.
+</BODY>
+</HTML>

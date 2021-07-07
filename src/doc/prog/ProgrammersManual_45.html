@@ -1,0 +1,165 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.51
+     from ProgrammersManual.texinfo on 4 March 1997 -->
+
+<TITLE>LambdaMOO Programmer's Manual - Manipulating Lists</TITLE>
+</HEAD>
+<BODY>
+Go to the <A HREF="ProgrammersManual_1.html">first</A>, <A HREF="ProgrammersManual_44.html">previous</A>, <A HREF="ProgrammersManual_46.html">next</A>, <A HREF="ProgrammersManual_77.html">last</A> section, <A HREF="ProgrammersManual_toc.html">table of contents</A>.
+<P><HR><P>
+
+
+<H4><A NAME="SEC45" HREF="ProgrammersManual_toc.html#TOC45">Operations on Lists</A></H4>
+
+<P>
+<DL>
+<DT><U>Function:</U> int <B>length</B> <I>(list <VAR>list</VAR>)</I>
+<DD><A NAME="IDX46"></A>
+Returns the number of elements in <VAR>list</VAR>.  It is also permissible to
+pass a string to <CODE>length()</CODE>; see the description in the previous
+section.
+
+</P>
+
+<PRE>
+length({1, 2, 3})   =>   3
+length({})          =>   0
+</PRE>
+
+</DL>
+
+<P>
+<DL>
+<DT><U>Function:</U> int <B>is_member</B> <I>(<VAR>value</VAR>, list <VAR>list</VAR>)</I>
+<DD><A NAME="IDX47"></A>
+Returns true if there is an element of <VAR>list</VAR> that is completely
+indistinguishable from <VAR>value</VAR>.  This is much the same operation as
+"<CODE><VAR>value</VAR> in <VAR>list</VAR></CODE>" except that, unlike <CODE>in</CODE>, the
+<CODE>is_member()</CODE> function does not treat upper- and lower-case characters in
+strings as equal.
+
+</P>
+
+<PRE>
+"Foo" in {1, "foo", #24}            =>   2
+is_member("Foo", {1, "foo", #24})   =>   0
+is_member("Foo", {1, "Foo", #24})   =>   2
+</PRE>
+
+</DL>
+
+<P>
+<DL>
+<DT><U>Function:</U> list <B>listinsert</B> <I>(list <VAR>list</VAR>, <VAR>value</VAR> [, int <VAR>index</VAR>])</I>
+<DD><A NAME="IDX48"></A>
+<DT><U>Function:</U> list <B>listappend</B> <I>(list <VAR>list</VAR>, <VAR>value</VAR> [, int <VAR>index</VAR>])</I>
+<DD><A NAME="IDX49"></A>
+These functions return a copy of <VAR>list</VAR> with <VAR>value</VAR> added as a new
+element.  <CODE>listinsert()</CODE> and <CODE>listappend()</CODE> add <VAR>value</VAR> before
+and after (respectively) the existing element with the given <VAR>index</VAR>, if
+provided.
+
+</P>
+<P>
+The following three expressions always have the same value:
+
+</P>
+
+<PRE>
+listinsert(<VAR>list</VAR>, <VAR>element</VAR>, <VAR>index</VAR>)
+listappend(<VAR>list</VAR>, <VAR>element</VAR>, <VAR>index</VAR> - 1)
+{@<VAR>list</VAR>[1..<VAR>index</VAR> - 1], <VAR>element</VAR>, @<VAR>list</VAR>[<VAR>index</VAR>..length(<VAR>list</VAR>)]}
+</PRE>
+
+<P>
+If <VAR>index</VAR> is not provided, then <CODE>listappend()</CODE> adds the <VAR>value</VAR>
+at the end of the list and <CODE>listinsert()</CODE> adds it at the beginning; this
+usage is discouraged, however, since the same intent can be more clearly
+expressed using the list-construction expression, as shown in the examples
+below.
+
+</P>
+
+<PRE>
+x = {1, 2, 3};
+listappend(x, 4, 2)   =>   {1, 2, 4, 3}
+listinsert(x, 4, 2)   =>   {1, 4, 2, 3}
+listappend(x, 4)      =>   {1, 2, 3, 4}
+listinsert(x, 4)      =>   {4, 1, 2, 3}
+{@x, 4}               =>   {1, 2, 3, 4}
+{4, @x}               =>   {4, 1, 2, 3}
+</PRE>
+
+</DL>
+
+<P>
+<DL>
+<DT><U>Function:</U> list <B>listdelete</B> <I>(list <VAR>list</VAR>, int <VAR>index</VAR>)</I>
+<DD><A NAME="IDX50"></A>
+Returns a copy of <VAR>list</VAR> with the <VAR>index</VAR>th element removed.  If
+<VAR>index</VAR> is not in the range <CODE>[1..length(<VAR>list</VAR>)]</CODE>, then
+<CODE>E_RANGE</CODE> is raised.
+
+</P>
+
+<PRE>
+x = {"foo", "bar", "baz"};
+listdelete(x, 2)   =>   {"foo", "baz"}
+</PRE>
+
+</DL>
+
+<P>
+<DL>
+<DT><U>Function:</U> list <B>listset</B> <I>(list <VAR>list</VAR>, <VAR>value</VAR>, int <VAR>index</VAR>)</I>
+<DD><A NAME="IDX51"></A>
+Returns a copy of <VAR>list</VAR> with the <VAR>index</VAR>th element replaced by
+<VAR>value</VAR>.  If <VAR>index</VAR> is not in the range
+<CODE>[1..length(<VAR>list</VAR>)]</CODE>, then <CODE>E_RANGE</CODE> is raised.
+
+</P>
+
+<PRE>
+x = {"foo", "bar", "baz"};
+listset(x, "mumble", 2)   =>   {"foo", "mumble", "baz"}
+</PRE>
+
+<P>
+This function exists primarily for historical reasons; it was used heavily
+before the server supported indexed assignments like <CODE>x[i] = v</CODE>.  New code
+should always use indexed assignment instead of <SAMP>`listset()'</SAMP> wherever
+possible.
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> list <B>setadd</B> <I>(list <VAR>list</VAR>, <VAR>value</VAR>)</I>
+<DD><A NAME="IDX52"></A>
+<DT><U>Function:</U> list <B>setremove</B> <I>(list <VAR>list</VAR>, <VAR>value</VAR>)</I>
+<DD><A NAME="IDX53"></A>
+Returns a copy of <VAR>list</VAR> with the given <VAR>value</VAR> added or removed, as
+appropriate.  <CODE>setadd()</CODE> only adds <VAR>value</VAR> if it is not already an
+element of <VAR>list</VAR>; <VAR>list</VAR> is thus treated as a mathematical set.
+<VAR>value</VAR> is added at the end of the resulting list, if at all.  Similarly,
+<CODE>setremove()</CODE> returns a list identical to <VAR>list</VAR> if <VAR>value</VAR> is not
+an element.  If <VAR>value</VAR> appears more than once in <VAR>list</VAR>, only the
+first occurrence is removed in the returned copy.
+
+</P>
+
+<PRE>
+setadd({1, 2, 3}, 3)         =>   {1, 2, 3}
+setadd({1, 2, 3}, 4)         =>   {1, 2, 3, 4}
+setremove({1, 2, 3}, 3)      =>   {1, 2}
+setremove({1, 2, 3}, 4)      =>   {1, 2, 3}
+setremove({1, 2, 3, 2}, 2)   =>   {1, 3, 2}
+</PRE>
+
+</DL>
+
+<P><HR><P>
+Go to the <A HREF="ProgrammersManual_1.html">first</A>, <A HREF="ProgrammersManual_44.html">previous</A>, <A HREF="ProgrammersManual_46.html">next</A>, <A HREF="ProgrammersManual_77.html">last</A> section, <A HREF="ProgrammersManual_toc.html">table of contents</A>.
+</BODY>
+</HTML>

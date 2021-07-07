@@ -1,0 +1,87 @@
+Patchfile:       moo-1.7.8-pAS5.patch
+Author:          Alex Stewart <stewarta@netcom.com>
+Release Date:    October 1, 1994
+Patch Version:   1.0
+Patchfile Type:  Context diff (apply using the standard unix 'patch' utility)
+Requires:        moo-1.7.8-pAS5.c.patch or pAS5.c
+Description:
+
+(This patchfile contains the first of two parts to the complete patch)
+
+This is part of a patch to the LambdaMOO (version 1.7.8) server program to add
+two builtins to the MOO programming language, to aid in timezone conversion and
+parsing within the MOO environment:  ctime_tz(<timezone> [,<time>]), which
+functions exactly like the ctime() function, except that it allows one to
+specify a timezone other than the MOO's local timezone for converting the time
+information, and mktime_tz(<timezone>, <year>, <monthnum>, <day>, <hour>,
+<min>, <sec>), which takes a broken down time specification (easily extractable
+from ctime output) and converts it into a seconds-since-1970 value or returns
+E_INVARG if the specified time is not valid for some reason.  Both functions
+are usable by any programmer, just as ctime() is (though the new
+builtin-protect mechanism in 1.7.8 allows this to be restricted).
+
+All timezone specifications here are _unix_ timezone specs (i.e. "US/Pacific"),
+and timezone conversion is dependent on those zoneinfo files available on the
+host unix system.  This patch has been tested on SunOS and Linux, but given the
+nature of many of the unix functions they employ, there may be unsuspected
+problems on other OS types that haven't been tested.  Feedback regarding your
+experiences with this patch and/or suggested changes is appreciated.
+
+Anyway, to apply this patch, simply send it through the unix 'patch' utility in
+your MOO source directory and 'make'.  This patch is in two parts.  The first
+(this) is the patch to the original server source, which installs the new
+builtins and adds pAS5.c to the Makefile.  The second part consists of pAS5.c
+itself (or a patch file which creates pAS5.c), which contains the code 
+for the builtins themselves.
+
+--- Begin Patchfile ---
+*** patchlevel  Sat Oct  1 00:00:00 1994
+--- pAS5/patchlevel     Sat Oct  1 00:00:00 1994
+****************
+*** 0 ***
+--- 1,8 ---
++ Patch pAS5:  by Alex Stewart, Oct  1, 1994
++   Modifies bf_register.h, functions.c, Makefile, and Makefile.in
++   Requires pAS5.c
++   Adds the two builtin functions ctime_tz(<timezone> [,<time>]) and 
++   mktime_tz(<timezone>, <year>, <monthnum>, <day>, <hour>, <min>, <sec>)
++   which allow full timezone conversion and parsing based on unix tzfile 
++   (timezone table) entries.
++ 
+
+NOTE:  The next bit will fail if you have not yet run the configure script for
+the MOO source code.  This is not a problem.  The patch will still function
+(assuming you proceed to run configure later).
+
+*** Makefile	Sat Oct  1 00:00:00 1994
+--- pAS5/Makefile	Sat Oct  1 00:00:00 1994
+***************
+*** 25 ****
+--- 25,26 ----
+  CSRCS = ast.c code_gen.c db_file.c db_io.c db_objects.c db_properties.c \
++ 	pAS5.c \
+*** Makefile.in Mon Mar 10 11:11:34 1997
+--- pAS5/Makefile.in       Mon Mar 10 11:13:10 1997
+***************
+*** 24 ****
+--- 24,25 ----
+  CSRCS = ast.c code_gen.c db_file.c db_io.c db_objects.c db_properties.c \
++ 	pAS5.c \
+*** bf_register.h       Mon Mar 10 11:21:42 1997
+--- pAS5/bf_register.h    Sun Nov 17 21:24:54 1996
+***************
+*** 29 ****
+--- 29,32 ----
+  extern void register_verbs(void);
++ /* Begin Patch Section (pAS5) (addition) */
++ extern void register_pAS5(void);
++ /* End Patch Section (pAS5) (addition) */
+*** functions.c	Sat Oct  1 00:00:00 1994
+--- pAS5/functions.c	Sat Oct  1 00:00:00 1994
+***************
+*** 44 ****
+--- 44,47 ----
+  static registry	bi_function_registries[] = {
++ /* Begin Patch Section (pAS5) (addition) */
++     register_pAS5,
++ /* End Patch Section (pAS5) (addition) */

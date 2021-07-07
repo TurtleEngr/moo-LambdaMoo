@@ -1,0 +1,71 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.51
+     from ProgrammersManual.texinfo on 4 March 1997 -->
+
+<TITLE>LambdaMOO Programmer's Manual - Programming</TITLE>
+</HEAD>
+<BODY>
+Go to the <A HREF="ProgrammersManual_1.html">first</A>, <A HREF="ProgrammersManual_58.html">previous</A>, <A HREF="ProgrammersManual_60.html">next</A>, <A HREF="ProgrammersManual_77.html">last</A> section, <A HREF="ProgrammersManual_toc.html">table of contents</A>.
+<P><HR><P>
+
+
+<H3><A NAME="SEC59" HREF="ProgrammersManual_toc.html#TOC59">Programming</A></H3>
+
+<P>
+The <CODE>.program</CODE> command is a common way for programmers to associate a
+particular MOO-code program with a particular verb.  It has the following
+syntax:
+
+</P>
+
+<PRE>
+.program <VAR>object</VAR>:<VAR>verb</VAR>
+...<VAR>several lines of MOO code</VAR>...
+.
+</PRE>
+
+<P>
+That is, after typing the <CODE>.program</CODE> command, then all lines of input from
+the player are considered to be a part of the MOO program being defined.  This
+ends as soon as the player types a line containing only a dot (<SAMP>`.'</SAMP>).  When
+that line is received, the accumulated MOO program is checked for proper MOO
+syntax and, if correct, associated with the named verb.
+
+</P>
+<P>
+If, at the time the line containing only a dot is processed, (a) the player is
+not a programmer, (b) the player does not have write permission on the named
+verb, or (c) the property <CODE>$server_options.protect_set_verb_code</CODE> exists
+and has a true value and the player is not a wizard, then an error message is
+printed and the named verb's program is not changed.
+
+</P>
+<P>
+In the <CODE>.program</CODE> command, <VAR>object</VAR> may have one of three forms:
+
+</P>
+
+<UL>
+<LI>
+
+The name of some object visible to the player.  This is exactly like the kind
+of matching done by the server for the direct and indirect objects of ordinary
+commands.  See the chapter on command parsing for details.  Note that the
+special names <SAMP>`me'</SAMP> and <SAMP>`here'</SAMP> may be used.
+
+<LI>
+
+An object number, in the form <CODE>#<VAR>number</VAR></CODE>.
+
+<LI>
+
+A <STRONG>system property</STRONG> (that is, a property on <CODE>#0</CODE>), in the form
+<CODE>$<VAR>name</VAR></CODE>.  In this case, the current value of <CODE>#0.<VAR>name</VAR></CODE>
+must be a valid object.
+</UL>
+
+<P><HR><P>
+Go to the <A HREF="ProgrammersManual_1.html">first</A>, <A HREF="ProgrammersManual_58.html">previous</A>, <A HREF="ProgrammersManual_60.html">next</A>, <A HREF="ProgrammersManual_77.html">last</A> section, <A HREF="ProgrammersManual_toc.html">table of contents</A>.
+</BODY>
+</HTML>

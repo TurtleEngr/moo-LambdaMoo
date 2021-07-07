@@ -1,0 +1,76 @@
+Patchfile:       moo-1.8.0-FUP.patch
+Author:          Eric Mercer <mercer@du.org>
+Release Date:    March 10, 1997
+Patch Version:   1.0
+Patchfile Type:  Context diff (apply using the standard unix 'patch' utility)
+Requires:        files.c
+Description:
+
+This is just a patch utility version of the instructions from the 
+FUP-1.8.0 file FUP.readme, from the FUP package available at:
+  ftp://bioinfo.weizmann.ac.il/pub/software/MOOsupport/FUP/
+It can be applied using:
+  patch -l <  moo-1.8.0-FUP.patch
+when in the LambdaMOO source files directory.  Please see the FUP package 
+documentation for more details.
+
+--- Begin Patchfile ---
+*** patchlevel		Mon Mar 10 00:00:00 1997
+---FUP/patchlevel	Mon Mar 10 00:00:00 1997
+****************
+*** 0 ***
+--- 1,5 ---
++ Patch FUP:  by Jaime Prilusky and Gustavo Glusman, Mar 10, 1997
++  Adds various UNIX file reading and writing functions to the MOO server.
++   See the FUP package documentation for more details.
++   ftp://bioinfo.weizmann.ac.il/pub/software/MOOsupport/FUP/
++
+*** Makefile		Mon Mar 10 00:00:00 1997
+--- FUP/Makefile	Mon Mar 10 00:00:00 1997
+***************
+*** 25 ****
+--- 25,26 ----
+  CSRCS = ast.c code_gen.c db.c db_property.c db_verb.c disassemble.c \
++ 	files.c \
+*** Makefile.in		Mon Mar 10 00:00:00 1997
+--- FUP/Makefile.in	Mon Mar 10 00:00:00 1997
+***************
+*** 24 ****
+--- 24,25 ----
+  CSRCS = ast.c code_gen.c db.c db_property.c db_verb.c disassemble.c \
++ 	files.c \
+***************
+*** 320 ****
+--- 320,323 ----
++ files.o : files.c my-stdarg.h config.h functions.h my-stdio.h bf_register.h \
++   execute.h opcode.h options.h program.h structures.h log.h server.h \
++   network.h storage.h streams.h utils.h
+  extensions.o : extensions.c bf_register.h functions.h my-stdio.h config.h my-types.h \
+*** bf_register.h	Mon Mar 10 00:00:00 1997
+--- FUP/bf_register.h	Mon Mar 10 00:00:00 1997
+***************
+*** 29 ****
+--- 29,30 ----
+  extern void register_verbs(void);
++ extern void register_files(void);
+*** version.c		Mon Mar 10 00:00:00 1997
+--- FUP/version.c	Mon Mar 10 00:00:00 1997
+***************
+*** 44 ****
+--- 44,45 ----
++ const char     *FUP_version = "1.8";
+  const char     *server_version = "1.8.0p6";
+*** server.c		Mon Mar 10 00:00:00 1997
+--- FUP/server.c	Mon Mar 10 00:00:00 1997
+***************
+*** 1232 ****
+--- 1232,1233 ----
+      oklog("          (Using %s protocol)\n", network_protocol_name());
++     oklog("          (Using File Utilities Package version %s)\n", FUP_version);
+*** functions.c		Mon Mar 10 00:00:00 1997
+--- FUP/functions.c	Mon Mar 10 00:00:00 1997
+***************
+*** 44 ****
+--- 44,45 ----
+  static registry bi_function_registries[] = {
++ 	register_files,
