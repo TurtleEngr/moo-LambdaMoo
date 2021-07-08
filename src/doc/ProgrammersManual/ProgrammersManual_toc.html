@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <!-- This HTML file has been created by texi2html 1.51
+     from ProgrammersManual.texinfo on 4 March 1997 -->
+  <title>LambdaMOO Programmer's Manual - Table of Contents</title>
+  <!-- Changed by: Erik Ostrom, 18-Mar-1997 -->
+</head>
+<body>
+  <h1>LambdaMOO Programmer's Manual</h1>
+  <h2>For LambdaMOO Version 1.8.0p6</h2>
+  <h2>March 1997</h2>
+  <address>
+    by Pavel Curtis
+  </address>
+  <address>
+    aka Haakon
+  </address>
+  <address>
+    aka Lambda
+  </address>
+  <hr />
+  <ul>
+    <li>
+      <a name="TOC1"
+          href="ProgrammersManual.html#SEC1"
+          id="TOC1">Introduction</a>
+    </li>
+    <li>
+      <a name="TOC2"
+          href="ProgrammersManual.html#SEC2"
+          id="TOC2">The LambdaMOO Database</a>
+      <ul>
+        <li>
+          <a name="TOC3"
+              href="ProgrammersManual.html#SEC3"
+              id="TOC3">MOO Value Types</a>
+        </li>
+        <li>
+          <a name="TOC4"
+              href="ProgrammersManual.html#SEC4"
+              id="TOC4">Objects in the MOO Database</a>
+          <ul>
+            <li>
+              <a name="TOC5"
+                  href="ProgrammersManual.html#SEC5"
+                  id="TOC5">Fundamental Object Attributes</a>
+            </li>
+            <li>
+              <a name="TOC6"
+                  href="ProgrammersManual.html#SEC6"
+                  id="TOC6">Properties on Objects</a>
+            </li>
+            <li>
+              <a name="TOC7"
+                  href="ProgrammersManual.html#SEC7"
+                  id="TOC7">Verbs on Objects</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <a name="TOC8"
+          href="ProgrammersManual.html#SEC8"
+          id="TOC8">The Built-in Command Parser</a>
+    </li>
+    <li>
+      <a name="TOC9"
+          href="ProgrammersManual.html#SEC9"
+          id="TOC9">The MOO Programming Language</a>
+      <ul>
+        <li>
+          <a name="TOC10"
+              href="ProgrammersManual.html#SEC10"
+              id="TOC10">MOO Language Expressions</a>
+          <ul>
+            <li>
+              <a name="TOC11"
+                  href="ProgrammersManual.html#SEC11"
+                  id="TOC11">Errors While Evaluating Expressions</a>
+            </li>
+            <li>
+              <a name="TOC12"
+                  href="ProgrammersManual.html#SEC12"
+                  id="TOC12">Writing Values Directly in Verbs</a>
+            </li>
+            <li>
+              <a name="TOC13"
+                  href="ProgrammersManual.html#SEC13"
+                  id="TOC13">Naming Values Within a Verb</a>
+            </li>
+            <li>
+              <a name="TOC14"
+                  href="ProgrammersManual.html#SEC14"
+                  id="TOC14">Arithmetic Operators</a>
+            </li>
+            <li>
+              <a name="TOC15"
+                  href="ProgrammersManual.html#SEC15"
+                  id="TOC15">Comparing Values</a>
+            </li>
+            <li>
+              <a name="TOC16"
+                  href="ProgrammersManual.html#SEC16"
+                  id="TOC16">Values as True and False</a>
+            </li>
+            <li>
+              <a name="TOC17"
+                  href="ProgrammersManual.html#SEC17"
+                  id="TOC17">Indexing into Lists and Strings</a>
+              <ul>
+                <li>
+                  <a name="TOC18"
+                      href="ProgrammersManual.html#SEC18"
+                      id="TOC18">Extracting an Element from a List or
+                      String</a>
+                </li>
+                <li>
+                  <a name="TOC19"
+                      href="ProgrammersManual.html#SEC19"
+                      id="TOC19">Replacing an Element of a List or String</a>
+                </li>
+                <li>
+                  <a name="TOC20"
+                      href="ProgrammersManual.html#SEC20"
+                      id="TOC20">Extracting a Subsequence of a List or
+                      String</a>
+                </li>
+                <li>
+                  <a name="TOC21"
+                      href="ProgrammersManual.html#SEC21"
+                      id="TOC21">Replacing a Subsequence of a List or
+                      String</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a name="TOC22"
+                  href="ProgrammersManual.html#SEC22"
+                  id="TOC22">Other Operations on Lists</a>
+            </li>
+            <li>
+              <a name="TOC23"
+                  href="ProgrammersManual.html#SEC23"
+                  id="TOC23">Spreading List Elements Among Variables</a>
+            </li>
+            <li>
+              <a name="TOC24"
+                  href="ProgrammersManual.html#SEC24"
+                  id="TOC24">Getting and Setting the Values of Properties</a>
+            </li>
+            <li>
+              <a name="TOC25"
+                  href="ProgrammersManual.html#SEC25"
+                  id="TOC25">Calling Built-in Functions and Other Verbs</a>
+            </li>
+            <li>
+              <a name="TOC26"
+                  href="ProgrammersManual.html#SEC26"
+                  id="TOC26">Catching Errors in Expressions</a>
+            </li>
+            <li>
+              <a name="TOC27"
+                  href="ProgrammersManual.html#SEC27"
+                  id="TOC27">Parentheses and Operator Precedence</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a name="TOC28"
+              href="ProgrammersManual.html#SEC28"
+              id="TOC28">MOO Language Statements</a>
+          <ul>
+            <li>
+              <a name="TOC29"
+                  href="ProgrammersManual.html#SEC29"
+                  id="TOC29">Errors While Executing Statements</a>
+            </li>
+            <li>
+              <a name="TOC30"
+                  href="ProgrammersManual.html#SEC30"
+                  id="TOC30">Simple Statements</a>
+            </li>
+            <li>
+              <a name="TOC31"
+                  href="ProgrammersManual.html#SEC31"
+                  id="TOC31">Statements for Testing Conditions</a>
+            </li>
+            <li>
+              <a name="TOC32"
+                  href="ProgrammersManual.html#SEC32"
+                  id="TOC32">Statements for Looping</a>
+            </li>
+            <li>
+              <a name="TOC33"
+                  href="ProgrammersManual.html#SEC33"
+                  id="TOC33">Terminating One or All Iterations of a Loop</a>
+            </li>
+            <li>
+              <a name="TOC34"
+                  href="ProgrammersManual.html#SEC34"
+                  id="TOC34">Returning a Value from a Verb</a>
+            </li>
+            <li>
+              <a name="TOC35"
+                  href="ProgrammersManual.html#SEC35"
+                  id="TOC35">Handling Errors in Statements</a>
+            </li>
+            <li>
+              <a name="TOC36"
+                  href="ProgrammersManual.html#SEC36"
+                  id="TOC36">Cleaning Up After Errors</a>
+            </li>
+            <li>
+              <a name="TOC37"
+                  href="ProgrammersManual.html#SEC37"
+                  id="TOC37">Executing Statements at a Later Time</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a name="TOC38"
+              href="ProgrammersManual.html#SEC38"
+              id="TOC38">MOO Tasks</a>
+        </li>
+        <li>
+          <a name="TOC39"
+              href="ProgrammersManual.html#SEC39"
+              id="TOC39">Built-in Functions</a>
+          <ul>
+            <li>
+              <a name="TOC40"
+                  href="ProgrammersManual.html#SEC40"
+                  id="TOC40">Object-Oriented Programming</a>
+            </li>
+            <li>
+              <a name="TOC41"
+                  href="ProgrammersManual.html#SEC41"
+                  id="TOC41">Manipulating MOO Values</a>
+              <ul>
+                <li>
+                  <a name="TOC42"
+                      href="ProgrammersManual.html#SEC42"
+                      id="TOC42">General Operations Applicable to all
+                      Values</a>
+                </li>
+                <li>
+                  <a name="TOC43"
+                      href="ProgrammersManual.html#SEC43"
+                      id="TOC43">Operations on Numbers</a>
+                </li>
+                <li>
+                  <a name="TOC44"
+                      href="ProgrammersManual.html#SEC44"
+                      id="TOC44">Operations on Strings</a>
+                </li>
+                <li>
+                  <a name="TOC45"
+                      href="ProgrammersManual.html#SEC45"
+                      id="TOC45">Operations on Lists</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a name="TOC46"
+                  href="ProgrammersManual.html#SEC46"
+                  id="TOC46">Manipulating Objects</a>
+              <ul>
+                <li>
+                  <a name="TOC47"
+                      href="ProgrammersManual.html#SEC47"
+                      id="TOC47">Fundamental Operations on Objects</a>
+                </li>
+                <li>
+                  <a name="TOC48"
+                      href="ProgrammersManual.html#SEC48"
+                      id="TOC48">Object Movement</a>
+                </li>
+                <li>
+                  <a name="TOC49"
+                      href="ProgrammersManual.html#SEC49"
+                      id="TOC49">Operations on Properties</a>
+                </li>
+                <li>
+                  <a name="TOC50"
+                      href="ProgrammersManual.html#SEC50"
+                      id="TOC50">Operations on Verbs</a>
+                </li>
+                <li>
+                  <a name="TOC51"
+                      href="ProgrammersManual.html#SEC51"
+                      id="TOC51">Operations on Player Objects</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a name="TOC52"
+                  href="ProgrammersManual.html#SEC52"
+                  id="TOC52">Operations on Network Connections</a>
+            </li>
+            <li>
+              <a name="TOC53"
+                  href="ProgrammersManual.html#SEC53"
+                  id="TOC53">Operations Involving Times and Dates</a>
+            </li>
+            <li>
+              <a name="TOC54"
+                  href="ProgrammersManual.html#SEC54"
+                  id="TOC54">MOO-Code Evaluation and Task Manipulation</a>
+            </li>
+            <li>
+              <a name="TOC55"
+                  href="ProgrammersManual.html#SEC55"
+                  id="TOC55">Administrative Operations</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <a name="TOC56"
+          href="ProgrammersManual.html#SEC56"
+          id="TOC56">Server Commands and Database Assumptions</a>
+      <ul>
+        <li>
+          <a name="TOC57"
+              href="ProgrammersManual.html#SEC57"
+              id="TOC57">Built-in Commands</a>
+          <ul>
+            <li>
+              <a name="TOC58"
+                  href="ProgrammersManual.html#SEC58"
+                  id="TOC58">Command-Output Delimiters</a>
+            </li>
+            <li>
+              <a name="TOC59"
+                  href="ProgrammersManual.html#SEC59"
+                  id="TOC59">Programming</a>
+            </li>
+            <li>
+              <a name="TOC60"
+                  href="ProgrammersManual.html#SEC60"
+                  id="TOC60">Flushing Unprocessed Input</a>
+            </li>
+            <li>
+              <a name="TOC61"
+                  href="ProgrammersManual.html#SEC61"
+                  id="TOC61">Initial Punctuation in Commands</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a name="TOC62"
+              href="ProgrammersManual.html#SEC62"
+              id="TOC62">Server Assumptions About the Database</a>
+          <ul>
+            <li>
+              <a name="TOC63"
+                  href="ProgrammersManual.html#SEC63"
+                  id="TOC63">Server Options Set in the Database</a>
+            </li>
+            <li>
+              <a name="TOC64"
+                  href="ProgrammersManual.html#SEC64"
+                  id="TOC64">Server Messages Set in the Database</a>
+            </li>
+            <li>
+              <a name="TOC65"
+                  href="ProgrammersManual.html#SEC65"
+                  id="TOC65">Checkpointing the Database</a>
+            </li>
+            <li>
+              <a name="TOC66"
+                  href="ProgrammersManual.html#SEC66"
+                  id="TOC66">Accepting and Initiating Network Connections</a>
+            </li>
+            <li>
+              <a name="TOC67"
+                  href="ProgrammersManual.html#SEC67"
+                  id="TOC67">Associating Network Connections with Players</a>
+            </li>
+            <li>
+              <a name="TOC68"
+                  href="ProgrammersManual.html#SEC68"
+                  id="TOC68">Out-of-Band Commands</a>
+            </li>
+            <li>
+              <a name="TOC69"
+                  href="ProgrammersManual.html#SEC69"
+                  id="TOC69">The First Tasks Run By the Server</a>
+            </li>
+            <li>
+              <a name="TOC70"
+                  href="ProgrammersManual.html#SEC70"
+                  id="TOC70">Controlling the Execution of Tasks</a>
+            </li>
+            <li>
+              <a name="TOC71"
+                  href="ProgrammersManual.html#SEC71"
+                  id="TOC71">Controlling the Handling of Aborted Tasks</a>
+            </li>
+            <li>
+              <a name="TOC72"
+                  href="ProgrammersManual.html#SEC72"
+                  id="TOC72">Matching in Command Parsing</a>
+            </li>
+            <li>
+              <a name="TOC73"
+                  href="ProgrammersManual.html#SEC73"
+                  id="TOC73">Restricting Access to Built-in Properties and
+                  Functions</a>
+            </li>
+            <li>
+              <a name="TOC74"
+                  href="ProgrammersManual.html#SEC74"
+                  id="TOC74">Creating and Recycling Objects</a>
+            </li>
+            <li>
+              <a name="TOC75"
+                  href="ProgrammersManual.html#SEC75"
+                  id="TOC75">Object Movement</a>
+            </li>
+            <li>
+              <a name="TOC76"
+                  href="ProgrammersManual.html#SEC76"
+                  id="TOC76">Temporarily Enabling Obsolete Server
+                  Features</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <a name="TOC77"
+          href="ProgrammersManual.html#SEC77"
+          id="TOC77">Function Index</a>
+    </li>
+  </ul>
+  <hr />
+  <p>This document was generated on 4 March 1997 using the <a href=
+  "http://wwwcn.cern.ch/dci/texi2html/">texi2html</a> translator version
+  1.51.</p>
+</body>
+</html>

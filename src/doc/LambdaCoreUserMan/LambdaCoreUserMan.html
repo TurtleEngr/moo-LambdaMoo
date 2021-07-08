@@ -1,0 +1,4391 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <!-- Created by texi2html 1.56k from LambdaCoreUserMan.texinfo on 25 August 1999 -->
+  <title>LambdaCore Database User's Manual</title>
+</head>
+<body>
+  <h1>LambdaCore Database User's Manual</h1>
+  <h2>For LambdaMOO version 1.3</h2>
+  <h2>April 1991</h2>
+  <address>
+    Mike Prudence (blip)
+  </address>
+  <address>
+    Simon Hunt (Ezeke)
+  </address>
+  <address>
+    Floyd Moore (Phantom)
+  </address>
+  <address>
+    Kelly Larson (Zaphod)
+  </address>
+  <address>
+    Al Harrington (geezer)
+  </address>
+  <hr />
+  <h2>Table of Contents</h2>
+  <ul>
+    <li>
+      <a name="TOC1"
+          href="LambdaCoreUserMan.html#SEC1"
+          id="TOC1">Introduction</a>
+    </li>
+    <li>
+      <a name="TOC2"
+          href="LambdaCoreUserMan.html#SEC2"
+          id="TOC2">The LambdaCore Player Commands</a>
+    </li>
+    <li>
+      <a name="TOC3"
+          href="LambdaCoreUserMan.html#SEC3"
+          id="TOC3">Commands That Affect Your Player</a>
+    </li>
+    <li>
+      <a name="TOC4"
+          href="LambdaCoreUserMan.html#SEC4"
+          id="TOC4">Exploring and Interacting With the Virtual World</a>
+      <ul>
+        <li>
+          <a name="TOC5"
+              href="LambdaCoreUserMan.html#SEC5"
+              id="TOC5">Movement</a>
+        </li>
+        <li>
+          <a name="TOC6"
+              href="LambdaCoreUserMan.html#SEC6"
+              id="TOC6">Commands for Manipulating Objects</a>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <a name="TOC7"
+          href="LambdaCoreUserMan.html#SEC7"
+          id="TOC7">Interacting With Other Players</a>
+      <ul>
+        <li>
+          <a name="TOC8"
+              href="LambdaCoreUserMan.html#SEC8"
+              id="TOC8">Communicating With Other Players</a>
+        </li>
+        <li>
+          <a name="TOC9"
+              href="LambdaCoreUserMan.html#SEC9"
+              id="TOC9">Gagging - How to Ignore Other Players and Objects</a>
+        </li>
+        <li>
+          <a name="TOC10"
+              href="LambdaCoreUserMan.html#SEC10"
+              id="TOC10">Communicating With The Game Administrators</a>
+        </li>
+        <li>
+          <a name="TOC11"
+              href="LambdaCoreUserMan.html#SEC11"
+              id="TOC11">Locating Other Players in the Virtual World</a>
+        </li>
+        <li>
+          <a name="TOC12"
+              href="LambdaCoreUserMan.html#SEC12"
+              id="TOC12">Checking the Security of Your Communication</a>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <a name="TOC13"
+          href="LambdaCoreUserMan.html#SEC13"
+          id="TOC13">Using Pronoun Substitutions</a>
+    </li>
+    <li>
+      <a name="TOC14"
+          href="LambdaCoreUserMan.html#SEC14"
+          id="TOC14">The MOO Mail System</a>
+      <ul>
+        <li>
+          <a name="TOC15"
+              href="LambdaCoreUserMan.html#SEC15"
+              id="TOC15">Mail Options</a>
+          <ul>
+            <li>
+              <a name="TOC16"
+                  href="LambdaCoreUserMan.html#SEC16"
+                  id="TOC16">.mail_forward</a>
+            </li>
+            <li>
+              <a name="TOC17"
+                  href="LambdaCoreUserMan.html#SEC17"
+                  id="TOC17">.mail_notify</a>
+            </li>
+            <li>
+              <a name="TOC18"
+                  href="LambdaCoreUserMan.html#SEC18"
+                  id="TOC18">.mail_options</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <a name="TOC19"
+          href="LambdaCoreUserMan.html#SEC19"
+          id="TOC19">Building and Creating Objects</a>
+      <ul>
+        <li>
+          <a name="TOC20"
+              href="LambdaCoreUserMan.html#SEC20"
+              id="TOC20">Rooms and Exits</a>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <a name="TOC21"
+          href="LambdaCoreUserMan.html#SEC21"
+          id="TOC21">Notes and Letters</a>
+      <ul>
+        <li>
+          <a name="TOC22"
+              href="LambdaCoreUserMan.html#SEC22"
+              id="TOC22">Using Notes</a>
+        </li>
+        <li>
+          <a name="TOC23"
+              href="LambdaCoreUserMan.html#SEC23"
+              id="TOC23">Using Letters</a>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <a name="TOC24"
+          href="LambdaCoreUserMan.html#SEC24"
+          id="TOC24">Using Containers</a>
+    </li>
+    <li>
+      <a name="TOC25"
+          href="LambdaCoreUserMan.html#SEC25"
+          id="TOC25">Messages on Objects</a>
+      <ul>
+        <li>
+          <a name="TOC26"
+              href="LambdaCoreUserMan.html#SEC26"
+              id="TOC26">Setting Messages for Exits</a>
+        </li>
+        <li>
+          <a name="TOC27"
+              href="LambdaCoreUserMan.html#SEC27"
+              id="TOC27">Setting Messages for Things</a>
+        </li>
+        <li>
+          <a name="TOC28"
+              href="LambdaCoreUserMan.html#SEC28"
+              id="TOC28">Setting Messages for Containers</a>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <a name="TOC29"
+          href="LambdaCoreUserMan.html#SEC29"
+          id="TOC29">Using Locks With Objects</a>
+      <ul>
+        <li>
+          <a name="TOC30"
+              href="LambdaCoreUserMan.html#SEC30"
+              id="TOC30">Keys</a>
+          <ul>
+            <li>
+              <a name="TOC31"
+                  href="LambdaCoreUserMan.html#SEC31"
+                  id="TOC31">Key Representation</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <a name="TOC32"
+          href="LambdaCoreUserMan.html#SEC32"
+          id="TOC32">The MOO Editor</a>
+      <ul>
+        <li>
+          <a name="TOC33"
+              href="LambdaCoreUserMan.html#SEC33"
+              id="TOC33">Editor Ranges</a>
+        </li>
+        <li>
+          <a name="TOC34"
+              href="LambdaCoreUserMan.html#SEC34"
+              id="TOC34">Editor Commands</a>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <a name="TOC35"
+          href="LambdaCoreUserMan.html#SEC35"
+          id="TOC35">Dealing with Verbs and Properties</a>
+      <ul>
+        <li>
+          <a name="TOC36"
+              href="LambdaCoreUserMan.html#SEC36"
+              id="TOC36">Dealing with Verbs</a>
+          <ul>
+            <li>
+              <a name="TOC37"
+                  href="LambdaCoreUserMan.html#SEC37"
+                  id="TOC37">Prepositions</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a name="TOC38"
+              href="LambdaCoreUserMan.html#SEC38"
+              id="TOC38">Dealing with Properties</a>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <a name="TOC39"
+          href="LambdaCoreUserMan.html#SEC39"
+          id="TOC39">Using Tasks</a>
+    </li>
+    <li>
+      <a name="TOC40"
+          href="LambdaCoreUserMan.html#SEC40"
+          id="TOC40">Miscellaneous</a>
+    </li>
+    <li>
+      <a name="TOC41"
+          href="LambdaCoreUserMan.html#SEC41"
+          id="TOC41">Verb Index</a>
+    </li>
+  </ul>
+  <hr />
+  <p>Copyright (C) 1991 Mike Prudence, Simon Hunt, Floyd Moore, Kelly Larson,
+  Al Harrington.</p>
+  <p>Copies of the electronic source for this document can be obtained using
+  anonymous FTP on the Internet. At the site <code>belch.berkeley.edu</code>
+  the files are <code>pub/moo/LambdaMOO/LamdaCoreManual.*</code>; several
+  different file formats are provided, including Texinfo, plain text, and
+  Postscript.</p>
+  <p>Permission is granted to make and distribute verbatim copies of this
+  manual provided the copyright notice and this permission notice are
+  preserved on all copies.</p>
+  <p>Permission is granted to copy and distribute modified versions of this
+  manual under the conditions for verbatim copying, provided that the entire
+  resulting derived work is distributed under the terms of a permission
+  notice identical to this one.</p>
+  <p>Permission is granted to copy and distribute translations of this manual
+  into another language, under the above conditions for modified versions,
+  except that this permission notice may be stated in a translation approved
+  by the author.</p>
+  <h1><a name="SEC1"
+     href="LambdaCoreUserMan_toc.html#TOC1"
+     id="SEC1">Introduction</a></h1>
+  <p>The LambdaCore database provides the facilities needed to make a
+  LambdaMOO server useful for Multi User Adventuring. If you compare the
+  LambdaMOO server to a piece of computer hardware, then LambdaCore is the
+  operating system needed to allow the user to do useful work.</p>
+  <p>This document gives a rundown on the commands of the LambdaCore
+  database, providing examples of how they are used, and some of the ideas
+  behind them. It does not cover how the commands work, nor how they are
+  implemented as verbs in the MOO programming language. A companion manual,
+  <strong>The LambdaCore Programmer's Manual</strong> covers those aspects of
+  the LambdaCore database.</p>
+  <p>The user may find it useful to read the other companion manual to this
+  one, <em>The LambdaMOO Programmer's Manual</em>. An understanding of MOO
+  concepts and the MOO language can be useful when playing the game.</p>
+  <h1><a name="SEC2"
+     href="LambdaCoreUserMan_toc.html#TOC2"
+     id="SEC2">The LambdaCore Player Commands</a></h1>
+  <p>A player interacts with the game using a large number of commands. Most
+  of these commands are implemented within the database as verbs of object
+  classes.</p>
+  <p>The following sections list the commands in the LambdaCore database,
+  grouped roughly by function. Some commands, such as those used for
+  manipulating notes, are defined by the particular class of object they work
+  on, in this case the <code>Note</code> class. Other commands are defined
+  for one or more classes.</p>
+  <p>This section intends to give a paper reference for the information given
+  in the <em>help</em> system within the LambdaCore database, with some
+  additional explanation of the concepts involved.</p>
+  <p>Note that, for commands that can be abbreviated, the form in which the
+  command is specified in the database is shown. For example, the
+  <code>inventory</code> command is written down as</p>
+  <pre>
+i*nventory
+</pre>
+  <p>which means that this command can be invoked by the player typing any of
+  the following:</p>
+  <pre>
+i
+in
+inv
+inven
+etc...
+</pre>
+  <h1><a name="SEC3"
+     href="LambdaCoreUserMan_toc.html#TOC3"
+     id="SEC3">Commands That Affect Your Player</a></h1>
+  <p>The <code>$player</code> class defines a number of verbs that allow the
+  player to change and view certain of his/her characteristics. The following
+  commands are available :</p>
+  <dl>
+    <dt><u>Command:</u> <b>help/information/?</b></dt>
+    <dd>
+      <a name="IDX1"
+          id="IDX1"></a>
+    </dd>
+    <dt><u>Command:</u> <b>help</b> <i><var>topic</var></i></dt>
+    <dd>
+      <a name="IDX2"
+          id="IDX2"></a>
+    </dd>
+    <dt><u>Command:</u> <b>help</b> <i><strong>index</strong></i></dt>
+    <dd>
+      <a name="IDX3"
+          id="IDX3"></a>
+    </dd>
+    <dt><u>Command:</u> <b>help</b> <i><var>object:verbname</var></i></dt>
+    <dd>
+      <a name="IDX4"
+          id="IDX4"></a>
+    </dd>
+    <dt><u>Command:</u> <b>help</b> <i>$<var>something</var>_utils</i></dt>
+    <dd>
+      <a name="IDX5"
+          id="IDX5"></a>
+      <p>This command is used to print out entries from the online
+      documentation system. The first form prints out a summary table of
+      contents for the entire help system.</p>
+      <p>The second form prints out the documentation available on the given
+      <var>topic</var>. Many help system entries contain references to other
+      entries accessible in this way. The topic name may be abbreviated in
+      either of two ways: you may give only a prefix of the complete topic
+      name (e.g., <samp>`bui'</samp> instead of <samp>`building'</samp>) and
+      you may omit an initial <samp>`@'</samp> character (e.g.,
+      <samp>`who'</samp> instead of <samp>`@who'</samp>). If the abbreviation
+      you give is ambiguous, you will be presented with a list of the
+      matching complete topic names.</p>
+      <p>The <samp>`help index'</samp> commands prints out a complete list of
+      all help topic names, arranged alphabetically. It is sometimes easier
+      to find the topics you're interested in this way, rather than tracing
+      through the chain of cross references.</p>
+      <p>Finally, we have two addtional forms that are likely to be only of
+      use to programmers:</p>
+      <pre>
+help <var>object:verbname</var>
+</pre>
+      <p>This is used to print any documentation strings that are present at
+      the beginning of the program for that verb.</p>
+      <pre>
+help $<var>foo_utils</var>
+</pre>
+      <p>prints general information about one of the <code>$..._utils</code>
+      objects (e.g., <code>$string_utils</code>, <code>$list_utils</code>,
+      etc...), which are all libraries of generally used verbs.</p>
+      <p>The commands <samp>`?'</samp> and <samp>`information'</samp>
+      (usually abbreviated <samp>`info'</samp>) are synonyms for
+      <samp>`help'</samp>.</p>
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>@quit</b></dt>
+    <dd>
+      <a name="IDX6"
+          id="IDX6"></a> This command is used to disconnect from the MOO.
+          This breaks your network connection and leaves your player
+          sleeping. Disconnecting in most parts of the MOO automatically
+          returns your player to its designated home.
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>@gender</b> <i><var>gender</var></i></dt>
+    <dd>
+      <a name="IDX7"
+          id="IDX7"></a>
+    </dd>
+    <dt><u>Command:</u> <b>@gender</b></dt>
+    <dd>
+      <a name="IDX8"
+          id="IDX8"></a>
+      <p>The first form, with an argument, defines your player to have the
+      gender <var>gender</var>. If <var>gender</var> is one of the standard
+      genders (e.g., <samp>`male'</samp>, <samp>`female'</samp>,
+      <samp>`neuter'</samp>,...), your various pronouns will also be set
+      appropriately, making exits and certain other objects behave more
+      pleasantly for you.</p>
+      <p>The second form tells you the current definition of your player's
+      gender, your current pronouns, and the complete list of standard
+      genders.</p>
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>@password</b> <i><var>old-password</var>
+    <var>new-password</var></i></dt>
+    <dd>
+      <a name="IDX9"
+          id="IDX9"></a>
+      <p>Changes your player's password (as typed in the
+      <samp>`connect'</samp> command when you log in to the MOO) to
+      <var>new-password</var>. For security reasons, you are required to type
+      your current (soon to be old) password as the first argument.</p>
+      <p>Your password is stored in an encrypted form in the MOO database; in
+      principle, not even the wizards can tell what it is, though they can
+      change it, of course.</p>
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>@sethome</b></dt>
+    <dd>
+      <a name="IDX10"
+          id="IDX10"></a>
+      <p>Sets your designated home (see <samp>`help home'</samp>) to be the
+      room you're in now. If the current room wouldn't allow you to teleport
+      in, then the <samp>`@sethome'</samp> command nicely refuses to set your
+      home there. This avoids later, perhaps unpleasant, surprises.</p>
+    </dd>
+  </dl>
+  <h1><a name="SEC4"
+     href="LambdaCoreUserMan_toc.html#TOC4"
+     id="SEC4">Exploring and Interacting With the Virtual World</a></h1>
+  <p>The main purpose of the core classes in the LambdaCore database is to
+  allow players to construct and explore a virtual world. This involves
+  moving from one room to another, using designated pathways or
+  <em>exits</em> and looking at objects and locations along the way. The
+  command given in this section are used for exploring the virtual world, and
+  interacting with the game administrators, using <code>news</code> and
+  <code>@gripe</code>. These verbs are defined by a variety of different
+  classes.</p>
+  <h2><a name="SEC5"
+     href="LambdaCoreUserMan_toc.html#TOC5"
+     id="SEC5">Movement</a></h2>
+  <p>The descriptions of most rooms outline the directions in which exits
+  exist. Typical directions include the eight compass points
+  (<samp>`north'</samp>, <samp>`south'</samp>, <samp>`east'</samp>,
+  <samp>`west'</samp>, <samp>`northeast'</samp>, <samp>`southeast'</samp>,
+  <samp>`northwest'</samp>, and <samp>`southwest'</samp>), <samp>`up'</samp>,
+  <samp>`down'</samp>, and <samp>`out'</samp>.</p>
+  <p>To go in a particular direction, simply type the name of that direction
+  (e.g, <samp>`north'</samp>, <samp>`up'</samp>). The name of the direction
+  can usually be abbreviated to one or two characters (e.g.,
+  <samp>`n'</samp>, <samp>`sw'</samp>). You can also type <samp>`go
+  <var>direction</var>'</samp> to move; this is particularly useful if you
+  know you're going to type several movement commands in a row.</p>
+  <p>In addition to such vanilla movement, some areas may contain objects
+  allowing teleportation and almost all areas permit the use of the
+  <samp>`home'</samp> command to teleport you to your designated home.</p>
+  <p>A couple of other commands are available to allow movement from one
+  place to another.</p>
+  <dl>
+    <dt><u>Command:</u> <b>go</b> <i><var>direction</var> ...</i></dt>
+    <dd>
+      <a name="IDX11"
+          id="IDX11"></a>
+      <p>Invokes the named exits in the named order, moving through many
+      rooms in a single command.</p>
+      <pre>
+blip types:
+&gt; go n e e u e e s e
+</pre>
+      <p>and moves quite rapidly north, east, east, up, east, east south and
+      east, all in one command.</p>
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>home</b></dt>
+    <dd>
+      <a name="IDX12"
+          id="IDX12"></a>
+      <p>Instantly teleports you to your designated home room. Initially,
+      this room is the <code>$player_start</code> room. You can change your
+      designated home using the <var>@sethome</var> command.</p>
+    </dd>
+  </dl>
+  <h2><a name="SEC6"
+     href="LambdaCoreUserMan_toc.html#TOC6"
+     id="SEC6">Commands for Manipulating Objects</a></h2>
+  <p>Objects usually have verbs defined on them that allow players to
+  manipulate and use them in various ways. Standard ones are:</p>
+  <pre>
+</pre>
+  <dl compact="compact">
+    <dt><code>get</code></dt>
+    <dd>- pick an object up and place it in your inventory</dd>
+    <dt><code>drop</code></dt>
+    <dd>- remove an object from your inventory and place it in the room</dd>
+    <dt><code>put</code></dt>
+    <dd>- take an object from your inventory and place it in a container</dd>
+    <dt><code>give</code></dt>
+    <dd>- hand an object to some other player</dd>
+    <dt><code>look</code></dt>
+    <dd>- see what an object looks like</dd>
+  </dl>
+  <pre>
+</pre>
+  <p>You can see what objects you're carrying with the
+  <samp>`inventory'</samp> command.</p>
+  <p>Some specialized objects will have other commands. The programmer of the
+  object will usually provide some way for you to find out what the commands
+  are. One way that works for most objects is the <samp>`examine'</samp>
+  command.</p>
+  <dl>
+    <dt><u>Command:</u> <b>inventory</b></dt>
+    <dd>
+      <a name="IDX13"
+          id="IDX13"></a> Prints a list showing every object you're carrying.
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>take</b> <i><var>object</var></i></dt>
+    <dd>
+      <a name="IDX14"
+          id="IDX14"></a>
+    </dd>
+    <dt><u>Command:</u> <b>get</b> <i><var>object</var></i></dt>
+    <dd>
+      <a name="IDX15"
+          id="IDX15"></a>
+    </dd>
+    <dt><u>Command:</u> <b>take</b> <i><var>object</var> from
+    <var>container</var></i></dt>
+    <dd>
+      <a name="IDX16"
+          id="IDX16"></a>
+    </dd>
+    <dt><u>Command:</u> <b>get</b> <i><var>object</var> from
+    <var>container</var></i></dt>
+    <dd>
+      <a name="IDX17"
+          id="IDX17"></a>
+    </dd>
+    <dt><u>Command:</u> <b>remove</b> <i><var>object</var> from
+    <var>container</var></i></dt>
+    <dd>
+      <a name="IDX18"
+          id="IDX18"></a>
+      <p>The first two forms pick up the named object and place it in your
+      inventory. Sometimes the owner of the object won't allow it to be
+      picked up for some reason.</p>
+      <p>The remaining forms move the named object from inside the named
+      container into your inventory. As before, sometimes the owner of an
+      object will not allow you to do this.</p>
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>drop</b> <i><var>object</var></i></dt>
+    <dd>
+      <a name="IDX19"
+          id="IDX19"></a>
+    </dd>
+    <dt><u>Command:</u> <b>throw</b> <i><var>object</var></i></dt>
+    <dd>
+      <a name="IDX20"
+          id="IDX20"></a> Remove an object you are carrying from your
+          inventory and put it in your current room. Occasionally you may
+          find that the owner of the room won't allow you to do this.
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>put</b> <i><var>object</var> <strong>into</strong>
+    <var>container</var></i></dt>
+    <dd>
+      <a name="IDX21"
+          id="IDX21"></a>
+    </dd>
+    <dt><u>Command:</u> <b>insert</b> <i><var>object</var>
+    <strong>in</strong> <var>container</var></i></dt>
+    <dd>
+      <a name="IDX22"
+          id="IDX22"></a> Moves the named object into the named container.
+          Sometimes the owners of the object and/or the container will not
+          allow you to do this.
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>give</b> <i><var>object</var> <strong>to</strong>
+    <var>player</var></i></dt>
+    <dd>
+      <a name="IDX23"
+          id="IDX23"></a>
+    </dd>
+    <dt><u>Command:</u> <b>hand</b> <i><var>object</var> <strong>to</strong>
+    <var>player</var></i></dt>
+    <dd>
+      <a name="IDX24"
+          id="IDX24"></a> Move an object from your contents to that of
+          another player. This doesn't change the ownership of the object.
+          Some players may refuse to accept gifts and some objects may refuse
+          to be given.
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>look</b></dt>
+    <dd>
+      <a name="IDX25"
+          id="IDX25"></a>
+    </dd>
+    <dt><u>Command:</u> <b>look</b> <i><var>object</var></i></dt>
+    <dd>
+      <a name="IDX26"
+          id="IDX26"></a>
+    </dd>
+    <dt><u>Command:</u> <b>look</b> <i><var>object</var> <strong>in</strong>
+    <var>container</var></i></dt>
+    <dd>
+      <a name="IDX27"
+          id="IDX27"></a> This command is used to show a description of
+          something. The first form, with no arguments, shows you the name
+          and description of the room you're in, along with a list of the
+          other objects that are there.
+      <p>The second form lets you look at a specific object. Most objects
+      have descriptions that may be read this way. You can look at your own
+      description using <samp>`look me'</samp>. You can set the description
+      for an object or room, including yourself, with the
+      <samp>`describe'</samp> command.</p>
+      <p>The third form shows you the description of an object that is inside
+      some other object, including objects being carried by another
+      player.</p>
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>examine</b> <i><var>object</var></i></dt>
+    <dd>
+      <a name="IDX28"
+          id="IDX28"></a>
+    </dd>
+    <dt><u>Command:</u> <b>exam</b> <i><var>object</var></i></dt>
+    <dd>
+      <a name="IDX29"
+          id="IDX29"></a>
+      <p>Prints several useful pieces of information about the named object,
+      including the following:</p>
+      <ul>
+        <li>its full name, aliases, and object number</li>
+        <li>its owner's name and object number</li>
+        <li>its description</li>
+        <li>its key expression (if it is locked and if you own it)</li>
+        <li>its contents and their object numbers</li>
+        <li>the <em>obvious</em> verbs defined on it</li>
+      </ul>
+      <p>The <em>obvious</em> verbs are those that are readable and that can
+      be invoked as commands. To keep a verb off this list, either make it
+      unreadable using <samp>`@chmod'</samp>or, if it shouldn't be used as a
+      command, give it <code>args</code> of <samp>`this none
+      this'</samp>.</p>
+    </dd>
+  </dl>
+  <h1><a name="SEC7"
+     href="LambdaCoreUserMan_toc.html#TOC7"
+     id="SEC7">Interacting With Other Players</a></h1>
+  <p>There are several commands available to allow you to communicate with
+  your fellow players. Other commands are available to affect the way
+  communication occurs. The following list shows the commands used for these
+  functions:</p>
+  <pre>
+</pre>
+  <dl compact="compact">
+    <dt><code>say</code></dt>
+    <dd>- talking to the other connected players in the room</dd>
+    <dt><code>whisper</code></dt>
+    <dd>- talking privately to someone in the same room</dd>
+    <dt><code>page</code></dt>
+    <dd>- yelling to someone anywhere in the MOO</dd>
+    <dt><code>emote</code></dt>
+    <dd>- non-verbal communication with others in the same room</dd>
+    <dt><code>@gag, @listgag, @ungag</code></dt>
+    <dd>- screening out noise generated by certain other players</dd>
+    <dt><code>news</code></dt>
+    <dd>- reading the wizards' most recent set of general announcements</dd>
+    <dt><code>@gripe</code></dt>
+    <dd>- sending complaints to the wizards</dd>
+    <dt><code>@typo @bug @idea @suggest</code></dt>
+    <dd>- sending complaints/ideas to the owner of the current room</dd>
+    <dt><code>whereis</code></dt>
+    <dd>- locating other players</dd>
+    <dt><code>@who</code></dt>
+    <dd>- finding out who is currently logged in</dd>
+    <dt><code>mail</code></dt>
+    <dd>- the MOO email system</dd>
+    <dt><code>@paranoid, @check, @sweep</code></dt>
+    <dd>- the facilities for detecting forged messages and
+    eavesdropping.</dd>
+  </dl>
+  <pre>
+</pre>
+  <h2><a name="SEC8"
+     href="LambdaCoreUserMan_toc.html#TOC8"
+     id="SEC8">Communicating With Other Players</a></h2>
+  <p>Several commands are available for communicating with other players in
+  the way you might do in real life.</p>
+  <dl>
+    <dt><u>Command:</u> <b>say</b> <i><var>anything</var> ...</i></dt>
+    <dd>
+      <a name="IDX30"
+          id="IDX30"></a>
+    </dd>
+    <dt><u>Command:</u> <b>"<var>anything</var></b> <i>...</i></dt>
+    <dd>
+      <a name="IDX31"
+          id="IDX31"></a>
+      <p>Says <var>anything</var> out loud, so that everyone in the same room
+      hears it. This is so commonly used that there's a special abbreviation
+      for it: any command-line beginning with a double-quote
+      (<samp>`"'</samp>) is treated as a <samp>`say'</samp> command.</p>
+      <p>For example, suppose that blip types the following command:</p>
+      <pre>
+"This is a great MOO!
+</pre>
+      <p>He would see this printed on his terminal screen:</p>
+      <pre>
+You say, "This is a great MOO!"
+</pre>
+      <p>Others in the same room see this:</p>
+      <pre>
+blip says, "This is a great MOO!"
+</pre>
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>whisper</b> <i>"<var>text</var>" to
+    <var>player</var></i></dt>
+    <dd>
+      <a name="IDX32"
+          id="IDX32"></a> This command sends the message "<var>yourname</var>
+          whispers, "<var>text</var>" to you " to <var>player</var>, if they
+          are in the room. This is used to send a private message to a
+          another player in the room. The message is passed to
+          <var>player</var> only. No-one else can hear or detect the message.
+          For example, the command
+      <pre>
+whisper "Hello there" to blip
+</pre>
+      <p>sends the following message to blip:</p>
+      <pre>
+Ezeke whispers, "hello there" to blip.
+</pre>
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>page</b> <i><var>player</var> [[with]
+    <var>text</var>]</i></dt>
+    <dd>
+      <a name="IDX33"
+          id="IDX33"></a> This verb is a player command used to send messages
+          between players who are not physically located in the same room in
+          the virtual world. You can imagine a <em>page</em> to be a
+          worldwide form of shouting. Without an argument, a message like
+      <pre>
+You sense that blip is looking for you in The Venue Hallway.
+</pre>
+      <p>is sent to the recipient of the page. If an argument is given, it is
+      treated as a message to send to the other player. This results in the
+      recipient getting a message like</p>
+      <pre>
+You sense that blip is looking for you in The Hallway
+He pages, "Hello - are you busy ?"
+</pre>
+      <p>Paging is used primarily to attract the attention of a player, or to
+      pass short messages between players in different locations. It is not
+      intended to be used for conversation.</p>
+    </dd>
+  </dl>
+  <p>The following commands can be used to set messages referred to by
+  <samp>`@page'</samp>:</p>
+  <dl>
+    <dt><u>Command:</u> <b>@page_origin</b> <i><var>message</var></i></dt>
+    <dd>
+      <a name="IDX34"
+          id="IDX34"></a> The <em>page origin</em> message determines how the
+          recipient is told of your location. The default value of this
+          message is <samp>`You sense that %n is looking for you in
+          %l.'</samp>
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>@page_echo</b> <i><var>message</var></i></dt>
+    <dd>
+      <a name="IDX35"
+          id="IDX35"></a> The <em>page echo</em> message determines the
+          response received by anyone who pages you. The default value of
+          this message is <samp>`Your message has been sent.'</samp>
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>@page_absent</b> <i><var>message</var></i></dt>
+    <dd>
+      <a name="IDX36"
+          id="IDX36"></a> This message determines the response received by
+          anyone who tries to page you when you aren't connected. The default
+          value of this message is <samp>`%n is not currently logged
+          in.'</samp>
+    </dd>
+  </dl>
+  <p>All of these undergo the usual pronoun substitutions except that in both
+  cases the direct object <samp>`%d'</samp> refers to the recipent of the
+  page and the indirect object <samp>`%i'</samp> refers to the sender.</p>
+  <dl>
+    <dt><u>Command:</u> <b>emote</b> <i><var>anything</var> ...</i></dt>
+    <dd>
+      <a name="IDX37"
+          id="IDX37"></a>
+    </dd>
+    <dt><u>Command:</u> <b>:<var>anything</var></b> <i>...</i></dt>
+    <dd>
+      <a name="IDX38"
+          id="IDX38"></a>
+      <p>Announces <var>anything</var> to everyone in the same room,
+      prepending your name. This is commonly used to express various
+      non-verbal forms of communication. In fact, it is so commonly used that
+      there's a special abbreviation for it: any command-line beginning with
+      <samp>`:'</samp> is treated as an <samp>`emote'</samp> command.</p>
+      <p>For example, if blip types the following:</p>
+      <pre>
+:wishes he were much taller...
+</pre>
+      <p>Everyone in the same room would see the following message:</p>
+      <pre>
+blip wishes he were much taller...
+</pre>
+    </dd>
+  </dl>
+  <h2><a name="SEC9"
+     href="LambdaCoreUserMan_toc.html#TOC9"
+     id="SEC9">Gagging - How to Ignore Other Players and Objects</a></h2>
+  <p>Occasionally, you may run into a situation in which you'd rather not
+  hear from certain other players. It might be that they're being annoying,
+  or just that whatever they're doing makes a lot of noise. Gagging a player
+  will stop you from hearing the results of any task initiated by that
+  player. You can also gag a specific object, if you want to hear what the
+  owner of that object says, but not the output from their noisy robot. The
+  commands to use gagging are described below:</p>
+  <dl>
+    <dt><u>Command:</u> <b>@gag</b> <i><var>player or object</var>
+    [<var>player or object</var>...]</i></dt>
+    <dd>
+      <a name="IDX39"
+          id="IDX39"></a> Add the given players to your <em>gag list</em>.
+          You will no longer see any messages that result from actions
+          initiated by these players. In particular, you will not hear them
+          if they try to speak, emote, or whisper to you.
+      <p>For example, if blip types in the following command:</p>
+      <pre>
+@gag geezer
+</pre>
+      <p>and no longer hears anything that geezer says. <a name="DOCF1"
+         href="LambdaCoreUserMan_foot.html#FOOT1"
+         id="DOCF1">(1)</a></p>
+      <p>If you specify an object, then any text originating from that object
+      will not be printed.</p>
+      <p>For example, suppose <code>Noisy Robot</code> prints <samp>`Hi
+      there'</samp> every 15 seconds. In order to avoid seeing that, blip
+      types the following command:</p>
+      <pre>
+@gag Noisy
+</pre>
+      <p>and no longer hears that robot! Note that blip must be in the same
+      room as <code>Noisy Robot</code> for this to work, or know its object
+      number.</p>
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>@ungag</b> <i><var>player or object</var></i></dt>
+    <dd>
+      <a name="IDX40"
+          id="IDX40"></a>
+    </dd>
+    <dt><u>Command:</u> <b>@ungag</b> <i><strong>everyone</strong></i></dt>
+    <dd>
+      <a name="IDX41"
+          id="IDX41"></a>
+      <p>Remove the given player or object (or, in the second form,
+      <strong>everyone</strong>) from your <samp>`gag list'</samp>. You will
+      once again see any messages that result from actions initiated by the
+      ungagged player(s) or objects. In particular, you will once again be
+      able to hear them if they speak, emote, or whisper to you.</p>
+      <p>For example, suppose that blip types the following:</p>
+      <pre>
+@ungag geezer
+</pre>
+      <p>and is once again able to hear geezer's witty remarks. <a name=
+      "DOCF2"
+         href="LambdaCoreUserMan_foot.html#FOOT2"
+         id="DOCF2">(2)</a></p>
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>@listgag</b></dt>
+    <dd>
+      <a name="IDX42"
+          id="IDX42"></a>
+      <p>Shows you a list of the players and objects currently on your
+      <em>gag list</em>. You don't see any messages that result from actions
+      initiated by the players or objects on this list. In particular, you
+      will not hear them if they try to speak, emote, or whisper to you.</p>
+    </dd>
+  </dl>
+  <h2><a name="SEC10"
+     href="LambdaCoreUserMan_toc.html#TOC10"
+     id="SEC10">Communicating With The Game Administrators</a></h2>
+  <p>Several commands are provided for communicating with the people that run
+  the game. The <code>news</code> command is used by the wizards to let
+  players know of anything that is globally interesting. Players can use
+  <samp>`@grip'</samp> to complain to the wizards, and commands like
+  <samp>`@typo'</samp> to report defects to builders and programmers.</p>
+  <p>The following section describes these commands in detail.</p>
+  <dl>
+    <dt><u>Command:</u> <b>news</b></dt>
+    <dd>
+      <a name="IDX43"
+          id="IDX43"></a> Read the latest edition of the LambdaMOO server
+          news, which carries articles concerning recent changes to the MOO
+          server or to the main public classes, or whatever else is important
+          for players to know.
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>@gripe</b> <i><var>anything</var> ...</i></dt>
+    <dd>
+      <a name="IDX44"
+          id="IDX44"></a> Puts you into the MOO mail system to register a
+          complaint (or, conceivably, a compliment) with the wizards. The
+          rest of the command line (the <var>anything</var> ... part) is used
+          as the subject line for the message. More information on using the
+          MOO mail system is given once you're in it.
+      <p>You may hear back from the wizards eventually. For example:</p>
+      <pre>
+&gt;@gripe The Fruitbat
+&gt;"How come I can't ever see the fruitbat in the Venue Clock?
+&gt;"        -- A frustrated player
+</pre>
+      <p>sends it, and, somewhat later, the wizards reply with a note about
+      being sure to look while the Clock is chiming.</p>
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>@typo</b> <i>[<var>text</var>]</i></dt>
+    <dd>
+      <a name="IDX45"
+          id="IDX45"></a>
+    </dd>
+    <dt><u>Command:</u> <b>@suggest</b> <i>[<var>text</var>]</i></dt>
+    <dd>
+      <a name="IDX46"
+          id="IDX46"></a>
+    </dd>
+    <dt><u>Command:</u> <b>@bug</b> <i>[<var>text</var>]</i></dt>
+    <dd>
+      <a name="IDX47"
+          id="IDX47"></a>
+    </dd>
+    <dt><u>Command:</u> <b>@idea</b> <i>[<var>text</var>]</i></dt>
+    <dd>
+      <a name="IDX48"
+          id="IDX48"></a>
+      <p>If <var>text</var> is given, a one-line message is sent to the owner
+      of the room, presumably about something that you've noticed. If
+      <var>text</var> is not given, we assume you have more to say than can
+      fit comfortably on a single line; the usual mail editor is invoked. The
+      convention is that @typo is for typographical errors on the room or
+      objects found therein, @bug is for anomalous or nonintuitive behaviour
+      of some sort, and @idea/@suggest for anything else.</p>
+      <p>The usual mail editor is only invoked for this command when in rooms
+      that allow free entry, i.e., rooms that are likely to allow you back
+      after you are done editing your message. Otherwise these commands will
+      require <var>text</var> and only let you do one-line messages. Most
+      adventuring scenario rooms fall into this latter category.</p>
+    </dd>
+  </dl>
+  <h2><a name="SEC11"
+     href="LambdaCoreUserMan_toc.html#TOC11"
+     id="SEC11">Locating Other Players in the Virtual World</a></h2>
+  <p>Two commands are available for finding out where other players are
+  hiding in the virtual world, as follows:</p>
+  <dl>
+    <dt><u>Command:</u> <b>whereis</b> <i><var>player</var>
+    [<var>player</var>...]</i></dt>
+    <dd>
+      <a name="IDX49"
+          id="IDX49"></a>
+    </dd>
+    <dt><u>Command:</u> <b>@whereis</b> <i><var>player</var>
+    [<var>player</var>...]</i></dt>
+    <dd>
+      <a name="IDX50"
+          id="IDX50"></a> Returns the current location of each of the
+          specified players. whereis refers to each player's
+          <samp>`@whereis_location'</samp> message to determine what should
+          be printed. This message defaults to
+      <pre>
+"%N (%#) is in %l (%[#l])." 
+</pre>
+      <p>and the usual pronoun substitutions are done.</p>
+      <p>For example the default message could expand to</p>
+      <pre>
+"blip (#42) is in The Venue Manager's Office (#47)
+</pre>
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>@who</b></dt>
+    <dd>
+      <a name="IDX51"
+          id="IDX51"></a>
+    </dd>
+    <dt><u>Command:</u> <b>@who</b> <i><var>player</var> [<var>player</var>
+    ...]</i></dt>
+    <dd>
+      <a name="IDX52"
+          id="IDX52"></a> The first form lists all of the currently-connected
+          players, along with the amount of time they've been connected, the
+          amount of time they've been idle, and their present location in the
+          MOO.
+      <p>The second form, in which a list of player names is given, shows
+      information for just those players. For any listed players that are not
+      connected, we show the last login time instead of the connect/idle
+      times.</p>
+      <p><samp>`@who'</samp> refers to the <samp>`@who_location'</samp> on
+      each of the players to be listed in order to determine what should be
+      printed in the location column. Pronoun substitutions are done on this
+      string in the usual manner. The default value is "%l" (i.e.,
+      <code>player.location</code>).</p>
+    </dd>
+  </dl>
+  <h2><a name="SEC12"
+     href="LambdaCoreUserMan_toc.html#TOC12"
+     id="SEC12">Checking the Security of Your Communication</a></h2>
+  <p>There are several commands available that allow you to check that your
+  communications with other players are secure. The following commands are
+  available:</p>
+  <dl>
+    <dt><u>Command:</u> <b>@sweep</b></dt>
+    <dd>
+      <a name="IDX53"
+          id="IDX53"></a> Used when you wish to have a private conversation,
+          and are concerned someone may be listening in. <code>@sweep</code>
+          tries to list the avenues by which information may be leaving the
+          room. In a manner analogous to @check, it assumes that you don't
+          want to hear about your own verbs, or those belonging to wizards,
+          who presumably wouldn't stoop to bugging.
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>@paranoid</b></dt>
+    <dd>
+      <a name="IDX54"
+          id="IDX54"></a>
+    </dd>
+    <dt><u>Command:</u> <b>@paranoid</b> <i><strong>off</strong></i></dt>
+    <dd>
+      <a name="IDX55"
+          id="IDX55"></a>
+    </dd>
+    <dt><u>Command:</u> <b>@paranoid</b>
+    <i><strong>immediate</strong></i></dt>
+    <dd>
+      <a name="IDX56"
+          id="IDX56"></a>
+    </dd>
+    <dt><u>Command:</u> <b>@paranoid</b> <i><var>number</var></i></dt>
+    <dd>
+      <a name="IDX57"
+          id="IDX57"></a>
+      <p>In immediate mode, the monitor prepends everything you hear with the
+      name of the character it considers responsible for the message.
+      Otherwise, it keeps records of the last <var>number</var> (defaults to
+      20) lines you have heard. These records can be accessed by the @check
+      command.</p>
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>@check</b> <i><var>options</var></i></dt>
+    <dd>
+      <a name="IDX58"
+          id="IDX58"></a> Used when you are suspicious about the origin of
+          some of the messages your character has just heard. Various
+          <var>options</var> can be specified:
+      <ul>
+        <li>the number of lines to be displayed</li>
+        <li>a player's name, someone to be "trusted" during the assignment of
+        responsibility for the message.</li>
+        <li>a player's named prefixed by !, someone not to be "trusted".</li>
+      </ul>
+      <p>Output from @check is in columns that contain, in order, the
+      monitor's best guess as to:</p>
+      <ul>
+        <li>what object the message came from,</li>
+        <li>what verb on that object that was responsible,</li>
+        <li>whose permissions that verb was running with, and the beginning
+        of the actual message.</li>
+      </ul>
+      <p><samp>`@check'</samp> operates by examining the list of verbs that
+      were involved in delivering the message, and assigning responsibility
+      to the first owner it sees who is not <em>trusted</em>. By default, it
+      trusts you and all the wizards. It uses the records maintained by
+      <samp>`@paranoid'</samp>, so you must have used that command before you
+      received the message.</p>
+    </dd>
+  </dl>
+  <h1><a name="SEC13"
+     href="LambdaCoreUserMan_toc.html#TOC13"
+     id="SEC13">Using Pronoun Substitutions</a></h1>
+  <p>Some kinds of messages are not printed directly to players; they are
+  allowed to contain special characters marking places to include the
+  appropriate pronoun for some player. For example, a builder might have a
+  doorway that's very short, so that people have to crawl to get through it.
+  When they do so, the builder wants a little message like this to be
+  printed:</p>
+  <pre>
+Zaphod crawls through the little doorway, bruising his knee.
+</pre>
+  <p>The problem is the use of <samp>`his'</samp> in the message; what if the
+  player in question is female? The correct setting of the
+  <samp>`oleave'</samp> message on that doorway is as follows:</p>
+  <pre>
+crawls through the little doorway, bruising %p knee.
+</pre>
+  <p>The <samp>`%p'</samp> in the message will be replaced by either
+  <samp>`his'</samp>, <samp>`her'</samp>, or <samp>`its'</samp>, depending
+  upon the gender of the player.</p>
+  <p>As it happens, you can also refer to elements of the command line (e.g.,
+  direct and indirect objects) the object issuing the message, and the
+  location where this is all happening. In addition one can refer to
+  arbitrary string properties on these objects, or get the object numbers
+  themselves.</p>
+  <p>The complete set of substitutions is as follows:</p>
+  <pre>
+</pre>
+  <dl compact="compact">
+    <dt><code>%%</code></dt>
+    <dd>=&gt; `%' (just in case you actually want to talk about
+    percentages).</dd>
+    <dt><code>%n</code></dt>
+    <dd>=&gt; the player</dd>
+    <dt><code>%t</code></dt>
+    <dd>=&gt; this object (i.e., the object issuing the message,...
+    usually)</dd>
+    <dt><code>%d</code></dt>
+    <dd>=&gt; the direct object from the command line</dd>
+    <dt><code>%i</code></dt>
+    <dd>=&gt; the indirect object from the command line</dd>
+    <dt><code>%l</code></dt>
+    <dd>=&gt; the location of the player</dd>
+    <dt><code>%s</code></dt>
+    <dd>=&gt; subject pronoun: either <samp>`he'</samp>, <samp>`she'</samp>,
+    or <samp>`it'</samp></dd>
+    <dt><code>%o</code></dt>
+    <dd>=&gt; object pronoun: either <samp>`him'</samp>, <samp>`her'</samp>,
+    or <samp>`it'</samp></dd>
+    <dt><code>%p</code></dt>
+    <dd>=&gt; posessive pronoun (adj): either <samp>`his'</samp>,
+    <samp>`her'</samp>, or <samp>`its'</samp></dd>
+    <dt><code>%q</code></dt>
+    <dd>=&gt; posessive pronoun (noun): either <samp>`his'</samp>,
+    <samp>`hers'</samp>, or <samp>`its'</samp></dd>
+    <dt><code>%r</code></dt>
+    <dd>=&gt; reflexive pronoun: either <samp>`himself'</samp>,
+    <samp>`herself'</samp>, or <samp>`itself'</samp></dd>
+    <dt><code>%(foo)</code></dt>
+    <dd>=&gt; player.foo</dd>
+    <dt><code>%[tfoo], %[dfoo], %[ifoo], %[lfoo]</code></dt>
+    <dd>=&gt; this.foo, dobj.foo, iobj.foo, and player.location.foo</dd>
+    <dt><code>%#</code></dt>
+    <dd>=&gt; player's object number</dd>
+    <dt><code>%[#t], %[#d], %[#i], %[#l]</code></dt>
+    <dd>=&gt; object numbers for this, direct obj, indirect obj, and
+    location.</dd>
+  </dl>
+  <pre>
+</pre>
+  <p>In addition there is a set of capitalized substitutions for use at the
+  beginning of sentences. These are, respectively,</p>
+  <ul>
+    <li>%N, %T, %D, %I, %L for object names,</li>
+    <li>%S, %O, %P, %Q, %R for pronouns, and</li>
+    <li>%(Foo), %[dFoo] (== %[Dfoo] == %[DFoo]),... for general
+    properties</li>
+  </ul>
+  <p>Note that there is a special exception for player name's (the
+  <code>.name</code> propertywhich are assumed to already be capitalized as
+  desired.</p>
+  <p>There may be situations where the standard algorithm, i.e., upcasing the
+  first letter, yields something incorrect, in which case a
+  <em>capitalization</em> for a particular string property can be specified
+  explicitly. If your object has a <code>.foo</code> property that is like
+  this, you need merely add a <code>.fooc</code> (in general
+  <code>.(<var>propertyname</var>+"c")</code>) specifying the correct
+  capitalization. This will also work for player <code>.name</code>'s if you
+  want to specify a capitalization that is different from your usual
+  .<code>name</code></p>
+  <p>For example, Phantom makes a hand-grenade with a customizable explode
+  message. Suppose someone sets <code>grenade.explode_msg</code> to:</p>
+  <pre>
+"%N(%#) drops %t on %p foot.  %T explodes.  
+%L is engulfed in flames."
+</pre>
+  <p>If the current location happens to be #1234("blip's house"), the
+  resulting substitution may produce, eg.,</p>
+  <pre>
+Phantom(#42) drops grenade on his foot.  Grenade explodes.  
+Blip's house is engulfed in flames.
+</pre>
+  <p>which contains an incorrect capitalization (The name <samp>`blip'</samp>
+  cannot be capitalized. blip may remedy this by setting</p>
+  <pre>
+#1234.namec="blip's house".
+</pre>
+  <p>A special nore for programmers: in programs, use
+  <code>$string_utils:pronoun_sub()</code>. Using the substitution
+  <code>%n</code> actually calls <code>player:title()</code> while
+  <code>%(name)</code> refers to <code>player.name</code> directly.</p>
+  <h1><a name="SEC14"
+     href="LambdaCoreUserMan_toc.html#TOC14"
+     id="SEC14">The MOO Mail System</a></h1>
+  <p>The MOO email system allows you to send and receive messages to and from
+  other players. Whilst not approaching the complexity of a fully fledged
+  email system, it does allow players to send short messages between
+  themselves, normally on game related topics. The <code>Mail Room</code>
+  class defines a set of verbs that can be used by other MOO programs to send
+  mail. This is used, for example, by the <code>@gripe</code> command, which
+  uses the MOO Mail system to deliver gripes to the game administrators.</p>
+  <p>The following commands are used to activate portions of the MOO mail
+  system:</p>
+  <pre>
+</pre>
+  <dl compact="compact">
+    <dt><code>@mail</code></dt>
+    <dd>- seeing a table of contents for your collection of email
+    messages</dd>
+    <dt><code>@read</code></dt>
+    <dd>- reading individual messages in your collection</dd>
+    <dt><code>@next</code></dt>
+    <dd>- reading the 'next' message in your collection</dd>
+    <dt><code>@prev</code></dt>
+    <dd>- reading the 'previous' message in your collection</dd>
+    <dt><code>@send</code></dt>
+    <dd>- composing and sending a message to other players</dd>
+    <dt><code>@answer</code></dt>
+    <dd>- replying to one of the messages in your collection</dd>
+    <dt><code>@rmmail</code></dt>
+    <dd>- discarding one or more messages from your collection</dd>
+    <dt><code>@renumber</code></dt>
+    <dd>- renumbering the messages in your collection</dd>
+  </dl>
+  <pre>
+</pre>
+  <dl>
+    <dt><u>Command:</u> <b>@mail</b></dt>
+    <dd>
+      <a name="IDX59"
+          id="IDX59"></a>
+    </dd>
+    <dt><u>Command:</u> <b>@mail</b> <i>new</i></dt>
+    <dd>
+      <a name="IDX60"
+          id="IDX60"></a>
+      <p>Shows a table of contents for your MOO email message collection. You
+      are notified when you connect to the MOO if there are any such
+      messages. A little arrow indicates the mail system's notion of your
+      <em>current message</em>. The first form lists all of your messages;
+      the second form lists all messages after your <em>current
+      message</em>.</p>
+      <p>If you have a large number of mail messages, you can give arguments
+      so that @mail only lists the messages you're interested in. The general
+      format is</p>
+      <pre>
+@mail <var>message-sequence</var>
+</pre>
+      <p>where <var>message-sequence</var> is some combination of the
+      following</p>
+      <pre>
+</pre>
+      <dl compact="compact">
+        <dt><code>cur</code></dt>
+        <dd>- the current message</dd>
+        <dt><code>new</code></dt>
+        <dd>- all messages after the current message</dd>
+        <dt><code><var>#</var></code></dt>
+        <dd>- (where <var>#</var> is a number) the message numbered
+        <var>#</var> if there is one.</dd>
+        <dt><code><var>#</var>-<var>#</var></code></dt>
+        <dd>- all messages in the given range, if any.</dd>
+        <dt><code>last:<var>#</var></code></dt>
+        <dd>- the last <var>#</var> messages</dd>
+        <dt><code>-<var>#</var></code></dt>
+        <dd>- the last <var>#</var> messages</dd>
+      </dl>
+      <pre>
+</pre>
+      <p>You may use as many of these at once as sanity permits, e.g.,</p>
+      <pre>
+@mail 1 4 7 last:10 2-3 15 cur
+</pre>
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>@read</b> <i><var>message-number</var>
+    <var>message-number</var> ...</i></dt>
+    <dd>
+      <a name="IDX61"
+          id="IDX61"></a>
+    </dd>
+    <dt><u>Command:</u> <b>@read</b></dt>
+    <dd>
+      <a name="IDX62"
+          id="IDX62"></a>
+      <p>Prints the contents of the indicated messages from your MOO email
+      collection. You get the message numbers for use here by typing the
+      <samp>`@mail'</samp> command, which prints a table of contents for your
+      entire MOO email collection. If no arguments are given to
+      <samp>`@read'</samp>, then the <em>current message</em> in your
+      collection is printed. In any case, the <em>current message</em> after
+      <samp>`@read'</samp> finishes is the last one printed.</p>
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>@next</b></dt>
+    <dd>
+      <a name="IDX63"
+          id="IDX63"></a> Print the <samp>`next'</samp> message in your MOO
+          email collection. The mail system's notion of your <em>current
+          message</em> is incremented. Thus, one can read all of one's new
+          messages one-by-one simply by typing <samp>`@next'</samp>
+          repeatedly.
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>@prev</b></dt>
+    <dd>
+      <a name="IDX64"
+          id="IDX64"></a> Print the <samp>`previous'</samp> message in your
+          MOO email collection. The mail system's notion of your <em>current
+          message</em> is decremented. Thus, one can review all of one's
+          previous messages one-by-one simply by typing <samp>`@prev'</samp>
+          repeatedly.
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>@send</b> <i><var>recipient</var>
+    [<var>recipient</var> ...]</i></dt>
+    <dd>
+      <a name="IDX65"
+          id="IDX65"></a> Prepares for you to compose a MOO email message to
+          the recipients named on the command line. A recipient can be
+          specified by giving a player name or object-id, or a
+          <samp>`*'</samp> followed by the name or object-id of some
+          non-player mail recipient (e.g., a mailing list or a mail folder).
+          A list of such non-player recipients is available from within the
+          mailroom with the <samp>`showlists'</samp> command.
+      <p>When the <samp>`@send'</samp> command is typed, the usual line
+      editor is invoked. The <samp>`subject'</samp> command is used to set a
+      <code>Subject:</code> line. Use <samp>`say'</samp> (<samp>`"'</samp>)
+      to insert lines in the body of your message.</p>
+      <p>Giving this command without arguments resumes editing the previous
+      unsent draft message if one exists.</p>
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>@reply</b> <i>[<var>message-number</var>] [sender]
+    [all] [incl] [noincl]</i></dt>
+    <dd>
+      <a name="IDX66"
+          id="IDX66"></a>
+    </dd>
+    <dt><u>Command:</u> <b>@answer</b> <i>[<var>message-number</var>]
+    [sender] [all] [incl] [noincl]</i></dt>
+    <dd>
+      <a name="IDX67"
+          id="IDX67"></a>
+      <p>Prepares for you to compose a MOO email message to the players who
+      either received or composed the indicated message from your collection.
+      The usual editor is invoked. The subject line for the new message will
+      be initialized from that of the indicated message. If you leave off the
+      message number, the reply will be to your current message, if that
+      exists.</p>
+      <p>If there is a <code>Reply-to:</code> field in the message you are
+      answering, its contents will be used to initialize the <code>To:</code>
+      line of your reply. Otherwise, a <code>To:</code> line is determined
+      depending on whether you specified <samp>`sender'</samp> or
+      <samp>`all'</samp> in the command line (or your
+      <code>.mail_options</code>).</p>
+      <p><samp>`incl'</samp> includes the text of the original message in
+      your reply, <samp>`noincl'</samp> does not.</p>
+      <p>Defaults are <samp>`sender'</samp> and <samp>`noincl'</samp>, but
+      you can change this by setting your <code>.mail-options</code>
+      property.</p>
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>@rmmail</b> <i><var>message-number</var>
+    <var>message-number</var> ...</i></dt>
+    <dd>
+      <a name="IDX68"
+          id="IDX68"></a> Deletes the indicated messages from your MOO email
+          collection. There is no confirmation for this action, so be
+          careful; deleted messages are really gone, irrecoverable. You get
+          the message numbers for use here by typing the <samp>`@mail'</samp>
+          command, which prints a table of contents for your entire MOO email
+          collection.
+      <p>You may specify <strong>cur</strong> in place of a number to specify
+      your current message. <samp>`@rmm'</samp> with no arguments deletes
+      your current message.</p>
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>@renumber</b></dt>
+    <dd>
+      <a name="IDX69"
+          id="IDX69"></a> Renumbers the messages in your collection to go
+          from 1 to however many you have at the moment.
+    </dd>
+  </dl>
+  <h2><a name="SEC15"
+     href="LambdaCoreUserMan_toc.html#TOC15"
+     id="SEC15">Mail Options</a></h2>
+  <p>There are 3 personal properties that you can use to customize how your
+  mail is composed and forwarded</p>
+  <h3><a name="SEC16"
+     href="LambdaCoreUserMan_toc.html#TOC16"
+     id="SEC16">.mail_forward</a></h3>
+  <p>This property is a list of people (object reference numbers) who will
+  receive any mail that gets sent to you. This list may include non-person
+  recipients (i.e.,descendants of <code>$mail_recipient</code>). If this list
+  is nonempty, you will not receive any mail yourself unless you are on it.
+  E.g., if blip is #42 and ur-blip is #43</p>
+  <pre>
+#43.mail_forward={}         -- usual case; ur-blip gets his own mail.
+#43.mail_forward={#42}      -- blip gets ur-blip's mail instead.
+#43.mail_forward={#43,#42}  -- ur-blip gets mail and blip gets a copy.
+#43.mail_forward={#-1}      -- ur-blip's mail disappears without a trace.
+</pre>
+  <h3><a name="SEC17"
+     href="LambdaCoreUserMan_toc.html#TOC17"
+     id="SEC17">.mail_notify</a></h3>
+  <p>This property is a list of people (object reference numbers) to be
+  notified whenever mail is sent to you. This list may include anything that
+  has a <code>:tell()</code> verb. Notification will take place regardless of
+  whether or how your mail is forwarded. Thus, in the previous example</p>
+  <pre>
+#42.mail_notify={#43}
+</pre>
+  <p>means that ur-blip will be told whenever blip is sent new mail.</p>
+  <h3><a name="SEC18"
+     href="LambdaCoreUserMan_toc.html#TOC18"
+     id="SEC18">.mail_options</a></h3>
+  <p>This property is a list of options that is consulted by @send and
+  @answer to determine how messages should initially be composed</p>
+  <p>The following options are available for @answer:</p>
+  <pre>
+</pre>
+  <dl compact="compact">
+    <dt><code>sender</code></dt>
+    <dd>- replies go only to the message's author (<code>From:</code>
+    line).</dd>
+    <dt><code>all</code></dt>
+    <dd>- replies go to everyone who got the original (<code>From:</code> +
+    <code>To:</code> lines)</dd>
+    <dt><code>incl</code></dt>
+    <dd>- include original message in the body of your reply.</dd>
+    <dt><code>noincl</code></dt>
+    <dd>- don't include original message in the body of your reply.</dd>
+  </dl>
+  <pre>
+</pre>
+  <p>The following option affects the behaviour of @send and @answer:</p>
+  <pre>
+</pre>
+  <dl compact="compact">
+    <dt><code>replyto</code></dt>
+    <dd>="<var>list of people</var>". A <code>Reply-to:</code> field will be
+    added containing these people.</dd>
+  </dl>
+  <pre>
+</pre>
+  <p>So, for example, if ur-blip usually wants his replies to go to everyone
+  and always start out with the text of the original included, he should
+  do</p>
+  <pre>
+;#43.mail_options = {"all", "incl"};
+</pre>
+  <h1><a name="SEC19"
+     href="LambdaCoreUserMan_toc.html#TOC19"
+     id="SEC19">Building and Creating Objects</a></h1>
+  <p>There are a number of commands available to players for building new
+  parts of the MOO. The primary means for players to extend the MOO is for
+  them to create new objects with interesting behavior. There are convenient
+  commands for creating and recycling objects and for keeping track of the
+  objects you've created.</p>
+  <p>The following commands are used in the creation of objects:</p>
+  <pre>
+</pre>
+  <dl compact="compact">
+    <dt><code>@dig</code></dt>
+    <dd>- conveniently building new rooms and exits</dd>
+    <dt><code>@create</code></dt>
+    <dd>- making other kinds of objects</dd>
+    <dt><code>@recycle</code></dt>
+    <dd>- destroying objects you no longer want</dd>
+    <dt><code>@quota</code></dt>
+    <dd>- determining how many more objects you can build</dd>
+    <dt><code>@count</code></dt>
+    <dd>- determining how many objects you already own</dd>
+    <dt><code>@audit</code></dt>
+    <dd>- listing all of your objects</dd>
+    <dt><code>@classes</code></dt>
+    <dd>- listing all of the public classes available for your use</dd>
+    <dt><code>@move</code></dt>
+    <dd>- moving your objects from place to place</dd>
+  </dl>
+  <pre>
+</pre>
+  <p>They are described in detail in the following paragraphs.</p>
+  <dl>
+    <dt><u>Command:</u> <b>@create</b> <i><var>class-name</var> named
+    "<var>names</var>"</i></dt>
+    <dd>
+      <a name="IDX70"
+          id="IDX70"></a>
+    </dd>
+    <dt><u>Command:</u> <b>@create</b> <i><var>parent-object</var> named
+    "<var>names</var>"</i></dt>
+    <dd>
+      <a name="IDX71"
+          id="IDX71"></a>
+      <p>The main command for creating objects other than rooms and exits,
+      for which <samp>`@dig'</samp> is more convenient.</p>
+      <p>The first argument specifies the <em>parent</em> of the new object:
+      loosely speaking, the <em>kind</em> of object you're creating.
+      <var>class-name</var> is one of the four standard classes of
+      objects:</p>
+      <ul>
+        <li>$note</li>
+        <li>$letter</li>
+        <li>$thing</li>
+        <li>$container</li>
+      </ul>
+      <p>As time goes on, more <em>standard classes</em> may be added. If the
+      parent you have in mind for your new object isn't one of these, you may
+      use the parent's name (if it's in the same room as you) or else its
+      object number (e.g., #1234).</p>
+      <p>The <var>names</var> are given in the same format as in the
+      <samp>`@rename'</samp> command, as follows:</p>
+      <pre>
+<var>name</var>:<var>alias</var>,...,<var>alias</var>
+</pre>
+      <p>or alternatively</p>
+      <pre>
+<var>name-and-alias</var>,<var>alias</var>,...,<var>alias</var>
+</pre>
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>@describe</b> <i><var>object</var>
+    <strong>as</strong> <var>description</var></i></dt>
+    <dd>
+      <a name="IDX72"
+          id="IDX72"></a> Sets the description string of <var>object</var> to
+          <var>description</var>. This is the string that is printed out
+          whenever someone uses the <samp>`look'</samp> command on
+          <var>object</var>. To describe yourself, use <samp>`me'</samp> as
+          the <var>object</var>.
+      <p>For example, if blip types the following:</p>
+      <pre>
+@describe me as "A very fine fellow, if a bit on the short side."
+</pre>
+      <p>People who type <samp>`look blip'</samp> now see this:</p>
+      <pre>
+A very fine fellow, if a bit on the short side.
+</pre>
+      <p>The description of an object is kept in its
+      <code>.description</code> property. For multi-line descriptions,
+      <code>.description</code> can be a list of strings.</p>
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>@rename</b> <i><var>object</var>
+    <strong>to</strong>
+    <var>name</var>:<var>alias</var>,...,<var>alias</var></i></dt>
+    <dd>
+      <a name="IDX73"
+          id="IDX73"></a>
+    </dd>
+    <dt><u>Command:</u> <b>@rename</b> <i><var>object</var>
+    <strong>to</strong>
+    <var>name-and-alias</var>,<var>alias</var>,...,<var>alias</var></i></dt>
+    <dd>
+      <a name="IDX74"
+          id="IDX74"></a>
+    </dd>
+    <dt><u>Command:</u> <b>@rename</b> <i><var>object</var>:<var>verb</var>
+    <strong>to</strong> <var>new-verb-name</var></i></dt>
+    <dd>
+      <a name="IDX75"
+          id="IDX75"></a> The first two forms are used to change the name and
+          aliases of an object. The name is what will be used in most printed
+          descriptions of the object. The aliases are the names by which
+          players can refer to the object in commands. NOTE that the name of
+          a player may not include spaces and that no two players may have
+          the same name at the same time.
+      <p>For example, if blip names his dog using the following command:</p>
+      <pre>
+@rename #4237 to "Rover the Wonder Dog":Rover,dog
+</pre>
+      <p>Now we'll see <samp>`Rover the Wonder Dog'</samp> if we're in the
+      same room as him and we can refer to him as either <samp>`Rover'</samp>
+      or just <samp>`dog'</samp> in our commands, like <samp>`pet
+      dog'</samp>.</p>
+      <p>The third form of the @rename command is for use by programmers, to
+      change the name of a verb they own. If the <var>new-verb-name</var>
+      contains spaces, the verb will have multiple names, one for each
+      space-separated word.</p>
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>@recycle</b>
+    <i><var>object-name-or-number</var></i></dt>
+    <dd>
+      <a name="IDX76"
+          id="IDX76"></a> Destroys the indicated object utterly and
+          irretrievably. Naturally, you may only do this to objects that you
+          own.
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>@quota</b></dt>
+    <dd>
+      <a name="IDX77"
+          id="IDX77"></a> Each player has a limit as to how many objects that
+          player may create, called their <em>quota</em>. Every object they
+          create lowers the quota by one and every object they recycle
+          increases it by one. If the quota goes to zero, then that player
+          may not create any more objects (unless, of course, they recycle
+          some first).
+      <p>The <samp>`@quota'</samp> command prints out your current quota.</p>
+      <p>To get a larger quota, talk to a wizard. They will take a look at
+      what you've done with the objects you've built so far and make a
+      determination about whether or not it would be a net gain for the MOO
+      community if you were to build some more things. If so, they will
+      increase your quota; if not, they will try to explain some ways in
+      which you could build things that were more useful, entertaining, or
+      otherwise interesting to other players.</p>
+      <p>The quota mechanism is intended to solve a long-standing problem in
+      many MUDs: database bloat. The problem is that a large number of people
+      build a large number of dull objects and areas that are subsequently
+      never used or visited. The database becomes quite large and difficult
+      to manage without getting substantially more interesting. With the
+      quota system, we can make it possible for players to experiment and
+      learn while simultaneously keeping random building to acceptable
+      levels.</p>
+      <p>It is expected that some will find the quota system distasteful or
+      otherwise controversial. It was invented by Haakon and he is always
+      interested in hearing your constructive comments, suggestions and
+      protests.</p>
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>@count</b></dt>
+    <dd>
+      <a name="IDX78"
+          id="IDX78"></a> Prints out the number of objects you own. Do not be
+          surprised if this is one larger than you think it should be:
+          remember that your player object is owned by you as well, even
+          though you didn't create it in the usual way.
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>@audit</b></dt>
+    <dd>
+      <a name="IDX79"
+          id="IDX79"></a>
+    </dd>
+    <dt><u>Command:</u> <b>@audit</b> <i><var>player</var></i></dt>
+    <dd>
+      <a name="IDX80"
+          id="IDX80"></a>
+    </dd>
+    <dt><u>Command:</u> <b>@audit</b> <i><var>player</var> from
+    <var>number</var></i></dt>
+    <dd>
+      <a name="IDX81"
+          id="IDX81"></a> The first form prints out a list of every object
+          you own, giving each one's name and object number.
+      <p>The second form does the same for the named player.</p>
+      <p>The third form does the same for the named player, but begins
+      searching the database with the numbered object. <var>player</var> may
+      be replaced by "me" to restrict the audit of yourself. This can be
+      useful if you know the player does not own any objects below a certain
+      number (typically the player's number itself).</p>
+      <p>Interestingly, due to a quirk of the code, "@audit me from me" will
+      show you objects owned by you starting with your object number, an
+      unexpected shorthand.</p>
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>@classes</b></dt>
+    <dd>
+      <a name="IDX82"
+          id="IDX82"></a>
+    </dd>
+    <dt><u>Command:</u> <b>@classes</b> <i><var>class-name</var> ...</i></dt>
+    <dd>
+      <a name="IDX83"
+          id="IDX83"></a> The wizards have identified several useful classes
+          of objects in the database. The <samp>`@classes'</samp> command is
+          used to see which classes exist and what their member objects are.
+      <p>The first form simply lists all of the defined classes along with
+      short descriptions of the membership of each.</p>
+      <p>The second form prints an indented listing of that subset of the
+      object parent/child hierarchy containing the objects in the class(es)
+      you specify.</p>
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>@move</b> <i><var>thing</var> to
+    <var>place</var></i></dt>
+    <dd>
+      <a name="IDX84"
+          id="IDX84"></a> Move the specified object to the specified
+          location. This is not guaranteed to work; in particular, the object
+          must agree to be moved and the destination must agree to allow the
+          object in. This is usually the case, however. The special case
+          where <var>thing</var> is <samp>`me'</samp> is useful for
+          teleporting yourself around.
+      <p>If @move doesn't work and you own the room where the object is
+      located, try using <samp>`@eject'</samp> instead.</p>
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>@eject</b> <i><var>object</var></i></dt>
+    <dd>
+      <a name="IDX85"
+          id="IDX85"></a>
+    </dd>
+    <dt><u>Command:</u> <b>@eject</b> <i><var>object</var> from
+    <var>place</var></i></dt>
+    <dd>
+      <a name="IDX86"
+          id="IDX86"></a>
+      <p>This command is used to remove unwanted objects from places you own.
+      Players thus removed are unceremoniously dumped in the default player
+      starting place. Other kinds of objects get thrown into <code>#-1</code>
+      or <code>$nothing</code>. Unlike <samp>`@move'</samp>,
+      <samp>`@eject'</samp> does <em>not</em> check to see if the object
+      wants to be moved, and with the destination being what it is, there is
+      no question of the destination refusing the move, either. Generally,
+      you should only resort to <samp>`@eject'</samp> if <samp>`@move'</samp>
+      doesn't work.</p>
+      <p>The first form of the command removes the object from the current
+      room. The second form removes the object from the specified place
+      (which, in most cases, you'll have to specify as an object number). In
+      either case, this command only works if you own the room/entity from
+      which the object is being ejected.</p>
+      <p>The form of the command</p>
+      <pre>
+@eject ... from me
+</pre>
+      <p>suffices to get rid of some unwanted object in your inventory.</p>
+    </dd>
+  </dl>
+  <p>On any given room, one may user the following commands to set the
+  messages used for ejection:</p>
+  <dl>
+    <dt><u>Command:</u> <b>@ejection</b> <i><var>message</var></i></dt>
+    <dd>
+      <a name="IDX87"
+          id="IDX87"></a> This message is Printed to player issuing the
+          @eject command. The default <var>message</var> is <samp>`You expel
+          %d from %i.'</samp>
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>@oejection</b> <i><var>message</var></i></dt>
+    <dd>
+      <a name="IDX88"
+          id="IDX88"></a> This message is Printed to others in the room from
+          which the ejection occurs. The default <var>message</var> is
+          <samp>`%D is unceremoniously expelled from %i.'</samp>
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>@victim_ejection</b>
+    <i><var>message</var></i></dt>
+    <dd>
+      <a name="IDX89"
+          id="IDX89"></a> This message is Printed to the victim being
+          ejected. The default <var>message</var> is <samp>`You have been
+          expelled from %i.'</samp>
+    </dd>
+  </dl>
+  <h2><a name="SEC20"
+     href="LambdaCoreUserMan_toc.html#TOC20"
+     id="SEC20">Rooms and Exits</a></h2>
+  <p>Rooms and exits are the stuff from which the landscape of the virtual
+  world is created. A <em>room</em> is generally an instance of the generic
+  room class, also referred to as <code>$room</code>. An exit is an instance
+  of the generic exit class, <code>$exit</code>. An exit can be thought of as
+  a one way tunnel leading from one room to another. If you wish to have a
+  two way exit, you have to use two exits: one going from the <em>source</em>
+  to the <code>destination</code> and one going from the
+  <code>destination</code> to the <code>source</code>.</p>
+  <p>The following commands are used for creating and managing rooms and
+  exits:</p>
+  <dl>
+    <dt><u>Command:</u> <b>@dig</b> <i>"<var>new-room-name</var>"</i></dt>
+    <dd>
+      <a name="IDX90"
+          id="IDX90"></a>
+    </dd>
+    <dt><u>Command:</u> <b>@dig</b> <i><var>exit-spec</var>
+    <strong>to</strong> "<var>new-room-name</var>"</i></dt>
+    <dd>
+      <a name="IDX91"
+          id="IDX91"></a>
+    </dd>
+    <dt><u>Command:</u> <b>@dig</b> <i><var>exit-spec</var>
+    <strong>to</strong> <var>old-room-object-number</var></i></dt>
+    <dd>
+      <a name="IDX92"
+          id="IDX92"></a> This is the basic building tool. The first form of
+          the command creates a new room with the given name. The new room is
+          not connected to anywhere else; it is floating in limbo. The
+          <samp>`@dig'</samp> command tells you its object number, though, so
+          you can use the <samp>`@move'</samp> command to get there easily.
+      <p>The second form of the command not only creates the room, but one or
+      two exits linking your current location to (and possibly from) the new
+      room. An <var>exit-spec</var> has one of the following two forms:</p>
+      <pre>
+<var>names</var>
+<var>names</var>|<var>names</var>
+</pre>
+      <p>where the first form is used when you only want to create one exit,
+      from your current room to the new room, and the second form when you
+      also want an exit back, from the new room to your current room. In any
+      case, the <var>names</var> piece is just a list of names for the exit,
+      separated by commas; these are the names of the commands players can
+      type to use the exit. It is usually a good idea to include explicitly
+      the standard abbreviations for direction names (e.g., <samp>`n'</samp>
+      for <samp>`north'</samp>, <samp>`se'</samp> for
+      <samp>`southeast'</samp>, etc.). DO NOT put spaces in the names of
+      exits; they are useless in MOO.</p>
+      <p>The third form of the command is just like the second form except
+      that no new room is created; you instead specify by object number the
+      other room to/from which the new exits will connect.</p>
+      <p>NOTE: You must own the room at one end or the other of the exits you
+      create. If you own both, everything is hunky-dorey. If you own only one
+      end, then after creating the exits you should write down their object
+      numbers. You must then get the owner of the other room to use
+      <samp>`@add-exit'</samp> and <samp>`@add-entrance'</samp> to link your
+      new exits to their room.</p>
+      <p>For example,</p>
+      <pre>
+@dig "The Conservatory"
+</pre>
+      <p>creates a new room named "The Conservatory" and prints out its
+      object number.</p>
+      <pre>
+@dig north,n to "The North Pole"
+</pre>
+      <p>creates a new room and also an exit linking the player's current
+      location to the new room; players would say either <samp>`north'</samp>
+      or <samp>`n'</samp> to get from here to the new room. No way to get
+      back from that room is created.</p>
+      <pre>
+@dig west,w|east,e,out to "The Department of Auto-Musicology"
+</pre>
+      <p>creates a new room and two exits, one taking players from here to
+      the new room (via the commands <samp>`west'</samp> or <samp>`w'</samp>)
+      and one taking them from the new room to here (via <samp>`east'</samp>,
+      <samp>`e'</samp>, or <samp>`out'</samp>).</p>
+      <pre>
+@dig up,u to #7164
+</pre>
+      <p>creates an exit leading from the player's current room to #7164,
+      which must be an existing room.</p>
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>@add-exit</b>
+    <i><var>exit-object-number</var></i></dt>
+    <dd>
+      <a name="IDX93"
+          id="IDX93"></a> Add the exit with the given object number as a
+          conventional exit from the current room (that is, an exit that can
+          be invoked simply by uttering its name, like <samp>`east'</samp>).
+          Usually, <samp>`@dig'</samp> does this for you, but it doesn't if
+          you don't own the room in question. Instead, it tells you the
+          object number of the new exit and you have to find the owner of the
+          room and get them to use the <samp>`@add-exit'</samp> command to
+          link it up.
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>@add-entrance</b>
+    <i><var>exit-object-number</var></i></dt>
+    <dd>
+      <a name="IDX94"
+          id="IDX94"></a> Add the exit with the given object number as a
+          recognized entrance to the current room (that is, one whose use is
+          not considered teleportation). Usually, <samp>`@dig'</samp> does
+          this for you, but it doesn't if you don't own the room in question.
+          Instead, it tells you the object number of the new exit and you
+          have to find the owner of the room and get them to use the
+          @add-entrance command to link it up.
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>@exits</b></dt>
+    <dd>
+      <a name="IDX95"
+          id="IDX95"></a> Prints a list of all conventional exits from the
+          current room (but only if you own the room). A conventional exit is
+          one that can be used simply by uttering its name, like
+          <samp>`east'</samp>.
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>@entrances</b></dt>
+    <dd>
+      <a name="IDX96"
+          id="IDX96"></a> Prints a list of all recognized entrances to the
+          current room (but only if you own the room). A recognized entrance
+          is one whose use is not considered to be teleportation.
+    </dd>
+  </dl>
+  <h1><a name="SEC21"
+     href="LambdaCoreUserMan_toc.html#TOC21"
+     id="SEC21">Notes and Letters</a></h1>
+  <p>Notes and letters are objects that can have text written on them to be
+  read later. They are useful for leaving messages to people, or for
+  documenting your creations.</p>
+  <p>Note that, like most objects, only the owner of a note can recycle it.
+  If you'd like to make it possible for a reader of your note to destroy it
+  (this is a common desire for notes to other individual players), then you
+  might want to look at using a <code>$letter</code> instead.</p>
+  <h2><a name="SEC22"
+     href="LambdaCoreUserMan_toc.html#TOC22"
+     id="SEC22">Using Notes</a></h2>
+  <p>You can make a note by creating a child of the standard note,
+  <code>$note</code>. The following commands are available for interacting
+  with notes:</p>
+  <dl>
+    <dt><u>Command:</u> <b>read</b> <i><var>note</var></i></dt>
+    <dd>
+      <a name="IDX97"
+          id="IDX97"></a> Prints the text written on the named object,
+          usually a note or letter. Some notes are encrypted so that only
+          certain players may read them.
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>write</b> <i>"<var>any text</var>"
+    <strong>on</strong> <var>note</var></i></dt>
+    <dd>
+      <a name="IDX98"
+          id="IDX98"></a> Adds a line of text to the named note or letter.
+          Only the owner of a note may do this.
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>erase</b> <i><var>note</var></i></dt>
+    <dd>
+      <a name="IDX99"
+          id="IDX99"></a> Deletes all of the text written on a note or
+          letter. Only the owner of a note may do this.
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>delete</b> <i><var>line-number</var> from
+    <var>note</var></i></dt>
+    <dd>
+      <a name="IDX100"
+          id="IDX100"></a> Removes a single line of text from a note. The
+          first line of text is numbered 1, the second is 2, and so on. Only
+          the owner of a note may do this.
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>@notedit</b> <i><var>note-object</var></i></dt>
+    <dd>
+      <a name="IDX101"
+          id="IDX101"></a>
+    </dd>
+    <dt><u>Command:</u> <b>@notedit</b>
+    <i><var>object</var>.<var>property</var></i></dt>
+    <dd>
+      <a name="IDX102"
+          id="IDX102"></a> Enters the MOO Note Editor to edit the text on the
+          named object For the first form, <var>note-object</var> must be a
+          descendant of $note. For the second form,
+          <var>object</var>.<var>property</var> can be any text-valued (i.e.,
+          list of strings) property on any object.
+      <p>The standard MOO editor is used to perform editing operations.</p>
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>encrypt</b> <i><var>note</var> with
+    <var>key-expression</var></i></dt>
+    <dd>
+      <a name="IDX103"
+          id="IDX103"></a> Restricts the set of players who can read the
+          named note or letter to those for whom the given key expression is
+          true. Only the owner of a note may do this.
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>decrypt</b> <i><var>note</var></i></dt>
+    <dd>
+      <a name="IDX104"
+          id="IDX104"></a> Removes any restriction on who may read the named
+          note or letter. Only the owner of a note may do this.
+    </dd>
+  </dl>
+  <h2><a name="SEC23"
+     href="LambdaCoreUserMan_toc.html#TOC23"
+     id="SEC23">Using Letters</a></h2>
+  <p>A letter is a special kind of note with the added feature that it can be
+  recycled by anyone who can read it. This is often useful for notes from one
+  player to another. You create the letter as a child of the generic letter,
+  <code>$letter</code>, encrypt it so that only you and the other player can
+  read it and then either give it to the player in question or leave it where
+  they will find it. Once they've read it, they can use the
+  <samp>`burn'</samp> command to recycle the letter.</p>
+  <p>The following command is available for letters, in addition to those
+  used for notes.</p>
+  <dl>
+    <dt><u>Command:</u> <b>burn</b> <i><var>letter</var></i></dt>
+    <dd>
+      <a name="IDX105"
+          id="IDX105"></a> Destroy the named letter irretrievably. Only
+          players who can read the letter can do this.
+    </dd>
+  </dl>
+  <h1><a name="SEC24"
+     href="LambdaCoreUserMan_toc.html#TOC24"
+     id="SEC24">Using Containers</a></h1>
+  <p>Containers are objects that allow you to store other objects inside
+  them. Containers may be open or closed, using the verbs <samp>`open'</samp>
+  and <samp>`close'</samp> on the container. Containers have a separate lock
+  to determine if a player may open them. You can make a container by
+  creating a child of the standard container, <code>$container</code>.</p>
+  <p>Containers have a large number of messages which get printed when
+  players act upon them.</p>
+  <p>Containers have opacity. This is manipulated using the following command
+  :</p>
+  <dl>
+    <dt><u>Command:</u> <b>@opacity</b> <i><var>container</var> is
+    <var>integer</var></i></dt>
+    <dd>
+      <a name="IDX106"
+          id="IDX106"></a> The opacity can take on one of three values:
+      <pre>
+</pre>
+      <dl compact="compact">
+        <dt><code>0</code></dt>
+        <dd>- The container is transparent and you can always see into
+        it.</dd>
+        <dt><code>1</code></dt>
+        <dd>- The container is opaque, and you cannot see into it when
+        closed</dd>
+        <dt><code>2</code></dt>
+        <dd>- The container is a black hole, and you can never see into it
+        whether closed or open.</dd>
+      </dl>
+      <pre>
+</pre>
+      <p>The default opacity is <samp>`1'</samp> - the container is
+      opaque.</p>
+    </dd>
+  </dl>
+  <h1><a name="SEC25"
+     href="LambdaCoreUserMan_toc.html#TOC25"
+     id="SEC25">Messages on Objects</a></h1>
+  <p>Most objects have messages that are printed when a player succeeds or
+  fails in manipulating the object in some way. Of course, the kinds of
+  messages printed are specific to the kinds of manipulations and those, in
+  turn, are specific to the kind of object. Regardless of the kind of object,
+  though, there is a uniform means for listing the kinds of messages that can
+  be set and then for setting them.</p>
+  <p>The <samp>`@messages'</samp> command prints out all of the messages you
+  can set on any object you own.</p>
+  <p>To set a particular message on one of your objects use a command with
+  this form:</p>
+  <pre>
+@<var>message-name</var> <var>object</var> is "<var>message</var>"
+</pre>
+  <p>where <samp>`<var>message-name</var>'</samp> is the name of the message
+  being set, <var>object</var> is the name or number of the object on which
+  you want to set that message, and <var>message</var> is the actual
+  text.</p>
+  <p>For example, consider the <samp>`leave'</samp> message on an exit; it is
+  printed to a player when they successfully use the exit to leave a room. To
+  set the <samp>`leave'</samp> message on the exit <samp>`north'</samp> from
+  the current room, use the command</p>
+  <pre>
+@leave north is "You wander in a northerly way out of the room."
+</pre>
+  <p>This class of commands automatically applies to any property whose name
+  ends in <samp>`_msg'</samp>. Thus, in the example above, the command is
+  setting the <samp>`leave_msg'</samp> property of the named exit. You can
+  get such a command to work on new kinds of objects simply by giving the
+  appropriate properties names that end in <samp>`_msg'</samp>.</p>
+  <p>Messages of this type are used on the following objects:</p>
+  <ul>
+    <li>containers</li>
+    <li>exits</li>
+    <li>things</li>
+  </ul>
+  <dl>
+    <dt><u>Command:</u> <b>@messages</b> <i><var>object</var></i></dt>
+    <dd>
+      <a name="IDX107"
+          id="IDX107"></a> List all of the messages that can be set on the
+          named object and their current values.
+    </dd>
+  </dl>
+  <h2><a name="SEC26"
+     href="LambdaCoreUserMan_toc.html#TOC26"
+     id="SEC26">Setting Messages for Exits</a></h2>
+  <p>Several kinds of messages can be set on an exit object ; they are
+  printed to various audiences at certain times whenever an attempt is made
+  to go through the exit. The ones whose names begin with <samp>`o'</samp>
+  are always shown prefixed with the name of the player making the attempt
+  and a single space character. The standard pronoun substitutions (with
+  respect to the player) are made on each message before it is printed.</p>
+  <p>The following commands can be used to set the corresponding messages on
+  an exit:</p>
+  <dl>
+    <dt><u>Command:</u> <b>@leave</b> <i><var>message</var></i></dt>
+    <dd>
+      <a name="IDX108"
+          id="IDX108"></a> This command sets the message printed to the
+          player just before they successfully use the exit. The default
+          message is <samp>`'</samp>.
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>@oleave</b> <i><var>message</var></i></dt>
+    <dd>
+      <a name="IDX109"
+          id="IDX109"></a> This command sets the message printed to others in
+          the source room when a player successfully uses the exit. The
+          default message is <samp>` has left.'</samp>.
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>@arrive</b> <i><var>message</var></i></dt>
+    <dd>
+      <a name="IDX110"
+          id="IDX110"></a> This command sets the message printed to the
+          player just after they successfully use the exit. The default
+          message is <samp>`'</samp>.
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>@oarrive</b> <i><var>message</var></i></dt>
+    <dd>
+      <a name="IDX111"
+          id="IDX111"></a> This command sets the message printed to others in
+          the destination room when a player successfully uses the exit. The
+          default message is <samp>`has arrived.'</samp>.
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>@nogo</b> <i><var>message</var></i></dt>
+    <dd>
+      <a name="IDX112"
+          id="IDX112"></a> This command sets the message printed to the
+          player when they fail in using the exit. The default message is
+          <samp>` You can't go that way.'</samp>.
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>@onogo</b> <i><var>message</var></i></dt>
+    <dd>
+      <a name="IDX113"
+          id="IDX113"></a> This command sets the message printed to others
+          when a player fails in using the exit. The default message is
+          <samp>`'</samp>.
+    </dd>
+  </dl>
+  <h2><a name="SEC27"
+     href="LambdaCoreUserMan_toc.html#TOC27"
+     id="SEC27">Setting Messages for Things</a></h2>
+  <p>Several kinds of messages can be set on <em>things</em>, that is,
+  objects that have <code>$thing</code> as an ancestor. They are printed to
+  various audiences under various circumstances when an attempt is made to
+  <samp>`take'</samp> or <samp>`drop'</samp> a thing. The ones whose names
+  begin with <samp>`o'</samp> are always shown prefixed with the name of the
+  player making the attempt and a single space character. The standard
+  pronoun substitutions (with respect to the player) are made on each message
+  before it is printed.</p>
+  <p>The following commands can be used to set the corresponding messages on
+  things:</p>
+  <dl>
+    <dt><u>Command:</u> <b>@take_failed</b></dt>
+    <dd>
+      <a name="IDX114"
+          id="IDX114"></a> This command is used to set the message printed to
+          a player who fails to take the object. The default message is
+          <samp>`You can't pick that up.'</samp>.
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>@otake_failed</b></dt>
+    <dd>
+      <a name="IDX115"
+          id="IDX115"></a> This command is used to set the message printed to
+          others in the same room if a player fails to take the object. The
+          default message is <samp>`'</samp>.
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>@take_succeeded</b></dt>
+    <dd>
+      <a name="IDX116"
+          id="IDX116"></a> This command is used to set the message printed to
+          a player who succeeds in taking the object. The default message is
+          <samp>` You take %t.'</samp>.
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>@otake_succeeded</b></dt>
+    <dd>
+      <a name="IDX117"
+          id="IDX117"></a> This command is used to set the message printed to
+          others in the same room if a player succeeds in taking the object.
+          The default message is <samp>` picks up %t.'</samp>.
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>@drop_failed</b></dt>
+    <dd>
+      <a name="IDX118"
+          id="IDX118"></a> This command is used to set the message printed to
+          a player who fails to drop the object. The default message is
+          <samp>` You can't seem to drop %t here.'</samp>.
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>@odrop_failed</b></dt>
+    <dd>
+      <a name="IDX119"
+          id="IDX119"></a> This command is used to set the message printed to
+          others in the same room if a player fails to drop the object. The
+          default message is <samp>`tries to drop %t but fails!'</samp>.
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>@drop_succeeded</b></dt>
+    <dd>
+      <a name="IDX120"
+          id="IDX120"></a> This command is used to set the message printed to
+          a player who succeeds in dropping the object. The default message
+          is <samp>` You drop %t.'</samp>.
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>@odrop_succeeded</b></dt>
+    <dd>
+      <a name="IDX121"
+          id="IDX121"></a> This command is used to set the message printed to
+          others in the room if a player succeeds in dropping the object. The
+          default message is <samp>` drops %t.'</samp>.
+    </dd>
+  </dl>
+  <h2><a name="SEC28"
+     href="LambdaCoreUserMan_toc.html#TOC28"
+     id="SEC28">Setting Messages for Containers</a></h2>
+  <p>Several kinds of messages can be set on a container object; they are
+  printed to various audiences at certain times whenever an attempt is made
+  to use the container. The ones whose names begin with 'o' are always shown
+  prefixed with the name of the player making the attempt and a single space
+  character. The standard pronoun substitutions (with respect to the player)
+  are made on each message before it is printed.</p>
+  <p>The following commands can be used to set the corresponding messages
+  used with containers.</p>
+  <dl>
+    <dt><u>Command:</u> <b>@empty</b></dt>
+    <dd>
+      <a name="IDX122"
+          id="IDX122"></a> This command is used to set the message printed in
+          place of the contents list when the container is empty. The default
+          message is <samp>`It is empty.'</samp>
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>@open</b></dt>
+    <dd>
+      <a name="IDX123"
+          id="IDX123"></a> This command is used to set the message printed to
+          the player who successfully opens the container. The default
+          message is <samp>`You open %d.'</samp>
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>@oopen</b></dt>
+    <dd>
+      <a name="IDX124"
+          id="IDX124"></a> This command is used to set the message printed to
+          others in the same room if the player successfully opens the
+          container. The default message is <samp>`opens %d.'</samp>
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>@open_fail</b></dt>
+    <dd>
+      <a name="IDX125"
+          id="IDX125"></a> This command is used to set the message printed to
+          the player who cannot open the container. The default message is
+          <samp>`You can't open that.'</samp>
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>@oopen_fail</b></dt>
+    <dd>
+      <a name="IDX126"
+          id="IDX126"></a> This command is used to set the message printed to
+          others in the room when a player fails to open a container. The
+          default message is <samp>`'</samp>
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>@close</b></dt>
+    <dd>
+      <a name="IDX127"
+          id="IDX127"></a> This command is used to set the message printed to
+          the player who closes a container. The default message is
+          <samp>`You close %d'</samp>
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>@oclose</b></dt>
+    <dd>
+      <a name="IDX128"
+          id="IDX128"></a> This command is used to set the message printed to
+          others in the room when a player closes a container. The default
+          message is <samp>`closes %d'</samp>
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>@put</b></dt>
+    <dd>
+      <a name="IDX129"
+          id="IDX129"></a> This command is used to set the message printed to
+          a player when an object is successfully placed in a container. The
+          default message is <samp>`You put %d in %i'</samp>
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>@oput</b></dt>
+    <dd>
+      <a name="IDX130"
+          id="IDX130"></a> This command is used to set the message printed to
+          others in the room when a player successfully places an object in a
+          container. The default message is <samp>`puts %d in %i.'</samp>
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>@put_fail</b></dt>
+    <dd>
+      <a name="IDX131"
+          id="IDX131"></a> This command is used to set the message printed
+          when a player fails to put an object in a container. The default
+          message is <samp>`You can't put %d in that.'</samp>
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>@oput_fail</b></dt>
+    <dd>
+      <a name="IDX132"
+          id="IDX132"></a> This command is used to set the message printed to
+          others in the room when a player fails to place an object in a
+          container. The default message is <samp>`'</samp>
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>@remove</b></dt>
+    <dd>
+      <a name="IDX133"
+          id="IDX133"></a> This command is used to set the message printed
+          when a player succeeds in removing an object from a container. The
+          default message is <samp>`You remove %d from %i'</samp>
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>@oremove</b></dt>
+    <dd>
+      <a name="IDX134"
+          id="IDX134"></a> This command is used to set the message printed to
+          others in the room when a player succeeds in removing an object
+          from a container. The default message is <samp>`removes %d from
+          %i.'</samp>
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>@remove_fail</b></dt>
+    <dd>
+      <a name="IDX135"
+          id="IDX135"></a> This command is used to set the message printed
+          when a player fails to remove an object from a container. The
+          default message is <samp>`You can't remove that.'</samp>
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>@oremove_fail</b></dt>
+    <dd>
+      <a name="IDX136"
+          id="IDX136"></a> This command is used to set the message printed to
+          others in the room when a player fails to remove an object from a
+          container. The default message is <samp>`'</samp>
+    </dd>
+  </dl>
+  <h1><a name="SEC29"
+     href="LambdaCoreUserMan_toc.html#TOC29"
+     id="SEC29">Using Locks With Objects</a></h1>
+  <p>It is frequently useful to restrict the use of some object. For example,
+  one might want to keep people from using a particular exit unless they're
+  carrying a bell, a book, and a candle. Alternatively, one might allow
+  anyone to use the exit unless they're carrying that huge golden coffin in
+  the corner. LambdaMOO supports a general locking mechanism designed to make
+  such restrictions easy to implement, usually without any programming.</p>
+  <p>Every object supports a notion of being <em>locked</em> with respect to
+  certain other objects. For example, the exit above might be locked for any
+  object that was carrying the coffin object but unlocked for all other
+  objects. In general, if some object <samp>`A'</samp> is locked for another
+  object, <samp>`B'</samp>, then <samp>`B'</samp> is usually prevented from
+  using <samp>`A'</samp>. Of course, the meaning of <em>use</em> in this
+  context depends upon the kind of object.</p>
+  <p>The various standard classes of objects use locking as follows:</p>
+  <ul>
+    <li>Rooms and containers refuse to allow any object inside them if
+    they're locked for it.</li>
+    <li>Exits refuse to transport any object that they're locked for.</li>
+    <li>Things (including notes and letters) cannot be moved to locations
+    that they're locked for.</li>
+  </ul>
+  <p>There are two sides to locking:</p>
+  <ul>
+    <li>How is it specified whether one object is locked for another
+    one?</li>
+    <li>What is the effect of an object being locked?</li>
+  </ul>
+  <p>Note that these two questions are entirely independent: one could invent
+  a brand-new way to specify locking, but the effect of an exit being locked
+  would be unchanged.</p>
+  <p>Programmers should note that the interface between these two sides is
+  the verb</p>
+  <pre>
+<var>x</var>:is_unlocked_for(<var>y</var>)
+</pre>
+  <p>which is called by <var>x</var> to determine if it is locked for the
+  object <var>y</var>. The way in which <code>:is_unlocked_for</code> is
+  implemented is entirely independent of the ways in which <var>x</var> uses
+  its results. Note that you can play on either side of this interface with
+  your own objects, either defining new implementations of
+  <code>:is_unlocked_for</code> that match your particular circumstances or
+  having your objects interpret their being locked in new ways.</p>
+  <p>The following commands are used to specify locks on objects.</p>
+  <dl>
+    <dt><u>Command:</u> <b>@lock</b> <i><var>object</var>
+    <strong>with</strong> <var>key expression</var></i></dt>
+    <dd>
+      <a name="IDX137"
+          id="IDX137"></a> Set a lock on <var>object</var> to restrict its
+          use.
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>@unlock</b> <i><var>object</var></i></dt>
+    <dd>
+      <a name="IDX138"
+          id="IDX138"></a> Clear any lock that might exist on the given
+          object.
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>@lock_for_open</b> <i><var>container</var>
+    <strong>with</strong> <var>key expression</var></i></dt>
+    <dd>
+      <a name="IDX139"
+          id="IDX139"></a> Set the lock on <var>container</var> which
+          restricts who can open it.
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>@unlock_for_open</b>
+    <i><var>container</var></i></dt>
+    <dd>
+      <a name="IDX140"
+          id="IDX140"></a> Clears the lock which restricts who may open
+          <var>container</var>.
+    </dd>
+  </dl>
+  <h2><a name="SEC30"
+     href="LambdaCoreUserMan_toc.html#TOC30"
+     id="SEC30">Keys</a></h2>
+  <p>LambdaMOO supports a simple but powerful notation for specifying locks
+  on objects, encryption on notes, and other applications. The idea is to
+  describe a constraint that must be satisfied concerning what some object
+  must be or contain in order to use some other object.</p>
+  <p>The constraint is given in the form of a logical expression, made up of
+  object numbers connected with the operators <samp>`and'</samp>,
+  <samp>`or'</samp>, and <samp>`not'</samp> (written
+  <samp>`&amp;&amp;'</samp>, <samp>`||'</samp>, and <samp>`!'</samp>, for
+  compatibility with the MOO programming language). When writing such
+  expressions, though, one usually does not use object numbers directly, but
+  rather gives their names, as with most MOO commands.</p>
+  <p>These logical expressions (called <em>key expressions</em>) are always
+  evaluated in the context of some particular <em>candidate</em> object, to
+  see if that object meets the constraint. To do so, we consider the
+  candidate object, along with every object it contains (and the ones those
+  objects contain, and so on), to be <samp>`true'</samp> and all other
+  objects to be <samp>`false'</samp>.</p>
+  <p>As an example, suppose the player blip wanted to lock the exit leading
+  to his home so that only he and the holder of his magic wand could use it.
+  Further, suppose that blip was object #999 and the wand was #1001. blip
+  would use the '@lock' command to lock the exit with the following key
+  expression:</p>
+  <pre>
+me || magic wand
+</pre>
+  <p>and the system would understand this to mean</p>
+  <pre>
+#999 || #1001
+</pre>
+  <p>That is, players could only use the exit if they were (or were carrying)
+  either #999 or #1001.</p>
+  <p>To encrypt a note so that it could only be read by blip or someone
+  carrying his book, his bell, and his candle, blip would use the
+  <samp>`encrypt'</samp> command with the key expression</p>
+  <pre>
+me || (bell &amp;&amp; book &amp;&amp; candle)
+</pre>
+  <p>Finally, to keep players from taking a large gold coffin through a
+  particularly narrow exit, blip would use this key expression:</p>
+  <pre>
+! coffin
+</pre>
+  <p>That is, the expression would be false for any object that was or was
+  carrying the coffin.</p>
+  <p>There is one other kind of clause that can appear in a key
+  expression:</p>
+  <pre>
+? <var>object</var>
+</pre>
+  <p>This is evaluated by testing whether the given object is unlocked for
+  the candidate object; if so, this clause is true, and otherwise, it is
+  false. This allows you to have several locks all sharing some single other
+  one; when the other one is changed, all of the locks change their behavior
+  simultaneously.</p>
+  <p>The internal representation of key expressions, as stored in .key on
+  every object, for example, is very simple and easy to construct on the
+  fly.</p>
+  <h3><a name="SEC31"
+     href="LambdaCoreUserMan_toc.html#TOC31"
+     id="SEC31">Key Representation</a></h3>
+  <p>The representation of key expressions is very simple and makes it easy
+  to construct new keys on the fly.</p>
+  <p>Objects are represented by their object numbers and all other kinds of
+  key expressions are represented by lists. These lists have as their first
+  element a string drawn from the following set:</p>
+  <pre>
+"&amp;&amp;"     "||"     "!"     "?"
+</pre>
+  <p>For the first two of these, the list should be three elements long; the
+  second and third elements are the representations of the key expressions on
+  the left- and right-hand sides of the appropriate operator. In the third
+  case, <samp>`!'</samp>, the list should be two elements long; the second
+  element is again a representation of the operand. Finally, in the
+  <samp>`?'</samp> case, the list is also two elements long but the second
+  element must be an object number.</p>
+  <p>As an example, the key expression</p>
+  <pre>
+#45  &amp;&amp;  ?#46  &amp;&amp;  (#47  ||  !#48)
+</pre>
+  <p>would be represented as follows:</p>
+  <pre>
+{"&amp;&amp;", {"&amp;&amp;", #45, {"?", #46}}, {"||", #47, {"!", #48}}}
+</pre>
+  <h1><a name="SEC32"
+     href="LambdaCoreUserMan_toc.html#TOC32"
+     id="SEC32">The MOO Editor</a></h1>
+  <p>One can always enter an editor by teleporting to it, or you can use one
+  of the commands provided</p>
+  <pre>
+</pre>
+  <dl compact="compact">
+    <dt><code>@edit <var>object</var>:<var>verb</var></code></dt>
+    <dd>invokes the Verb Editor (edits verb code)</dd>
+    <dt><code>@notedit <var>note_object</var></code></dt>
+    <dd>invokes the Note Editor (edits note text)</dd>
+    <dt><code>@notedit <var>object</var>.<var>prop</var></code></dt>
+    <dd>invokes the Note Editor (edits text property)</dd>
+    <dt><code>@send <var>list of recipients</var></code></dt>
+    <dd>invokes the Mailer (edits a mail message)</dd>
+    <dt><code>@answer [<var>msg_number</var>]
+    [<var>flags</var>...]</code></dt>
+    <dd>invokes the Mailer (edits a reply)</dd>
+  </dl>
+  <pre>
+</pre>
+  <p>This will transport you to one of several special rooms that have
+  editing commands available. These editors are admittedly not as good as
+  EMACS, but for those with no other editing capability on their host
+  systems, it is better than nothing.</p>
+  <p>In addition to the commands provided by the generic editor, individual
+  editors provide their own additional commands for loading text from places,
+  saving text to places, and various specialized functions.</p>
+  <p>Note that a given editor only allows you one session at a time (ie. one
+  verb, one note, or one mail message). If you leave an editor without either
+  aborting or compiling/saving/sending the item you're working on, that
+  editor remembers what you are doing next time you enter it, whether you
+  enter it by teleporting or by using the appropriate command. Note that
+  editors are periodically flushed so if you leave stuff there for
+  sufficiently long, it will go away.</p>
+  <p>A player may have his own <code>.edit_options</code> property which is a
+  list containing one or more (string) flags from the following list</p>
+  <pre>
+</pre>
+  <dl compact="compact">
+    <dt><code>quiet_insert</code></dt>
+    <dd>suppresses those annoying <samp>`Line n added.'</samp> or
+    <samp>`Appended...'</samp> messages that one gets in response to
+    <samp>`say'</samp> or <samp>`emote'</samp>. This is useful if you're
+    entering a long list of lines, perhaps via some macro on your client, and
+    you don't want to see an equally long list of <samp>`Line n
+    added...'</samp> messages. What you do want, however is some indication
+    that this all got through, which is why the <samp>`.'</samp> command is
+    an abbreviation for insert.</dd>
+  </dl>
+  <pre>
+</pre>
+  <p>There will be more options, some day.</p>
+  <h2><a name="SEC33"
+     href="LambdaCoreUserMan_toc.html#TOC33"
+     id="SEC33">Editor Ranges</a></h2>
+  <p>Most editor commands act upon a particular range of lines. Essentially,
+  one needs to specify a first line and a last line. Line numbers may be
+  given in any of the following forms</p>
+  <pre>
+</pre>
+  <dl compact="compact">
+    <dt><code>n</code></dt>
+    <dd>(i.e., the nth line of text)</dd>
+    <dt><code>n^</code></dt>
+    <dd>n-th line after/below the current insertion point</dd>
+    <dt><code>n_</code></dt>
+    <dd>n-th line before/above the current insertion point</dd>
+    <dt><code>n$</code></dt>
+    <dd>n-th line before the end.</dd>
+  </dl>
+  <pre>
+</pre>
+  <p>In the latter three, n defaults to 1, so that <samp>`^'</samp> by itself
+  refers to the line below the current (i.e., the line that gets
+  <samp>`^'</samp> printed before it), and likewise for <samp>`_'</samp>
+  while <samp>`$'</samp> refers to the last line. Note that the usage depends
+  on whether you are specifying a line or an insertion point (space between
+  lines). <samp>`^5'</samp> is the space above/before line 5, while
+  <samp>`5^'</samp> is the fifth line after/below the current insertion
+  point.</p>
+  <p>Ranges of lines may be specified in any of the following ways:</p>
+  <pre>
+</pre>
+  <dl compact="compact">
+    <dt><code><var>line</var></code></dt>
+    <dd>just that line</dd>
+    <dt><code>from <var>line</var> to <var>line</var></code></dt>
+    <dd>
+      what it says; the following two forms are equivalent:
+      <pre>
+<var>line</var>-<var>line</var>            
+<var>line</var> <var>line</var>
+</pre>
+    </dd>
+  </dl>
+  <pre>
+</pre>
+  <p>With the <samp>`from l to l'</samp> form, either the
+  <strong>from</strong> or the <strong>to</strong> can be left off and it
+  will default to whatever is usual for that command (usually a line above or
+  below the insertion point).</p>
+  <h2><a name="SEC34"
+     href="LambdaCoreUserMan_toc.html#TOC34"
+     id="SEC34">Editor Commands</a></h2>
+  <p>The following commands are provided by the editor classes. Those that
+  are not generic are specifically marked so.</p>
+  <dl>
+    <dt><u>Command:</u> <b>say</b> <i><var>text</var></i></dt>
+    <dd>
+      <a name="IDX141"
+          id="IDX141"></a>
+    </dd>
+    <dt><u>Command:</u> <b>"<var>text</var></b></dt>
+    <dd>
+      <a name="IDX142"
+          id="IDX142"></a> Adds <var>text</var> to whatever you are editing.
+          The second form is equivalent to the first except in that it
+          doesn't strip leading blanks off of <var>text</var> (just as with
+          the normal <samp>`say'</samp> and <samp>`"'</samp> commands).
+      <p>The added text appears as a new line at the insertion point. The
+      insertion point, in turn, gets moved so as to be after the added text.
+      For example:</p>
+      <pre>
+&gt;"first line
+-|Line 1 added.
+
+&gt;"  second line"
+-|Line 2 added.
+
+&gt;list
+-|1: first line
+-|__2_   second line"
+-|^^^^
+</pre>
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>emote</b> <i><var>text</var></i></dt>
+    <dd>
+      <a name="IDX143"
+          id="IDX143"></a>
+    </dd>
+    <dt><u>Command:</u> <b>:<var>text</var></b></dt>
+    <dd>
+      <a name="IDX144"
+          id="IDX144"></a>
+      <p>Appends <var>text</var> to the end of the line before the insertion
+      point. The second form is equivalent to the first except that it
+      doesn't strip leading blanks off of <var>text</var> (just as with the
+      normal <samp>`emote'</samp> and <samp>`:'</samp> commands). The
+      insertion point is left unmoved.</p>
+      <pre>
+&gt;list .
+-|_37_ Hello there
+-|^38^ Oh, I'm fine.
+
+&gt;:, how are you
+-|Appended to line 37.
+
+&gt;:?
+-|Appended to line 37.
+
+&gt;list .
+-|_37_ Hello there, how are you?
+-|^38^ Oh, I'm fine.
+</pre>
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>lis*t</b> <i>[<var>range</var>]</i></dt>
+    <dd>
+      <a name="IDX145"
+          id="IDX145"></a> Prints some subset of the current verb text. The
+          default range is some reasonable collection of lines around the
+          current insertion point: currently this is <samp>`8_-8^'</samp>,
+          ie., 8 lines above the insertion point to 8 lines below it unless
+          this runs up against the beginning or end of file, in which case we
+          just take the first or last 16 lines, or just <samp>`1-$'</samp> if
+          there aren't that many.
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>ins*ert</b> <i>[<var>ins</var>]
+    ["<var>text</var>]</i></dt>
+    <dd>
+      <a name="IDX146"
+          id="IDX146"></a>
+    </dd>
+    <dt><u>Command:</u> <b>.</b></dt>
+    <dd>
+      <a name="IDX147"
+          id="IDX147"></a> Many editor commands refer to an "insertion point"
+          which is (usually) the place right below where the most recent line
+          was inserted. The insertion point should really be thought of as
+          sitting <em>between</em> lines. In listings, the line above the
+          insertion point is marked with <samp>`_'</samp> while the one below
+          is marked with <samp>`^'</samp>.
+      <p>The <samp>`insert'</samp> command, when given an argument, sets the
+      insertion point. If <var>text</var> is provided, a new line will be
+      created and inserted as with <samp>`say'</samp>. <var>ins</var>, both
+      here and in other commands that require specifying an insertion point
+      (e.g., copy/move), can be one of</p>
+      <pre>
+</pre>
+      <dl compact="compact">
+        <dt><code>^n</code></dt>
+        <dd>above line n</dd>
+        <dt><code>n</code></dt>
+        <dd>above line n</dd>
+        <dt><code>_n</code></dt>
+        <dd>below line n</dd>
+        <dt><code>$</code></dt>
+        <dd>at the end</dd>
+        <dt><code>^$</code></dt>
+        <dd>before the last line</dd>
+        <dt><code>n^$</code></dt>
+        <dd>n lines before the end</dd>
+        <dt><code>.</code></dt>
+        <dd>the current insertion point (i.e., <samp>`insert .'</samp> is a
+        no-op)</dd>
+        <dt><code>+n</code></dt>
+        <dd>n lines below the current insertion point.</dd>
+        <dt><code>-n</code></dt>
+        <dd>n lines above the current insertion point.</dd>
+      </dl>
+      <pre>
+</pre>
+      <p>For the truly perverse, there are other combinations that also work
+      due to artifacts of the parsing process, but these might go away...</p>
+      <p>A single dot <samp>`.'</samp> is the same as <samp>`insert'</samp>
+      without any arguments ie, start insertion at the current insertion
+      point.</p>
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>n*ext</b> <i>[<var>n</var>]
+    ["<var>text</var>]</i></dt>
+    <dd>
+      <a name="IDX148"
+          id="IDX148"></a> Moves the insertion point down <var>n</var> lines.
+          If <var>text</var> is provided, inserts a new line there just like
+          <samp>`say'</samp>. Equivalent to <samp>`insert
+          +<var>n</var>'</samp>. As one might expect, <var>n</var> defaults
+          to 1.
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>p*rev</b> <i>[<var>n</var>]
+    ["<var>text</var>]</i></dt>
+    <dd>
+      <a name="IDX149"
+          id="IDX149"></a> Moves the insertion point up <var>n</var> lines.
+          If <var>text</var> is provided, a new line is inserted as with
+          <samp>`say'</samp>. Equivalent to <samp>`insert
+          -<var>n</var>'</samp>. As one might expect, <var>n</var> defaults
+          to 1.
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>del*ete</b> <i>[<var>range</var>]</i></dt>
+    <dd>
+      <a name="IDX150"
+          id="IDX150"></a> Deletes the specified range of lines. Note that
+          <var>range</var> defaults to the line <em>before</em> the current
+          insertion point.
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>f*ind</b> <i>/
+    <var>str</var>[/[c][<var>ins</var>]]</i></dt>
+    <dd>
+      <a name="IDX151"
+          id="IDX151"></a>
+    </dd>
+    <dt><u>Command:</u> <b>/</b>
+    <i><var>str</var>[/[c][<var>ins</var>]]</i></dt>
+    <dd>
+      <a name="IDX152"
+          id="IDX152"></a> Searches for the first line after <var>ins</var>
+          containing <var>str</var>. <var>ins</var> defaults to the current
+          insertion point . With the first form, any character (not just
+          <samp>`/'</samp>) may be used as a delimiter. For the second form,
+          you must use <samp>`/'</samp>. The <samp>`c'</samp> flag, if given,
+          indicates that case is to be ignored while searching
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>s*ubst</b> <i>/ <var>str1</var> /
+    <var>str2</var>[/[g][c][<var>range</var>]]</i></dt>
+    <dd>
+      <a name="IDX153"
+          id="IDX153"></a> Substitutes <var>str2</var> for <var>str1</var>,
+          in all of the lines of <var>range</var>. Any character (not just
+          <samp>`/'</samp>) may be used to delimit the strings. If
+          <var>str1</var> is blank, <var>str2</var> is inserted at the
+          beginning of the line. (For inserting a string at the end of a line
+          use <samp>`emote'</samp> or <samp>`:'</samp>).
+      <p>Normally, only one substitution is done per line in the specified
+      range, but if the <samp>`g'</samp> flag is given, *all* instances of
+      <var>str1</var> are replaced. The <samp>`c'</samp> flag indicates that
+      case is not significant when searching for substitution instances.
+      <var>range</var> defaults to the line *before* the insertion point.</p>
+      <p>You do <em>not</em> need a space between the verb and the delimiter
+      before <var>str1</var>. [Bug: If you omit the space and the first
+      whitespace in <var>str1</var> is a run of more than one space, those
+      spaces get treated as one.]</p>
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>m*ove</b> <i>[<var>range</var>] to
+    <var>ins</var></i></dt>
+    <dd>
+      <a name="IDX154"
+          id="IDX154"></a> 5Moves the range of lines to place specified by
+          <var>ins</var>. If <var>ins</var> happens to be the current
+          insertion point, the insertion point is moved to the end of the
+          freshly moved lines. If the range of lines contains the insertion
+          point, the insertion point is carried over to the range's new
+          location.
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>c*opy</b> <i>[<var>range</var>] to
+    <var>ins</var></i></dt>
+    <dd>
+      <a name="IDX155"
+          id="IDX155"></a> Copies the specified range of lines to place given
+          by <var>ins</var>. If <var>ins</var> happens to be the current
+          insertion point, the insertion point moves to the end of the
+          inserted lines.
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>join</b> <i>[<var>range</var>]</i></dt>
+    <dd>
+      <a name="IDX156"
+          id="IDX156"></a>
+    </dd>
+    <dt><u>Command:</u> <b>joinliteral</b> <i>[<var>range</var>]</i></dt>
+    <dd>
+      <a name="IDX157"
+          id="IDX157"></a> This command combines the lines in the specified
+          range. Normally, spaces are inserted and double space appears after
+          periods and colons, but <samp>`joinliteral'</samp> (abbreviates to
+          <samp>`joinl'</samp>) supresses this and joins the lines as is.
+          <var>range</var> defaults to the two lines surrounding the
+          insertion point.
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>fill</b> <i>[<var>range</var>] [@
+    <var>c</var>]</i></dt>
+    <dd>
+      <a name="IDX158"
+          id="IDX158"></a> This command combines the specified lines as in
+          join and then splits them so that no line is more than <var>c</var>
+          characters (except in cases of pathological lines with very long
+          words). <var>c</var> defaults to 70. <var>range</var> defaults to
+          the single line preceding the insertion point.
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>w*hat</b></dt>
+    <dd>
+      <a name="IDX159"
+          id="IDX159"></a> Prints information about the editing session.
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>abort</b></dt>
+    <dd>
+      <a name="IDX160"
+          id="IDX160"></a> Abandons this editing session and any changes.
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>q*uit</b></dt>
+    <dd>
+      <a name="IDX161"
+          id="IDX161"></a>
+    </dd>
+    <dt><u>Command:</u> <b>done</b></dt>
+    <dd>
+      <a name="IDX162"
+          id="IDX162"></a>
+    </dd>
+    <dt><u>Command:</u> <b>pause</b></dt>
+    <dd>
+      <a name="IDX163"
+          id="IDX163"></a> Leaves the editor. If you have unsaved text it
+          will be there when you return (and in fact you will not be able to
+          do anything else with this editor until you <samp>`abort'</samp> or
+          save the text).
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>reply-to</b> <i>[<var>recipients</var>]</i></dt>
+    <dd>
+      <a name="IDX164"
+          id="IDX164"></a> This is a mail room command. It reports the
+          current contents of the <code>Reply-to:</code> field of your
+          message. With arguments, adds (or changes) the
+          <code>Reply-to:</code> field.
+      <p>When someone <samp>`@answers'</samp> a message, the
+      <code>Reply-to:</code> field is checked first when determining to whom
+      the reply should be sent.</p>
+      <p>To clear the <code>Reply-to:</code> field, enter the command</p>
+      <pre>
+reply-to ""
+</pre>
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>edit</b>
+    <i><var>object</var>:<var>verb</var></i></dt>
+    <dd>
+      <a name="IDX165"
+          id="IDX165"></a> This is a verb editor command. It changes what
+          verb you are editing and loads the code for that verb into the
+          editor. Equivalent to
+      <pre>
+@edit <var>object</var>:<var>verb</var>.
+</pre>
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>edit</b> <i><var>note-object</var></i></dt>
+    <dd>
+      <a name="IDX166"
+          id="IDX166"></a>
+    </dd>
+    <dt><u>Command:</u> <b>edit</b>
+    <i><var>object</var>.<var>property</var></i></dt>
+    <dd>
+      <a name="IDX167"
+          id="IDX167"></a> This command is used for both note and verb
+          editors. It changes to a different note or a different object text
+          property and loads its text into the editor. These are equivalent
+          to
+      <pre>
+@notedit <var>note</var>
+</pre>
+      <p>or</p>
+      <pre>
+@notedit <var>object</var>.<var>property</var>
+</pre>
+      <p>respectively.</p>
+      <p>For both the verb-editor and note-editor commands, <var>object</var>
+      will match on the room you came from, though if the room you came from
+      was another editor, then all bets are off...</p>
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>compile</b> <i>[as
+    <var>object</var>:<var>verb</var>]</i></dt>
+    <dd>
+      <a name="IDX168"
+          id="IDX168"></a> This is a verb editor command. It installs the new
+          program into the system if there are no syntax errors. If a new
+          <var>object:verb</var> is specified and actually turns out to
+          exist, that <var>object</var>:<var>verb</var> becomes the default
+          for subsequent compilations.
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>save</b> <i>[<var>note-object</var>]</i></dt>
+    <dd>
+      <a name="IDX169"
+          id="IDX169"></a>
+    </dd>
+    <dt><u>Command:</u> <b>save</b>
+    <i>[<var>object</var>.<var>property</var>]</i></dt>
+    <dd>
+      <a name="IDX170"
+          id="IDX170"></a> This is a note editor command. It installs the
+          freshly edited text. If <var>note</var> or
+          <var>object</var>.<var>property</var> is specified, text is
+          installed on that note or property instead of the original one. In
+          addition the new note or property becomes the default for future
+          save commands.
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>subj*ect</b> <i>[<var>text</var>]</i></dt>
+    <dd>
+      <a name="IDX171"
+          id="IDX171"></a> This is a mail editor command. It is used to
+          specify a <code>Subject:</code> line for your message. If
+          <var>text</var> is "", the <code>Subject:</code> line is removed.
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>to</b> <i>[<var>recipients</var>]</i></dt>
+    <dd>
+      <a name="IDX172"
+          id="IDX172"></a> This is a mail editor command. Specifies a new set
+          of recipients (the <code>To:</code> line) for your message.
+          Recipient names not beginning with * are matched against the list
+          of players. Recipient names beginning with * are interpreted as
+          mailing-lists/archives/other types of non-person addresses and are
+          matched against all such publically available objects. If the list
+          you want to use isn't in the database (i.e., isn't located in the
+          database ($mail_agent)) you need to refer to it by object id.
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>also-to</b> <i>[<var>recipients</var>]</i></dt>
+    <dd>
+      <a name="IDX173"
+          id="IDX173"></a> This is a mail editor command. Adds additional
+          recipients to the To: line of your message. Same rules apply as for
+          the <samp>`to'</samp> command.
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>pri*nt</b></dt>
+    <dd>
+      <a name="IDX174"
+          id="IDX174"></a> This is a mail editor command. Print your message
+          as it is going to appear at the far end.
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>send</b></dt>
+    <dd>
+      <a name="IDX175"
+          id="IDX175"></a> This is a mail editor command. Send your message
+          and exit the mail room. If there are bogus addresses on your
+          <code>To:</code> line, the message will not be sent. It may be,
+          however, that valid addresses on your <code>To:</code> line will
+          forward to other addresses that are bogus; you'll receive warnings
+          about these, but in this case your message will still be delivered
+          to those addresses that are valid.
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>who</b></dt>
+    <dd>
+      <a name="IDX176"
+          id="IDX176"></a>
+    </dd>
+    <dt><u>Command:</u> <b>who</b> <i><var>rcpt</var>...</i></dt>
+    <dd>
+      <a name="IDX177"
+          id="IDX177"></a> This is a mail editor command. Invokes
+          <code>$mail_agent</code>'s mail-forwarding tracer and determines
+          who (or what) is actually going to receive your message. The
+          resulting list will not include destinations that will simply
+          forward the message without <code>:receive_message()</code>'ing a
+          copy for themselves.
+      <p>The second form expands an arbitrary list of recipients, for if
+      e.g., you're curious about the members of particular mailing list.</p>
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>showlists</b></dt>
+    <dd>
+      <a name="IDX178"
+          id="IDX178"></a> This is a mail editor command used to print a list
+          of the publically available mailing lists or archives and other
+          non-player entities that can receive mail.
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>subscribe</b> <i><strong>to</strong>
+    <var>list-name</var></i></dt>
+    <dd>
+      <a name="IDX179"
+          id="IDX179"></a>
+    </dd>
+    <dt><u>Command:</u> <b>subscribe</b> <i>[<var>name</var>...]
+    <strong>to</strong> <var>list-name</var></i></dt>
+    <dd>
+      <a name="IDX180"
+          id="IDX180"></a> This is a mail room command. Add yourself to the
+          given mailing list. The second form adds arbitrary people to a
+          mailing list. You can only do this if you own the list or if it is
+          listed as [Public] and you own whatever is being added. Use the
+          <samp>`who'</samp> command to determine if you are on a given
+          mailing list.
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>unsubscribe</b> <i>from
+    <var>list-name</var></i></dt>
+    <dd>
+      <a name="IDX181"
+          id="IDX181"></a>
+    </dd>
+    <dt><u>Command:</u> <b>unsubscribe</b> <i><var>name</var>... from
+    <var>list-name</var></i></dt>
+    <dd>
+      <a name="IDX182"
+          id="IDX182"></a> This is a mail room command. It is used to remove
+          yourself from the given mailing list. The second form removes
+          arbitrary people from a mailing list. You can only do this if you
+          own whatever is being removed or you own the list.
+      <p>You can use the <samp>`who'</samp> command to determine if you are
+      on a given mailing list.</p>
+    </dd>
+  </dl>
+  <h1><a name="SEC35"
+     href="LambdaCoreUserMan_toc.html#TOC35"
+     id="SEC35">Dealing with Verbs and Properties</a></h1>
+  <p>Verbs and properties are the elements of objects that make them useful.
+  A verb allows you to define things to do with an object, and properties are
+  used to store state information about the object. A verb can be thought of
+  as a MOO code program, executed when the verb on the object is invoked.
+  This can happen if the LambdaMOO parser matches the user input with the
+  verb on an object, or when another MOO code program explicitly calls the
+  verb.</p>
+  <p>Several commands are available to allow manipulation of properties and
+  verbs.</p>
+  <dl>
+    <dt><u>Command:</u> <b>@show</b> <i><var>object</var></i></dt>
+    <dd>
+      <a name="IDX183"
+          id="IDX183"></a>
+    </dd>
+    <dt><u>Command:</u> <b>@show</b>
+    <i><var>object</var>.<var>prop-name</var></i></dt>
+    <dd>
+      <a name="IDX184"
+          id="IDX184"></a>
+    </dd>
+    <dt><u>Command:</u> <b>@show</b>
+    <i><var>object</var>:<var>verb-name</var></i></dt>
+    <dd>
+      <a name="IDX185"
+          id="IDX185"></a> Displays quite detailed information about an
+          object, property or verb, including its name, owner, permission
+          bits, etc. The information displayed for an object can be quite
+          long, but usually fits on most screens.
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>@chmod</b> <i><var>object</var>
+    <var>object-permissions</var></i></dt>
+    <dd>
+      <a name="IDX186"
+          id="IDX186"></a>
+    </dd>
+    <dt><u>Command:</u> <b>@chmod</b>
+    <i><var>object</var>.<var>prop-name</var>
+    <var>property-permissions</var></i></dt>
+    <dd>
+      <a name="IDX187"
+          id="IDX187"></a>
+    </dd>
+    <dt><u>Command:</u> <b>@chmod</b>
+    <i><var>object</var>:<var>verb-name</var>
+    <var>verb-permissions</var></i></dt>
+    <dd>
+      <a name="IDX188"
+          id="IDX188"></a> Changes the permissions of an object, property or
+          verb, to those given. The following table shows what permission
+          bits are allowed for each form of the command:
+      <pre>
+</pre>
+      <dl compact="compact">
+        <dt><code><var>object-permissions</var></code></dt>
+        <dd>r, w</dd>
+        <dt><code><var>property-permissions</var></code></dt>
+        <dd>r, w, c</dd>
+        <dt><code><var>verb-permissions</var></code></dt>
+        <dd>r, w, x, d</dd>
+      </dl>
+      <pre>
+</pre>
+      <p>See the LambdaMOO Programmer's Manual for their meanings.</p>
+      <p>To clear all of the permissions for an object, verb, or property,
+      use "" as the second argument.</p>
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>@chparent</b> <i><var>object</var> to <var>new
+    parent</var></i></dt>
+    <dd>
+      <a name="IDX189"
+          id="IDX189"></a> Changes the parent of the named object to be the
+          named parent. The object acquires all the verb and property
+          definitions of its parent, as well as the parent's values for any
+          newly-defined properties. The parent object must be readable by the
+          player in order to use it as a new parent.
+    </dd>
+  </dl>
+  <h2><a name="SEC36"
+     href="LambdaCoreUserMan_toc.html#TOC36"
+     id="SEC36">Dealing with Verbs</a></h2>
+  <p>The following commands are used for creating and manipulating verbs.</p>
+  <dl>
+    <dt><u>Command:</u> <b>@verb</b>
+    <i><var>object</var>:<var>verb-name(s)</var></i></dt>
+    <dd>
+      <a name="IDX190"
+          id="IDX190"></a>
+    </dd>
+    <dt><u>Command:</u> <b>@verb</b>
+    <i><var>object</var>:<var>verb-name(s)</var> <var>dobj</var>
+    [<var>prep</var> [<var>iobj</var>]]</i></dt>
+    <dd>
+      <a name="IDX191"
+          id="IDX191"></a>
+    </dd>
+    <dt><u>Command:</u> <b>@verb</b>
+    <i><var>object</var>:<var>verb-name(s)</var> <var>dobj</var>
+    <var>prep</var> <var>iobj</var> <var>permissions</var></i></dt>
+    <dd>
+      <a name="IDX192"
+          id="IDX192"></a>
+    </dd>
+    <dt><u>Command:</u> <b>@verb</b>
+    <i><var>object</var>:<var>verb-name(s)</var> <var>dobj</var>
+    <var>prep</var> <var>iobj</var> <var>permissions</var>
+    <var>owner</var></i></dt>
+    <dd>
+      <a name="IDX193"
+          id="IDX193"></a>
+      <p>Adds a new verb with the given name(s) to the named object. If there
+      are multiple names, they should be separated by spaces and all enclosed
+      in quotes:</p>
+      <pre>
+@verb foo:"bar baz mum*ble"
+</pre>
+      <p>The direct and indirect object specifiers (<var>dobj</var> and
+      <var>iobj</var>) must be either <samp>`none'</samp>,
+      <samp>`this'</samp>, or <samp>`any'</samp>; their meaning is discussed
+      in the LambdaMOO Programmer's Manual. The preposition specifier
+      (<var>prep</var>) must be either <samp>`none'</samp>,
+      <samp>`any'</samp>, or one of the prepositional phrases possible. (a
+      prepositional phrase with more than one word must be enclosed in quotes
+      ("")). All three specifiers default to <samp>`none'</samp>.</p>
+      <p>It is also possible to specify the new verb's permissions and owner
+      as part of the same command (rather than having to issue separate
+      <samp>`@chmod/@chown'</samp> commands), using the third and fourth
+      forms above.</p>
+      <p><var>permissions</var> are as with @chmod, i.e., must be some subset
+      of <samp>`rwxd'</samp>. They default to <samp>`rxd'</samp> (specifying
+      <samp>`w'</samp> for a verb is highly inadvisable). The owner defaults
+      to the player typing the command; only wizards can create verbs with
+      owners other than themselves.</p>
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>@rmverb</b>
+    <i><var>object</var>:<var>verb-name</var></i></dt>
+    <dd>
+      <a name="IDX194"
+          id="IDX194"></a> Removes the named verb from the named object.
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>@args</b>
+    <i><var>object</var>:<var>verb-name</var> <var>dobj</var></i></dt>
+    <dd>
+      <a name="IDX195"
+          id="IDX195"></a>
+    </dd>
+    <dt><u>Command:</u> <b>@args</b>
+    <i><var>object</var>:<var>verb-name</var> <var>dobj</var>
+    <var>prep</var></i></dt>
+    <dd>
+      <a name="IDX196"
+          id="IDX196"></a>
+    </dd>
+    <dt><u>Command:</u> <b>@args</b>
+    <i><var>object</var>:<var>verb-name</var> <var>dobj</var> <var>prep</var>
+    <var>iobj</var></i></dt>
+    <dd>
+      <a name="IDX197"
+          id="IDX197"></a> Changes the direct object, preposition, and/or
+          indirect object specifiers for the named verb on the named object.
+          Any specifiers not provided on the command line are not changed.
+          The direct and indirect object specifiers (<var>dobj</var> and
+          <var>iobj</var>) must be either <samp>`none'</samp>,
+          <samp>`this'</samp>, or <samp>`any'</samp>. The preposition
+          specifier (<var>prep</var>) must be either <samp>`none'</samp>,
+          <samp>`any'</samp>, or one of the prepositional phrases that are
+          possible.
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>.program</b>
+    <i><var>object</var>:<var>verb-name</var></i></dt>
+    <dd>
+      <a name="IDX198"
+          id="IDX198"></a> Provides or changes the MOO program associated
+          with the named verb on the named object.
+      <p>This command works differently from all other MOO commands, in that
+      it actually changes how the server will interpret later lines that you
+      type to it. After typing the <samp>`.program'</samp> line, you are in
+      <em>programming mode</em>. All lines that you type in this mode are
+      simply saved away in the server until you type a line containing only a
+      single period (<samp>`.'</samp>). At that point, those lines are
+      interpreted as a MOO program and are checked for syntax errors. If none
+      are found, a message to that effect is printed and the code you typed
+      is installed as the program for the verb in question. In any case,
+      after typing the <samp>`.'</samp> line, you are returned to the normal
+      input-handling mode.</p>
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>@list</b>
+    <i><var>object</var>:<var>verb</var></i></dt>
+    <dd>
+      <a name="IDX199"
+          id="IDX199"></a>
+    </dd>
+    <dt><u>Command:</u> <b>@list</b> <i><var>object</var>:<var>verb</var>
+    <strong>with parentheses</strong></i></dt>
+    <dd>
+      <a name="IDX200"
+          id="IDX200"></a>
+    </dd>
+    <dt><u>Command:</u> <b>@list</b> <i><var>object</var>:<var>verb</var>
+    <strong>without numbers</strong></i></dt>
+    <dd>
+      <a name="IDX201"
+          id="IDX201"></a>
+    </dd>
+    <dt><u>Command:</u> <b>@list</b> <i><var>object</var>:<var>verb</var>
+    <strong>with parentheses without numbers</strong></i></dt>
+    <dd>
+      <a name="IDX202"
+          id="IDX202"></a> Prints out the code for the MOO program associated
+          with the named verb on the named object. Normally, the code is
+          shown with each line numbered and with only those parentheses that
+          are necessary to show the meaning of the program. By specifying
+          options as shown in the last three forms above, you can have the
+          numbers omitted and/or all parentheses included.
+      <p>For example,</p>
+      <pre>
+@list $room:@move
+</pre>
+      <p>to see the code for the <samp>`@move'</samp> command, or even</p>
+      <pre>
+@list $prog:@list
+</pre>
+      <p>to see the code implementing <code>@list</code> itself.</p>
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>@edit</b>
+    <i><var>object</var>:<var>verb-name</var></i></dt>
+    <dd>
+      <a name="IDX203"
+          id="IDX203"></a> Enters the MOO Verb Editor for the named verb on
+          the named object.
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>eval</b> <i><var>MOO-code</var></i></dt>
+    <dd>
+      <a name="IDX204"
+          id="IDX204"></a>
+    </dd>
+    <dt><u>Command:</u> <b>;</b> <i><var>MOO-code</var></i></dt>
+    <dd>
+      <a name="IDX205"
+          id="IDX205"></a> Evaluates the given piece of MOO code and prints
+          the resulting value. If the MOO code begins with one of the MOO
+          language keywords (<samp>`if'</samp>, <samp>`for'</samp>,
+          <samp>`while'</samp>, <samp>`fork'</samp>, or
+          <samp>`return'</samp>) or with the character <samp>`;'</samp>, then
+          the entire piece of code is treated as the program for a verb, with
+          <samp>`;'</samp> appended to the end. Otherwise,
+          <samp>`return'</samp> is appended to the front and <samp>`;'</samp>
+          is appended to the end and that string is treated as the code for a
+          verb. In either case, the resulting verb is invoked and whatever
+          value it returns is printed.
+      <p>For programmers, this is such a mind-bogglingly useful thing to do
+      that there is a simple abbreviation for this command; any command
+      beginning with a semicolon (<samp>`;'</samp>) is treated as a use of
+      <samp>`eval'</samp>.</p>
+      <p>For example:</p>
+      <pre>
+&gt;eval 3 + 4
+-|7
+
+&gt;;3+4
+-|7
+
+&gt;;for x in (player.aliases) player:tell(x); endfor
+-|Haakon
+-|Wizard
+-|ArchWizard
+-|0
+
+;;l = {}; for i in [1..10] l = {@l, i}; endfor return l
+-|{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+</pre>
+    </dd>
+  </dl>
+  <h3><a name="SEC37"
+     href="LambdaCoreUserMan_toc.html#TOC37"
+     id="SEC37">Prepositions</a></h3>
+  <p>The complete list of prepositions recognized by the command-line parser
+  is shown in the list below:</p>
+  <ul>
+    <li>with/using</li>
+    <li>at/to</li>
+    <li>in front of</li>
+    <li>in/inside/into</li>
+    <li>on top of/on/onto/upon</li>
+    <li>out of/from inside/from</li>
+    <li>over</li>
+    <li>through</li>
+    <li>under/underneath/beneath</li>
+    <li>behind</li>
+    <li>beside</li>
+    <li>for/about</li>
+    <li>is</li>
+    <li>as</li>
+    <li>off/off of</li>
+  </ul>
+  <h2><a name="SEC38"
+     href="LambdaCoreUserMan_toc.html#TOC38"
+     id="SEC38">Dealing with Properties</a></h2>
+  <p>The following commands are used for dealing with properties.</p>
+  <dl>
+    <dt><u>Command:</u> <b>@property</b>
+    <i><var>object</var>.<var>prop-name</var></i></dt>
+    <dd>
+      <a name="IDX206"
+          id="IDX206"></a>
+    </dd>
+    <dt><u>Command:</u> <b>@property</b>
+    <i><var>object</var>.<var>prop-name</var>
+    <var>initial-value</var></i></dt>
+    <dd>
+      <a name="IDX207"
+          id="IDX207"></a>
+    </dd>
+    <dt><u>Command:</u> <b>@property</b>
+    <i><var>object</var>.<var>prop-name</var> <var>initial-value</var>
+    <var>permissions</var></i></dt>
+    <dd>
+      <a name="IDX208"
+          id="IDX208"></a>
+    </dd>
+    <dt><u>Command:</u> <b>@property</b>
+    <i><var>object</var>.<var>prop-name</var> <var>initial-value</var>
+    <var>permissions</var> <var>owner</var></i></dt>
+    <dd>
+      <a name="IDX209"
+          id="IDX209"></a> Adds a new property named <var>prop-name</var> to
+          the named object. The initial value is given by the second
+          argument, if present; it defaults to 0.
+      <p>Normally, a property is created with permissions <samp>`rc'</samp>
+      and owned by whoever types the command. However, you may also specify
+      these explicitly, using the third and fourth forms. Only wizards can
+      create properties with owners other than themselves.</p>
+      <p><samp>`@property'</samp> can be abbreviated as
+      <samp>`@prop'</samp>.</p>
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>@rmproperty</b>
+    <i><var>object</var>.<var>prop-name</var></i></dt>
+    <dd>
+      <a name="IDX210"
+          id="IDX210"></a> Removes the named property from the named object.
+          <samp>`@rmproperty'</samp> may be abbreviated as
+          <samp>`@rmprop'</samp>.
+    </dd>
+  </dl>
+  <h1><a name="SEC39"
+     href="LambdaCoreUserMan_toc.html#TOC39"
+     id="SEC39">Using Tasks</a></h1>
+  <p>A task is an execution of a MOO program. There are three ways for tasks
+  to be created in LambdaMOO:</p>
+  <ul>
+    <li>Every time a player types a command, a task is created to execute
+    that command; we call these <em>command tasks</em>.</li>
+    <li>Whenever a player connects or disconnects from the MOO, the server
+    starts a task to do whatever processing is necessary, such as printing
+    out <samp>`blip has connected'</samp> to all of the players in the same
+    room; these are called <em>server tasks</em>.</li>
+    <li>The <code>fork()</code> statement in the programming language creates
+    a task whose execution is delayed for at least some given number of
+    seconds; these are <em>forked tasks</em>.</li>
+  </ul>
+  <p>To prevent a maliciously- or incorrectly-written MOO program from
+  running forever and monopolizing the server, limits are placed on the
+  running time of every task. One limit is that no task is allowed to run
+  longer than one minute; this limit is, in practice, never reached. The
+  reason is that there is a second limit on the number of operations a task
+  may execute.</p>
+  <p>Every task has an associated <em>clock</em> that counts down
+  <em>ticks</em> as the task executes. The server counts one tick for every
+  expression evaluation (other than variables and literals) and one for every
+  time through the body of a loop. If a task's clock winds all the way down
+  to zero, the task is immediately and unceremoniously aborted.</p>
+  <p>Command and server tasks are given brand-new clocks with an initial
+  store of 20,000 ticks; this is enough for almost all normal uses.</p>
+  <p>A forked task inherits the clock of the task that forked it, with
+  however many ticks remain on it. To allow objects like cuckoo clocks and
+  other recurring tasks that do a little bit of work every once in a while
+  forever, clocks also regain ticks at the rate of 25 ticks per second, up to
+  the maximum of 20,000 ticks. The seconds are counted from the end of the
+  time that one task was counting down that clock to the time when the next
+  user of that clock actually begins execution.</p>
+  <p>Because forked tasks may exist for long periods of time before they
+  begin execution, there are commands to list the ones that you own and to
+  kill them before they execute. These commands are covered in the following
+  section.</p>
+  <dl>
+    <dt><u>Command:</u> <b>@forked</b></dt>
+    <dd>
+      <a name="IDX211"
+          id="IDX211"></a> Gives a list of all of the forked tasks you own,
+          along with detailed information about each one. The information
+          includes the following:
+      <pre>
+</pre>
+      <dl compact="compact">
+        <dt><code>Queue ID:</code></dt>
+        <dd>A numeric identifier for the task, for use in killing it .</dd>
+        <dt><code>Start Time:</code></dt>
+        <dd>The time after which the task will begin execution.</dd>
+        <dt><code>Owner:</code></dt>
+        <dd>You, if you're not a wizard.</dd>
+        <dt><code>Clock:</code></dt>
+        <dd>The number of ticks left on the clock for the task right this
+        moment; if the task does not execute immediately, this number will
+        grow, up to a maximum of 20,000 ticks.</dd>
+        <dt><code>Clock ID:</code></dt>
+        <dd>It is possible for several tasks to share a single clock. The
+        clock ID is a numeric identifier for each clock, so that you can tell
+        if one is being shared.</dd>
+        <dt><code>Verb:</code></dt>
+        <dd>The object and verb-name of the code that forked the task.</dd>
+        <dt><code>Line:</code></dt>
+        <dd>The line number of the first statement that the task will execute
+        when it starts. Note that the code for the verb in question may have
+        changed since the task was forked; the forked task will use the
+        version that was being executed when it was forked.</dd>
+      </dl>
+      <pre>
+</pre>
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>@kill</b> <i><var>queue-id</var></i></dt>
+    <dd>
+      <a name="IDX212"
+          id="IDX212"></a> Immediately kills the forked task with the given
+          numeric queue ID. The <samp>`@forked'</samp> command is useful for
+          finding out these queue IDs. Only the owner of a task may kill it.
+    </dd>
+  </dl>
+  <h1><a name="SEC40"
+     href="LambdaCoreUserMan_toc.html#TOC40"
+     id="SEC40">Miscellaneous</a></h1>
+  <p>The following verbs are useful, but not easily categorisable.</p>
+  <dl>
+    <dt><u>Command:</u> <b>@version</b></dt>
+    <dd>
+      <a name="IDX213"
+          id="IDX213"></a> Prints out the version number for the
+          currently-executing MOO server.
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>@lastlog</b></dt>
+    <dd>
+      <a name="IDX214"
+          id="IDX214"></a>
+    </dd>
+    <dt><u>Command:</u> <b>@lastlog</b> <i><var>player</var></i></dt>
+    <dd>
+      <a name="IDX215"
+          id="IDX215"></a> The first form prints out a list of all players,
+          roughly sorted by how long it's been since that player last
+          connected to the MOO. For each player, the precise time of their
+          last connection is printed.
+      <p>The second form only shows the last-connection time for the named
+      player.</p>
+    </dd>
+  </dl>
+  <dl>
+    <dt><u>Command:</u> <b>@memory</b></dt>
+    <dd>
+      <a name="IDX216"
+          id="IDX216"></a> Prints out all information available on the
+          current memory-usage behavior of the MOO server. Probably only a
+          wizard, if anyone, cares about this.
+    </dd>
+  </dl>
+  <h1><a name="SEC41"
+     href="LambdaCoreUserMan_toc.html#TOC41"
+     id="SEC41">Verb Index</a></h1>
+  <p>Jump to: <a href="LambdaCoreUserMan.html#findex_">"</a> - <a href=
+  "LambdaCoreUserMan.html#findex_.">.</a> - <a href=
+  "LambdaCoreUserMan.html#findex_/">/</a> - <a href=
+  "LambdaCoreUserMan.html#findex_:">:</a> - <a href=
+  "LambdaCoreUserMan.html#findex_;">;</a> - <a href=
+  "LambdaCoreUserMan.html#findex_@">@</a> - <a href=
+  "LambdaCoreUserMan.html#findex_a">a</a> - <a href=
+  "LambdaCoreUserMan.html#findex_b">b</a> - <a href=
+  "LambdaCoreUserMan.html#findex_c">c</a> - <a href=
+  "LambdaCoreUserMan.html#findex_d">d</a> - <a href=
+  "LambdaCoreUserMan.html#findex_e">e</a> - <a href=
+  "LambdaCoreUserMan.html#findex_f">f</a> - <a href=
+  "LambdaCoreUserMan.html#findex_g">g</a> - <a href=
+  "LambdaCoreUserMan.html#findex_h">h</a> - <a href=
+  "LambdaCoreUserMan.html#findex_i">i</a> - <a href=
+  "LambdaCoreUserMan.html#findex_j">j</a> - <a href=
+  "LambdaCoreUserMan.html#findex_l">l</a> - <a href=
+  "LambdaCoreUserMan.html#findex_m">m</a> - <a href=
+  "LambdaCoreUserMan.html#findex_n">n</a> - <a href=
+  "LambdaCoreUserMan.html#findex_p">p</a> - <a href=
+  "LambdaCoreUserMan.html#findex_q">q</a> - <a href=
+  "LambdaCoreUserMan.html#findex_r">r</a> - <a href=
+  "LambdaCoreUserMan.html#findex_s">s</a> - <a href=
+  "LambdaCoreUserMan.html#findex_t">t</a> - <a href=
+  "LambdaCoreUserMan.html#findex_u">u</a> - <a href=
+  "LambdaCoreUserMan.html#findex_w">w</a></p>
+  <h2><a name="findex_"
+     id="findex_">"</a></h2>
+  <ul>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX31">"<var>anything</var></a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX142">"<var>text</var></a>
+    </li>
+  </ul>
+  <h2><a name="findex_."
+     id="findex_.">.</a></h2>
+  <ul>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX147">.</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX198">.program</a>
+    </li>
+  </ul>
+  <h2><a name="findex_/"
+     id="findex_/">/</a></h2>
+  <ul>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX152">/</a>
+    </li>
+  </ul>
+  <h2><a name="findex_:"
+     id="findex_:">:</a></h2>
+  <ul>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX38">:<var>anything</var></a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX144">:<var>text</var></a>
+    </li>
+  </ul>
+  <h2><a name="findex_;"
+     id="findex_;">;</a></h2>
+  <ul>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX205">;</a>
+    </li>
+  </ul>
+  <h2><a name="findex_@"
+     id="findex_@">@</a></h2>
+  <ul>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX94">@add-entrance</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX93">@add-exit</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX67">@answer</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX195">@args</a>, <a href=
+      "LambdaCoreUserMan.html#IDX196">@args</a>, <a href=
+      "LambdaCoreUserMan.html#IDX197">@args</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX110">@arrive</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX79">@audit</a>, <a href=
+      "LambdaCoreUserMan.html#IDX80">@audit</a>, <a href=
+      "LambdaCoreUserMan.html#IDX81">@audit</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX47">@bug</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX58">@check</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX186">@chmod</a>, <a href=
+      "LambdaCoreUserMan.html#IDX187">@chmod</a>, <a href=
+      "LambdaCoreUserMan.html#IDX188">@chmod</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX189">@chparent</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX82">@classes</a>, <a href=
+      "LambdaCoreUserMan.html#IDX83">@classes</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX127">@close</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX78">@count</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX70">@create</a>, <a href=
+      "LambdaCoreUserMan.html#IDX71">@create</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX72">@describe</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX90">@dig</a>, <a href=
+      "LambdaCoreUserMan.html#IDX91">@dig</a>, <a href=
+      "LambdaCoreUserMan.html#IDX92">@dig</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX118">@drop_failed</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX120">@drop_succeeded</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX203">@edit</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX85">@eject</a>, <a href=
+      "LambdaCoreUserMan.html#IDX86">@eject</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX87">@ejection</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX122">@empty</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX96">@entrances</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX95">@exits</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX211">@forked</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX39">@gag</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX7">@gender</a>, <a href=
+      "LambdaCoreUserMan.html#IDX8">@gender</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX44">@gripe</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX48">@idea</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX212">@kill</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX214">@lastlog</a>, <a href=
+      "LambdaCoreUserMan.html#IDX215">@lastlog</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX108">@leave</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX199">@list</a>, <a href=
+      "LambdaCoreUserMan.html#IDX200">@list</a>, <a href=
+      "LambdaCoreUserMan.html#IDX201">@list</a>, <a href=
+      "LambdaCoreUserMan.html#IDX202">@list</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX42">@listgag</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX137">@lock</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX139">@lock_for_open</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX59">@mail</a>, <a href=
+      "LambdaCoreUserMan.html#IDX60">@mail</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX216">@memory</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX107">@messages</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX84">@move</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX63">@next</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX112">@nogo</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX101">@notedit</a>, <a href=
+      "LambdaCoreUserMan.html#IDX102">@notedit</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX111">@oarrive</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX128">@oclose</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX119">@odrop_failed</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX121">@odrop_succeeded</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX88">@oejection</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX109">@oleave</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX113">@onogo</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX124">@oopen</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX126">@oopen_fail</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX106">@opacity</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX123">@open</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX125">@open_fail</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX130">@oput</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX132">@oput_fail</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX134">@oremove</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX136">@oremove_fail</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX115">@otake_failed</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX117">@otake_succeeded</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX36">@page_absent</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX35">@page_echo</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX34">@page_origin</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX54">@paranoid</a>, <a href=
+      "LambdaCoreUserMan.html#IDX55">@paranoid</a>, <a href=
+      "LambdaCoreUserMan.html#IDX56">@paranoid</a>, <a href=
+      "LambdaCoreUserMan.html#IDX57">@paranoid</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX9">@password</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX64">@prev</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX206">@property</a>, <a href=
+      "LambdaCoreUserMan.html#IDX207">@property</a>, <a href=
+      "LambdaCoreUserMan.html#IDX208">@property</a>, <a href=
+      "LambdaCoreUserMan.html#IDX209">@property</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX129">@put</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX131">@put_fail</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX6">@quit</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX77">@quota</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX61">@read</a>, <a href=
+      "LambdaCoreUserMan.html#IDX62">@read</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX76">@recycle</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX133">@remove</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX135">@remove_fail</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX73">@rename</a>, <a href=
+      "LambdaCoreUserMan.html#IDX74">@rename</a>, <a href=
+      "LambdaCoreUserMan.html#IDX75">@rename</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX69">@renumber</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX66">@reply</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX68">@rmmail</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX210">@rmproperty</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX194">@rmverb</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX65">@send</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX10">@sethome</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX183">@show</a>, <a href=
+      "LambdaCoreUserMan.html#IDX184">@show</a>, <a href=
+      "LambdaCoreUserMan.html#IDX185">@show</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX46">@suggest</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX53">@sweep</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX114">@take_failed</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX116">@take_succeeded</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX45">@typo</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX40">@ungag</a>, <a href=
+      "LambdaCoreUserMan.html#IDX41">@ungag</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX138">@unlock</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX140">@unlock_for_open</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX190">@verb</a>, <a href=
+      "LambdaCoreUserMan.html#IDX191">@verb</a>, <a href=
+      "LambdaCoreUserMan.html#IDX192">@verb</a>, <a href=
+      "LambdaCoreUserMan.html#IDX193">@verb</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX213">@version</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX89">@victim_ejection</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX50">@whereis</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX51">@who</a>, <a href=
+      "LambdaCoreUserMan.html#IDX52">@who</a>
+    </li>
+  </ul>
+  <h2><a name="findex_a"
+     id="findex_a">a</a></h2>
+  <ul>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX160">abort</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX173">also-to</a>
+    </li>
+  </ul>
+  <h2><a name="findex_b"
+     id="findex_b">b</a></h2>
+  <ul>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX105">burn</a>
+    </li>
+  </ul>
+  <h2><a name="findex_c"
+     id="findex_c">c</a></h2>
+  <ul>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX155">c*opy</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX168">compile</a>
+    </li>
+  </ul>
+  <h2><a name="findex_d"
+     id="findex_d">d</a></h2>
+  <ul>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX104">decrypt</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX150">del*ete</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX100">delete</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX162">done</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX19">drop</a>
+    </li>
+  </ul>
+  <h2><a name="findex_e"
+     id="findex_e">e</a></h2>
+  <ul>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX165">edit</a>, <a href=
+      "LambdaCoreUserMan.html#IDX166">edit</a>, <a href=
+      "LambdaCoreUserMan.html#IDX167">edit</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX37">emote</a>, <a href=
+      "LambdaCoreUserMan.html#IDX143">emote</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX103">encrypt</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX99">erase</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX204">eval</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX29">exam</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX28">examine</a>
+    </li>
+  </ul>
+  <h2><a name="findex_f"
+     id="findex_f">f</a></h2>
+  <ul>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX151">f*ind</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX158">fill</a>
+    </li>
+  </ul>
+  <h2><a name="findex_g"
+     id="findex_g">g</a></h2>
+  <ul>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX15">get</a>, <a href=
+      "LambdaCoreUserMan.html#IDX17">get</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX23">give</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX11">go</a>
+    </li>
+  </ul>
+  <h2><a name="findex_h"
+     id="findex_h">h</a></h2>
+  <ul>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX24">hand</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX2">help</a>, <a href=
+      "LambdaCoreUserMan.html#IDX3">help</a>, <a href=
+      "LambdaCoreUserMan.html#IDX4">help</a>, <a href=
+      "LambdaCoreUserMan.html#IDX5">help</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX1">help/information/?</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX12">home</a>
+    </li>
+  </ul>
+  <h2><a name="findex_i"
+     id="findex_i">i</a></h2>
+  <ul>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX146">ins*ert</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX22">insert</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX13">inventory</a>
+    </li>
+  </ul>
+  <h2><a name="findex_j"
+     id="findex_j">j</a></h2>
+  <ul>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX156">join</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX157">joinliteral</a>
+    </li>
+  </ul>
+  <h2><a name="findex_l"
+     id="findex_l">l</a></h2>
+  <ul>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX145">lis*t</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX25">look</a>, <a href=
+      "LambdaCoreUserMan.html#IDX26">look</a>, <a href=
+      "LambdaCoreUserMan.html#IDX27">look</a>
+    </li>
+  </ul>
+  <h2><a name="findex_m"
+     id="findex_m">m</a></h2>
+  <ul>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX154">m*ove</a>
+    </li>
+  </ul>
+  <h2><a name="findex_n"
+     id="findex_n">n</a></h2>
+  <ul>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX148">n*ext</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX43">news</a>
+    </li>
+  </ul>
+  <h2><a name="findex_p"
+     id="findex_p">p</a></h2>
+  <ul>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX149">p*rev</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX33">page</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX163">pause</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX174">pri*nt</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX21">put</a>
+    </li>
+  </ul>
+  <h2><a name="findex_q"
+     id="findex_q">q</a></h2>
+  <ul>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX161">q*uit</a>
+    </li>
+  </ul>
+  <h2><a name="findex_r"
+     id="findex_r">r</a></h2>
+  <ul>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX97">read</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX18">remove</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX164">reply-to</a>
+    </li>
+  </ul>
+  <h2><a name="findex_s"
+     id="findex_s">s</a></h2>
+  <ul>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX153">s*ubst</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX169">save</a>, <a href=
+      "LambdaCoreUserMan.html#IDX170">save</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX30">say</a>, <a href=
+      "LambdaCoreUserMan.html#IDX141">say</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX175">send</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX178">showlists</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX171">subj*ect</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX179">subscribe</a>, <a href=
+      "LambdaCoreUserMan.html#IDX180">subscribe</a>
+    </li>
+  </ul>
+  <h2><a name="findex_t"
+     id="findex_t">t</a></h2>
+  <ul>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX14">take</a>, <a href=
+      "LambdaCoreUserMan.html#IDX16">take</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX20">throw</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX172">to</a>
+    </li>
+  </ul>
+  <h2><a name="findex_u"
+     id="findex_u">u</a></h2>
+  <ul>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX181">unsubscribe</a>, <a href=
+      "LambdaCoreUserMan.html#IDX182">unsubscribe</a>
+    </li>
+  </ul>
+  <h2><a name="findex_w"
+     id="findex_w">w</a></h2>
+  <ul>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX159">w*hat</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX49">whereis</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX32">whisper</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX176">who</a>, <a href=
+      "LambdaCoreUserMan.html#IDX177">who</a>
+    </li>
+    <li>
+      <a href="LambdaCoreUserMan.html#IDX98">write</a>
+    </li>
+  </ul>
+  <hr />
+  <p>This document was generated on 25 August 1999 using <a href=
+  "http://web.archive.org/web/20081206040458/http://wwwinfo.cern.ch/dis/texi2html/">
+  texi2html</a>&nbsp;1.56k.</p><!--
+     FILE ARCHIVED ON 4:04:58 Dec 6, 2008 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 7:47:57 Mar 26, 2012.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+</body>
+</html>
