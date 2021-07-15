@@ -6,10 +6,27 @@ make pkgs
 make unpack
 make fix
 make build1
-make build1
 make unpack
 make fix
 make build1
 make build2
 make build3
 make build4
+make release
+
+NAME="Ubuntu"
+VERSION="18.04.5 LTS (Bionic Beaver)"
+ID=ubuntu
+ID_LIKE=debian
+PRETTY_NAME="Ubuntu 18.04.5 LTS"
+VERSION_ID="18.04"
+HOME_URL="https://www.ubuntu.com/"
+SUPPORT_URL="https://help.ubuntu.com/"
+BUG_REPORT_URL="https://bugs.launchpad.net/ubuntu/"
+PRIVACY_POLICY_URL="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy"
+VERSION_CODENAME=bionic
+UBUNTU_CODENAME=bionic
+
+Linux plasma 5.3.0-7648-generic #41~1586790036~18.04~600aeb5~dev-Ubuntu SMP Mon Apr 13 17:49:24  x86_64 x86_64 x86_64 GNU/Linux
+
+cd MOO; mv moo moo-x86_64-ubuntu-18.04
