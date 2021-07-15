@@ -385,7 +385,8 @@ lookup_addr_from_name(const char *name, unsigned timeout)
 
 char rcsid_name_lookup[] = "$Id: name_lookup.c,v 2.2 1996/02/08 06:59:04 pavel Exp $";
 
-/* $Log: name_lookup.c,v $
+/*
+ * $Log: name_lookup.c,v $
  * Revision 2.2  1996/02/08  06:59:04  pavel
  * Renamed err/logf() to errlog/oklog().  Updated copyright notice for 1996.
  * Release 1.8.0beta1.

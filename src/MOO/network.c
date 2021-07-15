@@ -23,7 +23,8 @@
 #  include "net_multi.c"
 #endif
 
-/* $Log: network.c,v $
+/*
+ * $Log: network.c,v $
  * Revision 2.0  1995/11/30  05:11:37  pavel
  * New baseline version, corresponding to release 1.8.0alpha1.
  *

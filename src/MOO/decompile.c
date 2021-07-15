@@ -977,7 +977,8 @@ find_line_number(Program *prog, int vector, int pc)
 
 char rcsid_decompile[] = "$Id: decompile.c,v 2.6 1996/03/10 01:17:48 pavel Exp $";
 
-/* $Log: decompile.c,v $
+/*
+ * $Log: decompile.c,v $
  * Revision 2.6  1996/03/10  01:17:48  pavel
  * Removed a automatic structure initialization.  Release 1.8.0.
  *

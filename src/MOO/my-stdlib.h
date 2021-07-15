@@ -69,7 +69,8 @@ extern int	srandom(unsigned);
 
 #endif
 
-/* $Log: my-stdlib.h,v $
+/*
+ * $Log: my-stdlib.h,v $
  * Revision 2.1  1996/02/08  06:01:42  pavel
  * Updated copyright notice for 1996.  Added strtod().  Release 1.8.0beta1.
  *

@@ -21,7 +21,8 @@
 
 extern Program	*generate_code(Stmt *, DB_Version);
 
-/* $Log: code_gen.h,v $
+/*
+ * $Log: code_gen.h,v $
  * Revision 2.2  1996/02/08  06:28:58  pavel
  * Made generate_code() version-dependent.  Updated copyright notice for 1996.
  * Release 1.8.0beta1.

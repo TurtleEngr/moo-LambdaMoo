@@ -366,7 +366,8 @@ proto_open_connection(Var arglist, int *read_fd, int *write_fd,
 
 char rcsid_net_sysv_tcp[] = "$Id: net_sysv_tcp.c,v 2.5 1996/03/10 01:13:36 pavel Exp $";
 
-/* $Log: net_sysv_tcp.c,v $
+/*
+ * $Log: net_sysv_tcp.c,v $
  * Revision 2.5  1996/03/10  01:13:36  pavel
  * Moved definition of DEFAULT_PORT to options.h.  Release 1.8.0.
  *

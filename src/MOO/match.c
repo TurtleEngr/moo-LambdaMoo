@@ -137,7 +137,8 @@ match_object(Objid player, const char *name)
 
 char rcsid_match[] = "$Id: match.c,v 2.1 1996/02/08 06:59:41 pavel Exp $";
 
-/* $Log: match.c,v $
+/*
+ * $Log: match.c,v $
  * Revision 2.1  1996/02/08  06:59:41  pavel
  * Fixed minor portability problem.  Updated copyright notice for 1996.
  * Release 1.8.0beta1.

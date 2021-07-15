@@ -20,7 +20,8 @@
 
 extern Objid	match_object(Objid player, const char *name);
 
-/* $Log: match.h,v $
+/*
+ * $Log: match.h,v $
  * Revision 2.1  1996/02/08  06:22:33  pavel
  * Updated copyright notice for 1996.  Release 1.8.0beta1.
  *

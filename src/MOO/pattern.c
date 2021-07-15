@@ -176,7 +176,8 @@ free_pattern(Pattern p)
 
 char rcsid_pattern[] = "$Id";
 
-/* $Log: pattern.c,v $
+/*
+ * $Log: pattern.c,v $
  * Revision 2.3  1997/03/04 04:35:19  eostrom
  * Fixed memory leak (well, mismatch) in free_pattern().
  *

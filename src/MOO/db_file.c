@@ -721,7 +721,8 @@ db_shutdown()
 
 char rcsid_db_file[] = "$Id: db_file.c,v 2.5 1996/04/08 01:07:21 pavel Exp $";
 
-/* $Log: db_file.c,v $
+/*
+ * $Log: db_file.c,v $
  * Revision 2.5  1996/04/08  01:07:21  pavel
  * Changed a boot-time error message to go directly to stderr, instead of
  * through the logging package.  Release 1.8.0p3.

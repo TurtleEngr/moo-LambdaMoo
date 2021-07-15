@@ -24,7 +24,8 @@
 extern pid_t	waitpid(pid_t, int *, int);
 #endif
 
-/* $Log: my-wait.h,v $
+/*
+ * $Log: my-wait.h,v $
  * Revision 2.1  1996/02/08  05:58:27  pavel
  * Updated copyright notice for 1996.  Release 1.8.0beta1.
  *

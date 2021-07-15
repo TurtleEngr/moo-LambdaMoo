@@ -68,7 +68,8 @@ incr_quota(Objid player)
 
 char rcsid_quota[] = "$Id: quota.c,v 2.1 1996/02/08 06:54:04 pavel Exp $";
 
-/* $Log: quota.c,v $
+/*
+ * $Log: quota.c,v $
  * Revision 2.1  1996/02/08  06:54:04  pavel
  * Renamed TYPE_NUM to TYPE_INT.  Updated copyright notice for 1996.
  * Release 1.8.0beta1.

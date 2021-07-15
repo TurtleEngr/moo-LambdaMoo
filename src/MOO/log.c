@@ -151,7 +151,8 @@ register_log(void)
 
 char rcsid_log[] = "$Id: log.c,v 2.2 1996/04/08 01:06:25 pavel Exp $";
 
-/* $Log: log.c,v $
+/*
+ * $Log: log.c,v $
  * Revision 2.2  1996/04/08  01:06:25  pavel
  * Added `set_log_file()' entry point.  Made logging print undated messages to
  * stderr if they arrive before a log file has been set.  Release 1.8.0p3.

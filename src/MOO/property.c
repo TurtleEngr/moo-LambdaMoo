@@ -322,7 +322,8 @@ register_property(void)
 
 char rcsid_property[] = "$Id: property.c,v 2.3 1996/02/11 00:44:45 pavel Exp $";
 
-/* $Log: property.c,v $
+/*
+ * $Log: property.c,v $
  * Revision 2.3  1996/02/11  00:44:45  pavel
  * Fixed potential panic in clear_property() when called on the definer of the
  * property in question.  Release 1.8.0beta2.

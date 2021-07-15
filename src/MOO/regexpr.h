@@ -118,6 +118,7 @@ int re_exec(char *s);
 
 /* RCS stuff added for LambdaMOO
  *
+/*
  * $Log: regexpr.h,v $
  * Revision 2.0  1995/11/30  05:39:25  pavel
  * New baseline version, corresponding to release 1.8.0alpha1.

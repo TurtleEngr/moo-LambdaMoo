@@ -24,7 +24,8 @@
 
 #endif
 
-/* $Log: tokens.h,v $
+/*
+ * $Log: tokens.h,v $
  * Revision 2.0  1995/11/30  05:08:14  pavel
  * New baseline version, corresponding to release 1.8.0alpha1.
  *

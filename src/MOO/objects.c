@@ -623,7 +623,8 @@ register_objects(void)
 
 char rcsid_objects[] = "$Id: objects.c,v 2.3 1996/04/19 01:17:48 pavel Exp $";
 
-/* $Log: objects.c,v $
+/*
+ * $Log: objects.c,v $
  * Revision 2.3  1996/04/19  01:17:48  pavel
  * Rationalized the errors that can be raised from chparent().
  * Release 1.8.0p4.

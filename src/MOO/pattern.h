@@ -34,7 +34,8 @@ extern Match_Result	match_pattern(Pattern p, const char *string,
 				      Match_Indices *indices, int is_reverse);
 extern void		free_pattern(Pattern p);
 
-/* $Log: pattern.h,v $
+/*
+ * $Log: pattern.h,v $
  * Revision 2.1  1996/02/08  06:14:35  pavel
  * Updated copyright notice for 1996.  Release 1.8.0beta1.
  *

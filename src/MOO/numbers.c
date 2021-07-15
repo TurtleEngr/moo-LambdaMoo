@@ -714,7 +714,8 @@ register_numbers(void)
 
 char rcsid_numbers[] = "$Id: numbers.c,v 2.6 1997/03/04 04:34:06 eostrom Exp $";
 
-/* $Log: numbers.c,v $
+/*
+ * $Log: numbers.c,v $
  * Revision 2.6  1997/03/04 04:34:06  eostrom
  * parse_number() now trusts strtol() and strtod() more instead of
  * parsing for "-" itself, since a bug in that led to inputs like "--5"

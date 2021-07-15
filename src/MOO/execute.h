@@ -125,7 +125,8 @@ extern int	read_activ(activation *a, int which_vector);
      
 #endif
 
-/* $Log: execute.h,v $
+/*
+ * $Log: execute.h,v $
  * Revision 2.5  1996/03/10 01:20:08  pavel
  * Added new `caller()' entry point, for use by built-in fns.  Release 1.8.0.
  *

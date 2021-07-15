@@ -213,7 +213,8 @@ extern void     free_stmt(Stmt *);
 
 #endif /* !AST_h */
 
-/* $Log: ast.h,v $
+/*
+ * $Log: ast.h,v $
  * Revision 2.3  1996/02/08  05:59:43  pavel
  * Updated copyright notice for 1996.  Added exponentiation expression, named
  * WHILE loops, BREAK and CONTINUE statements, support for floating-point.

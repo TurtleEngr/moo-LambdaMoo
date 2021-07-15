@@ -458,7 +458,8 @@ register_disassemble(void)
 
 char rcsid_disassemble[] = "$Id";
 
-/* $Log: disassemble.c,v $
+/*
+ * $Log: disassemble.c,v $
  * Revision 2.6  1996/04/08  01:09:40  pavel
  * Added missing mnemonic-table entry for EOP_PUSH_LABEL.  Release 1.8.0p3.
  *

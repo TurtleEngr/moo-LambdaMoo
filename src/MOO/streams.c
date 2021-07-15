@@ -222,7 +222,8 @@ stream_length(Stream *s)
 
 char rcsid_streams[] = "$Id: streams.c,v 2.5 1996/03/19 07:14:02 pavel Exp $";
 
-/* $Log: streams.c,v $
+/*
+ * $Log: streams.c,v $
  * Revision 2.5  1996/03/19  07:14:02  pavel
  * Fixed default printing of floating-point numbers.  Release 1.8.0p2.
  *

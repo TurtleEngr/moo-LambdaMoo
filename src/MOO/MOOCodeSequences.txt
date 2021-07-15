@@ -326,6 +326,7 @@ ne_arglist:
 	;
 
 
+/*
 # $Log: MOOCodeSequences.txt,v $
 # Revision 2.3  1996/03/10  01:25:45  pavel
 # Fixed a grammar problem.  Release 1.8.0.

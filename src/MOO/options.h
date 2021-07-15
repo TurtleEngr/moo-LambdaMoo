@@ -290,7 +290,8 @@
 
 #endif /* !Options_h */
 
-/* $Log: options.h,v $
+/*
+ * $Log: options.h,v $
  * Revision 2.5  1996/03/19  07:13:35  pavel
  * Changed CONNECT_TIMEOUT into DEFAULT_CONNECT_TIMEOUT.  Release 1.8.0p2.
  *

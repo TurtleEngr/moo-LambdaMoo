@@ -177,7 +177,8 @@ memory_usage(void)
 
 char rcsid_storage[] = "$Id: storage.c,v 2.1 1996/02/08 06:51:20 pavel Exp $";
 
-/* $Log: storage.c,v $
+/*
+ * $Log: storage.c,v $
  * Revision 2.1  1996/02/08  06:51:20  pavel
  * Renamed TYPE_NUM to TYPE_INT.  Updated copyright notice for 1996.
  * Release 1.8.0beta1.

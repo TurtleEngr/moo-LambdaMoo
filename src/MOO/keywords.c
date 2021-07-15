@@ -170,7 +170,8 @@ find_keyword(const char *word)
 
 char rcsid_keywords[] = "$Id: keywords.gperf,v 2.2 1996/02/08 06:33:21 pavel Exp $";
 
-/* $Log: keywords.gperf,v $
+/*
+ * $Log: keywords.gperf,v $
  * Revision 2.2  1996/02/08  06:33:21  pavel
  * Added `break', `continue', and E_FLOAT.  Updated copyright notice for 1996.
  * Release 1.8.0beta1.

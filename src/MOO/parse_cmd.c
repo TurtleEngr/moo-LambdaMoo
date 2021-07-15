@@ -254,7 +254,8 @@ free_parsed_command(Parsed_Command *pc)
 
 char rcsid_parse_cmd[] = "$Id: parse_cmd.c,v 2.2 1996/02/08 06:55:06 pavel Exp $";
 
-/* $Log: parse_cmd.c,v $
+/*
+ * $Log: parse_cmd.c,v $
  * Revision 2.2  1996/02/08  06:55:06  pavel
  * Updated copyright notice for 1996.  Release 1.8.0beta1.
  *

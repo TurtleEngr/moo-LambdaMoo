@@ -34,7 +34,8 @@ extern Var  new_list(int size);
 extern const char *value2str(Var);
 extern const char *value_to_literal(Var);
 
-/* $Log: list.h,v $
+/*
+ * $Log: list.h,v $
  * Revision 2.1  1996/02/08  06:23:44  pavel
  * Updated copyright notice for 1996.  Release 1.8.0beta1.
  *

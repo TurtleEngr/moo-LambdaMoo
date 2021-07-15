@@ -21,7 +21,8 @@
 extern Stmt    *decompile_program(Program *program, int vector);
 extern int	find_line_number(Program *program, int vector, int pc);
 
-/* $Log: decompile.h,v $
+/*
+ * $Log: decompile.h,v $
  * Revision 2.1  1996/02/08  06:27:19  pavel
  * Updated copyright notice for 1996.  Release 1.8.0beta1.
  *

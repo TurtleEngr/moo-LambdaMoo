@@ -24,7 +24,8 @@
 
 #include <stropts.h>
 
-/* $Log: my-stropts.h,v $
+/*
+ * $Log: my-stropts.h,v $
  * Revision 2.1  1996/02/08  06:01:12  pavel
  * Updated copyright notice for 1996.  Release 1.8.0beta1.
  *

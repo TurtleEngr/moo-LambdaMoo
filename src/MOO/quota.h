@@ -20,7 +20,8 @@
 extern int	decr_quota(Objid player);
 extern void	incr_quota(Objid player);
 
-/* $Log: quota.h,v $
+/*
+ * $Log: quota.h,v $
  * Revision 2.1  1996/02/08  06:13:52  pavel
  * Updated copyright notice for 1996.  Release 1.8.0beta1.
  *

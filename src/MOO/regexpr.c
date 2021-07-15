@@ -1712,7 +1712,8 @@ int main()
 
 char rcsid_regexpr[] = "$Id";
 
-/* $Log: regexpr.c,v $
+/*
+ * $Log: regexpr.c,v $
  * Revision 2.1  1995/12/28  00:45:35  pavel
  * Fixed memory leak on failure-stack growth.  Release 1.8.0alpha3.
  *

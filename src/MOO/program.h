@@ -58,7 +58,8 @@ extern void		free_program(Program *);
 
 #endif /* !Program_H */
 
-/* $Log: program.h,v $
+/*
+ * $Log: program.h,v $
  * Revision 2.3  1996/02/08  06:14:19  pavel
  * Added version number on programs.  Updated copyright notice for 1996.
  * Release 1.8.0beta1.

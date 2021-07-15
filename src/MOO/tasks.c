@@ -1957,7 +1957,8 @@ register_tasks(void)
 
 char rcsid_tasks[] = "$Id: tasks.c,v 2.9 1997/03/04 04:39:48 eostrom Exp $";
 
-/* $Log: tasks.c,v $
+/*
+ * $Log: tasks.c,v $
  * Revision 2.9  1997/03/04 04:39:48  eostrom
  * Fixed uninitialized handler slot in find_tqueue.
  *

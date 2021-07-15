@@ -29,7 +29,8 @@ extern activation 	top_activ(vm);
 extern Objid 		progr_of_cur_verb(vm);
 extern unsigned		suspended_lineno_of_vm(vm);
 
-/* $Log: eval_vm.h,v $
+/*
+ * $Log: eval_vm.h,v $
  * Revision 2.1  1996/02/08  06:26:06  pavel
  * Updated copyright notice for 1996.  Release 1.8.0beta1.
  *

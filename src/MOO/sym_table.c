@@ -149,7 +149,8 @@ free_names(Names *names)
 
 char rcsid_sym_table[] = "$Id: sym_table.c,v 2.2 1996/03/10 01:16:32 pavel Exp $";
 
-/* $Log: sym_table.c,v $
+/*
+ * $Log: sym_table.c,v $
  * Revision 2.2  1996/03/10  01:16:32  pavel
  * Removed a bunch of obsolete unused functions.  Release 1.8.0.
  *

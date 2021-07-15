@@ -47,7 +47,8 @@ extern int	sigrelse(int);
 #define SIGCHLD SIGCLD
 #endif
 
-/* $Log: my-signal.h,v $
+/*
+ * $Log: my-signal.h,v $
  * Revision 2.1  1996/02/08  06:03:00  pavel
  * Updated copyright notice for 1996.  Release 1.8.0beta1.
  *

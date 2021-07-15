@@ -43,7 +43,8 @@ extern int	connect(int, struct sockaddr *, int);
 extern int	shutdown(int, int);
 #endif
 
-/* $Log: my-socket.h,v $
+/*
+ * $Log: my-socket.h,v $
  * Revision 2.2  1996/02/08  06:02:39  pavel
  * Updated copyright notice for 1996.  Release 1.8.0beta1.
  *

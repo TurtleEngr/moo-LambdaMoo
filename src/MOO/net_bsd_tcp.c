@@ -286,7 +286,8 @@ proto_open_connection(Var arglist, int *read_fd, int *write_fd,
 
 char rcsid_net_bsd_tcp[] = "$Id: net_bsd_tcp.c,v 2.5 1996/03/10 01:13:48 pavel Exp $";
 
-/* $Log: net_bsd_tcp.c,v $
+/*
+ * $Log: net_bsd_tcp.c,v $
  * Revision 2.5  1996/03/10  01:13:48  pavel
  * Moved definition of DEFAULT_PORT to options.h.  Release 1.8.0.
  *

@@ -156,7 +156,8 @@ extern void		proto_close_listener(int fd);
 
 #endif /* !Net_Proto_H */
 
-/* $Log: net_proto.h,v $
+/*
+ * $Log: net_proto.h,v $
  * Revision 2.3  1996/02/08  06:16:01  pavel
  * Updated copyright notice for 1996.  Release 1.8.0beta1.
  *

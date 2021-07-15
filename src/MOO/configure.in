@@ -517,6 +517,7 @@ echo "----------------------------------------------------------------------"
 
 AC_OUTPUT(Makefile)
 
+/*
 # $Log: configure.in,v $
 # Revision 2.8  1996/03/19  07:16:46  pavel
 # Added one more option for trying to enable ANSI C compilation.

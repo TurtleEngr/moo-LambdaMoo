@@ -4,3 +4,4 @@ Start over with new files in MOO/, applying patches, to build a 64-bit version.
 
 make pkgs
 make unpack
+make fix

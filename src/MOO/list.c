@@ -1116,7 +1116,8 @@ register_list(void)
 
 char rcsid_list[] = "$Id: list.c,v 2.7 1996/03/11 23:35:17 pavel Exp $";
 
-/* $Log: list.c,v $
+/*
+ * $Log: list.c,v $
  * Revision 2.7  1996/03/11  23:35:17  pavel
  * Fixed bad use of possibly-signed characters in decode_binary().
  * Release 1.8.0p1.

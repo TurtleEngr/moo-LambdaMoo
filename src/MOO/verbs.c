@@ -575,7 +575,8 @@ register_verbs(void)
 
 char rcsid_verbs[] = "$Id: verbs.c,v 2.8 1996/05/12 21:29:46 pavel Exp $";
 
-/* $Log: verbs.c,v $
+/*
+ * $Log: verbs.c,v $
  * Revision 2.8  1996/05/12  21:29:46  pavel
  * Fixed memory leak for verb names string in bf_add_verb.  Release 1.8.0p5.
  *

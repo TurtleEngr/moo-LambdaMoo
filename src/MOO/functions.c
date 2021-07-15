@@ -425,7 +425,8 @@ register_functions(void)
 
 char rcsid_functions[] = "$Id: functions.c,v 2.6 1996/04/19 01:20:49 pavel Exp $";
 
-/* $Log: functions.c,v $
+/*
+ * $Log: functions.c,v $
  * Revision 2.6  1996/04/19  01:20:49  pavel
  * Fixed bug in how $bf_FOO() verbs are called to override built-in functions.
  * Added code to screen out the worst of the problems this bug could

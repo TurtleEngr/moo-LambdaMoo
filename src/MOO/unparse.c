@@ -694,7 +694,8 @@ unparse_to_stderr(Program *p, int fully_parenthesize, int indent_lines,
 
 char rcsid_unparse[] = "$Id: unparse.c,v 2.5 1996/02/18 23:21:00 pavel Exp $";
 
-/* $Log: unparse.c,v $
+/*
+ * $Log: unparse.c,v $
  * Revision 2.5  1996/02/18  23:21:00  pavel
  * Fixed unparsing of expression `X.Y', where X is an integer, to add a space
  * before the dot to keep it from looking like a floating-point literal.

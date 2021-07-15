@@ -57,7 +57,8 @@ extern void	free_names(Names *);
 
 #endif /* !Sym_Table_h */
 
-/* $Log: sym_table.h,v $
+/*
+ * $Log: sym_table.h,v $
  * Revision 2.2  1996/03/10  01:15:53  pavel
  * Removed a number of obsolete declarations.  Release 1.8.0.
  *

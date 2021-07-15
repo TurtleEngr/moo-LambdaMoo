@@ -441,7 +441,8 @@ binary_to_raw_bytes(const char *binary, int *buflen)
 
 char rcsid_utils[] = "$Id: utils.c,v 2.8 1996/04/08 00:43:09 pavel Exp $";
 
-/* $Log: utils.c,v $
+/*
+ * $Log: utils.c,v $
  * Revision 2.8  1996/04/08  00:43:09  pavel
  * Changed definition of `value_bytes()' to add in `sizeof(Var)'.
  * Release 1.8.0p3.

@@ -99,7 +99,8 @@ set_rt_env_var(Var *env, int slot, Var v)
 
 char rcsid_rt_env[] = "$Id: eval_env.c,v 2.1 1996/02/08 07:13:03 pavel Exp $";
 
-/* $Log: eval_env.c,v $
+/*
+ * $Log: eval_env.c,v $
  * Revision 2.1  1996/02/08  07:13:03  pavel
  * Renamed TYPE_NUM to TYPE_INT.  Made fill_in_rt_consts() version-dependent.
  * Updated copyright notice for 1996.  Release 1.8.0beta1.

@@ -55,7 +55,8 @@ typedef void   *va_list;
 
 #endif /* BUGGY_STDARG */
 
-/* $Log: my-stdarg.h,v $
+/*
+ * $Log: my-stdarg.h,v $
  * Revision 2.1  1996/02/08  06:02:14  pavel
  * Updated copyright notice for 1996.  Release 1.8.0beta1.
  *

@@ -315,7 +315,8 @@ void md5_Final(md5ctx_t *context, uint8 digest[16])
     memset((char *) context, 0, sizeof(*context));
 }
 
-/* $Log: md5.c,v $
+/*
+ * $Log: md5.c,v $
  * Revision 1.1  1996/02/18  23:19:18  pavel
  * Initial revision
  *

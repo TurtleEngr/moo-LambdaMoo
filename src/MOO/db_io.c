@@ -403,7 +403,8 @@ dbio_write_forked_program(Program *program, int f_index)
 
 char rcsid_db_io[] = "$Id: db_io.c,v 2.5 1996/03/19 07:16:12 pavel Exp $";
 
-/* $Log: db_io.c,v $
+/*
+ * $Log: db_io.c,v $
  * Revision 2.5  1996/03/19  07:16:12  pavel
  * Increased precision of floating-point numbers printed in the DB file.
  * Release 1.8.0p2.

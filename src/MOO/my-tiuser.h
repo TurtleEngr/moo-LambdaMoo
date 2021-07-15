@@ -35,7 +35,8 @@ extern int	t_errno;
 extern char    *t_errlist[];
 #endif
 
-/* $Log: my-tiuser.h,v $
+/*
+ * $Log: my-tiuser.h,v $
  * Revision 2.1  1996/02/08  06:00:32  pavel
  * Updated copyright notice for 1996.  Release 1.8.0beta1.
  *

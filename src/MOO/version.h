@@ -57,7 +57,8 @@ extern int		check_version(DB_Version);
 
 #endif /* !Version_H */
 
-/* $Log: version.h,v $
+/*
+ * $Log: version.h,v $
  * Revision 2.3  1996/04/19 01:25:21  pavel
  * Added somewhat bogus DBV_BFBugFixed version.  Release 1.8.0p4.
  *

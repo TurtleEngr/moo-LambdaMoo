@@ -113,7 +113,8 @@ free_program(Program *p)
 
 char rcsid_program[] = "$Id: program.c,v 2.4 1997/03/04 04:36:18 eostrom Exp $";
 
-/* $Log: program.c,v $
+/*
+ * $Log: program.c,v $
  * Revision 2.4  1997/03/04 04:36:18  eostrom
  * Fixed memory leak in free_program().
  *

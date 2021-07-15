@@ -540,7 +540,8 @@ dbpriv_set_all_users(Var v)
 
 char rcsid_db_objects[] = "$Id: db_objects.c,v 2.5 1996/04/08 00:42:11 pavel Exp $";
 
-/* $Log: db_objects.c,v $
+/*
+ * $Log: db_objects.c,v $
  * Revision 2.5  1996/04/08  00:42:11  pavel
  * Adjusted computation in `db_object_bytes()' to account for change in the
  * definition of `value_bytes()'.  Release 1.8.0p3.

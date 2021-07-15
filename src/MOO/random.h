@@ -33,7 +33,8 @@
 #  endif
 #endif
 
-/* $Log: random.h,v $
+/*
+ * $Log: random.h,v $
  * Revision 2.1  1996/02/08  06:13:41  pavel
  * Updated copyright notice for 1996.  Release 1.8.0beta1.
  *

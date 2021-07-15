@@ -151,7 +151,8 @@ register_extensions()
 
 char rcsid_extensions[] = "$Id: extensions.c,v 2.1 1996/02/08 07:03:47 pavel Exp $";
 
-/* $Log: extensions.c,v $
+/*
+ * $Log: extensions.c,v $
  * Revision 2.1  1996/02/08  07:03:47  pavel
  * Renamed err/logf() to errlog/oklog().  Updated copyright notice for 1996.
  * Release 1.8.0beta1.

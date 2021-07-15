@@ -85,7 +85,8 @@ mplex_is_writable(int fd)
 
 char rcsid_net_mp_selct[] = "$Id: net_mp_selct.c,v 2.1 1996/02/08 06:36:22 pavel Exp $";
 
-/* $Log: net_mp_selct.c,v $
+/*
+ * $Log: net_mp_selct.c,v $
  * Revision 2.1  1996/02/08  06:36:22  pavel
  * Updated copyright notice for 1996.  Release 1.8.0beta1.
  *

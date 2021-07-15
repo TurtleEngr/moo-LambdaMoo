@@ -727,7 +727,8 @@ network_shutdown(void)
 
 char rcsid_net_multi[] = "$Id: net_multi.c,v 2.6 1996/05/12 21:29:09 pavel Exp $";
 
-/* $Log: net_multi.c,v $
+/*
+ * $Log: net_multi.c,v $
  * Revision 2.6  1996/05/12  21:29:09  pavel
  * Fixed mis-initialization of "client-echo" option.  Release 1.8.0p5.
  *

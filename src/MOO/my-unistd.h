@@ -42,7 +42,8 @@ extern int	write(int, const void *, unsigned);
 
 #endif
 
-/* $Log: my-unistd.h,v $
+/*
+ * $Log: my-unistd.h,v $
  * Revision 2.1  1996/02/08  06:00:01  pavel
  * Updated copyright notice for 1996.  Release 1.8.0beta1.
  *

@@ -39,7 +39,8 @@ extern int	setitimer(int, struct itimerval *, struct itimerval *);
 extern int	select(int, fd_set *, fd_set *, fd_set *, struct timeval *);
 #endif
 
-/* $Log: my-sys-time.h,v $
+/*
+ * $Log: my-sys-time.h,v $
  * Revision 2.1  1996/02/08  06:01:00  pavel
  * Updated copyright notice for 1996.  Release 1.8.0beta1.
  *

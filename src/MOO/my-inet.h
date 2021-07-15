@@ -24,7 +24,8 @@
 
 #include <arpa/inet.h>
 
-/* $Log: my-inet.h,v $
+/*
+ * $Log: my-inet.h,v $
  * Revision 2.1  1996/02/08  06:04:48  pavel
  * Updated copyright notice for 1996.  Release 1.8.0beta1.
  *

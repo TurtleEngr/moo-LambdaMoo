@@ -30,7 +30,8 @@ extern void reset_command_history(void);
 extern void log_command_history(void);
 extern void add_command_to_history(Objid player, const char *command);
 
-/* $Log: log.h,v $
+/*
+ * $Log: log.h,v $
  * Revision 2.2  1996/04/08  01:05:28  pavel
  * Added `set_log_file()' entry point.  Release 1.8.0p3.
  *

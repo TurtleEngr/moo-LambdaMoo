@@ -36,7 +36,8 @@ extern int mknod(const char *file, int mode, int dev);
 #define mkfifo(path, mode)	mknod(path, S_IFIFO | (mode), 0)
 #endif
 
-/* $Log: my-stat.h,v $
+/*
+ * $Log: my-stat.h,v $
  * Revision 2.3  1996/02/08  06:02:22  pavel
  * Updated copyright notice for 1996.  Release 1.8.0beta1.
  *

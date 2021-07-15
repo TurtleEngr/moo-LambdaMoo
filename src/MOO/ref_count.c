@@ -207,7 +207,8 @@ delref(const void *p)
 
 char rcsid_ref_count[] = "$Id: ref_count.c,v 2.1 1996/02/08 06:53:33 pavel Exp $";
 
-/* $Log: ref_count.c,v $
+/*
+ * $Log: ref_count.c,v $
  * Revision 2.1  1996/02/08  06:53:33  pavel
  * Updated copyright notice for 1996.  Release 1.8.0beta1.
  *

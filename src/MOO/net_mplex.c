@@ -31,7 +31,8 @@
 
 char rcsid_net_mplex[] = "$Id: net_mplex.c,v 2.1 1996/02/08 06:58:20 pavel Exp $";
 
-/* $Log: net_mplex.c,v $
+/*
+ * $Log: net_mplex.c,v $
  * Revision 2.1  1996/02/08  06:58:20  pavel
  * Updated copyright notice for 1996.  Release 1.8.0beta1.
  *

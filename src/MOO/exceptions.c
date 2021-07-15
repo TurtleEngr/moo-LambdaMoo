@@ -66,7 +66,8 @@ ES_RaiseException(Exception *exception, int value)
 
 char rcsid_exceptions[] = "$Id: exceptions.c,v 2.1 1996/02/08 07:11:32 pavel Exp $";
 
-/* $Log: exceptions.c,v $
+/*
+ * $Log: exceptions.c,v $
  * Revision 2.1  1996/02/08  07:11:32  pavel
  * Updated copyright notice for 1996.  Release 1.8.0beta1.
  *

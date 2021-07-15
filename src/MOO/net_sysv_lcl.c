@@ -363,7 +363,8 @@ proto_close_listener(int fd)
 
 char rcsid_net_sysv_lcl[] = "$Id: net_sysv_lcl.c,v 2.4 1996/03/10 01:13:11 pavel Exp $";
 
-/* $Log: net_sysv_lcl.c,v $
+/*
+ * $Log: net_sysv_lcl.c,v $
  * Revision 2.4  1996/03/10  01:13:11  pavel
  * Moved definition of DEFAULT_CONNECT_FILE to options.h.  Release 1.8.0.
  *

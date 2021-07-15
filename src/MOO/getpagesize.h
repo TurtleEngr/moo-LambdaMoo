@@ -41,7 +41,8 @@
 #endif /* not HAVE_GETPAGESIZE */
 
 
-/* $Log: getpagesize.h,v $
+/*
+ * $Log: getpagesize.h,v $
  * Revision 2.1  1996/02/08  06:24:58  pavel
  * Updated copyright notice for 1996.  Release 1.8.0beta1.
  *

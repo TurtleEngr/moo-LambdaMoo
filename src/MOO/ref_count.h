@@ -20,7 +20,8 @@
 extern void		addref(const void *p);
 extern unsigned int	delref(const void *p);
 
-/* $Log: ref_count.h,v $
+/*
+ * $Log: ref_count.h,v $
  * Revision 2.1  1996/02/08  06:13:28  pavel
  * Updated copyright notice for 1996.  Release 1.8.0beta1.
  *

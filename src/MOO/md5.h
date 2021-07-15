@@ -65,7 +65,8 @@ void md5_Final(md5ctx_t *context, uint8 digest[16]);
 
 #endif
 
-/* $Log: md5.h,v $
+/*
+ * $Log: md5.h,v $
  * Revision 1.1  1996/02/18  23:18:53  pavel
  * Initial revision
  *

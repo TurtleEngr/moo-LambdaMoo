@@ -89,7 +89,8 @@ main(int argc, char **argv)
 
 char rcsid_client_bsd[] = "$Id: client_bsd.c,v 2.2 1996/03/10 01:11:49 pavel Exp $";
 
-/* $Log: client_bsd.c,v $
+/*
+ * $Log: client_bsd.c,v $
  * Revision 2.2  1996/03/10  01:11:49  pavel
  * Moved definition of DEFAULT_CONNECT_FILE to options.h.  Release 1.8.0.
  *

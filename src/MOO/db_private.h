@@ -138,7 +138,8 @@ extern Exception	dbpriv_dbio_failed;
 extern void		dbpriv_set_dbio_input(FILE *);
 extern void		dbpriv_set_dbio_output(FILE *);
 
-/* $Log: db_private.h,v $
+/*
+ * $Log: db_private.h,v $
  * Revision 2.3  1996/02/08  06:27:28  pavel
  * Updated copyright notice for 1996.  Release 1.8.0beta1.
  *

@@ -23,7 +23,8 @@
 extern int	ioctl(int, int, ...);
 #endif
 
-/* $Log: my-ioctl.h,v $
+/*
+ * $Log: my-ioctl.h,v $
  * Revision 2.1  1996/02/08  06:04:38  pavel
  * Updated copyright notice for 1996.  Release 1.8.0beta1.
  *

@@ -41,7 +41,8 @@ extern const char      *unparse_error(enum error); /* E_NONE -> "No error" */
 
 #endif
 
-/* $Log: unparse.h,v $
+/*
+ * $Log: unparse.h,v $
  * Revision 2.1  1996/02/08  06:08:46  pavel
  * Added unparse_to_file() and unparse_to_stderr().  Updated copyright notice
  * for 1996.  Release 1.8.0beta1.

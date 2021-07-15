@@ -305,7 +305,8 @@ reenable_timers(void)
 
 char rcsid_timers[] = "$Id: timers.c,v 2.1 1996/02/08 06:43:56 pavel Exp $";
 
-/* $Log: timers.c,v $
+/*
+ * $Log: timers.c,v $
  * Revision 2.1  1996/02/08  06:43:56  pavel
  * Updated copyright notice for 1996.  Release 1.8.0beta1.
  *
