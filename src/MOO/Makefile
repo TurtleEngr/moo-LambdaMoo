@@ -23,6 +23,7 @@ YFLAGS = -d
 COMPILE.c = $(CC) $(CFLAGS) $(CPPFLAGS) -c
 
 CSRCS = ast.c code_gen.c db_file.c db_io.c db_objects.c db_properties.c \
+	files.c \
 	pAS5.c \
 	db_verbs.c decompile.c disassemble.c eval_env.c eval_vm.c \
 	exceptions.c execute.c extensions.c functions.c keywords.c list.c \
@@ -314,6 +315,9 @@ execute.o : execute.c my-string.h config.h db.h program.h structures.h my-stdio.
   eval_env.h eval_vm.h execute.h opcode.h parse_cmd.h exceptions.h functions.h \
   list.h log.h numbers.h options.h server.h network.h storage.h streams.h tasks.h \
   timers.h my-time.h utils.h 
+files.o : files.c my-stdarg.h config.h functions.h my-stdio.h bf_register.h \
+  execute.h opcode.h options.h program.h structures.h log.h server.h \
+  network.h storage.h streams.h utils.h
 extensions.o : extensions.c bf_register.h functions.h my-stdio.h config.h my-types.h \
   my-stdarg.h execute.h db.h program.h structures.h version.h opcode.h parse_cmd.h 
 functions.o : functions.c my-stdarg.h config.h bf_register.h db_io.h program.h \

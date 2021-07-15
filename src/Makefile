@@ -43,10 +43,6 @@ build3 :
 build4 : 
 	echo "make build4" >>build-notes.txt
 	cd MOO; patch -l < ../patch/moo-1.8.0-FUP.patch
-	cd MOO; make
-
-build5 :
-	echo "make build5" >>build-notes.txt
 	cd MOO; patch -l < ../patch/moo-1.8.0-files.c.patch
 	cd MOO; patch -l < ../patch/moo-1.8.0-FUP.errfix.patch
 	cd MOO; make

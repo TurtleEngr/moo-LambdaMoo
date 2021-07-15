@@ -27,6 +27,7 @@ extern void register_property(void);
 extern void register_server(void);
 extern void register_tasks(void);
 extern void register_verbs(void);
+extern void register_files(void);
 /* Begin Patch Section (pAS5) (addition) */
 extern void register_pAS5(void);
 /* End Patch Section (pAS5) (addition) */

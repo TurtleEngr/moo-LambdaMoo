@@ -42,6 +42,7 @@
 typedef void (*registry)();
 
 static registry	bi_function_registries[] = {
+	register_files,
 /* Begin Patch Section (pAS5) (addition) */
     register_pAS5,
 /* End Patch Section (pAS5) (addition) */
