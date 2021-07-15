@@ -1,5 +1,0 @@
-Patch FUP:  by Jaime Prilusky and Gustavo Glusman, Mar 10, 1997
- Adds various UNIX file reading and writing functions to the MOO server.
-  See the FUP package documentation for more details.
-  ftp://bioinfo.weizmann.ac.il/pub/software/MOOsupport/FUP/
-

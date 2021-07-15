@@ -1,0 +1,4 @@
+
+release/bin/moo is a 32-bit executable.
+Start over with new files in MOO/, applying patches, to build a 64-bit version.
+
