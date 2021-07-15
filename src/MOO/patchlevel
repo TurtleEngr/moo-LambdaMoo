@@ -1,0 +1,6 @@
+Patch pAS9:  by Alex Stewart, Mar 08, 1997
+  Modifies net_multi.c
+  Changes network input routines to be slightly more forgiving of
+  not-quite-right input.  Receiving BS or DEL characters will erase
+  previous input.
+

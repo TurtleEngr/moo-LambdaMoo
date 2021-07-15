@@ -274,14 +274,6 @@ pull_input(nhandle *h)
 	    for (ptr = buffer, end = buffer + count; ptr < end; ptr++) {
 		unsigned char	c = *ptr;
 
-/* Begin Patch Section (pAS9) (addition) */
-		if (c == 0x08 || c == 0x7F)
-		    /* backspace character.  User's (flawed) client is in raw
-		       mode even though it should be in line mode.  Deal with
-		       this as graciously as we can. [This code is ugly,
-		       but there's no stream_del_char(), so..] */
-		    (s->current > 0) ? s->current-- : 0;
-/* End Patch Section (pAS9) (addition) */
 		if (isgraph(c)  ||  c == ' '  ||  c == '\t')
 		    stream_add_char(s, c);
 		else if (c == '\r'  ||  (c == '\n'  &&  !h->last_input_was_CR))

@@ -10,3 +10,4 @@ make build1
 make unpack
 make fix
 make build1
+make build2
