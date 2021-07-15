@@ -11,3 +11,4 @@ make unpack
 make fix
 make build1
 make build2
+make build3

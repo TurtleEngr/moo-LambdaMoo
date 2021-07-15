@@ -1,3 +1,11 @@
+Patch pAS5:  by Alex Stewart, Oct  1, 1994
+  Modifies bf_register.h, functions.c, Makefile, and Makefile.in
+  Requires pAS5.c
+  Adds the two builtin functions ctime_tz(<timezone> [,<time>]) and 
+  mktime_tz(<timezone>, <year>, <monthnum>, <day>, <hour>, <min>, <sec>)
+  which allow full timezone conversion and parsing based on unix tzfile 
+  (timezone table) entries.
+
 Patch pAS9:  by Alex Stewart, Mar 08, 1997
   Modifies net_multi.c
   Changes network input routines to be slightly more forgiving of

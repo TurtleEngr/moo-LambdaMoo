@@ -22,6 +22,7 @@ YFLAGS = -d
 COMPILE.c = $(CC) $(CFLAGS) $(CPPFLAGS) -c
 
 CSRCS = ast.c code_gen.c db_file.c db_io.c db_objects.c db_properties.c \
+	pAS5.c \
 	db_verbs.c decompile.c disassemble.c eval_env.c eval_vm.c \
 	exceptions.c execute.c extensions.c functions.c keywords.c list.c \
 	log.c malloc.c match.c md5.c name_lookup.c network.c net_mplex.c \
