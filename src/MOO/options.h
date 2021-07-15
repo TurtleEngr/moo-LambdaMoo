@@ -109,7 +109,7 @@
 
 #define NETWORK_PROTOCOL 	NP_TCP
 
-#define DEFAULT_PORT 		7777
+#define DEFAULT_PORT 		8888
 #define DEFAULT_CONNECT_FILE	"/tmp/.MOO-server"
 
 /******************************************************************************
@@ -155,7 +155,7 @@
  *	 NP_SINGLE or NP_LOCAL.
  */
 
-/* #define OUTBOUND_NETWORK */
+#define OUTBOUND_NETWORK
 
 /******************************************************************************
  * The following constants define certain aspects of the server's network
@@ -292,6 +292,12 @@
 
 /*
  * $Log: options.h,v $
+ * Revision 1.2  2001/06/02 05:21:34  bruce
+ * Edit options.h
+ *
+ * Revision 1.1.1.1  2001/06/02 04:58:27  bruce
+ * LambdaMOO-1.8.0p6.tar.gz
+ *
  * Revision 2.5  1996/03/19  07:13:35  pavel
  * Changed CONNECT_TIMEOUT into DEFAULT_CONNECT_TIMEOUT.  Release 1.8.0p2.
  *

@@ -4,7 +4,8 @@ ropt = -Cav --delete
 
 pkgs :
 	echo "make pkgs" >>build-notes.txt
-	sudo apt-get install flex bison
+	sudo apt-get install flex bison gperf
+	sudo ln -s /usr/bin/gperf /usr/bin/pgperf
 
 unpack :
 	echo "make unpack" >>build-notes.txt
@@ -25,6 +26,7 @@ fix :
 build1 :
 	echo "make build1" >>build-notes.txt
 	cd MOO; sh configure
+	cp patch/options.h MOO
 	cd MOO; make
 
 build2 :
