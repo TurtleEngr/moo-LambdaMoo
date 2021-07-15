@@ -3,7 +3,7 @@
 ropt = -Cav --delete
 
 pkgs :
-	echo "make unpack" >>build-notes.txt
+	echo "make pkgs" >>build-notes.txt
 	sudo apt-get install flex bison
 
 unpack :
@@ -11,10 +11,9 @@ unpack :
 	tar -xzf ../archive/LambdaMOO-1.8.0p6.tar.gz
 	-rm -rf MOO
 	mv MOO-1.8.0p6 MOO
-	git add MOO
 
 fix :
-	echo "make unpack" >>build-notes.txt
+	echo "make fix" >>build-notes.txt
 	cd MOO; \
 	for i in $$(find * -prune -type f); do \
 		if [ $$i = "Makefile.in" ]; then continue; fi; \
