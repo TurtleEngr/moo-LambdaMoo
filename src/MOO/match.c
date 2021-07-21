@@ -135,10 +135,13 @@ match_object(Objid player, const char *name)
     return match_contents(player, name);
 }
 
-char rcsid_match[] = "$Id: match.c,v 2.1 1996/02/08 06:59:41 pavel Exp $";
+char rcsid_match[] = "$Id: match.c,v 1.1 2021/07/15 19:45:07 bruce Exp $";
 
 /*
  * $Log: match.c,v $
+ * Revision 1.1  2021/07/15 19:45:07  bruce
+ * Updated with 64-bit compile
+ *
  * Revision 2.1  1996/02/08  06:59:41  pavel
  * Fixed minor portability problem.  Updated copyright notice for 1996.
  * Release 1.8.0beta1.

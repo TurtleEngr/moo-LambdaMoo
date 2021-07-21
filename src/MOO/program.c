@@ -111,10 +111,13 @@ free_program(Program *p)
     }
 }
 
-char rcsid_program[] = "$Id: program.c,v 2.4 1997/03/04 04:36:18 eostrom Exp $";
+char rcsid_program[] = "$Id: program.c,v 1.1 2021/07/15 19:45:11 bruce Exp $";
 
 /*
  * $Log: program.c,v $
+ * Revision 1.1  2021/07/15 19:45:11  bruce
+ * Updated with 64-bit compile
+ *
  * Revision 2.4  1997/03/04 04:36:18  eostrom
  * Fixed memory leak in free_program().
  *

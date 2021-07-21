@@ -140,6 +140,9 @@ extern void		dbpriv_set_dbio_output(FILE *);
 
 /*
  * $Log: db_private.h,v $
+ * Revision 1.1  2021/07/15 19:45:05  bruce
+ * Updated with 64-bit compile
+ *
  * Revision 2.3  1996/02/08  06:27:28  pavel
  * Updated copyright notice for 1996.  Release 1.8.0beta1.
  *

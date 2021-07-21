@@ -111,6 +111,9 @@ typedef enum Extended_Opcode Extended_Opcode;
 
 /*
  * $Log: opcode.h,v $
+ * Revision 1.1  2021/07/15 19:45:11  bruce
+ * Updated with 64-bit compile
+ *
  * Revision 2.3  1996/02/08  06:18:03  pavel
  * Removed unused NUM_BUILTIN_NAMES constant.  Rearranged EOPs to support tick
  * counting and added COUNT_EOP_TICK().  Added EOP_EXP, EOP_WHILE_ID,

@@ -159,10 +159,13 @@ mplex_is_writable(int fd)
     return (fd < rw_size) ? writable[fd] : 0;
 }
 
-char rcsid_net_mp_fake[] = "$Id: net_mp_fake.c,v 2.1 1996/02/08 06:36:06 pavel Exp $";
+char rcsid_net_mp_fake[] = "$Id: net_mp_fake.c,v 1.1 2021/07/15 19:45:09 bruce Exp $";
 
 /*
  * $Log: net_mp_fake.c,v $
+ * Revision 1.1  2021/07/15 19:45:09  bruce
+ * Updated with 64-bit compile
+ *
  * Revision 2.1  1996/02/08  06:36:06  pavel
  * Updated copyright notice for 1996.  Release 1.8.0beta1.
  *

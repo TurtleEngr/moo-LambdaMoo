@@ -156,6 +156,9 @@ extern void	panic(const char *message);
 
 /*
  * $Log: exceptions.h,v $
+ * Revision 1.1  2021/07/15 19:45:06  bruce
+ * Updated with 64-bit compile
+ *
  * Revision 2.1  1996/02/08  06:25:56  pavel
  * Updated copyright notice for 1996.  Release 1.8.0beta1.
  *

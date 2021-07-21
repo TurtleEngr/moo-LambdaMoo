@@ -158,6 +158,9 @@ extern void		proto_close_listener(int fd);
 
 /*
  * $Log: net_proto.h,v $
+ * Revision 1.1  2021/07/15 19:45:10  bruce
+ * Updated with 64-bit compile
+ *
  * Revision 2.3  1996/02/08  06:16:01  pavel
  * Updated copyright notice for 1996.  Release 1.8.0beta1.
  *

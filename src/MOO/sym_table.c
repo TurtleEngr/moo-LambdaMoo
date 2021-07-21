@@ -147,10 +147,13 @@ free_names(Names *names)
     myfree(names, M_NAMES);
 }
 
-char rcsid_sym_table[] = "$Id: sym_table.c,v 2.2 1996/03/10 01:16:32 pavel Exp $";
+char rcsid_sym_table[] = "$Id: sym_table.c,v 1.1 2021/07/15 19:45:13 bruce Exp $";
 
 /*
  * $Log: sym_table.c,v $
+ * Revision 1.1  2021/07/15 19:45:13  bruce
+ * Updated with 64-bit compile
+ *
  * Revision 2.2  1996/03/10  01:16:32  pavel
  * Removed a bunch of obsolete unused functions.  Release 1.8.0.
  *

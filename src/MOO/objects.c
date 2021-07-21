@@ -621,10 +621,13 @@ register_objects(void)
 				      TYPE_OBJ, TYPE_OBJ);
 }
 
-char rcsid_objects[] = "$Id: objects.c,v 2.3 1996/04/19 01:17:48 pavel Exp $";
+char rcsid_objects[] = "$Id: objects.c,v 1.1 2021/07/15 19:45:10 bruce Exp $";
 
 /*
  * $Log: objects.c,v $
+ * Revision 1.1  2021/07/15 19:45:10  bruce
+ * Updated with 64-bit compile
+ *
  * Revision 2.3  1996/04/19  01:17:48  pavel
  * Rationalized the errors that can be raised from chparent().
  * Release 1.8.0p4.

@@ -60,6 +60,9 @@ extern void		free_program(Program *);
 
 /*
  * $Log: program.h,v $
+ * Revision 1.1  2021/07/15 19:45:11  bruce
+ * Updated with 64-bit compile
+ *
  * Revision 2.3  1996/02/08  06:14:19  pavel
  * Added version number on programs.  Updated copyright notice for 1996.
  * Release 1.8.0beta1.

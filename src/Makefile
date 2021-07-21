@@ -6,6 +6,8 @@ pkgs :
 	echo "make pkgs" >>build-notes.txt
 	sudo apt-get install flex bison gperf
 	sudo ln -s /usr/bin/gperf /usr/bin/pgperf
+	sudo apt-get install lib32gcc-7-dev
+	sudo apt-get install g++-multilib libc6-dev-i386
 
 unpack :
 	echo "make unpack" >>build-notes.txt
@@ -22,6 +24,8 @@ fix :
 		../fixlog.sh <$$i >t.tmp; \
 		mv t.tmp $$i; \
 	done
+	# edit MOO/Makefile and MOO/Makefile.in
+	# Add '-m32' to 'CFLAGS'
 
 build1 :
 	echo "make build1" >>build-notes.txt
@@ -47,10 +51,20 @@ build4 :
 	cd MOO; patch -l < ../patch/moo-1.8.0-FUP.errfix.patch
 	cd MOO; make
 
-release :
-	echo "make release" >>build-notes.txt
+release-x86_64 :
+	echo "make release-x86_64" >>build-notes.txt
 	cat /etc/os-release >>build-notes.txt
 	uname -a >>build-notes.txt
 	echo 'cd MOO; mv moo moo-x86_64-ubuntu-18.04' >>build-notes.txt
 	cd MOO; mv moo moo-x86_64-ubuntu-18.04
 	cp -a MOO/moo-x86_64-ubuntu-18.04 ../release/bin
+	# Note: this server has a PANIC with my educore.
+
+release-i386 :
+	echo "make release-i386" >>build-notes.txt
+	cat /etc/os-release >>build-notes.txt
+	uname -a >>build-notes.txt
+	echo 'cd MOO; mv moo moo-i386-ubuntu-18.04' >>build-notes.txt
+	cd MOO; mv moo moo-i386-ubuntu-18.04
+	cp -a MOO/moo-i386-ubuntu-18.04 ../release/bin
+	# Note: this server works with my educore.

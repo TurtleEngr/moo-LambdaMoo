@@ -33,6 +33,9 @@ extern Var		do_power(Var, Var);
 
 /*
  * $Log: numbers.h,v $
+ * Revision 1.1  2021/07/15 19:45:10  bruce
+ * Updated with 64-bit compile
+ *
  * Revision 1.1  1996/02/08  07:28:25  pavel
  * Initial revision
  *

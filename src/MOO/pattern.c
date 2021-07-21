@@ -178,6 +178,9 @@ char rcsid_pattern[] = "$Id";
 
 /*
  * $Log: pattern.c,v $
+ * Revision 1.1  2021/07/15 19:45:11  bruce
+ * Updated with 64-bit compile
+ *
  * Revision 2.3  1997/03/04 04:35:19  eostrom
  * Fixed memory leak (well, mismatch) in free_pattern().
  *

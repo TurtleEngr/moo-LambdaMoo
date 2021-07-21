@@ -149,10 +149,13 @@ register_log(void)
     register_function("server_log", 1, 2, bf_server_log, TYPE_STR, TYPE_ANY);
 }
 
-char rcsid_log[] = "$Id: log.c,v 2.2 1996/04/08 01:06:25 pavel Exp $";
+char rcsid_log[] = "$Id: log.c,v 1.1 2021/07/15 19:45:07 bruce Exp $";
 
 /*
  * $Log: log.c,v $
+ * Revision 1.1  2021/07/15 19:45:07  bruce
+ * Updated with 64-bit compile
+ *
  * Revision 2.2  1996/04/08  01:06:25  pavel
  * Added `set_log_file()' entry point.  Made logging print undated messages to
  * stderr if they arrive before a log file has been set.  Release 1.8.0p3.

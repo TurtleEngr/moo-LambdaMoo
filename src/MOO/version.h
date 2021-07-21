@@ -60,6 +60,9 @@ extern int		check_version(DB_Version);
 
 /*
  * $Log: version.h,v $
+ * Revision 1.1  2021/07/15 19:45:14  bruce
+ * Updated with 64-bit compile
+ *
  * Revision 2.3  1996/04/19 01:25:21  pavel
  * Added somewhat bogus DBV_BFBugFixed version.  Release 1.8.0p4.
  *

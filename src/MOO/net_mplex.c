@@ -29,10 +29,13 @@
 #    include "net_mp_fake.c"
 #  endif
 
-char rcsid_net_mplex[] = "$Id: net_mplex.c,v 2.1 1996/02/08 06:58:20 pavel Exp $";
+char rcsid_net_mplex[] = "$Id: net_mplex.c,v 1.1 2021/07/15 19:45:10 bruce Exp $";
 
 /*
  * $Log: net_mplex.c,v $
+ * Revision 1.1  2021/07/15 19:45:10  bruce
+ * Updated with 64-bit compile
+ *
  * Revision 2.1  1996/02/08  06:58:20  pavel
  * Updated copyright notice for 1996.  Release 1.8.0beta1.
  *

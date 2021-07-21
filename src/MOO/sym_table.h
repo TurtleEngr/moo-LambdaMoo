@@ -59,6 +59,9 @@ extern void	free_names(Names *);
 
 /*
  * $Log: sym_table.h,v $
+ * Revision 1.1  2021/07/15 19:45:13  bruce
+ * Updated with 64-bit compile
+ *
  * Revision 2.2  1996/03/10  01:15:53  pavel
  * Removed a number of obsolete declarations.  Release 1.8.0.
  *

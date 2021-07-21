@@ -52,6 +52,9 @@ extern const char      *lookup_name_from_addr(struct sockaddr_in *addr,
 
 /*
  * $Log: name_lookup.h,v $
+ * Revision 1.1  2021/07/15 19:45:09  bruce
+ * Updated with 64-bit compile
+ *
  * Revision 2.0  1995/11/30  05:07:03  pavel
  * New baseline version, corresponding to release 1.8.0alpha1.
  *

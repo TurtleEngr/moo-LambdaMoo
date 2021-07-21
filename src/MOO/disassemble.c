@@ -460,6 +460,9 @@ char rcsid_disassemble[] = "$Id";
 
 /*
  * $Log: disassemble.c,v $
+ * Revision 1.1  2021/07/15 19:45:06  bruce
+ * Updated with 64-bit compile
+ *
  * Revision 2.6  1996/04/08  01:09:40  pavel
  * Added missing mnemonic-table entry for EOP_PUSH_LABEL.  Release 1.8.0p3.
  *

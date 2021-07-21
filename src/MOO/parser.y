@@ -1222,10 +1222,13 @@ parse_list_as_program(Var code, Var *errors)
     return program;
 }
 
-char rcsid_parser[] = "$Id: parser.y,v 2.11 1996/05/12 21:28:37 pavel Exp $";
+char rcsid_parser[] = "$Id: parser.y,v 1.1 2021/07/15 19:45:11 bruce Exp $";
 
 /*
  * $Log: parser.y,v $
+ * Revision 1.1  2021/07/15 19:45:11  bruce
+ * Updated with 64-bit compile
+ *
  * Revision 2.11  1996/05/12  21:28:37  pavel
  * Removed non-backward-compatible parse error for negating a non-numeric
  * literal.  Made certain aspects of floating-point literal parsing be

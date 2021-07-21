@@ -573,10 +573,13 @@ register_verbs(void)
     register_function("eval", 1, 1, bf_eval, TYPE_STR);
 }
 
-char rcsid_verbs[] = "$Id: verbs.c,v 2.8 1996/05/12 21:29:46 pavel Exp $";
+char rcsid_verbs[] = "$Id: verbs.c,v 1.1 2021/07/15 19:45:13 bruce Exp $";
 
 /*
  * $Log: verbs.c,v $
+ * Revision 1.1  2021/07/15 19:45:13  bruce
+ * Updated with 64-bit compile
+ *
  * Revision 2.8  1996/05/12  21:29:46  pavel
  * Fixed memory leak for verb names string in bf_add_verb.  Release 1.8.0p5.
  *

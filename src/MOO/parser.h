@@ -35,6 +35,9 @@ extern Program *parse_list_as_program(Var code, Var *errors);
 
 /*
  * $Log: parser.h,v $
+ * Revision 1.1  2021/07/15 19:45:11  bruce
+ * Updated with 64-bit compile
+ *
  * Revision 2.2  1996/02/08  06:15:30  pavel
  * Removed ungetch() method on Parser_Client, added version number to
  * parse_program.  Updated copyright notice for 1996.  Release 1.8.0beta1.

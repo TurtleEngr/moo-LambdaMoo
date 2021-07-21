@@ -32,6 +32,9 @@ extern void add_command_to_history(Objid player, const char *command);
 
 /*
  * $Log: log.h,v $
+ * Revision 1.1  2021/07/15 19:45:07  bruce
+ * Updated with 64-bit compile
+ *
  * Revision 2.2  1996/04/08  01:05:28  pavel
  * Added `set_log_file()' entry point.  Release 1.8.0p3.
  *

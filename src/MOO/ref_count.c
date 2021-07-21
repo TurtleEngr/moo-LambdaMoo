@@ -205,10 +205,13 @@ delref(const void *p)
     return ll_delete_value(&(ref_table[index]), p);
 }
 
-char rcsid_ref_count[] = "$Id: ref_count.c,v 2.1 1996/02/08 06:53:33 pavel Exp $";
+char rcsid_ref_count[] = "$Id: ref_count.c,v 1.1 2021/07/15 19:45:12 bruce Exp $";
 
 /*
  * $Log: ref_count.c,v $
+ * Revision 1.1  2021/07/15 19:45:12  bruce
+ * Updated with 64-bit compile
+ *
  * Revision 2.1  1996/02/08  06:53:33  pavel
  * Updated copyright notice for 1996.  Release 1.8.0beta1.
  *

@@ -542,10 +542,13 @@ db_verb_allows(db_verb_handle h, Objid progr, db_verb_flag flag)
 }
 
 
-char rcsid_db_verbs[] = "$Id: db_verbs.c,v 2.4 1996/05/12 21:32:23 pavel Exp $";
+char rcsid_db_verbs[] = "$Id: db_verbs.c,v 1.1 2021/07/15 19:45:05 bruce Exp $";
 
 /*
  * $Log: db_verbs.c,v $
+ * Revision 1.1  2021/07/15 19:45:05  bruce
+ * Updated with 64-bit compile
+ *
  * Revision 2.4  1996/05/12  21:32:23  pavel
  * Changed db_add_verb() not to bump the reference count of the given
  * verb-names string.  Release 1.8.0p5.

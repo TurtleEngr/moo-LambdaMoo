@@ -733,10 +733,13 @@ network_shutdown(void)
 	close_nlistener(all_nlisteners);
 }
 
-char rcsid_net_multi[] = "$Id: net_multi.c,v 2.6 1996/05/12 21:29:09 pavel Exp $";
+char rcsid_net_multi[] = "$Id: net_multi.c,v 1.1 2021/07/15 19:45:10 bruce Exp $";
 
 /*
  * $Log: net_multi.c,v $
+ * Revision 1.1  2021/07/15 19:45:10  bruce
+ * Updated with 64-bit compile
+ *
  * Revision 2.6  1996/05/12  21:29:09  pavel
  * Fixed mis-initialization of "client-echo" option.  Release 1.8.0p5.
  *

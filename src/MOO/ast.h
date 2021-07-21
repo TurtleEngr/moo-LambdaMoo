@@ -215,6 +215,9 @@ extern void     free_stmt(Stmt *);
 
 /*
  * $Log: ast.h,v $
+ * Revision 1.1  2021/07/15 19:45:04  bruce
+ * Updated with 64-bit compile
+ *
  * Revision 2.3  1996/02/08  05:59:43  pavel
  * Updated copyright notice for 1996.  Added exponentiation expression, named
  * WHILE loops, BREAK and CONTINUE statements, support for floating-point.

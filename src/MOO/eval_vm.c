@@ -122,10 +122,13 @@ read_vm(int task_id)
     return the_vm;
 }
 
-char rcsid_eval_vm[] = "$Id: eval_vm.c,v 2.2 1996/02/08 07:12:16 pavel Exp $";
+char rcsid_eval_vm[] = "$Id: eval_vm.c,v 1.1 2021/07/15 19:45:06 bruce Exp $";
 
 /*
  * $Log: eval_vm.c,v $
+ * Revision 1.1  2021/07/15 19:45:06  bruce
+ * Updated with 64-bit compile
+ *
  * Revision 2.2  1996/02/08  07:12:16  pavel
  * Renamed err/logf() to errlog/oklog().  Updated copyright notice for 1996.
  * Release 1.8.0beta1.

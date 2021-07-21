@@ -160,6 +160,9 @@ extern int	read_active_connections(void);
 
 /*
  * $Log: server.h,v $
+ * Revision 1.1  2021/07/15 19:45:12  bruce
+ * Updated with 64-bit compile
+ *
  * Revision 2.3  1996/04/08  01:07:52  pavel
  * Made get_server_option() public.  Release 1.8.0p3.
  *

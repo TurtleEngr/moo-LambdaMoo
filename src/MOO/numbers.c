@@ -712,10 +712,13 @@ register_numbers(void)
     register_function("trunc", 1, 1, bf_trunc, TYPE_FLOAT);
 }
 
-char rcsid_numbers[] = "$Id: numbers.c,v 2.6 1997/03/04 04:34:06 eostrom Exp $";
+char rcsid_numbers[] = "$Id: numbers.c,v 1.1 2021/07/15 19:45:10 bruce Exp $";
 
 /*
  * $Log: numbers.c,v $
+ * Revision 1.1  2021/07/15 19:45:10  bruce
+ * Updated with 64-bit compile
+ *
  * Revision 2.6  1997/03/04 04:34:06  eostrom
  * parse_number() now trusts strtol() and strtod() more instead of
  * parsing for "-" itself, since a bug in that led to inputs like "--5"

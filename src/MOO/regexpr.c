@@ -1714,6 +1714,9 @@ char rcsid_regexpr[] = "$Id";
 
 /*
  * $Log: regexpr.c,v $
+ * Revision 1.1  2021/07/15 19:45:12  bruce
+ * Updated with 64-bit compile
+ *
  * Revision 2.1  1995/12/28  00:45:35  pavel
  * Fixed memory leak on failure-stack growth.  Release 1.8.0alpha3.
  *

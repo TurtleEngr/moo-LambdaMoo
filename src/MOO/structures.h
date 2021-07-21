@@ -79,6 +79,9 @@ extern Var	zero;		/* useful constant */
 
 /*
  * $Log: structures.h,v $
+ * Revision 1.1  2021/07/15 19:45:13  bruce
+ * Updated with 64-bit compile
+ *
  * Revision 2.1  1996/02/08  06:12:21  pavel
  * Added E_FLOAT, TYPE_FLOAT, and TYPE_NUMERIC.  Renamed TYPE_NUM to TYPE_INT.
  * Updated copyright notice for 1996.  Release 1.8.0beta1.

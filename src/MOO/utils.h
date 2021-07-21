@@ -55,6 +55,9 @@ extern const char      *binary_to_raw_bytes(const char *binary, int *rawlen);
 
 /*
  * $Log: utils.h,v $
+ * Revision 1.1  2021/07/15 19:45:13  bruce
+ * Updated with 64-bit compile
+ *
  * Revision 2.4  1996/02/08  06:08:07  pavel
  * Moved become_number and compare_ints to number.h.  Updated copyright notice
  * for 1996.  Release 1.8.0beta1.

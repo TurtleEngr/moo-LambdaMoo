@@ -361,10 +361,13 @@ proto_close_listener(int fd)
     errlog("Can't find fd in PROTO_CLOSE_LISTENER!\n");
 }
 
-char rcsid_net_sysv_lcl[] = "$Id: net_sysv_lcl.c,v 2.4 1996/03/10 01:13:11 pavel Exp $";
+char rcsid_net_sysv_lcl[] = "$Id: net_sysv_lcl.c,v 1.1 2021/07/15 19:45:10 bruce Exp $";
 
 /*
  * $Log: net_sysv_lcl.c,v $
+ * Revision 1.1  2021/07/15 19:45:10  bruce
+ * Updated with 64-bit compile
+ *
  * Revision 2.4  1996/03/10  01:13:11  pavel
  * Moved definition of DEFAULT_CONNECT_FILE to options.h.  Release 1.8.0.
  *

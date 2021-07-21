@@ -92,6 +92,9 @@ extern void		dbio_write_forked_program(Program *prog, int f_index);
 
 /*
  * $Log: db_io.h,v $
+ * Revision 1.1  2021/07/15 19:45:05  bruce
+ * Updated with 64-bit compile
+ *
  * Revision 2.3  1996/02/08  06:28:21  pavel
  * Added dbio_input_version, dbio_read/write_float().  Made dbio_read_program
  * version-dependent.  Updated copyright notice for 1996.  Release 1.8.0beta1.

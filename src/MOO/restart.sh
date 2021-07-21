@@ -43,6 +43,9 @@ nohup ./moo $1.db $1.db.new $2 >> $1.log 2>&1 &
 ###############################################################################
 /*
 # $Log: restart.sh,v $
+# Revision 1.1  2021/07/15 19:45:12  bruce
+# Updated with 64-bit compile
+#
 # Revision 2.1  1996/02/08  07:25:45  pavel
 # Updated copyright notice for 1996.  Release 1.8.0beta1.
 #

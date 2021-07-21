@@ -272,7 +272,13 @@
 #endif /* !Config_H */
 
 /*
- * $Log: config.h.in,v $
+ * $Log: config.h,v $
+ * Revision 1.2  2021/07/21 00:26:31  bruce
+ * Updated to compile an i386 version.
+ *
+ * Revision 1.1  2021/07/15 19:45:05  bruce
+ * Updated with 64-bit compile
+ *
  * Revision 2.5  1996/02/11  00:41:40  pavel
  * Added check for matherr().  Release 1.8.0beta2.
  *

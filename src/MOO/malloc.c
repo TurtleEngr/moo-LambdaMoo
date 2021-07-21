@@ -55,10 +55,13 @@ int malloc_dummy;		/* Prevent `empty compilation unit' warning */
 
 #endif
 
-char rcsid_malloc[] = "$Id: malloc.c,v 2.1 1996/02/08 06:59:50 pavel Exp $";
+char rcsid_malloc[] = "$Id: malloc.c,v 1.1 2021/07/15 19:45:07 bruce Exp $";
 
 /*
  * $Log: malloc.c,v $
+ * Revision 1.1  2021/07/15 19:45:07  bruce
+ * Updated with 64-bit compile
+ *
  * Revision 2.1  1996/02/08  06:59:50  pavel
  * Updated copyright notice for 1996.  Release 1.8.0beta1.
  *

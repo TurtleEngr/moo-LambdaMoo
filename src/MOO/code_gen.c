@@ -1177,10 +1177,13 @@ generate_code(Stmt *stmt, DB_Version version)
     return prog;
 }
 
-char rcsid_code_gen[] = "$Id: code_gen.c,v 2.4 1996/02/08 07:21:08 pavel Exp $";
+char rcsid_code_gen[] = "$Id: code_gen.c,v 1.1 2021/07/15 19:45:04 bruce Exp $";
 
 /*
  * $Log: code_gen.c,v $
+ * Revision 1.1  2021/07/15 19:45:04  bruce
+ * Updated with 64-bit compile
+ *
  * Revision 2.4  1996/02/08  07:21:08  pavel
  * Renamed TYPE_NUM to TYPE_INT.  Added support for exponentiation expression,
  * named WHILE loop and BREAK and CONTINUE statement.  Updated copyright

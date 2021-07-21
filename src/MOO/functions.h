@@ -91,6 +91,9 @@ extern Byte    *pc_for_bi_func_data(void);
 
 /*
  * $Log: functions.h,v $
+ * Revision 1.1  2021/07/15 19:45:07  bruce
+ * Updated with 64-bit compile
+ *
  * Revision 2.2  1996/04/19  01:22:04  pavel
  * Added tail_call_pack() declaration and patches to allow generation of the
  * new warning in read_bi_func_data().  Release 1.8.0p4.

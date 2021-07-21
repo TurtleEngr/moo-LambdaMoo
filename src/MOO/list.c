@@ -1114,10 +1114,13 @@ register_list(void)
 }
 
 
-char rcsid_list[] = "$Id: list.c,v 2.7 1996/03/11 23:35:17 pavel Exp $";
+char rcsid_list[] = "$Id: list.c,v 1.1 2021/07/15 19:45:07 bruce Exp $";
 
 /*
  * $Log: list.c,v $
+ * Revision 1.1  2021/07/15 19:45:07  bruce
+ * Updated with 64-bit compile
+ *
  * Revision 2.7  1996/03/11  23:35:17  pavel
  * Fixed bad use of possibly-signed characters in decode_binary().
  * Release 1.8.0p1.

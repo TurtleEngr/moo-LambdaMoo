@@ -2682,10 +2682,13 @@ read_activ(activation *a, int which_vector)
 }
 
 
-char rcsid_execute[] = "$Id: execute.c,v 2.11 1997/03/04 04:31:48 eostrom Exp $";
+char rcsid_execute[] = "$Id: execute.c,v 1.1 2021/07/15 19:45:06 bruce Exp $";
 
 /*
  * $Log: execute.c,v $
+ * Revision 1.1  2021/07/15 19:45:06  bruce
+ * Updated with 64-bit compile
+ *
  * Revision 2.11  1997/03/04 04:31:48  eostrom
  * Modified run() and run_interpreter() to take a separate argument
  * indicating whether to raise an exception, rather than assuming E_NONE

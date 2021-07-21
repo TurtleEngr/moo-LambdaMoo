@@ -235,10 +235,13 @@ network_process_io(int timeout)
     return got_some;
 }
 
-char rcsid_net_single[] = "$Id: net_single.c,v 2.4 1996/03/10 01:23:12 pavel Exp $";
+char rcsid_net_single[] = "$Id: net_single.c,v 1.1 2021/07/15 19:45:10 bruce Exp $";
 
 /*
  * $Log: net_single.c,v $
+ * Revision 1.1  2021/07/15 19:45:10  bruce
+ * Updated with 64-bit compile
+ *
  * Revision 2.4  1996/03/10  01:23:12  pavel
  * Added support for `connection_option()'.  Added missing include of
  * "utils.h".  Release 1.8.0.

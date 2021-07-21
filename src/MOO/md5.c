@@ -317,6 +317,9 @@ void md5_Final(md5ctx_t *context, uint8 digest[16])
 
 /*
  * $Log: md5.c,v $
+ * Revision 1.1  2021/07/15 19:45:07  bruce
+ * Updated with 64-bit compile
+ *
  * Revision 1.1  1996/02/18  23:19:18  pavel
  * Initial revision
  *

@@ -1747,10 +1747,13 @@ register_server(void)
 		      bf_buffered_output_length, TYPE_OBJ);
 }
 
-char rcsid_server[] = "$Id: server.c,v 2.11 1996/05/12 21:26:10 pavel Exp $";
+char rcsid_server[] = "$Id: server.c,v 1.1 2021/07/15 19:45:12 bruce Exp $";
 
 /*
  * $Log: server.c,v $
+ * Revision 1.1  2021/07/15 19:45:12  bruce
+ * Updated with 64-bit compile
+ *
  * Revision 2.11  1996/05/12  21:26:10  pavel
  * Slightly cleaned up some code in bf_shutdown().  Release 1.8.0p5.
  *

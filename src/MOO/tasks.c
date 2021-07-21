@@ -1955,10 +1955,13 @@ register_tasks(void)
     register_function("flush_input", 1, 2, bf_flush_input, TYPE_OBJ, TYPE_ANY);
 }
 
-char rcsid_tasks[] = "$Id: tasks.c,v 2.9 1997/03/04 04:39:48 eostrom Exp $";
+char rcsid_tasks[] = "$Id: tasks.c,v 1.1 2021/07/15 19:45:13 bruce Exp $";
 
 /*
  * $Log: tasks.c,v $
+ * Revision 1.1  2021/07/15 19:45:13  bruce
+ * Updated with 64-bit compile
+ *
  * Revision 2.9  1997/03/04 04:39:48  eostrom
  * Fixed uninitialized handler slot in find_tqueue.
  *

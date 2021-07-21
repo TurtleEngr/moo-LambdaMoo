@@ -292,6 +292,9 @@
 
 /*
  * $Log: options.h,v $
+ * Revision 1.1  2021/07/15 19:43:52  bruce
+ * Updated with 64-bit compile
+ *
  * Revision 1.2  2001/06/02 05:21:34  bruce
  * Edit options.h
  *

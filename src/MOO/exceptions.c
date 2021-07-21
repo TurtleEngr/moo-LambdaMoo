@@ -64,10 +64,13 @@ ES_RaiseException(Exception *exception, int value)
     longjmp((void *) cb->jmp, 1);
 }
 
-char rcsid_exceptions[] = "$Id: exceptions.c,v 2.1 1996/02/08 07:11:32 pavel Exp $";
+char rcsid_exceptions[] = "$Id: exceptions.c,v 1.1 2021/07/15 19:45:06 bruce Exp $";
 
 /*
  * $Log: exceptions.c,v $
+ * Revision 1.1  2021/07/15 19:45:06  bruce
+ * Updated with 64-bit compile
+ *
  * Revision 2.1  1996/02/08  07:11:32  pavel
  * Updated copyright notice for 1996.  Release 1.8.0beta1.
  *

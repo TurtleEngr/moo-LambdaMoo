@@ -383,10 +383,13 @@ lookup_addr_from_name(const char *name, unsigned timeout)
     
 #endif /* NETWORK_PROTOCOL == NP_TCP */
 
-char rcsid_name_lookup[] = "$Id: name_lookup.c,v 2.2 1996/02/08 06:59:04 pavel Exp $";
+char rcsid_name_lookup[] = "$Id: name_lookup.c,v 1.1 2021/07/15 19:45:09 bruce Exp $";
 
 /*
  * $Log: name_lookup.c,v $
+ * Revision 1.1  2021/07/15 19:45:09  bruce
+ * Updated with 64-bit compile
+ *
  * Revision 2.2  1996/02/08  06:59:04  pavel
  * Renamed err/logf() to errlog/oklog().  Updated copyright notice for 1996.
  * Release 1.8.0beta1.

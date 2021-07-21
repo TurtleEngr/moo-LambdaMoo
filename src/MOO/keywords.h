@@ -32,6 +32,9 @@ extern Keyword *find_keyword(const char *);
 
 /*
  * $Log: keywords.h,v $
+ * Revision 1.1  2021/07/15 19:45:07  bruce
+ * Updated with 64-bit compile
+ *
  * Revision 2.2  1996/02/08  06:24:47  pavel
  * Fixed type of version number.  Updated copyright notice for 1996.
  * Release 1.8.0beta1.

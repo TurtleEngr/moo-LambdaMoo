@@ -401,10 +401,13 @@ dbio_write_forked_program(Program *program, int f_index)
     dbio_printf(".\n");
 }
 
-char rcsid_db_io[] = "$Id: db_io.c,v 2.5 1996/03/19 07:16:12 pavel Exp $";
+char rcsid_db_io[] = "$Id: db_io.c,v 1.1 2021/07/15 19:45:05 bruce Exp $";
 
 /*
  * $Log: db_io.c,v $
+ * Revision 1.1  2021/07/15 19:45:05  bruce
+ * Updated with 64-bit compile
+ *
  * Revision 2.5  1996/03/19  07:16:12  pavel
  * Increased precision of floating-point numbers printed in the DB file.
  * Release 1.8.0p2.

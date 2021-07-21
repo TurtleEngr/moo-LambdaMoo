@@ -220,10 +220,13 @@ stream_length(Stream *s)
     return s->current;
 }
 
-char rcsid_streams[] = "$Id: streams.c,v 2.5 1996/03/19 07:14:02 pavel Exp $";
+char rcsid_streams[] = "$Id: streams.c,v 1.1 2021/07/15 19:45:12 bruce Exp $";
 
 /*
  * $Log: streams.c,v $
+ * Revision 1.1  2021/07/15 19:45:12  bruce
+ * Updated with 64-bit compile
+ *
  * Revision 2.5  1996/03/19  07:14:02  pavel
  * Fixed default printing of floating-point numbers.  Release 1.8.0p2.
  *

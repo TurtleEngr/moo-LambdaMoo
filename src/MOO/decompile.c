@@ -975,10 +975,13 @@ find_line_number(Program *prog, int vector, int pc)
     return lineno;
 }
 
-char rcsid_decompile[] = "$Id: decompile.c,v 2.6 1996/03/10 01:17:48 pavel Exp $";
+char rcsid_decompile[] = "$Id: decompile.c,v 1.1 2021/07/15 19:45:06 bruce Exp $";
 
 /*
  * $Log: decompile.c,v $
+ * Revision 1.1  2021/07/15 19:45:06  bruce
+ * Updated with 64-bit compile
+ *
  * Revision 2.6  1996/03/10  01:17:48  pavel
  * Removed a automatic structure initialization.  Release 1.8.0.
  *

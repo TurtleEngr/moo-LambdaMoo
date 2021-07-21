@@ -427,10 +427,13 @@ register_functions(void)
     register_function("function_info", 0, 1, bf_function_info, TYPE_STR);
 }
 
-char rcsid_functions[] = "$Id: functions.c,v 2.6 1996/04/19 01:20:49 pavel Exp $";
+char rcsid_functions[] = "$Id: functions.c,v 1.1 2021/07/15 19:45:07 bruce Exp $";
 
 /*
  * $Log: functions.c,v $
+ * Revision 1.1  2021/07/15 19:45:07  bruce
+ * Updated with 64-bit compile
+ *
  * Revision 2.6  1996/04/19  01:20:49  pavel
  * Fixed bug in how $bf_FOO() verbs are called to override built-in functions.
  * Added code to screen out the worst of the problems this bug could

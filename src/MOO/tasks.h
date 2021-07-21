@@ -111,6 +111,9 @@ extern db_verb_handle	find_verb_for_programming(Objid player,
 
 /*
  * $Log: tasks.h,v $
+ * Revision 1.1  2021/07/15 19:45:13  bruce
+ * Updated with 64-bit compile
+ *
  * Revision 2.5  1996/03/19 07:10:22  pavel
  * Added run_server_program_task() for use from emergency mode.
  * Release 1.8.0p2.

@@ -2836,7 +2836,10 @@ EOF
 chmod +x config.status
 ${CONFIG_SHELL-/bin/sh} config.status
 
-# $Log: configure.in,v $
+# $Log: configure,v $
+# Revision 1.1  2021/07/15 19:45:05  bruce
+# Updated with 64-bit compile
+#
 # Revision 2.8  1996/03/19  07:16:46  pavel
 # Added one more option for trying to enable ANSI C compilation.
 # Release 1.8.0p2.

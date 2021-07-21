@@ -18,7 +18,7 @@ CC = gcc -g
 LIBRARIES =  -lm -lcrypt
 YACC = bison -y
 
-CFLAGS = -O
+CFLAGS = -O -m32
 YFLAGS = -d
 COMPILE.c = $(CC) $(CFLAGS) $(CPPFLAGS) -c
 
@@ -144,7 +144,13 @@ depend: ${ALL_CSRCS}
 	rm -f eddep makedep
 
 ###############################################################################
-# $Log: Makefile.in,v $
+# $Log: Makefile,v $
+# Revision 1.2  2021/07/21 00:26:31  bruce
+# Updated to compile an i386 version.
+#
+# Revision 1.1  2021/07/15 19:45:04  bruce
+# Updated with 64-bit compile
+#
 # Revision 2.10  1996/04/19  01:28:40  pavel
 # Ran a new `make depend'.  Release 1.8.0p4.
 #

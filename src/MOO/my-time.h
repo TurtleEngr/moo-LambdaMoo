@@ -53,6 +53,9 @@ extern char    *tzname;
 
 /*
  * $Log: my-time.h,v $
+ * Revision 1.1  2021/07/15 19:45:09  bruce
+ * Updated with 64-bit compile
+ *
  * Revision 2.1  1996/02/08  06:00:41  pavel
  * *** empty log message ***
  *

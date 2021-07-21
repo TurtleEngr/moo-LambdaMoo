@@ -182,10 +182,13 @@ main(int argc, char **argv)
     exit(1);
 }
 
-char rcsid_client_sysv[] = "$Id: client_sysv.c,v 2.3 1996/03/10 01:11:56 pavel Exp $";
+char rcsid_client_sysv[] = "$Id: client_sysv.c,v 1.1 2021/07/15 19:45:04 bruce Exp $";
 
 /*
  * $Log: client_sysv.c,v $
+ * Revision 1.1  2021/07/15 19:45:04  bruce
+ * Updated with 64-bit compile
+ *
  * Revision 2.3  1996/03/10  01:11:56  pavel
  * Moved definition of DEFAULT_CONNECT_FILE to options.h.  Release 1.8.0.
  *

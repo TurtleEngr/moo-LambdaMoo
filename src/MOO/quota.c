@@ -66,10 +66,13 @@ incr_quota(Objid player)
     db_set_property_value(h, v);
 }
 
-char rcsid_quota[] = "$Id: quota.c,v 2.1 1996/02/08 06:54:04 pavel Exp $";
+char rcsid_quota[] = "$Id: quota.c,v 1.1 2021/07/15 19:45:11 bruce Exp $";
 
 /*
  * $Log: quota.c,v $
+ * Revision 1.1  2021/07/15 19:45:11  bruce
+ * Updated with 64-bit compile
+ *
  * Revision 2.1  1996/02/08  06:54:04  pavel
  * Renamed TYPE_NUM to TYPE_INT.  Updated copyright notice for 1996.
  * Release 1.8.0beta1.

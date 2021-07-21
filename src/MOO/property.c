@@ -320,10 +320,13 @@ register_property(void)
 			     TYPE_OBJ, TYPE_STR);
 }
 
-char rcsid_property[] = "$Id: property.c,v 2.3 1996/02/11 00:44:45 pavel Exp $";
+char rcsid_property[] = "$Id: property.c,v 1.1 2021/07/15 19:45:11 bruce Exp $";
 
 /*
  * $Log: property.c,v $
+ * Revision 1.1  2021/07/15 19:45:11  bruce
+ * Updated with 64-bit compile
+ *
  * Revision 2.3  1996/02/11  00:44:45  pavel
  * Fixed potential panic in clear_property() when called on the definer of the
  * property in question.  Release 1.8.0beta2.
